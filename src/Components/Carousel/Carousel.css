@@ -1,0 +1,18 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 450px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 6px 6px -6px black;
+}

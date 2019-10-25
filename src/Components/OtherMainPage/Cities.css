@@ -1,0 +1,25 @@
+#column1 a {
+  text-decoration: none;
+  color: rgb(161, 159, 159);
+}
+
+#column1 a:hover {
+  text-decoration: underline;
+}
+
+#column-main a {
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  font-weight: 400;
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+}
+
+#column-main a:hover {
+  text-decoration: underline;
+}
+
+.cities-container {
+  margin-bottom: 50px;
+}

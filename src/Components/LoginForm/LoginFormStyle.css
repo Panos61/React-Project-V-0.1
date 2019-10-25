@@ -1,0 +1,12 @@
+body {
+  background-image: linear-gradient(white, rgb(210, 228, 174));
+}
+
+#parent {
+  display: flex;
+}
+
+.login-card {
+  margin: auto;
+  margin-top: 7%;
+}

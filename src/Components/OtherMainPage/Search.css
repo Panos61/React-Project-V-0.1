@@ -1,0 +1,8 @@
+.main-image {
+  height: 350px;
+  width: 100%;
+  background-image: url(../img/tree.jpg);
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 6px 6px -6px black;
+}

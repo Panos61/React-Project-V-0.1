@@ -1,0 +1,12 @@
+body {
+  background-image: linear-gradient(#69c0ff, #73d13d);
+}
+
+#parent {
+  display: flex;
+  padding-top: 5%;
+}
+
+.register-card {
+  margin: auto;
+}
