@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(whitesmoke, azure 35%, rgb(210, 228, 174));
+  background-image: linear-gradient(to left bottom, whitesmoke, azure 35%, rgb(210, 228, 174));
   background-attachment: fixed;
 }
 
