@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card } from 'antd';
 import WrappedRegistrationForm from './Signup';
 import './SignUpStyle.css';
@@ -15,7 +15,7 @@ class CardRegisterStyle extends React.Component {
       <div>
         <div id='parent'>
           <div className='register-card'>
-            <Card title={title} style={{ width: 400, borderRadius: '8px' }}>
+            <Card title={title} style={{ width: 365, borderRadius: '8px' }}>
               <h4 style={{ fontFamily: 'san-serif' }}>
                 Συμπληρώστε τα παρακάτω στοιχεία για την ολοκρήρωση της εγγραφής σας.
               </h4>

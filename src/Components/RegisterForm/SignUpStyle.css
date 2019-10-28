@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(#69c0ff, #73d13d);
+  background-image: linear-gradient(white, whitesmoke, azure, rgb(210, 228, 174));
 }
 
 #parent {
@@ -9,4 +9,5 @@ body {
 
 .register-card {
   margin: auto;
+  max-width: 100%;
 }

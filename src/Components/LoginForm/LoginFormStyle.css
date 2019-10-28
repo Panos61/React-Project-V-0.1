@@ -1,12 +1,12 @@
 body {
-  background-image: linear-gradient(white, rgb(210, 228, 174));
+  background-image: linear-gradient(white, whitesmoke, azure, rgb(210, 228, 174));
 }
 
 #parent {
   display: flex;
+  padding-top: 5%;
 }
 
 .login-card {
   margin: auto;
-  margin-top: 7%;
 }

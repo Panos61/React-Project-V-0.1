@@ -1,63 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './Components/Navbar/Navbar';
-import PopBtn from './Components/OtherMainPage/PopBtn';
-import Search from './Components/OtherMainPage/Search';
-import { BackTop, Layout, Row, Col, Icon } from 'antd';
-import Cities from './Components/OtherMainPage/Cities';
+import React from 'react';
+import { Layout, Col, Row, Icon } from 'antd';
 
 const Footer = Layout;
 
-class App extends Component {
+class FooterMain extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <PopBtn />
-        <Search />
-        <BackTop />
-
-        <div className='fdsf'>
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-        </div>
-        <Cities />
         <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
           <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
             <Col lg={8} xs={8}>
@@ -123,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default FooterMain;
