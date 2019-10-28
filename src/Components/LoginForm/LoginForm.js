@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Col, Row, Checkbox, Icon } from 'antd';
+import { Form, Input, Button, Checkbox, Icon } from 'antd';
 import './LoginForm.css';
 
 class LoginForm extends React.Component {

@@ -1,13 +1,29 @@
 body {
-  background-image: linear-gradient(white, whitesmoke, azure, rgb(210, 228, 174));
+  background-image: linear-gradient(whitesmoke, azure 15%, rgb(210, 228, 174));
+  background-attachment: fixed;
 }
 
 #parent {
   display: flex;
-  padding-top: 5%;
+  margin-top: 5%;
+  margin-bottom: 4%;
 }
 
 .register-card {
-  margin: auto;
   max-width: 100%;
+  margin: auto;
+}
+
+/**CSS Footer **/
+#li-style a {
+  text-decoration: none;
+  color: grey;
+}
+
+#li-style a:hover {
+  color: rgb(160, 158, 158);
+}
+
+#icons:hover {
+  color: rgb(107, 107, 107);
 }
