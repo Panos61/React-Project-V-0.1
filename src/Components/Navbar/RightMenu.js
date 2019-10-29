@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Menu, Drawer } from 'antd';
+import { Menu } from 'antd';
+import HowWorks from './HowWorksDrawer';
 
 class RightMenu extends Component {
   render() {
@@ -7,9 +8,7 @@ class RightMenu extends Component {
       <div>
         <Menu mode={this.props.mode}>
           <Menu.Item key='howWorks'>
-            <a href='#' style={{ textDecoration: 'underline' }}>
-              Πώς λειτουργεί
-            </a>
+            <HowWorks />
           </Menu.Item>
           <Menu.Item key='mail'>
             <a href='#'>Σύνδεση</a>
