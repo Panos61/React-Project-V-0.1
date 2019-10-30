@@ -120,7 +120,7 @@ class RegistrationForm extends React.Component {
               label={
                 <span>
                   Nickname&nbsp;
-                  <Tooltip title='Εισάγετε ένα nickname'>
+                  <Tooltip title='Εισάγετε ένα nickname.Μπορείτε να το αλλάξετε στο μέλλον!'>
                     <Icon type='question-circle-o' />
                   </Tooltip>
                 </span>

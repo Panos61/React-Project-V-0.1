@@ -11,7 +11,7 @@ const Footer = Layout;
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: 'white' }}>
         <Navbar />
         <PopBtn />
         <Search />
