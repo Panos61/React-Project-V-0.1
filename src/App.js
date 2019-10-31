@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div style={{ backgroundColor: 'white' }}>
         <Navbar />
-        <PopBtn />
+        {/* <PopBtn /> */}
         <Search />
         <BackTop />
 

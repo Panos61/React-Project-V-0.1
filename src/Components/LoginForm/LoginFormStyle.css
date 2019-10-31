@@ -1,11 +1,11 @@
 body {
-  background-image: linear-gradient(to left bottom, whitesmoke, azure 35%, rgb(210, 228, 174));
+  background-image: linear-gradient(to left bottom, whitesmoke, azure 55%, rgb(210, 228, 174));
   background-attachment: fixed;
 }
 
 #parent {
   display: flex;
-  margin-top: 5%;
+  margin-top: 7%;
   margin-bottom: 15%;
 }
 

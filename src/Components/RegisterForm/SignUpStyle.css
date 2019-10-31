@@ -3,9 +3,9 @@ body {
   background-attachment: fixed;
 }
 
-#parent {
+#parent-register {
   display: flex;
-  margin-top: 5%;
+  margin-top: 4%;
   margin-bottom: 4%;
 }
 
