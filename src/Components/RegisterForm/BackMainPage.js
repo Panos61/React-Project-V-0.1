@@ -1,46 +1,34 @@
 import React, { Component } from 'react';
+import { Button, Affix, Modal } from 'antd';
 import { Link, Route } from 'react-router-dom';
-import { Button, notification, Affix, Row, Col } from 'antd';
 import App from '../../App';
 import './BackMainPage.css';
 
-const openNotification = () => {
-  const key = `open${Date.now}`;
-  const btn = (
-    <Button type='dashed' size='small' onClick={() => notification.close(key)}>
-      Έγινε!
-    </Button>
-  );
+const { confirm } = Modal;
 
-  notification.open({
-    message: 'Επιστροφή στην Αρχική Σελίδα;',
-    description: 'Αν αποχωρήσετε ενδέχεται να χαθούν τα στοιχεία που εισάγατε στη φόρμα εγγραφής!',
-    btn,
-    key
+function showDeleteConfirm() {
+  confirm({
+    title: 'Επιστροφή στην Αρχική Σελίδα;',
+    content: 'Με την επιστροφή στην αρχική σελίδα ενδέχεται να χαθούν τα στοιχεία που εισάγατε στη φόρμα εγγραφής!',
+    okText: 'Έγινε',
+    okType: 'danger',
+    cancelText: 'Άκυρο',
+    onOk() {
+      /*  <Link to='/' />; */
+    }
   });
-};
+}
 
 class BackMainPage extends Component {
-  state = {
-    size: 'small'
-  };
-
-  handleSizeChange = (e) => {
-    this.setState({ size: e.target.value });
-  };
-
   render() {
-    const { size } = this.state;
     return (
       <div>
-        <Row>
-          <Affix offsetTop={10} onChange={(affixed) => console.log('')}>
-            <Button size={size} type='danger' onClick={openNotification} icon='left-circle' ghost id='BackMainBtn'>
-              Αρχική Σελίδα
-            </Button>
-          </Affix>
-        </Row>
-        {/* Route to main page */}
+        <Affix offsetTop={5}>
+          <Button onClick={showDeleteConfirm} type='dashed'>
+            Αρχική Σελίδα
+          </Button>
+        </Affix>
+
         <Route path='/' Component={App} />
       </div>
     );

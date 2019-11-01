@@ -6,6 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
+import ContactFormPage from './SubPages-Test/Contact';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 //Added basic Routing for Login/Register
@@ -15,6 +16,7 @@ const routing = (
       <Route exact path='/' component={App} />
       <Route path='/login' component={CardLoginForm} />
       <Route path='/register' component={CardRegisterStyle} />
+      <Route path='/contact' component={ContactFormPage} />
     </div>
   </Router>
 );

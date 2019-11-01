@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
-import PopBtn from './Components/OtherMainPage/PopBtn';
+//import PopBtn from './Components/OtherMainPage/PopBtn';
 import Search from './Components/OtherMainPage/Search';
 import { BackTop, Layout, Row, Col, Icon } from 'antd';
 import Cities from './Components/OtherMainPage/Cities';
+import ContactForm from './SubPages-Test/Contact';
+import { Link, Route } from 'react-router-dom';
 
 const Footer = Layout;
 
@@ -42,20 +44,6 @@ class App extends Component {
           ...
           <br />
           ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
         </div>
         <Cities />
         <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
@@ -69,7 +57,7 @@ class App extends Component {
                   <a href=''>Πληροφορίες</a>
                 </li>
                 <li>
-                  <a href=''>Επικοινωνία</a>
+                  <Link to='/contact'>Επικοινωνία</Link>
                 </li>
               </ul>
             </Col>
@@ -118,6 +106,9 @@ class App extends Component {
           </Row>
           EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by us!
         </Footer>
+
+        {/* Routes */}
+        <Route path='/contact' Component={ContactForm} />
       </div>
     );
   }
