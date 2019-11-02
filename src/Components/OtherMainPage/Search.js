@@ -10,9 +10,9 @@ class MainSearch extends Component {
       <div>
         <div className='main-image'>
           <Row align={'middle'}>
-            <Col span={12} offset={6} xs={{ span: 12, offset: 6 }}>
+            <Col md={{ span: 12, offset: 6 }}>
               <div className='container'>
-                <div className='search' style={{ marginTop: '250px' }}>
+                <div className='search' style={{ marginTop: '200px', marginRight: '5%', marginLeft: '5%' }}>
                   <Search
                     placeholder='Ψάξτε Event :)'
                     onSearch={(value) => console.log(value)}

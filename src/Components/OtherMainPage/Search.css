@@ -6,3 +6,9 @@
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 6px 6px -6px black;
 }
+/* @media only screen and (min-width: 0px) and (max-width: 800px) {
+  .search {
+    min-width: 170%;
+  }
+}
+ */
