@@ -10,3 +10,9 @@
 #icons:hover {
   color: rgb(107, 107, 107);
 }
+
+@media only screen and (min-height: 1576px) {
+  #footer {
+    padding-bottom: 200px;
+  }
+}

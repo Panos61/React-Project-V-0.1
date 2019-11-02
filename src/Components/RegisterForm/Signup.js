@@ -148,7 +148,8 @@ class RegistrationForm extends React.Component {
                 valuePropName: 'checked',
                 rules: [
                   {
-                    required: true
+                    required: true,
+                    message: 'Αποδεχτείτε τους Όρους!'
                   }
                 ]
               })(
