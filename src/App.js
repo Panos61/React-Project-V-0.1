@@ -13,7 +13,7 @@ const Footer = Layout;
 class App extends Component {
   render() {
     return (
-      <div style={{ backgroundColor: 'white' }}>
+      <div className='main-page-style'>
         <Navbar />
         {/* <PopBtn /> */}
         <Search />
@@ -44,9 +44,44 @@ class App extends Component {
           ...
           <br />
           ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
         </div>
         <Cities />
-        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
+
+        <Footer
+          style={{
+            textAlign: 'center',
+            width: '100%',
+            backgroundColor: '#e8e8e8'
+          }}
+        >
           <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>

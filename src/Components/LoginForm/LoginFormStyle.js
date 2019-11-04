@@ -36,8 +36,7 @@ class CardLoginStyle extends Component {
               style={{
                 textAlign: 'center',
                 width: '100%',
-                backgroundColor: '#e8e8e8',
-                marginBottom: '-15%'
+                backgroundColor: '#e8e8e8'
               }}
             >
               <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
