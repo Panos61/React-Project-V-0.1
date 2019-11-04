@@ -26,7 +26,7 @@ class Navbar extends Component {
       <nav className='menu'>
         <div className='menu__logo'>
           <a href='' style={{ color: 'black', fontSize: '22px' }}>
-            EventPark
+            Event<span style={{ color: '#7cb305' }}>Park</span>
           </a>
         </div>
         <div className='menu__container'>
