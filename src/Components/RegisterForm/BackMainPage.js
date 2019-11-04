@@ -14,7 +14,7 @@ function showDeleteConfirm() {
     okType: 'danger',
     cancelText: 'Άκυρο',
     onOk() {
-      /*  <Link to='/' />; */
+      //console.error('bye');
     }
   });
 }
