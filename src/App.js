@@ -15,15 +15,19 @@ const Footer = Layout;
 class App extends Component {
   render() {
     return (
-      <div className='main-page-style'>
-        <Navbar />
+      <div>
+        <div className='main-page_style'>
+          <section>
+            <Navbar />
 
-        <Search />
-        <BackTop />
-        <Cities />
-
-        <FooterMain />
-
+            <Search />
+            <BackTop />
+            <Cities />
+          </section>
+        </div>
+        <footer>
+          <FooterMain />
+        </footer>
         {/* Routes */}
         <Route path='/Help' Component={MainHelpPage} />
       </div>
