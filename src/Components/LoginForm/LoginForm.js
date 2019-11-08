@@ -21,12 +21,12 @@ class LoginForm extends React.Component {
         <Form onSubmit={this.handleSubmit} className='login-form'>
           <Form.Item>
             {getFieldDecorator('email', {
-              rules: [{ required: true, message: 'Please input your email!' }]
+              rules: [{ required: true, message: 'Εισάγετε το Email σας!' }]
             })(<Input prefix={<Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='Email' />)}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('password', {
-              rules: [{ required: true, message: 'Please input your Password!' }]
+              rules: [{ required: true, message: 'Εισάγετε τον κωδικό σας!' }]
             })(
               <Input
                 prefix={<Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />}
