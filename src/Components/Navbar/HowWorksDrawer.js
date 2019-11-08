@@ -25,7 +25,10 @@ class HowWorks extends React.Component {
   render() {
     return (
       <div>
-        <a onClick={this.showDrawer} style={{ display: 'inline-block', textDecoration: 'underline', color: 'orange' }}>
+        <a
+          onClick={this.showDrawer}
+          style={{ display: 'inline-block', textDecoration: 'underline', color: 'yellowgreen' }}
+        >
           Πώς λειτουργεί
         </a>
 

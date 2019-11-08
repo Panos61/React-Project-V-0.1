@@ -5,45 +5,25 @@ import Navbar from './Components/Navbar/Navbar';
 import Search from './Components/OtherMainPage/Search';
 import { BackTop, Layout, Row, Col, Icon } from 'antd';
 import Cities from './Components/OtherMainPage/Cities';
-import ContactForm from './SubPages-Test/Contact';
+//import ContactForm from './SubPages-Test/SubPages/Contact';
+import MainHelpPage from './SubPages-Test/MainHelpPage';
 import { Link, Route } from 'react-router-dom';
 
 const Footer = Layout;
+const Content = Layout;
 
 class App extends Component {
   render() {
     return (
       <div className='main-page-style'>
         <Navbar />
+
         {/* <PopBtn /> */}
+
         <Search />
         <BackTop />
 
         <div className='fdsf'>
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
-          <br />
-          ...
           <br />
           ...
           <br />
@@ -79,7 +59,8 @@ class App extends Component {
           style={{
             textAlign: 'center',
             width: '100%',
-            backgroundColor: '#e8e8e8'
+            backgroundColor: '#e8e8e8',
+            height: '290px'
           }}
         >
           <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
@@ -92,7 +73,7 @@ class App extends Component {
                   <a href=''>Πληροφορίες</a>
                 </li>
                 <li>
-                  <Link to='/contact'>Επικοινωνία</Link>
+                  <Link to='/Help'>Επικοινωνία</Link>
                 </li>
               </ul>
             </Col>
@@ -143,7 +124,7 @@ class App extends Component {
         </Footer>
 
         {/* Routes */}
-        <Route path='/contact' Component={ContactForm} />
+        <Route path='/Help' Component={MainHelpPage} />
       </div>
     );
   }
