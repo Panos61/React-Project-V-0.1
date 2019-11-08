@@ -12,7 +12,7 @@ class Cities extends Component {
   render() {
     return (
       <div>
-        <div className='cities-container'>
+        <div className='cities-container' style={{ marginTop: '200px' }}>
           <Row type='flex' justify='center'>
             <Col lg={{ span: 11, offset: 2 }}>
               <Title level={3} style={{ marginBottom: '60px' }}>
