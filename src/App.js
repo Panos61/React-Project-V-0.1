@@ -10,7 +10,6 @@ import MainHelpPage from './SubPages-Test/MainHelpPage';
 import { Link, Route } from 'react-router-dom';
 
 const Footer = Layout;
-const Content = Layout;
 
 class App extends Component {
   render() {
