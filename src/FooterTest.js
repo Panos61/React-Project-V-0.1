@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Col, Row, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 
 const Footer = Layout;
 
@@ -7,7 +8,7 @@ class FooterMain extends React.Component {
   render() {
     return (
       <div>
-        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
+        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8', height: '290px' }}>
           <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>
@@ -18,7 +19,7 @@ class FooterMain extends React.Component {
                   <a href=''>Πληροφορίες</a>
                 </li>
                 <li>
-                  <a href=''>Επικοινωνία</a>
+                  <Link to='/Help'>Επικοινωνία</Link>
                 </li>
               </ul>
             </Col>
@@ -46,7 +47,7 @@ class FooterMain extends React.Component {
               </ul>
             </Col>
           </Row>
-          <Row type='flex' justify='start' style={{ marginTop: '30px' }}>
+          <Row type='flex' justify='start' style={{ marginTop: '20px' }}>
             <Col span={6} push={4}>
               <p style={{ fontFamily: 'cursive' }}>
                 EventPark
