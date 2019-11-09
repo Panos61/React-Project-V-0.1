@@ -6,6 +6,13 @@ import './MainHelpPage.css';
 const { Footer } = Layout;
 const { Search } = Input;
 
+const IconTextStyle = {
+  fontSize: '18px',
+  display: 'block',
+  marginTop: '12px',
+  padding: '5px'
+};
+
 class MainHelpPage extends Component {
   render() {
     return (
@@ -25,15 +32,66 @@ class MainHelpPage extends Component {
           </div>
 
           <div className='lower-part_content'>
-            <Row type='flex' justify='end' gutter={[8, 16]}>
+            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '12vh' }}>
               <Col lg={8} xs={8}>
-                Col
+                <Icon type='message' style={{ fontSize: '7vh', color: '#08c' }} theme='outlined' />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Επικοινωνία
+                </a>
               </Col>
               <Col lg={8} xs={8}>
-                Col
+                <Icon type='team' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Όμαδα
+                </a>
               </Col>
               <Col lg={8} xs={8}>
-                Col
+                <Icon type='question-circle' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Πληροφορίες
+                </a>
+              </Col>
+            </Row>
+
+            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '20vh' }}>
+              <Col lg={8} xs={8}>
+                <Icon type='smile' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Αξιολογήστε μας
+                </a>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Icon type='control' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Όροι χρήσης
+                </a>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Icon type='carry-out' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Στόχοι
+                </a>
+              </Col>
+            </Row>
+
+            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '20vh' }}>
+              <Col lg={8} xs={8}>
+                <Icon type='ordered-list' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  FAQs
+                </a>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Icon type='check' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Features
+                </a>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Icon type='github' style={{ fontSize: '7vh', color: '#08c' }} />
+                <a href='' style={IconTextStyle} id='linksHelp_Page'>
+                  Προσφέρετε
+                </a>
               </Col>
             </Row>
           </div>
