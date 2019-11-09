@@ -52,7 +52,7 @@ class MainHelpPage extends Component {
               </Col>
             </Row>
 
-            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '20vh' }}>
+            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '12vh' }}>
               <Col lg={8} xs={8}>
                 <Icon type='smile' style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
@@ -73,7 +73,7 @@ class MainHelpPage extends Component {
               </Col>
             </Row>
 
-            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '20vh' }}>
+            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '12vh' }}>
               <Col lg={8} xs={8}>
                 <Icon type='ordered-list' style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
