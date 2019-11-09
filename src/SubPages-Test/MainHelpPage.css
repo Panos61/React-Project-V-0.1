@@ -22,3 +22,17 @@
 #linksHelp_Page:hover {
   text-decoration: underline;
 }
+
+/** font-size adjustment over screen resolution **/
+
+@media screen and (max-width: 870px) {
+  #linksHelp_Page {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 871px) {
+  #linksHelp_Page {
+    font-size: 23px;
+  }
+}

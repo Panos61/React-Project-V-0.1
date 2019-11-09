@@ -7,7 +7,6 @@ const { Footer } = Layout;
 const { Search } = Input;
 
 const IconTextStyle = {
-  fontSize: '18px',
   display: 'block',
   marginTop: '12px',
   padding: '5px'
