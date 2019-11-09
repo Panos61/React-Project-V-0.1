@@ -8,7 +8,7 @@ class FooterMain extends React.Component {
   render() {
     return (
       <div>
-        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8', height: '290px' }}>
+        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
           <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>
