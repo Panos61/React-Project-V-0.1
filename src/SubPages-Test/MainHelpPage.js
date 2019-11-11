@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Input, Row, Col, Layout, Icon, Typography } from 'antd';
 import Sub_Navbar from './SubPage_Navbar/Sub_Navbar';
 import './MainHelpPage.css';
-import { SIGBREAK } from 'constants';
-
 /* const { Title } = Typography; */
 const { Footer } = Layout;
 const { Search } = Input;
