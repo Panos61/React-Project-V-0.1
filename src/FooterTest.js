@@ -13,20 +13,20 @@ class FooterMain extends React.Component {
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>
                 <li>
-                  <a href=''>Όροι χρήσης</a>
-                </li>
-                <li>
                   <a href=''>Πληροφορίες</a>
                 </li>
                 <li>
                   <Link to='/Help'>Επικοινωνία</Link>
+                </li>
+                <li>
+                  <a href=''>Features</a>
                 </li>
               </ul>
             </Col>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>
                 <li>
-                  <a href=''>Features</a>
+                  <a href=''>Όροι χρήσης</a>
                 </li>
                 <li>
                   <a href=''>Αξιολογήστε μας</a>
