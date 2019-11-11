@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import LeftMenu_Sub from './LeftMenu_Sub';
 import RightMenu_Sub from './RightMenu_Sub';
 import { Drawer, Button, Icon, Divider } from 'antd';
+import { Link } from 'react-router-dom';
+
 import './Sub_Navbar.css';
 
 class Sub_Navbar extends Component {
@@ -25,10 +27,10 @@ class Sub_Navbar extends Component {
     return (
       <nav className='menu' style={{ zIndex: '10' }}>
         <div className='menu__logo'>
-          <a href='' style={{ color: 'black', fontSize: '22px' }}>
+          <Link to='/' style={{ color: 'black', fontSize: '22px' }}>
             Event
             <span style={{ color: '#fa8c16' }}>Park</span>
-          </a>
+          </Link>
         </div>
         <div className='menu__container'>
           <div className='menu_left'>

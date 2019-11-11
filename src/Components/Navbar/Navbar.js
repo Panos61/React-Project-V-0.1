@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import { Drawer, Button, Icon, Divider } from 'antd';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -25,9 +26,9 @@ class Navbar extends Component {
     return (
       <nav className='menu'>
         <div className='menu__logo'>
-          <a href='' style={{ color: 'black', fontSize: '22px' }}>
+          <Link to='/' style={{ color: 'black', fontSize: '22px' }}>
             Event<span style={{ color: '#7cb305' }}>Park</span>
-          </a>
+          </Link>
         </div>
         <div className='menu__container'>
           <div className='menu_left'>
