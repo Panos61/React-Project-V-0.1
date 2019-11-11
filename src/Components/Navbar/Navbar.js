@@ -51,6 +51,11 @@ class Navbar extends Component {
             <LeftMenu mode='inline' />
             <Divider dashed />
             <RightMenu mode='inline' />
+            <Divider dashed />
+
+            <Link to='/Help' style={{ color: '#330033', marginLeft: '23px', fontSize: '15px', fontFamily: 'cursive' }}>
+              Υποστήριξη
+            </Link>
           </Drawer>
         </div>
       </nav>
