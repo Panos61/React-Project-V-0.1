@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Menu, Select } from 'antd';
 import { Link, Route } from 'react-router-dom';
-import CardLoginStyle from '../LoginForm/LoginFormStyle';
-import CardRegisterStyle from '../RegisterForm/SignUpStyle';
+import CardLoginStyle from '../../Components/LoginForm/LoginFormStyle';
+import CardRegisterStyle from '../../Components/RegisterForm/SignUpStyle';
 
 const { Option } = Select;
+
+function handleChange(value) {
+  console.log(`Selected ${value}`);
+}
 
 class RightMenu_Sub extends Component {
   render() {

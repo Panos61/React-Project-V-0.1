@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 
-/* const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup; */
-
-class LeftMenu extends Component {
+class LeftMenu_Sub extends Component {
   render() {
     return <Menu mode={this.props.mode}></Menu>;
   }
