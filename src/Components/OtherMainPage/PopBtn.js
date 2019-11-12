@@ -16,7 +16,12 @@ class PopBtn extends React.Component {
       <div>
         <Row align={'middle'} type={'flex'} justify={'center'}>
           <Col>
-            <Button type='primary' icon='rise' size={size} style={{ top: '200px', zIndex: '1' }}>
+            <Button
+              type='primary'
+              icon='rise'
+              size={size}
+              style={{ top: '100px', zIndex: '1', alignContent: 'center' }}
+            >
               Δημοφιλές
             </Button>
           </Col>
