@@ -48,7 +48,9 @@ class HorizontalSider extends Component {
               </Menu.Item>
               <Menu.Item key="8">
                 <Icon type="schedule" />
-                Τοίχος
+                <Link to="/ProfileEdit" style={{ display: "inline" }}>
+                  Τοίχος
+                </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="9">
