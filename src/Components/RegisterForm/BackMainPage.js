@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import { Button, Affix, Modal } from 'antd';
-import { Link, Route } from 'react-router-dom';
-import App from '../../App';
-import './BackMainPage.css';
+import React, { Component } from "react";
+import { Button, Affix, Modal } from "antd";
+import { Link, Route } from "react-router-dom";
+import App from "../../App";
+import "./BackMainPage.css";
 
 const { confirm } = Modal;
 
 function showDeleteConfirm() {
   confirm({
-    title: 'Επιστροφή στην Αρχική Σελίδα;',
-    content: 'Με την επιστροφή στην αρχική σελίδα ενδέχεται να χαθούν τα στοιχεία που εισάγατε στη φόρμα εγγραφής!',
-    okText: 'Έγινε',
-    okType: 'danger',
-    cancelText: 'Άκυρο',
+    title: "Επιστροφή στην Αρχική Σελίδα;",
+    content:
+      "Με την επιστροφή στην αρχική σελίδα ενδέχεται να χαθούν τα στοιχεία που εισάγατε στη φόρμα εγγραφής!",
+    okText: "Έγινε",
+    okType: "danger",
+    cancelText: "Άκυρο",
     onOk() {
-      //console.error('bye');
+      window.history.back(); /* Test */
     }
   });
 }
@@ -24,12 +25,12 @@ class BackMainPage extends Component {
     return (
       <div>
         <Affix offsetTop={5}>
-          <Button onClick={showDeleteConfirm} type='dashed'>
+          <Button onClick={showDeleteConfirm} type="dashed">
             Αρχική Σελίδα
           </Button>
         </Affix>
 
-        <Route path='/' Component={App} />
+        <Route path="/" Component={App} />
       </div>
     );
   }

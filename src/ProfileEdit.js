@@ -67,9 +67,7 @@ class ProfileEdit extends Component {
                   <Timeline.Item>
                     Δημιουργία Λογαριασμού 12-11-2019
                   </Timeline.Item>
-                  <Timeline.Item>
-                    Αλλαγή Κωδικού problems 13-11-2019
-                  </Timeline.Item>
+                  <Timeline.Item>Αλλαγή Κωδικού 13-11-2019</Timeline.Item>
                   <Timeline.Item>
                     Ενημέρωση Πληροφοριών 13-11-2019
                   </Timeline.Item>
