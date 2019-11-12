@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Icon, Col, Row, Layout } from 'antd';
+import { Card } from 'antd';
 import WrappedNormalLoginForm from './LoginForm';
 import './LoginFormStyle.css';
 import FooterMain from '../../FooterTest';
-
-const Footer = Layout;
 
 class CardLoginStyle extends Component {
   render() {

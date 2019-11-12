@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 //import PopBtn from './Components/OtherMainPage/PopBtn';
 import Search from './Components/OtherMainPage/Search';
+import HorizontalSider from './Components/OtherMainPage/HorizontalSider';
 import { BackTop } from 'antd';
 import Cities from './Components/OtherMainPage/Cities';
 //import ContactForm from './SubPages-Test/SubPages/Contact';
@@ -19,6 +20,7 @@ class App extends Component {
             <Navbar />
 
             <Search />
+            <HorizontalSider />
             <BackTop />
             <Cities />
           </section>

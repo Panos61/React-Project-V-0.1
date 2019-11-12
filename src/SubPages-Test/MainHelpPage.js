@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Input, Row, Col, Layout, Icon, Typography } from 'antd';
+import { Input, Row, Col, Layout, Icon } from 'antd';
 import Sub_Navbar from './SubPage_Navbar/Sub_Navbar';
 import './MainHelpPage.css';
-/* const { Title } = Typography; */
+
 const { Footer } = Layout;
 const { Search } = Input;
 
@@ -26,11 +26,12 @@ class MainHelpPage extends Component {
           <div className='upper-part_search'>
             <Row align='middle'>
               <Col md={{ span: 12, offset: 6 }}>
-                {/* <Title level={3} style={{ color: 'whitesmoke' }}>
-                  Αναζήτηση Πληροφοριών <Icon type='info-circle' />
-                </Title> */}
                 <div className='container' style={{ marginRight: '5%', marginLeft: '5%' }}>
-                  <Search placeholder='Αναζητήστε Βοήθεια' size='medium' style={{ marginTop: '130px', zIndex: 1 }} />
+                  <Search
+                    placeholder='Αναζητήστε Βοήθεια'
+                    size='medium'
+                    style={{ marginTop: '130px', zIndex: 1 }}
+                  ></Search>
                 </div>
               </Col>
             </Row>
