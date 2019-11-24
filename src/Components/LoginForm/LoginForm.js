@@ -5,7 +5,7 @@ import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 
 class LoginForm extends React.Component {
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -22,14 +22,23 @@ class LoginForm extends React.Component {
           <Form.Item>
             {getFieldDecorator('email', {
               rules: [{ required: true, message: 'Εισάγετε το Email σας!' }]
-            })(<Input prefix={<Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='Email' />)}
+            })(
+              <Input
+                prefix={
+                  <Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />
+                }
+                placeholder='Email'
+              />
+            )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('password', {
               rules: [{ required: true, message: 'Εισάγετε τον κωδικό σας!' }]
             })(
               <Input
-                prefix={<Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />}
+                prefix={
+                  <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
+                }
                 type='password'
                 placeholder='Κωδικός'
               />
@@ -43,7 +52,11 @@ class LoginForm extends React.Component {
             <a className='login-form-forgot' href=''>
               Ξεχάσατε τον κωδικό;
             </a>
-            <Button type='primary' htmlType='submit' className='login-form-button'>
+            <Button
+              type='primary'
+              htmlType='submit'
+              className='login-form-button'
+            >
               Σύνδεση
             </Button>
             Ή <Link to='/register'>εγγραφείτε τώρα!</Link>
