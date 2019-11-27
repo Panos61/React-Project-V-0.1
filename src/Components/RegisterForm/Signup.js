@@ -8,7 +8,7 @@ class RegistrationForm extends React.Component {
     autoCompleteResult: []
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -17,7 +17,7 @@ class RegistrationForm extends React.Component {
     });
   };
 
-  handleConfirmBlur = (e) => {
+  handleConfirmBlur = e => {
     const { value } = e.target;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
@@ -68,7 +68,11 @@ class RegistrationForm extends React.Component {
     return (
       <div>
         <div id='parent'>
-          <Form {...formItemLayout} onSubmit={this.handleSubmit} className='register-form'>
+          <Form
+            {...formItemLayout}
+            onSubmit={this.handleSubmit}
+            className='register-form'
+          >
             <Form.Item label='E-mail'>
               {getFieldDecorator('email', {
                 rules: [
@@ -85,7 +89,13 @@ class RegistrationForm extends React.Component {
             </Form.Item>
             <Form.Item label='Username'>
               {getFieldDecorator('username', {
-                rules: [{ required: true, message: 'Ξεχάσατε το Username!', whitespace: true }]
+                rules: [
+                  {
+                    required: true,
+                    message: 'Ξεχάσατε το Username!',
+                    whitespace: true
+                  }
+                ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label='Κωδικός' hasFeedback>
@@ -127,7 +137,13 @@ class RegistrationForm extends React.Component {
               }
             >
               {getFieldDecorator('nickname', {
-                rules: [{ required: true, message: 'Ξεχάσατε το Nickname!', whitespace: true }]
+                rules: [
+                  {
+                    required: true,
+                    message: 'Ξεχάσατε το Nickname!',
+                    whitespace: true
+                  }
+                ]
               })(<Input />)}
             </Form.Item>
 
@@ -170,6 +186,8 @@ class RegistrationForm extends React.Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+const WrappedRegistrationForm = Form.create({ name: 'register' })(
+  RegistrationForm
+);
 
 export default WrappedRegistrationForm;
