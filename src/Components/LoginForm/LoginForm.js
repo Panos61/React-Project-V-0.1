@@ -3,14 +3,37 @@ import { Form, Input, Button, Checkbox, Icon } from 'antd';
 import { Link, Route } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
+import axios from 'axios';
 
 class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
+
   handleSubmit = e => {
+    const {
+      form: { validateFields }
+    } = this.props;
+
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
+    this.props.form.validateFields(['email', 'password'], (err, values) => {
+      /* if (!err) {
         console.log('Received values of form: ', values);
-      }
+      } */
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:8000/login',
+        data: values,
+
+        config: { headers: { 'Content-Type': 'application/json' } }
+      })
+        .then(console.log(values))
+        .catch(console.log(err));
     });
   };
 
@@ -47,7 +70,7 @@ class LoginForm extends React.Component {
           <Form.Item>
             {getFieldDecorator('remember', {
               valuePropName: 'checked',
-              initialValue: true
+              initialValue: false
             })(<Checkbox>Αποθήκευση</Checkbox>)}
             <a className='login-form-forgot' href=''>
               Ξεχάσατε τον κωδικό;
