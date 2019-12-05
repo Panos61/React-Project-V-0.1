@@ -104,8 +104,10 @@ class RegistrationForm extends React.Component {
               {getFieldDecorator('username', {
                 rules: [
                   {
+                    min: 3,
+                    max: 13,
                     required: true,
-                    message: 'Ξεχάσατε το Username!',
+                    message: 'Ξεχάσατε το Username!(3-13 χαρακτήρες)',
                     whitespace: true
                   }
                 ]
@@ -152,8 +154,10 @@ class RegistrationForm extends React.Component {
               {getFieldDecorator('nickname', {
                 rules: [
                   {
+                    min: 3,
+                    max: 13,
                     required: true,
-                    message: 'Ξεχάσατε το Nickname!',
+                    message: 'Ξεχάσατε το Nickname!(3-13 χαρακτήρες)',
                     whitespace: true
                   }
                 ]
@@ -164,11 +168,16 @@ class RegistrationForm extends React.Component {
               <Row gutter={8}>
                 <Col span={12}>
                   {getFieldDecorator('captcha', {
-                    rules: [{ required: true, message: 'Εισάγετε το Captcha!' }]
+                    rules: [
+                      {
+                        required: false,
+                        message: 'Εισάγετε το Captcha!'
+                      }
+                    ]
                   })(<Input />)}
                 </Col>
                 <Col span={12}>
-                  <Button>Get captcha</Button>
+                  <Button disabled>Get captcha</Button>
                 </Col>
               </Row>
             </Form.Item>
