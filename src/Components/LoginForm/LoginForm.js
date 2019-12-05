@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
         config: { headers: { 'Content-Type': 'application/json' } }
       })
         .then(console.log(values))
-        .catch(console.log(err));
+        .catch(console.warn(err));
     });
   };
 

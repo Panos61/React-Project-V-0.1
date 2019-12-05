@@ -1,6 +1,7 @@
 import React from 'react';
 import './Signup.css';
 import { Form, Input, Tooltip, Icon, Row, Col, Checkbox, Button } from 'antd';
+import axios from 'axios';
 
 class RegistrationForm extends React.Component {
   state = {
@@ -10,11 +11,23 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
+    this.props.form.validateFieldsAndScroll(
+      ['email', 'username', 'password', 'nickname'],
+      (err, values) => {
+        /* if (!err) {
         console.log('Received values of form: ', values);
+      } */
+        axios({
+          method: 'post',
+          url: 'http://localhost:8000/register',
+          data: values,
+
+          config: { headers: { 'Content-Type': 'application/json' } }
+        })
+          .then(console.log(values))
+          .catch(console.warn(err));
       }
-    });
+    );
   };
 
   handleConfirmBlur = e => {
