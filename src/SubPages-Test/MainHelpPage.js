@@ -26,7 +26,10 @@ class MainHelpPage extends Component {
           <div className='upper-part_search'>
             <Row align='middle'>
               <Col md={{ span: 12, offset: 6 }}>
-                <div className='container' style={{ marginRight: '5%', marginLeft: '5%' }}>
+                <div
+                  className='container'
+                  style={{ marginRight: '5%', marginLeft: '5%' }}
+                >
                   <Search
                     placeholder='Αναζητήστε Βοήθεια'
                     size='medium'
@@ -40,9 +43,18 @@ class MainHelpPage extends Component {
           <div className='lower-part_content'>
             {' '}
             {/* MAIN CONTENT */}
-            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '11vh' }}>
+            <Row
+              type='flex'
+              justify='end'
+              gutter={[8, 16]}
+              style={{ paddingTop: '11vh' }}
+            >
               <Col lg={8} xs={8}>
-                <Icon type='message' style={{ fontSize: '7vh', color: '#08c' }} theme='outlined' />
+                <Icon
+                  type='message'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                  theme='outlined'
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Επικοινωνία <br />
                   <p style={subTextStyle}>
@@ -52,33 +64,53 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='ordered-list' style={{ fontSize: '7vh', color: '#08c' }} />
+                <Icon
+                  type='ordered-list'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   FAQs <br />
                   <p style={subTextStyle}>Συνηθισμένες ερωτήσεις! </p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='question-circle' style={{ fontSize: '7vh', color: '#08c' }} />
+                <Icon
+                  type='question-circle'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Πληροφορίες <br />
-                  <p style={subTextStyle}>Μάθετε πως λειτουργεί η εφαρμογή κ.α!</p>
+                  <p style={subTextStyle}>
+                    Μάθετε πως λειτουργεί η εφαρμογή κ.α!
+                  </p>
                 </a>
               </Col>
             </Row>
-            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '8vh' }}>
+            <Row
+              type='flex'
+              justify='end'
+              gutter={[8, 16]}
+              style={{ paddingTop: '8vh' }}
+            >
               <Col lg={8} xs={8}>
                 <Icon type='smile' style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Αξιολογήστε μας <br />
-                  <p style={subTextStyle}>Συμβάλλετε στην βελτίωση των υπηρεσιών μας!</p>
+                  <p style={subTextStyle}>
+                    Συμβάλλετε στην βελτίωση των υπηρεσιών μας!
+                  </p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='control' style={{ fontSize: '7vh', color: '#08c' }} />
+                <Icon
+                  type='control'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Όροι χρήσης <br />
-                  <p style={subTextStyle}>Μάθετε για τους όρους χρήσης της εφαρμογής!</p>
+                  <p style={subTextStyle}>
+                    Μάθετε για τους όρους χρήσης της εφαρμογής!
+                  </p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
@@ -89,23 +121,36 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
             </Row>
-            <Row type='flex' justify='end' gutter={[8, 16]} style={{ paddingTop: '8vh' }}>
+            <Row
+              type='flex'
+              justify='end'
+              gutter={[8, 16]}
+              style={{ paddingTop: '8vh' }}
+            >
               <Col lg={8} xs={8}>
                 <Icon type='team' style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
-                  Όμαδα <br />
+                  Ομάδα <br />
                   <p style={subTextStyle}>Ποιοι είμαστε;Μάθετε για εμάς!</p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='carry-out' style={{ fontSize: '7vh', color: '#08c' }} />
+                <Icon
+                  type='carry-out'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Στόχοι <br />
-                  <p style={subTextStyle}>Ποιό είναι το μέλλον της εφαρμογής;</p>
+                  <p style={subTextStyle}>
+                    Ποιό είναι το μέλλον της εφαρμογής;
+                  </p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='github' style={{ fontSize: '7vh', color: '#08c' }} />
+                <Icon
+                  type='github'
+                  style={{ fontSize: '7vh', color: '#08c' }}
+                />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Προσφέρετε <br />
                   <p style={subTextStyle}>Συνεισφέρετε με κώδικα!</p>
@@ -122,7 +167,8 @@ class MainHelpPage extends Component {
               backgroundColor: 'unset'
             }}
           >
-            EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by us!
+            EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by
+            us!
           </Footer>
         </footer>
       </div>

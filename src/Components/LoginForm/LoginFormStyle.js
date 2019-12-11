@@ -24,7 +24,10 @@ class CardLoginStyle extends Component {
           <div id='parent'>
             <div className='login-card'>
               <Card title={title} style={{ borderRadius: '8px' }}>
-                <h4>Συμπληρώστε τα παρακάτω στοιχεία για την ολοκρήρωση της συνδεσής σας.</h4>
+                <h4>
+                  Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
+                  συνδεσής σας.
+                </h4>
                 <WrappedNormalLoginForm />
               </Card>
             </div>
