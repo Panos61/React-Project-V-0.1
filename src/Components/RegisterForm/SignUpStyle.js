@@ -27,7 +27,7 @@ class CardRegisterStyle extends Component {
           <BackMainPage />
           <div id='parent-register'>
             <div className='register-card'>
-              <Card title={title} style={{ borderRadius: '8px' }}>
+              <Card title={title} style={{ borderRadius: '4px' }}>
                 <h4 style={{ fontFamily: 'san-serif' }}>
                   Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
                   εγγραφής σας.

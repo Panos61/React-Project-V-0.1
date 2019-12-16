@@ -8,8 +8,19 @@ class FooterMain extends React.Component {
   render() {
     return (
       <div>
-        <Footer style={{ textAlign: 'center', width: '100%', backgroundColor: '#e8e8e8' }}>
-          <Row type='flex' justify='end' gutter={[8, 16]} style={{ marginTop: '15px' }}>
+        <Footer
+          style={{
+            textAlign: 'center',
+            width: '100%',
+            backgroundColor: '#e8e8e8'
+          }}
+        >
+          <Row
+            type='flex'
+            justify='end'
+            gutter={[8, 16]}
+            style={{ marginTop: '5px' }}
+          >
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id='li-style'>
                 <li>
@@ -47,26 +58,35 @@ class FooterMain extends React.Component {
               </ul>
             </Col>
           </Row>
-          <Row type='flex' justify='start' style={{ marginTop: '20px' }}>
+          <Row type='flex' justify='start' style={{ marginTop: '-5px' }}>
             <Col span={6} push={4}>
               <p style={{ fontFamily: 'cursive' }}>
-                EventPark
                 <br /> Ακολουθήστε μας!
               </p>
               <Row style={{ marginBottom: '10px' }}>
-                <span href='' style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}>
+                <span
+                  href=''
+                  style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
+                >
                   <Icon type='facebook' theme='filled' id='icons' />
                 </span>
-                <span href='' style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}>
+                <span
+                  href=''
+                  style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
+                >
                   <Icon type='instagram' theme='filled' id='icons' />
                 </span>
-                <span href='' style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}>
+                <span
+                  href=''
+                  style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
+                >
                   <Icon type='twitter' id='icons' />
                 </span>
               </Row>
             </Col>
           </Row>
-          EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by us!
+          EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by
+          us!
         </Footer>
       </div>
     );

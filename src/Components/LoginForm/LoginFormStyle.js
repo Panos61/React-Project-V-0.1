@@ -23,7 +23,7 @@ class CardLoginStyle extends Component {
         <section id='login-page_style'>
           <div id='parent'>
             <div className='login-card'>
-              <Card title={title} style={{ borderRadius: '8px' }}>
+              <Card title={title} style={{ borderRadius: '4px' }}>
                 <h4>
                   Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
                   συνδεσής σας.
