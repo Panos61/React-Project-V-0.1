@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
-//import PopBtn from './Components/OtherMainPage/PopBtn';
 import Search from './Components/OtherMainPage/Search';
 import HorizontalSider from './Components/OtherMainPage/HorizontalSider';
 import { BackTop } from 'antd';
@@ -18,7 +17,6 @@ class App extends Component {
         <div className='main-page_style'>
           <section>
             <Navbar />
-
             <Search />
             <HorizontalSider />
             <BackTop />

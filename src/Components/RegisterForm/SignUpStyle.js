@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Card, Layout, Col, Row, Icon } from 'antd';
+import { Card } from 'antd';
 import WrappedRegistrationForm from './Signup';
 import './SignUpStyle.css';
 import BackMainPage from './BackMainPage';
 import FooterMain from '../../FooterTest';
-
-const Footer = Layout;
 
 class CardRegisterStyle extends Component {
   render() {

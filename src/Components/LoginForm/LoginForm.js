@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Icon } from 'antd';
+import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
 import { Link, Route } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
@@ -33,7 +33,13 @@ class LoginForm extends React.Component {
         config: { headers: { 'Content-Type': 'application/json' } }
       })
         .then(console.log(values))
-        .catch(console.warn(err));
+        .catch(console.warn(err))
+        .catch(function(error) {
+          if (error.response) {
+            console.log(error.response.status);
+            console.log(error.request);
+          }
+        });
     });
   };
 
