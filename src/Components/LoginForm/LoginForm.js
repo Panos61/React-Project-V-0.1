@@ -1,30 +1,22 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
-import { Link, Route } from 'react-router-dom';
+import {
+  Link,
+  Route,
+  Redirect,
+  useHistory,
+  BrowserRouter,
+  Switch
+} from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 import axios from 'axios';
+import App from '../../App';
 
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: ''
-    };
-  }
-
   handleSubmit = e => {
-    const {
-      form: { validateFields }
-    } = this.props;
-
     e.preventDefault();
     this.props.form.validateFields(['email', 'password'], (err, values) => {
-      /* if (!err) {
-        console.log('Received values of form: ', values);
-      } */
-
       axios({
         method: 'post',
         url: 'http://localhost:8000/login',
@@ -32,12 +24,10 @@ class LoginForm extends React.Component {
 
         config: { headers: { 'Content-Type': 'application/json' } }
       })
-        .then(console.log(values))
-        .catch(console.warn(err))
+        .then(console.log(values, err))
         .catch(function(error) {
-          if (error.response) {
-            console.log(error.response.status);
-            console.log(error.request);
+          if (error.response.status == 401) {
+            document.getElementById('alertLogin').style.display = 'block';
           }
         });
     });
@@ -47,6 +37,14 @@ class LoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
+        <div id='alertLogin' style={{ display: 'none' }}>
+          <Alert
+            showIcon={false}
+            message='Αδυναμία Σύνδεσης'
+            description='Το e-mail ή ο κωδικός που εισάγατε είναι λάθος!'
+            type='error'
+          />
+        </div>
         <Form onSubmit={this.handleSubmit} className='login-form'>
           <Form.Item>
             {getFieldDecorator('email', {
@@ -56,7 +54,7 @@ class LoginForm extends React.Component {
                 prefix={
                   <Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
-                placeholder='Email'
+                placeholder='E-mail'
               />
             )}
           </Form.Item>
@@ -92,7 +90,9 @@ class LoginForm extends React.Component {
           </Form.Item>
         </Form>
 
-        <Route path='/register' Component={CardRegisterStyle} />
+        <BrowserRouter>
+          <Route path='/register' Component={CardRegisterStyle} />
+        </BrowserRouter>
       </div>
     );
   }
