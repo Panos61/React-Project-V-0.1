@@ -12,7 +12,7 @@ class CardLoginStyle extends Component {
         style={{
           fontFamily: 'fantasy,verdana,san-serif',
           fontSize: '27px',
-          color: '#43a047'
+          color: '#DD4124' //#43a047
         }}
       >
         Σύνδεση στο EventPark
