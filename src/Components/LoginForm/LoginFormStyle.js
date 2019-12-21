@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 import WrappedNormalLoginForm from './LoginForm';
 import './LoginFormStyle.css';
 import FooterMain from '../../FooterTest';
+import { Link } from 'react-router-dom';
 
 class CardLoginStyle extends Component {
   render() {
@@ -21,6 +22,9 @@ class CardLoginStyle extends Component {
     return (
       <div>
         <section id='login-page_style'>
+          <Button type='link'>
+            <Link to='/'>πίσω</Link>
+          </Button>
           <div id='parent'>
             <div className='login-card'>
               <Card title={title} style={{ borderRadius: '4px' }}>
