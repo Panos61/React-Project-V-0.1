@@ -6,7 +6,7 @@
 
 [x] Updated Validation Rules for Secure Password.Fixed every Registration related Bug.
 
-[x] Support Main Page Basic Layout
+[x] Main Support Page Basic Layout
 
 [x] Mobile Interactive
 
