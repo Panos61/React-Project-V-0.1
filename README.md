@@ -1,14 +1,21 @@
 ## Things done so far:
 
 [x] Basic App Layout
+
 [x] Interactive Login/Register Forms
+
 [x] Updated Validation Rules for Secure Password.Fixed every Register related bug.
+
 [x] Support Main Page Basic Layout
+
 [x] Mobile Interactive
 
 ## Things to be done:
+
 [ ] Profile Edit
+
 [ ] User_LoggedIn State
+
 [ ] Event SubPages Layout
 
 
