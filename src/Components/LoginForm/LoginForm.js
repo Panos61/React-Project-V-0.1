@@ -1,13 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
-import {
-  Link,
-  Route,
-  Redirect,
-  useHistory,
-  BrowserRouter,
-  Switch
-} from 'react-router-dom';
+import { Link, Route, BrowserRouter } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 import axios from 'axios';

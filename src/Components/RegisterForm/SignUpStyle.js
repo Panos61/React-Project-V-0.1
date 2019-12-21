@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'antd';
 import WrappedRegistrationForm from './Signup';
 import './SignUpStyle.css';
-import BackMainPage from './BackMainPage';
+import BackMainPageSignup from './BackMainPageSignup';
 import FooterMain from '../../FooterTest';
 
 class CardRegisterStyle extends Component {
@@ -22,7 +22,7 @@ class CardRegisterStyle extends Component {
     return (
       <div>
         <section id='register-page_style'>
-          <BackMainPage />
+          <BackMainPageSignup />
           <div id='parent-register'>
             <div className='register-card'>
               <Card title={title} style={{ borderRadius: '4px' }}>
