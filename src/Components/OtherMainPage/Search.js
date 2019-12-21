@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Col, Row } from 'antd';
-//import './Search.css';
+import './Search.css';
 
 const { Search } = Input;
 
