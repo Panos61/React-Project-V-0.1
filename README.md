@@ -4,7 +4,7 @@
 
 [x] Interactive Login/Register Forms
 
-[x] Updated Validation Rules for Secure Password.Fixed every Register related bug.
+[x] Updated Validation Rules for Secure Password.Fixed every Registration related Bug.
 
 [x] Support Main Page Basic Layout
 
