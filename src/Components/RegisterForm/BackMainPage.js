@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
-import { Button, Affix, Modal } from 'antd';
-import { Route } from 'react-router-dom';
+import { Button, Affix, Tooltip } from 'antd';
+import { Route, Redirect } from 'react-router-dom';
 import App from '../../App';
-import './BackMainPage.css';
 
-const { confirm } = Modal;
-
-function showDeleteConfirm() {
-  confirm({
-    title: 'Επιστροφή στην Αρχική Σελίδα;',
-    content:
-      'Με την επιστροφή στην αρχική σελίδα ενδέχεται να χαθούν τα στοιχεία που εισάγατε στη φόρμα εγγραφής!',
-    okText: 'Έγινε',
-    okType: 'danger',
-    cancelText: 'Άκυρο',
-    onOk() {
-      window.history.back(); /* Test */
-    }
-  });
-}
+const text = (
+  <span>
+    Με την επιστροφή στην αρχική σελίδα ενδέχεται να χαθούν τα στοιχεία που
+    εισάγατε στη φόρμα εγγραφής!
+  </span>
+);
 
 class BackMainPage extends Component {
+  state = {
+    redirect: false
+  };
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/' />;
+    }
+  };
+
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <Affix offsetTop={5}>
-          <Button onClick={showDeleteConfirm} type='dashed'>
-            Αρχική Σελίδα
-          </Button>
+          <Tooltip placement='rightTop' title={text}>
+            <Button onClick={this.setRedirect} type='dashed'>
+              Αρχική Σελίδα
+            </Button>
+          </Tooltip>
         </Affix>
 
         <Route path='/' Component={App} />
