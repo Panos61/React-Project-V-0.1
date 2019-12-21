@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
-import { Form, Input, Tooltip, Icon, Row, Col, Checkbox, Button } from 'antd';
+import {
+  Form,
+  Input,
+  Tooltip,
+  Icon,
+  Row,
+  Col,
+  Checkbox,
+  Button,
+  Alert
+} from 'antd';
 import axios from 'axios';
+import { Link, Route } from 'react-router-dom';
+import MainHelpPage from '../../SubPages-Test/MainHelpPage';
+
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
 
 class RegistrationForm extends React.Component {
   state = {
@@ -9,14 +25,16 @@ class RegistrationForm extends React.Component {
     autoCompleteResult: []
   };
 
+  componentDidMount() {
+    //disable submit button at the beginning
+    this.props.form.validateFields();
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll(
       ['email', 'username', 'password', 'nickname'],
       (err, values) => {
-        /* if (!err) {
-        console.log('Received values of form: ', values);
-      } */
         axios({
           method: 'post',
           url: 'http://localhost:8000/register',
@@ -24,8 +42,12 @@ class RegistrationForm extends React.Component {
 
           config: { headers: { 'Content-Type': 'application/json' } }
         })
-          .then(console.log(values))
-          .catch(console.warn(err));
+          .then(console.log(values, err))
+          .catch(function(error) {
+            if (error.response.status == 400 || error.response.status == 500) {
+              document.getElementById('alertRegister').style.display = 'block';
+            }
+          });
       }
     );
   };
@@ -52,8 +74,48 @@ class RegistrationForm extends React.Component {
     callback();
   };
 
+  c;
+
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const {
+      getFieldDecorator,
+      getFieldsError,
+      getFieldError,
+      isFieldTouched
+    } = this.props.form;
+
+    //Only show error after a field is touched
+    const emailError = isFieldTouched('email') && getFieldError('email');
+    const usernameError =
+      isFieldTouched('username') && getFieldError('username');
+    const passwordError =
+      isFieldTouched('password') && getFieldError('password');
+    const confPasswordError =
+      isFieldTouched('confirm') && getFieldError('confirm');
+    const nicknameError =
+      isFieldTouched('nickname') && getFieldError('nickname');
+    const isNotChecked =
+      isFieldTouched('agreement') && getFieldError('agreement');
+
+    const PasswordTooltip = (
+      <span>
+        <ul>
+          <p style={{ fontWeight: 'bold' }}>Υποχρεωτικό: </p>
+          <li>Τουλάχιστον 8 χαρακτήρες</li>
+          <li>Τουλάχιστον 1 ψηφίο</li>
+          <p
+            style={{
+              marginTop: '10px',
+              fontWeight: 'bold'
+            }}
+          >
+            Ιδανικό:
+          </p>
+          <li>Τουλάχιστον 1 κεφαλαίο</li>
+          <li>Τουλάχιστον 1 σύμβολο π.χ !@#$&*_</li>
+        </ul>
+      </span>
+    );
 
     const formItemLayout = {
       labelCol: {
@@ -81,12 +143,27 @@ class RegistrationForm extends React.Component {
     return (
       <div>
         <div id='parent'>
+          {/*Alert Components */}
+          <div id='alertRegister' style={{ display: 'none' }}>
+            <Alert
+              showIcon={false}
+              message='Σφάλμα Διακομιστή'
+              description='Προέκυψε εσωτερικό σφάλμα κατά την εγγραφή.Δοκιμάστε αργότερα!'
+              type='error'
+            />
+          </div>
+          {/** */}
+
           <Form
             {...formItemLayout}
             onSubmit={this.handleSubmit}
             className='register-form'
           >
-            <Form.Item label='E-mail'>
+            <Form.Item
+              label='E-mail'
+              validateStatus={emailError ? 'error' : ''}
+              help={emailError || ''}
+            >
               {getFieldDecorator('email', {
                 rules: [
                   {
@@ -100,7 +177,11 @@ class RegistrationForm extends React.Component {
                 ]
               })(<Input />)}
             </Form.Item>
-            <Form.Item label='Username'>
+            <Form.Item
+              label='Username'
+              validateStatus={usernameError ? 'error' : ''}
+              help={usernameError || ''}
+            >
               {getFieldDecorator('username', {
                 rules: [
                   {
@@ -113,12 +194,25 @@ class RegistrationForm extends React.Component {
                 ]
               })(<Input />)}
             </Form.Item>
-            <Form.Item label='Κωδικός' hasFeedback>
+            <Form.Item
+              label={
+                <span>
+                  Κωδικός&nbsp;
+                  <Tooltip title={PasswordTooltip}>
+                    <Icon type='question-circle-o' />
+                  </Tooltip>
+                </span>
+              }
+              hasFeedback
+              validateStatus={passwordError ? 'error' : ''}
+              help={passwordError || ''}
+            >
               {getFieldDecorator('password', {
                 rules: [
                   {
                     required: true,
-                    message: 'Εισάγετε τον κωδικό σας!'
+                    message: 'Εισάγετε τον κωδικό σας!',
+                    pattern: /^(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/
                   },
                   {
                     validator: this.validateToNextPassword
@@ -127,7 +221,12 @@ class RegistrationForm extends React.Component {
               })(<Input.Password />)}
             </Form.Item>
 
-            <Form.Item label='Επιβεβαίωση' hasFeedback>
+            <Form.Item
+              label='Επιβεβαίωση'
+              hasFeedback
+              validateStatus={confPasswordError ? 'error' : ''}
+              help={confPasswordError || ''}
+            >
               {getFieldDecorator('confirm', {
                 rules: [
                   {
@@ -150,6 +249,8 @@ class RegistrationForm extends React.Component {
                   </Tooltip>
                 </span>
               }
+              validateStatus={nicknameError ? 'error' : ''}
+              help={nicknameError || ''}
             >
               {getFieldDecorator('nickname', {
                 rules: [
@@ -181,7 +282,14 @@ class RegistrationForm extends React.Component {
                 </Col>
               </Row>
             </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
+
+            {/* Checkbox  */}
+
+            {/* <Form.Item
+              {...tailFormItemLayout}
+              validateStatus={isNotChecked ? 'error' : ''}
+              help={isNotChecked || ''}
+            >
               {getFieldDecorator('agreement', {
                 valuePropName: 'checked',
                 rules: [
@@ -192,17 +300,28 @@ class RegistrationForm extends React.Component {
                 ]
               })(
                 <Checkbox>
-                  Έχω διαβάσει τους <a href=''>Όρους!</a>
+                  Έχω διαβάσει τους <Link to='/Help'>όρους</Link>
                 </Checkbox>
               )}
-            </Form.Item>
+            </Form.Item> */}
+            <div style={{ marginBottom: '20px' }}>
+              <span>
+                Αν πατήσετε Εγγραφή, δηλώνετε ότι συμφωνείτε με τους
+                <Link to='/Help'> Όρους χρήσης</Link>.
+              </span>
+            </div>
             <Form.Item {...tailFormItemLayout}>
-              <Button type='primary' htmlType='submit'>
+              <Button
+                type='primary'
+                htmlType='submit'
+                disabled={hasErrors(getFieldsError())}
+              >
                 Εγγραφή
               </Button>
             </Form.Item>
           </Form>
         </div>
+        <Route to='/Help' Component={MainHelpPage} />
       </div>
     );
   }
