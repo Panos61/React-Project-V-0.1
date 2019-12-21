@@ -4,7 +4,6 @@ import { Link, Route, BrowserRouter } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 import axios from 'axios';
-import App from '../../App';
 
 class LoginForm extends React.Component {
   handleSubmit = e => {
@@ -30,6 +29,7 @@ class LoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
+        {/*Alert Component */}
         <div id='alertLogin' style={{ display: 'none' }}>
           <Alert
             showIcon={false}
@@ -38,6 +38,7 @@ class LoginForm extends React.Component {
             type='error'
           />
         </div>
+        {/** */}
         <Form onSubmit={this.handleSubmit} className='login-form'>
           <Form.Item>
             {getFieldDecorator('email', {
