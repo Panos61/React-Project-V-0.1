@@ -4,7 +4,7 @@ import { Form, Input, Tooltip, Icon, Row, Col, Button, Alert } from 'antd';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
-import ProfileEdit from '../../ProfileEdit';
+import ProfileEdit from '../../Profile/ProfileEdit';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
