@@ -10,11 +10,11 @@
 
 [x] Mobile Interactive
 
+[x] User_LoggedIn State.
+
 ## Things to be done:
 
 [ ] Profile Edit
-
-[ ] User_LoggedIn State
 
 [ ] Event SubPages Layout
 
