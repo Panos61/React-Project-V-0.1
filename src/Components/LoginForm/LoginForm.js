@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
   render() {
     //User Log in state
     if (this.state.isLoggedIn) {
-      return <Redirect to={{ pathname: '/' }} />;
+      return <Redirect to='/' />;
     }
 
     /*  *** **/
