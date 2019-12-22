@@ -1,11 +1,19 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
-import { Link, Route, BrowserRouter } from 'react-router-dom';
+import { Link, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 import axios from 'axios';
+import App from '../../App';
 
 class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false //logged in state initialized as false
+    };
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields(['email', 'password'], (err, values) => {
@@ -17,6 +25,11 @@ class LoginForm extends React.Component {
         config: { headers: { 'Content-Type': 'application/json' } }
       })
         .then(console.log(values, err))
+        .then(res => {
+          if (res.status == 200) {
+            this.setState({ isLoggedIn: true });
+          }
+        })
         .catch(function(error) {
           if (error.response.status == 401) {
             document.getElementById('alertLogin').style.display = 'block';
@@ -26,6 +39,12 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    //User Log in state
+    if (this.state.isLoggedIn) {
+      return <Redirect to={{ pathname: '/' }} />;
+    }
+
+    /*  *** **/
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
@@ -84,7 +103,9 @@ class LoginForm extends React.Component {
           </Form.Item>
         </Form>
 
+        {/**ROUTES */}
         <BrowserRouter>
+          <Route path='/' Component={App} />
           <Route path='/register' Component={CardRegisterStyle} />
         </BrowserRouter>
       </div>
