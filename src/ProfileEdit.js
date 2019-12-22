@@ -74,6 +74,7 @@ class ProfileEdit extends Component {
                   <Timeline.Item>Δημιουργία Event 15-11-2019</Timeline.Item>
                 </Timeline>
               </TabPane>
+
               <TabPane
                 tab='Λοιπές Πληροφορίες'
                 key='2'

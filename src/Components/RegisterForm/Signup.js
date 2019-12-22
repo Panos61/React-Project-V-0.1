@@ -1,25 +1,23 @@
 import React from 'react';
 import './Signup.css';
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  Alert
-} from 'antd';
+import { Form, Input, Tooltip, Icon, Row, Col, Button, Alert } from 'antd';
 import axios from 'axios';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
+import ProfileEdit from '../../ProfileEdit';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
 class RegistrationForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isRegistered: false //Initialize User Registration as false
+    };
+  }
+
   state = {
     confirmDirty: false,
     autoCompleteResult: []
@@ -43,6 +41,11 @@ class RegistrationForm extends React.Component {
           config: { headers: { 'Content-Type': 'application/json' } }
         })
           .then(console.log(values, err))
+          .then(res => {
+            if (res.status == 200) {
+              this.setState({ isRegistered: true });
+            }
+          })
           .catch(function(error) {
             if (error.response.status == 400 || error.response.status == 500) {
               document.getElementById('alertRegister').style.display = 'block';
@@ -77,6 +80,10 @@ class RegistrationForm extends React.Component {
   c;
 
   render() {
+    if (this.state.isRegistered) {
+      return <Redirect to={{ pathname: '/ProfileEdit' }} />;
+    }
+
     const {
       getFieldDecorator,
       getFieldsError,
@@ -321,6 +328,7 @@ class RegistrationForm extends React.Component {
             </Form.Item>
           </Form>
         </div>
+        <Route to='/ProfileEdit' Componen={ProfileEdit} />
         <Route to='/Help' Component={MainHelpPage} />
       </div>
     );
