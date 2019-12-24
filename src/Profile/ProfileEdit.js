@@ -15,7 +15,6 @@ const renderContent = (column = 2) => (
   <Descriptions size='small' column={column} style={{ marginTop: '3vh' }}>
     <Descriptions.item label='Username'></Descriptions.item>
     <Descriptions.item label='Email'></Descriptions.item>
-    <Descriptions.item label='Nickname'></Descriptions.item>
     <Descriptions.item label='Όνομα'></Descriptions.item>
     <Descriptions.item label='Επίθετο'></Descriptions.item>
   </Descriptions>

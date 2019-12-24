@@ -99,8 +99,8 @@ class RegistrationForm extends React.Component {
       isFieldTouched('password') && getFieldError('password');
     const confPasswordError =
       isFieldTouched('confirm') && getFieldError('confirm');
-    const nicknameError =
-      isFieldTouched('nickname') && getFieldError('nickname');
+    /* const nicknameError =
+      isFieldTouched('nickname') && getFieldError('nickname'); */
     const isNotChecked =
       isFieldTouched('agreement') && getFieldError('agreement');
 
@@ -247,7 +247,7 @@ class RegistrationForm extends React.Component {
               })(<Input.Password onBlur={this.handleConfirmBlur} />)}
             </Form.Item>
 
-            <Form.Item
+            {/*  <Form.Item
               label={
                 <span>
                   Nickname&nbsp;
@@ -270,7 +270,7 @@ class RegistrationForm extends React.Component {
                   }
                 ]
               })(<Input />)}
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item label='Captcha' extra='Άνθρωπος ή bot;'>
               <Row gutter={8}>
