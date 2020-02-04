@@ -22,16 +22,21 @@ class LoginForm extends React.Component {
         url: 'http://localhost:8000/login',
         data: values,
 
-        config: { headers: { 'Content-Type': 'application/json' } }
+        config: {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
       })
         .then(console.log(values, err))
         .then(res => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.setState({ isLoggedIn: true });
           }
         })
         .catch(function(error) {
-          if (error.response.status == 401) {
+          if (error.response.status === 401) {
             document.getElementById('alertLogin').style.display = 'block';
           }
         });
@@ -49,25 +54,25 @@ class LoginForm extends React.Component {
     return (
       <div>
         {/*Alert Component */}
-        <div id='alertLogin' style={{ display: 'none' }}>
+        <div id="alertLogin" style={{ display: 'none' }}>
           <Alert
             showIcon={false}
-            message='Αδυναμία Σύνδεσης'
-            description='Το e-mail ή ο κωδικός που εισάγατε είναι λάθος!'
-            type='error'
+            message="Αδυναμία Σύνδεσης"
+            description="Το e-mail ή ο κωδικός που εισάγατε είναι λάθος!"
+            type="error"
           />
         </div>
         {/** */}
-        <Form onSubmit={this.handleSubmit} className='login-form'>
+        <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('email', {
               rules: [{ required: true, message: 'Εισάγετε το Email σας!' }]
             })(
               <Input
                 prefix={
-                  <Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
-                placeholder='E-mail'
+                placeholder="E-mail"
               />
             )}
           </Form.Item>
@@ -77,10 +82,10 @@ class LoginForm extends React.Component {
             })(
               <Input
                 prefix={
-                  <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
-                type='password'
-                placeholder='Κωδικός'
+                type="password"
+                placeholder="Κωδικός"
               />
             )}
           </Form.Item>
@@ -89,24 +94,24 @@ class LoginForm extends React.Component {
               valuePropName: 'checked',
               initialValue: false
             })(<Checkbox>Αποθήκευση</Checkbox>)}
-            <a className='login-form-forgot' href=''>
+            <a className="login-form-forgot" href="">
               Ξεχάσατε τον κωδικό;
             </a>
             <Button
-              type='primary'
-              htmlType='submit'
-              className='login-form-button'
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
             >
               Σύνδεση
             </Button>
-            Ή <Link to='/register'>εγγραφείτε τώρα!</Link>
+            Ή <Link to="/register">εγγραφείτε τώρα!</Link>
           </Form.Item>
         </Form>
 
         {/**ROUTES */}
         <BrowserRouter>
-          <Route path='/' Component={App} />
-          <Route path='/register' Component={CardRegisterStyle} />
+          <Route path="/" Component={App} />
+          <Route path="/register" Component={CardRegisterStyle} />
         </BrowserRouter>
       </div>
     );
