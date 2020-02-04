@@ -9,7 +9,8 @@ import {
   Col,
   Button,
   Alert,
-  Select
+  Select,
+  Radio
 } from 'antd';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
@@ -127,8 +128,8 @@ class RegistrationForm extends React.Component {
       isFieldTouched('confirm') && getFieldError('confirm');
     /* const nicknameError =
       isFieldTouched('nickname') && getFieldError('nickname'); */
-    const isNotChecked =
-      isFieldTouched('agreement') && getFieldError('agreement');
+    const genderSelectionError =
+      isFieldTouched('gender') && getFieldError('gender');
 
     const PasswordTooltip = (
       <span>
@@ -273,7 +274,11 @@ class RegistrationForm extends React.Component {
               })(<Input.Password onBlur={this.handleConfirmBlur} />)}
             </Form.Item>
 
-            <Form.Item label="Φύλο">
+            {/* <Form.Item
+              label="Φύλο"
+              // validateStatus={genderSelectionError ? 'error' : ''}
+              // help={genderSelectionError || ''}
+            >
               {getFieldDecorator('gender', {
                 rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }]
               })}
@@ -284,8 +289,22 @@ class RegistrationForm extends React.Component {
                 <Option value="male">Άντρας</Option>
                 <Option value="female">Γυναίκα</Option>
               </Select>
-            </Form.Item>
+            </Form.Item> */}
 
+            <Form.Item
+              label="Επιλογή Φύλου"
+              validateStatus={genderSelectionError ? 'error' : ''}
+              help={genderSelectionError || ''}
+            >
+              {getFieldDecorator('gender', {
+                rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }]
+              })(
+                <Radio.Group>
+                  <Radio value="male">Άντρας</Radio>
+                  <Radio value="female">Γυναίκα</Radio>
+                </Radio.Group>
+              )}
+            </Form.Item>
             {/*  <Form.Item
               label={
                 <span>
