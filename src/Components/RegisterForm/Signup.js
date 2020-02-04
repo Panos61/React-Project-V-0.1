@@ -1,6 +1,16 @@
 import React from 'react';
 import './Signup.css';
-import { Form, Input, Tooltip, Icon, Row, Col, Button, Alert } from 'antd';
+import {
+  Form,
+  Input,
+  Tooltip,
+  Icon,
+  Row,
+  Col,
+  Button,
+  Alert,
+  Select
+} from 'antd';
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
@@ -31,23 +41,31 @@ class RegistrationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll(
-      ['email', 'username', 'password', 'nickname'],
+      ['email', 'username', 'password', 'gender'],
       (err, values) => {
         axios({
           method: 'post',
           url: 'http://localhost:8000/register',
           data: values,
 
-          config: { headers: { 'Content-Type': 'application/json' } }
+          config: {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
         })
           .then(console.log(values, err))
           .then(res => {
-            if (res.status == 200) {
+            if (res.status === 200) {
               this.setState({ isRegistered: true });
             }
           })
           .catch(function(error) {
-            if (error.response.status == 400 || error.response.status == 500) {
+            if (
+              error.response.status === 400 ||
+              error.response.status === 500
+            ) {
               document.getElementById('alertRegister').style.display = 'block';
             }
           });
@@ -77,7 +95,13 @@ class RegistrationForm extends React.Component {
     callback();
   };
 
-  c;
+  //Select Gender
+  handleSelectChange = value => {
+    console.log(value);
+    this.props.form.setFieldsValue({
+      note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`
+    });
+  };
 
   render() {
     if (this.state.isRegistered) {
@@ -90,6 +114,8 @@ class RegistrationForm extends React.Component {
       getFieldError,
       isFieldTouched
     } = this.props.form;
+
+    const { Option } = Select;
 
     //Only show error after a field is touched
     const emailError = isFieldTouched('email') && getFieldError('email');
@@ -149,14 +175,14 @@ class RegistrationForm extends React.Component {
 
     return (
       <div>
-        <div id='parent'>
+        <div id="parent">
           {/*Alert Components */}
-          <div id='alertRegister' style={{ display: 'none' }}>
+          <div id="alertRegister" style={{ display: 'none' }}>
             <Alert
               showIcon={false}
-              message='Σφάλμα Διακομιστή'
-              description='Προέκυψε εσωτερικό σφάλμα κατά την εγγραφή.Δοκιμάστε αργότερα!'
-              type='error'
+              message="Σφάλμα Διακομιστή"
+              description="Προέκυψε εσωτερικό σφάλμα κατά την εγγραφή.Δοκιμάστε αργότερα!"
+              type="error"
             />
           </div>
           {/** */}
@@ -164,10 +190,10 @@ class RegistrationForm extends React.Component {
           <Form
             {...formItemLayout}
             onSubmit={this.handleSubmit}
-            className='register-form'
+            className="register-form"
           >
             <Form.Item
-              label='E-mail'
+              label="E-mail"
               validateStatus={emailError ? 'error' : ''}
               help={emailError || ''}
             >
@@ -185,7 +211,7 @@ class RegistrationForm extends React.Component {
               })(<Input />)}
             </Form.Item>
             <Form.Item
-              label='Username'
+              label="Username"
               validateStatus={usernameError ? 'error' : ''}
               help={usernameError || ''}
             >
@@ -206,7 +232,7 @@ class RegistrationForm extends React.Component {
                 <span>
                   Κωδικός&nbsp;
                   <Tooltip title={PasswordTooltip}>
-                    <Icon type='question-circle-o' />
+                    <Icon type="question-circle-o" />
                   </Tooltip>
                 </span>
               }
@@ -229,7 +255,7 @@ class RegistrationForm extends React.Component {
             </Form.Item>
 
             <Form.Item
-              label='Επιβεβαίωση'
+              label="Επιβεβαίωση"
               hasFeedback
               validateStatus={confPasswordError ? 'error' : ''}
               help={confPasswordError || ''}
@@ -245,6 +271,19 @@ class RegistrationForm extends React.Component {
                   }
                 ]
               })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+            </Form.Item>
+
+            <Form.Item label="Φύλο">
+              {getFieldDecorator('gender', {
+                rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }]
+              })}
+              <Select
+                placeholder="Επιλογή φύλου"
+                onChange={this.handleSelectChange}
+              >
+                <Option value="male">Άντρας</Option>
+                <Option value="female">Γυναίκα</Option>
+              </Select>
             </Form.Item>
 
             {/*  <Form.Item
@@ -272,7 +311,7 @@ class RegistrationForm extends React.Component {
               })(<Input />)}
             </Form.Item> */}
 
-            <Form.Item label='Captcha' extra='Άνθρωπος ή bot;'>
+            <Form.Item label="Captcha" extra="Άνθρωπος ή bot;">
               <Row gutter={8}>
                 <Col span={12}>
                   {getFieldDecorator('captcha', {
@@ -314,13 +353,13 @@ class RegistrationForm extends React.Component {
             <div style={{ marginBottom: '20px' }}>
               <span>
                 Αν πατήσετε Εγγραφή, δηλώνετε ότι συμφωνείτε με τους
-                <Link to='/Help'> Όρους χρήσης</Link>.
+                <Link to="/Help"> Όρους χρήσης</Link>.
               </span>
             </div>
             <Form.Item {...tailFormItemLayout}>
               <Button
-                type='primary'
-                htmlType='submit'
+                type="primary"
+                htmlType="submit"
                 disabled={hasErrors(getFieldsError())}
               >
                 Εγγραφή
@@ -328,8 +367,8 @@ class RegistrationForm extends React.Component {
             </Form.Item>
           </Form>
         </div>
-        <Route to='/ProfileEdit' Componen={ProfileEdit} />
-        <Route to='/Help' Component={MainHelpPage} />
+        <Route to="/ProfileEdit" Componen={ProfileEdit} />
+        <Route to="/Help" Component={MainHelpPage} />
       </div>
     );
   }
