@@ -12,11 +12,11 @@ import 'antd/dist/antd.css';
 const { TabPane } = Tabs;
 
 const renderContent = (column = 2) => (
-  <Descriptions size='small' column={column} style={{ marginTop: '3vh' }}>
-    <Descriptions.item label='Username'></Descriptions.item>
-    <Descriptions.item label='Email'></Descriptions.item>
-    <Descriptions.item label='Όνομα'></Descriptions.item>
-    <Descriptions.item label='Επίθετο'></Descriptions.item>
+  <Descriptions size="small" column={column} style={{ marginTop: '3vh' }}>
+    <Descriptions.item label="Username"></Descriptions.item>
+    <Descriptions.item label="Email"></Descriptions.item>
+    <Descriptions.item label="Όνομα"></Descriptions.item>
+    <Descriptions.item label="Επίθετο"></Descriptions.item>
   </Descriptions>
 );
 
@@ -29,8 +29,8 @@ const extraContent = (
     }}
   >
     <Statistic
-      title='Status'
-      value='Ενεργός/ή'
+      title="Status"
+      value="Ενεργός/ή"
       style={{
         marginRight: 32
       }}
@@ -40,12 +40,12 @@ const extraContent = (
 
 const Content = ({ children, extra }) => {
   return (
-    <div className='content'>
-      <div className='main'>
-        <Avatar shape='square' size={64} icon='user' />
+    <div className="content">
+      <div className="main">
+        <Avatar shape="square" size={64} icon="user" />
         {children}
       </div>
-      <div className='extra'>{extra}</div>
+      <div className="extra">{extra}</div>
     </div>
   );
 };
@@ -57,11 +57,11 @@ class ProfileEdit extends Component {
         <PageHeader
           style={{ border: '1px solid rgb(235,237,240)' }}
           onBack={() => window.history.back()}
-          title='Επεξεργασία Προφίλ'
-          subTitle='Επεξεργασία δεδομένων'
+          title="Επεξεργασία Προφίλ"
+          subTitle="Επεξεργασία δεδομένων"
           footer={
-            <Tabs defaultActiveKey='1'>
-              <TabPane tab='Ιστορικό' key='1'>
+            <Tabs defaultActiveKey="1">
+              <TabPane tab="Ιστορικό" key="1">
                 <Timeline style={{ marginTop: '5vh' }}>
                   <Timeline.Item>
                     Δημιουργία Λογαριασμού 12-11-2019
@@ -75,8 +75,8 @@ class ProfileEdit extends Component {
               </TabPane>
 
               <TabPane
-                tab='Λοιπές Πληροφορίες'
-                key='2'
+                tab="Λοιπές Πληροφορίες"
+                key="2"
                 style={{ marginTop: '5vh' }}
               >
                 ...
