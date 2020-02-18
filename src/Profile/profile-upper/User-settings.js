@@ -5,7 +5,7 @@ class UserSettings extends React.Component {
   render() {
     return (
       <div>
-        <Button type="dashed">Επεξεργασία</Button>
+        <Button type="dashed">Ακολουθήστε</Button>
       </div>
     );
   }

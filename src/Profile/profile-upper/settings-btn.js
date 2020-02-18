@@ -10,7 +10,9 @@ class SettingsBtn extends React.Component {
     const { size } = this.state;
     return (
       <div>
-        <Button type="secondary" shape="circle" icon="setting" size={size} />
+        <span style={{ position: 'relative', top: '15px', cursor: 'pointer' }}>
+          <Icon type="setting" theme="filled" />{' '}
+        </span>
       </div>
     );
   }

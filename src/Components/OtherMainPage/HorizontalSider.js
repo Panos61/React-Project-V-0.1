@@ -22,40 +22,40 @@ class HorizontalSider extends Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
-          <div className='logo' />
-          <Menu theme='light' defaultSelectedKeys={['1']} mode='horizontal'>
-            <Menu.Item key='1' disabled>
-              <Icon type='environment' />
+          <div className="logo" />
+          <Menu theme="light" defaultSelectedKeys={['1']} mode="horizontal">
+            <Menu.Item key="1" disabled>
+              <Icon type="environment" />
               <span>Τοποθεσία</span>
             </Menu.Item>
-            <Menu.Item key='2'>
-              <Icon type='rise' />
+            <Menu.Item key="2">
+              <Icon type="rise" />
               <span>Δημοφιλές</span>
             </Menu.Item>
 
             <SubMenu
-              key='sub2'
+              key="sub2"
               title={
                 <span>
-                  <Icon type='home' />
+                  <Icon type="home" />
                   <span>Προφίλ</span>
                 </span>
               }
             >
-              <Menu.Item key='6'>
-                <Icon type='plus' />
+              <Menu.Item key="6">
+                <Icon type="plus" />
                 Προσθήκη
               </Menu.Item>
-              <Menu.Item key='8'>
-                <Icon type='schedule' />
-                <Link to='/ProfileEdit' style={{ display: 'inline' }}>
+              <Menu.Item key="8">
+                <Icon type="schedule" />
+                <Link to="/Profile" style={{ display: 'inline' }}>
                   Τοίχος
                 </Link>
               </Menu.Item>
             </SubMenu>
-            <Menu.Item key='9'>
-              <Icon type='info-circle' />
-              <Link to='/Help' style={{ display: 'inline' }}>
+            <Menu.Item key="9">
+              <Icon type="info-circle" />
+              <Link to="/Help" style={{ display: 'inline' }}>
                 Υποστήριξη
               </Link>
             </Menu.Item>
