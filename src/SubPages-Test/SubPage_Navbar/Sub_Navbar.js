@@ -25,34 +25,45 @@ class Sub_Navbar extends Component {
 
   render() {
     return (
-      <nav className='menu' style={{ zIndex: '10' }}>
-        <div className='menu__logo'>
-          <Link to='/' style={{ color: 'black', fontSize: '22px' }}>
+      <nav className="menu" style={{ zIndex: '10' }}>
+        <div className="menu__logo">
+          <Link
+            to="/"
+            style={{
+              color: 'black',
+              fontSize: '22px',
+              fontFamily: 'Pacifico, cursive'
+            }}
+          >
             Event
             <span style={{ color: '#fa8c16' }}>Park</span>
           </Link>
         </div>
-        <div className='menu__container'>
-          <div className='menu_left'>
-            <LeftMenu_Sub mode='horizontal' />
+        <div className="menu__container">
+          <div className="menu_left">
+            <LeftMenu_Sub mode="horizontal" />
           </div>
-          <div className='menu_right'>
-            <RightMenu_Sub mode='horizontal' />
+          <div className="menu_right">
+            <RightMenu_Sub mode="horizontal" />
           </div>
-          <Button className='menu__mobile-button' type='primary' onClick={this.showDrawer}>
-            <Icon type='align-right' />
+          <Button
+            className="menu__mobile-button"
+            type="primary"
+            onClick={this.showDrawer}
+          >
+            <Icon type="align-right" />
           </Button>
           <Drawer
-            title='Μενού'
-            placement='right'
-            className='menu_drawer'
+            title="Μενού"
+            placement="right"
+            className="menu_drawer"
             closable={false}
             onClose={this.onClose}
             visible={this.state.visible}
           >
-            <LeftMenu_Sub mode='inline' />
+            <LeftMenu_Sub mode="inline" />
             <Divider dashed />
-            <RightMenu_Sub mode='inline' />
+            <RightMenu_Sub mode="inline" />
           </Drawer>
         </div>
       </nav>
