@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Pro_navbar from './Pro_navbar';
-import { Layout, Icon, Avatar } from 'antd';
+import { Layout, Icon, BackTop } from 'antd';
 
 import './profile.css';
 
@@ -15,6 +15,7 @@ class newprofile extends React.Component {
         <Pro_navbar />
         <section>
           <UpperProfile />
+          <BackTop />
         </section>
         <footer>
           <Footer
@@ -23,7 +24,7 @@ class newprofile extends React.Component {
               backgroundColor: 'unset'
             }}
           >
-            EventPark ©2019 Created with <Icon type="heart" theme="filled" /> by
+            EventPark ©2020 Created with <Icon type="heart" theme="filled" /> by
             us!
           </Footer>
         </footer>

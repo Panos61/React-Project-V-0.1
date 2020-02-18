@@ -1,9 +1,12 @@
-import React, { Component } from "react";
-import { Menu, Select, Dropdown, Icon } from "antd";
-import HowWorks from "./HowWorksDrawer";
-import { Link, Route } from "react-router-dom";
-import CardLoginStyle from "../LoginForm/LoginFormStyle";
-import CardRegisterStyle from "../RegisterForm/SignUpStyle";
+import React, { Component } from 'react';
+import { Menu, Select, Dropdown, Icon } from 'antd';
+import HowWorks from './HowWorksDrawer';
+import { Link, Route } from 'react-router-dom';
+import CardLoginStyle from '../LoginForm/LoginFormStyle';
+import CardRegisterStyle from '../RegisterForm/SignUpStyle';
+
+import { loadUser } from '../../actions/authActions';
+import store from '../../store';
 
 const { Option } = Select;
 
@@ -12,18 +15,21 @@ function handleChange(value) {
 }
 
 class RightMenu extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     //Prototype
     // const menu = (
     //   <Menu>
     //     <Menu.Item key="0">
-    //       <a href="http://www.alipay.com/">
+    //       <a href="">
     //         Επεξεργασία
     //         <Icon type="edit" style={{ marginLeft: "10px" }} />
     //       </a>
     //     </Menu.Item>
     //     <Menu.Item key="1">
-    //       <a href="http://www.taobao.com/">
+    //       <a href="">
     //         Αποσύνδεση
     //         <Icon type="logout" style={{ marginLeft: "11px" }} />
     //       </a>
@@ -36,10 +42,10 @@ class RightMenu extends Component {
           <Select
             defaultValue="Greek"
             style={{
-              width: "130px",
-              marginBottom: "15px",
-              marginRight: "10px",
-              marginLeft: "10px"
+              width: '130px',
+              marginBottom: '15px',
+              marginRight: '10px',
+              marginLeft: '10px'
             }}
             onChange={handleChange}
           >
@@ -72,6 +78,7 @@ class RightMenu extends Component {
             <Link to="/register">Εγγραφή</Link>
           </Menu.Item>
         </Menu>
+
         <Route path="/login" Component={CardLoginStyle} />
         <Route path="/register" Component={CardRegisterStyle} />
       </div>

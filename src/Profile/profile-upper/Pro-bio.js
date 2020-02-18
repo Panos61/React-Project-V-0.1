@@ -7,12 +7,14 @@ class ProfileBio extends React.Component {
   render() {
     return (
       <div>
-        <Divider />
+        <Divider dashed />
         <Typography>
           <Paragraph>
             <p>
               I love travelling around the world 🗺️ and playing music 🎸Welcome
               to my Profile!
+              <br />
+              @panoss_
             </p>
           </Paragraph>
         </Typography>

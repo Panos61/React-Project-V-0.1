@@ -16,6 +16,7 @@ class Username extends React.Component {
         >
           Panos61_
         </Title>
+        <br />
       </div>
     );
   }
