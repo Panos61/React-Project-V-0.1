@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Tabs, Button, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 
 const operations = (
-  <Button style={{ marginLeft: '5vh', color: '#7cb305' }}>EventPark</Button>
+  <Button style={{ marginLeft: '5vh', color: '#7cb305' }}>
+    <Link to="/">EventPark</Link>
+  </Button>
 );
 
 class HorizontalTabs extends React.Component {
