@@ -10,7 +10,7 @@ const operations = (
   </Button>
 );
 
-class HorizontalTabs extends React.Component {
+class HorizontalTabs extends Component {
   render() {
     return (
       <div>
