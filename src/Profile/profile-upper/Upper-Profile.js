@@ -12,15 +12,14 @@ import FollowEvents from './FollowEvents';
 import Message from './Message';
 import SettingsBtn from './settings-btn';
 
-class UpperProfile extends React.Component {
+class UpperProfile extends Component {
   render() {
     return (
       <div>
         <Row
           style={{
             top: '100px',
-            position: 'relative',
-            backgroundColor: 'azure'
+            position: 'relative'
           }}
           around="xs"
         >

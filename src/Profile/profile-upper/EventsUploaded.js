@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Statistic, Row, Col, Icon } from 'antd';
 
-class EventsUploaded extends React.Component {
+class EventsUploaded extends Component {
   render() {
     return (
       <div>
@@ -9,7 +9,7 @@ class EventsUploaded extends React.Component {
           <Col span={10}>
             <Statistic
               title="Events"
-              value={3}
+              value={0}
               prefix={<Icon type="calendar" />}
             />
           </Col>

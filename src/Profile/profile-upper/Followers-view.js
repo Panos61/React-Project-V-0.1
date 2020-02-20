@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Statistic, Row, Col, Icon } from 'antd';
 
-class FollowersView extends React.Component {
+class FollowersView extends Component {
   render() {
     return (
       <div>
@@ -9,7 +9,7 @@ class FollowersView extends React.Component {
           <Col span={10}>
             <Statistic
               title="Ακόλουθοι"
-              value={82}
+              value={0}
               prefix={<Icon type="team" />}
             />
           </Col>

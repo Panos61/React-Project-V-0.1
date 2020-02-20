@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Statistic, Row, Col, Icon } from 'antd';
 
-class FollowEvents extends React.Component {
+class FollowEvents extends Component {
   render() {
     return (
       <div>
@@ -9,7 +9,7 @@ class FollowEvents extends React.Component {
           <Col span={10}>
             <Statistic
               title="Ακολουθεί Events"
-              value={5}
+              value={0}
               prefix={<Icon type="compass" />}
             />
           </Col>
