@@ -9,18 +9,18 @@ import CardLoginForm from './Components/LoginForm/LoginFormStyle';
 //import ContactFormPage from './SubPages-Test//SubPages/Contact';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import MainHelpPage from './SubPages-Test/MainHelpPage';
-import ProfileEdit from './Profile/ProfileEdit';
+import newprofile from './Profile/newprofile';
 
 //Added basic Routing for Login/Register
 const routing = (
   <Router>
     <div>
-      <Route exact path='/' component={App} />
-      <Route path='/login' component={CardLoginForm} />
-      <Route path='/register' component={CardRegisterStyle} />
-      <Route path='/Help' component={MainHelpPage} />
-      {/* Route path Test ProfilEdit  */}
-      <Route path='/ProfileEdit' component={ProfileEdit} />
+      <Route exact path="/" component={App} />
+      <Route path="/login" component={CardLoginForm} />
+      <Route path="/register" component={CardRegisterStyle} />
+      <Route path="/Help" component={MainHelpPage} />
+      {/* Route path Profile  */}
+      <Route path="/Profile" component={newprofile} />
     </div>
   </Router>
 );
