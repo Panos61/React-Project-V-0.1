@@ -15,7 +15,7 @@ import {
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
-import ProfileEdit from '../../Profile/ProfileEdit';
+import newprofile from '../../Profile/newprofile';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -106,7 +106,7 @@ class RegistrationForm extends React.Component {
 
   render() {
     if (this.state.isRegistered) {
-      return <Redirect to={{ pathname: '/ProfileEdit' }} />;
+      return <Redirect to={{ pathname: '/Profile' }} />;
     }
 
     const {
@@ -386,7 +386,7 @@ class RegistrationForm extends React.Component {
             </Form.Item>
           </Form>
         </div>
-        <Route to="/ProfileEdit" Componen={ProfileEdit} />
+        <Route to="/Profile" Componen={newprofile} />
         <Route to="/Help" Component={MainHelpPage} />
       </div>
     );

@@ -5,9 +5,6 @@ import { Link, Route } from 'react-router-dom';
 import CardLoginStyle from '../LoginForm/LoginFormStyle';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 
-import { loadUser } from '../../actions/authActions';
-import store from '../../store';
-
 const { Option } = Select;
 
 function handleChange(value) {
@@ -15,9 +12,6 @@ function handleChange(value) {
 }
 
 class RightMenu extends Component {
-  componentDidMount() {
-    store.dispatch(loadUser());
-  }
   render() {
     //Prototype
     // const menu = (
