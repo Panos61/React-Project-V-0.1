@@ -8,11 +8,11 @@
 
 [x] Main Support Page Basic Layout
 
-[x] Mobile Interactive
+[x] Mobile Responsive
+
+[x] Login State
 
 ## Things to be done:
-
-[ ] User_LoggedIn State.
 
 [ ] Profile Edit
 
