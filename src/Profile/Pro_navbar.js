@@ -36,7 +36,7 @@ class Pro_navbar extends Component {
               fontFamily: 'Cookie, cursive'
             }}
           >
-            lEAf
+            EventPark
           </Link>
         </div>
         <div className="menu__container">
