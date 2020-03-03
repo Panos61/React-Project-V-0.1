@@ -5,7 +5,15 @@ import './SignUpStyle.css';
 import BackMainPageSignup from './BackMainPageSignup';
 import FooterMain from '../../FooterTest';
 
+import { Provider } from 'react-redux';
+import store from '../../store';
+import { loadUser } from '../../actions/authActions';
+
 class CardRegisterStyle extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
   render() {
     const title = (
       <h2
@@ -21,23 +29,25 @@ class CardRegisterStyle extends Component {
 
     return (
       <div>
-        <section id='register-page_style'>
-          <BackMainPageSignup />
-          <div id='parent-register'>
-            <div className='register-card'>
-              <Card title={title} style={{ borderRadius: '4px' }}>
-                <h4 style={{ fontFamily: 'san-serif' }}>
-                  Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
-                  εγγραφής σας.
-                </h4>
-                <WrappedRegistrationForm />
-              </Card>
+        <Provider store={store}>
+          <section id="register-page_style">
+            <BackMainPageSignup />
+            <div id="parent-register">
+              <div className="register-card">
+                <Card title={title} style={{ borderRadius: '4px' }}>
+                  <h4 style={{ fontFamily: 'san-serif' }}>
+                    Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
+                    εγγραφής σας.
+                  </h4>
+                  <WrappedRegistrationForm />
+                </Card>
+              </div>
             </div>
-          </div>
-        </section>
-        <footer>
-          <FooterMain />
-        </footer>
+          </section>
+          <footer>
+            <FooterMain />
+          </footer>
+        </Provider>
       </div>
     );
   }

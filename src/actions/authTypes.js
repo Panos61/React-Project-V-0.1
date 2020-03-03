@@ -9,4 +9,4 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const GET_ERRORS = 'GET_ERRORS';
-export const CLEAR_ERRORS = 'CLEAR_ERROS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';

@@ -39,21 +39,6 @@ class LoginForm extends React.Component {
             document.getElementById('alertLogin').style.display = 'block';
           }
         });
-
-      axios({
-        method: 'GET',
-        url: 'http://localhost:8000/user',
-
-        config: {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          }
-        }
-      }).then(res => {
-        console.log(res);
-        console.log(res.request);
-      });
     });
   };
 

@@ -11,18 +11,24 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import MainHelpPage from './SubPages-Test/MainHelpPage';
 import newprofile from './Profile/newprofile';
 
+import store from './store';
+
+import { Provider } from 'react-redux';
+
 //Added basic Routing for Login/Register
 const routing = (
-  <Router>
-    <div>
-      <Route exact path="/" component={App} />
-      <Route path="/login" component={CardLoginForm} />
-      <Route path="/register" component={CardRegisterStyle} />
-      <Route path="/Help" component={MainHelpPage} />
-      {/* Route path Profile  */}
-      <Route path="/Profile" component={newprofile} />
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route path="/login" component={CardLoginForm} />
+        <Route path="/register" component={CardRegisterStyle} />
+        <Route path="/Help" component={MainHelpPage} />
+        {/* Route path Profile  */}
+        <Route path="/Profile" component={newprofile} />
+      </div>
+    </Router>
+  </Provider>
 );
 
 ReactDOM.render(routing, document.getElementById('root'));

@@ -5,7 +5,15 @@ import './LoginFormStyle.css';
 import FooterMain from '../../FooterTest';
 import BackMainPageLogin from './BackMainPageLogin';
 
+import { Provider } from 'react-redux';
+import store from '../../store';
+import { loadUser } from '../../actions/authActions';
+
 class CardLoginStyle extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
   render() {
     const title = (
       <h2
@@ -21,23 +29,25 @@ class CardLoginStyle extends Component {
 
     return (
       <div>
-        <section id='login-page_style'>
-          <BackMainPageLogin />
-          <div id='parent'>
-            <div className='login-card'>
-              <Card title={title} style={{ borderRadius: '4px' }}>
-                <h4>
-                  Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
-                  συνδεσής σας.
-                </h4>
-                <WrappedNormalLoginForm />
-              </Card>
+        <Provider store={store}>
+          <section id="login-page_style">
+            <BackMainPageLogin />
+            <div id="parent">
+              <div className="login-card">
+                <Card title={title} style={{ borderRadius: '4px' }}>
+                  <h4>
+                    Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
+                    συνδεσής σας.
+                  </h4>
+                  <WrappedNormalLoginForm />
+                </Card>
+              </div>
             </div>
-          </div>
-        </section>
-        <footer>
-          <FooterMain />
-        </footer>
+          </section>
+          <footer>
+            <FooterMain />
+          </footer>
+        </Provider>
       </div>
     );
   }

@@ -16,6 +16,14 @@ import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
 import newprofile from '../../Profile/newprofile';
+import PropTypes from 'prop-types';
+
+//import { connect } from 'react-redux';
+
+import { returnErrors } from '../../actions/errorActions';
+import { REGISTER_SUCCESS, REGISTER_FAIL } from '../../actions/authTypes';
+
+import { connect } from 'react-redux';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -29,6 +37,11 @@ class RegistrationForm extends React.Component {
     };
   }
 
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired
+  };
+
   state = {
     confirmDirty: false,
     autoCompleteResult: []
@@ -39,8 +52,8 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFields();
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = dispatch => {
+    //e.preventDefault();
     this.props.form.validateFieldsAndScroll(
       ['email', 'username', 'password', 'gender'],
       (err, values) => {
@@ -57,18 +70,32 @@ class RegistrationForm extends React.Component {
           }
         })
           .then(console.log(values, err))
+          .then(res =>
+            dispatch({
+              type: REGISTER_SUCCESS,
+              payload: res.data
+            })
+          )
           .then(res => {
             if (res.status === 200) {
               this.setState({ isRegistered: true });
             }
           })
-          .catch(function(error) {
-            if (
-              error.response.status === 400 ||
-              error.response.status === 500
-            ) {
+          .catch(err => {
+            console.log(err);
+            if (err.response.status === 400 || err.response.status === 500) {
               document.getElementById('alertRegister').style.display = 'block';
             }
+            dispatch(
+              returnErrors(
+                err.response.data,
+                err.response.status,
+                'REGISTER_FAIL'
+              )
+            );
+            dispatch({
+              type: REGISTER_FAIL
+            });
           });
       }
     );
@@ -393,8 +420,14 @@ class RegistrationForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
+
 const WrappedRegistrationForm = Form.create({ name: 'register' })(
   RegistrationForm
 );
 
-export default WrappedRegistrationForm;
+//export default WrappedRegistrationForm;
+export default connect(mapStateToProps)(WrappedRegistrationForm);

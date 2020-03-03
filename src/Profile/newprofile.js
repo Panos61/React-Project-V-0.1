@@ -6,28 +6,37 @@ import './profile.css';
 
 import UpperProfile from './profile-upper/Upper-Profile';
 
+import { Provider } from 'react-redux';
+import store from '../store';
+import { loadUser } from '../actions/authActions';
+
 const { Footer } = Layout;
 
 class newprofile extends React.Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
       <div>
-        <Pro_navbar />
-        <section>
-          <UpperProfile />
-          <BackTop />
-        </section>
-        <footer>
-          <Footer
-            style={{
-              textAlign: 'center',
-              backgroundColor: 'unset'
-            }}
-          >
-            EventPark ©2020 Created with <Icon type="heart" theme="filled" /> by
-            us!
-          </Footer>
-        </footer>
+        <Provider store={store}>
+          <Pro_navbar />
+          <section>
+            <UpperProfile />
+            <BackTop />
+          </section>
+          <footer>
+            <Footer
+              style={{
+                textAlign: 'center',
+                backgroundColor: 'unset'
+              }}
+            >
+              EventPark ©2020 Created with <Icon type="heart" theme="filled" />{' '}
+              by us!
+            </Footer>
+          </footer>
+        </Provider>
       </div>
     );
   }
