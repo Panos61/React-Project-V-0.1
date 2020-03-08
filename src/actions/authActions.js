@@ -36,7 +36,7 @@ export const loadUser = () => (dispatch, getState) => {
 export const register = ({ email, username, password, gender }) => dispatch => {
   // headers
   const config = {
-    headers: {
+    header: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${tokenConfig}`
     }
@@ -55,6 +55,7 @@ export const register = ({ email, username, password, gender }) => dispatch => {
       })
     )
     .catch(err => {
+      console.log(err);
       dispatch(
         returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
       );
@@ -70,14 +71,14 @@ export const tokenConfig = getState => {
   const token = getState().auth.token;
 
   const config = {
-    headers: {
+    header: {
       'Content-Type': 'application/json'
     }
   };
 
   // if token, add to headers
   if (token) {
-    config.headers['x-access-token'] = token;
+    config.header['x-access-token'] = token;
   }
 
   return config;

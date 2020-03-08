@@ -9,18 +9,16 @@ import {
   Col,
   Button,
   Alert,
-  Select,
   Radio
 } from 'antd';
-import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
 import newprofile from '../../Profile/newprofile';
 import PropTypes from 'prop-types';
 
-//import { connect } from 'react-redux';
+import { register } from '../../actions/authActions';
 
-import { returnErrors } from '../../actions/errorActions';
+import { returnErrors, clearErrors } from '../../actions/errorActions';
 import { REGISTER_SUCCESS, REGISTER_FAIL } from '../../actions/authTypes';
 
 import { connect } from 'react-redux';
@@ -39,12 +37,17 @@ class RegistrationForm extends React.Component {
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired
+    error: PropTypes.object.isRequired,
+    register: PropTypes.func.isRequired
   };
 
   state = {
     confirmDirty: false,
-    autoCompleteResult: []
+    autoCompleteResult: [],
+    email: '',
+    username: '',
+    password: '',
+    gender: ''
   };
 
   componentDidMount() {
@@ -52,53 +55,71 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFields();
   }
 
-  handleSubmit = dispatch => {
-    //e.preventDefault();
-    this.props.form.validateFieldsAndScroll(
-      ['email', 'username', 'password', 'gender'],
-      (err, values) => {
-        axios({
-          method: 'post',
-          url: 'http://localhost:8000/register',
-          data: values,
+  // handleSubmit = dispatch => {
+  //   //e.preventDefault();
+  //   this.props.form.validateFieldsAndScroll(
+  //     ['email', 'username', 'password', 'gender'],
+  //     (err, values) => {
+  //       axios({
+  //         method: 'post',
+  //         url: 'http://localhost:8000/register',
+  //         data: values,
 
-          config: {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            }
-          }
-        })
-          .then(console.log(values, err))
-          .then(res =>
-            dispatch({
-              type: REGISTER_SUCCESS,
-              payload: res.data
-            })
-          )
-          .then(res => {
-            if (res.status === 200) {
-              this.setState({ isRegistered: true });
-            }
-          })
-          .catch(err => {
-            console.log(err);
-            if (err.response.status === 400 || err.response.status === 500) {
-              document.getElementById('alertRegister').style.display = 'block';
-            }
-            dispatch(
-              returnErrors(
-                err.response.data,
-                err.response.status,
-                'REGISTER_FAIL'
-              )
-            );
-            dispatch({
-              type: REGISTER_FAIL
-            });
-          });
-      }
-    );
+  //         config: {
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //             'Access-Control-Allow-Origin': '*'
+  //           }
+  //         }
+  //       })
+  //         .then(console.log(values, err))
+  //         .then(res =>
+  //           dispatch({
+  //             type: REGISTER_SUCCESS,
+  //             payload: res.data
+  //           })
+  //         )
+  //         .then(res => {
+  //           if (res.status === 200) {
+  //             this.setState({ isRegistered: true });
+  //           }
+  //         })
+  //         .catch(err => {
+  //           console.log(err);
+  //           if (err.response.status === 400 || err.response.status === 500) {
+  //             document.getElementById('alertRegister').style.display = 'block';
+  //           }
+  //           dispatch(
+  //             returnErrors(
+  //               err.response.data,
+  //               err.response.status,
+  //               'REGISTER_FAIL'
+  //             )
+  //           );
+  //           dispatch({
+  //             type: REGISTER_FAIL
+  //           });
+  //         });
+  //     }
+  //   );
+  // };
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const { email, username, password, gender } = this.state;
+
+    const user = {
+      email,
+      username,
+      password,
+      gender
+    };
+
+    this.props.register(user);
   };
 
   handleConfirmBlur = e => {
@@ -142,8 +163,6 @@ class RegistrationForm extends React.Component {
       getFieldError,
       isFieldTouched
     } = this.props.form;
-
-    const { Option } = Select;
 
     //Only show error after a field is touched
     const emailError = isFieldTouched('email') && getFieldError('email');
@@ -219,8 +238,10 @@ class RegistrationForm extends React.Component {
             {...formItemLayout}
             onSubmit={this.handleSubmit}
             className="register-form"
+            onChange={this.onChange}
           >
             <Form.Item
+              name="email"
               label="E-mail"
               validateStatus={emailError ? 'error' : ''}
               help={emailError || ''}
@@ -239,6 +260,7 @@ class RegistrationForm extends React.Component {
               })(<Input />)}
             </Form.Item>
             <Form.Item
+              name="username"
               label="Username"
               validateStatus={usernameError ? 'error' : ''}
               help={usernameError || ''}
@@ -256,6 +278,8 @@ class RegistrationForm extends React.Component {
               })(<Input />)}
             </Form.Item>
             <Form.Item
+              onChange={this.onChange}
+              name="password"
               label={
                 <span>
                   Κωδικός&nbsp;
@@ -300,25 +324,9 @@ class RegistrationForm extends React.Component {
                 ]
               })(<Input.Password onBlur={this.handleConfirmBlur} />)}
             </Form.Item>
-
-            {/* <Form.Item
-              label="Φύλο"
-              // validateStatus={genderSelectionError ? 'error' : ''}
-              // help={genderSelectionError || ''}
-            >
-              {getFieldDecorator('gender', {
-                rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }]
-              })}
-              <Select
-                placeholder="Επιλογή φύλου"
-                onChange={this.handleSelectChange}
-              >
-                <Option value="male">Άντρας</Option>
-                <Option value="female">Γυναίκα</Option>
-              </Select>
-            </Form.Item> */}
-
             <Form.Item
+              onChange={this.onChange}
+              name="gender"
               label="Επιλογή Φύλου"
               validateStatus={genderSelectionError ? 'error' : ''}
               help={genderSelectionError || ''}
@@ -375,27 +383,6 @@ class RegistrationForm extends React.Component {
               </Row>
             </Form.Item>
 
-            {/* Checkbox  */}
-
-            {/* <Form.Item
-              {...tailFormItemLayout}
-              validateStatus={isNotChecked ? 'error' : ''}
-              help={isNotChecked || ''}
-            >
-              {getFieldDecorator('agreement', {
-                valuePropName: 'checked',
-                rules: [
-                  {
-                    required: true,
-                    message: 'Αποδεχτείτε τους Όρους!'
-                  }
-                ]
-              })(
-                <Checkbox>
-                  Έχω διαβάσει τους <Link to='/Help'>όρους</Link>
-                </Checkbox>
-              )}
-            </Form.Item> */}
             <div style={{ marginBottom: '20px' }}>
               <span>
                 Αν πατήσετε Εγγραφή, δηλώνετε ότι συμφωνείτε με τους
@@ -430,4 +417,6 @@ const WrappedRegistrationForm = Form.create({ name: 'register' })(
 );
 
 //export default WrappedRegistrationForm;
-export default connect(mapStateToProps, {})(WrappedRegistrationForm);
+export default connect(mapStateToProps, { register, clearErrors })(
+  WrappedRegistrationForm
+);
