@@ -17,7 +17,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('http://localhost:8000/auth/user', tokenConfig(getState))
+    .get('/auth/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -33,6 +33,37 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
+export const register = ({ email, username, password, gender }) => dispatch => {
+  // headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${tokenConfig}`
+    }
+  };
+
+  // Request body
+  const body = JSON.stringify({ email, username, password, gender });
+
+  axios
+    .post('/register', body, config)
+    .then(console.log(body))
+    .then(res =>
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
+      );
+      dispatch({
+        type: REGISTER_FAIL
+      });
+    });
+};
+
 // Set up config/headers and token
 export const tokenConfig = getState => {
   // Auth token
@@ -40,14 +71,13 @@ export const tokenConfig = getState => {
 
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      'Content-Type': 'application/json'
     }
   };
 
   // if token, add to headers
   if (token) {
-    config.headers['x-auth-token'] = token;
+    config.headers['x-access-token'] = token;
   }
 
   return config;
