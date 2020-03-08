@@ -430,4 +430,4 @@ const WrappedRegistrationForm = Form.create({ name: 'register' })(
 );
 
 //export default WrappedRegistrationForm;
-export default connect(mapStateToProps)(WrappedRegistrationForm);
+export default connect(mapStateToProps, {})(WrappedRegistrationForm);

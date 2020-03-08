@@ -14,22 +14,22 @@ function handleChange(value) {
 class RightMenu extends Component {
   render() {
     //Prototype
-    // const menu = (
-    //   <Menu>
-    //     <Menu.Item key="0">
-    //       <a href="">
-    //         Επεξεργασία
-    //         <Icon type="edit" style={{ marginLeft: "10px" }} />
-    //       </a>
-    //     </Menu.Item>
-    //     <Menu.Item key="1">
-    //       <a href="">
-    //         Αποσύνδεση
-    //         <Icon type="logout" style={{ marginLeft: "11px" }} />
-    //       </a>
-    //     </Menu.Item>
-    //   </Menu>
-    // );
+    const menu = (
+      <Menu>
+        {/* <Menu.Item key="0">
+          <a href="">
+            Επεξεργασία
+            <Icon type="edit" style={{ marginLeft: '10px' }} />
+          </a>
+        </Menu.Item>
+        <Menu.Item key="1">
+          <a href="">
+            Αποσύνδεση
+            <Icon type="logout" style={{ marginLeft: '11px' }} />
+          </a>
+        </Menu.Item> */}
+      </Menu>
+    );
     return (
       <div>
         <Menu mode={this.props.mode}>
@@ -52,14 +52,13 @@ class RightMenu extends Component {
           </Menu.Item>
 
           {/* <Menu.Item key="#">
-            <Dropdown overlay={menu} trigger={["click"]}>
+            <Dropdown overlay={menu} trigger={['click']}>
               <a
                 className="ant-dropdown-link"
                 href="#"
-                style={{ display: "inline-block" }}
+                style={{ display: 'inline-block' }}
               >
                 Panos61
-                 /> 
               </a>
             </Dropdown>
           </Menu.Item> */}
