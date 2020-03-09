@@ -13,7 +13,6 @@
 [x] Login State with Redux
 
 ## Things to be done:
-[ ] Two-Factor Authenticator
 
 [ ] Profile Edit
 
