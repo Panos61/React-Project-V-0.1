@@ -1,10 +1,10 @@
 import { GET_ERRORS, CLEAR_ERRORS } from './authTypes';
 
 // RETURN ERRORS
-export const returnErrors = (msg, status, id = null) => {
+export const returnErrors = (message, status, id = null) => {
   return {
     type: GET_ERRORS,
-    payload: { msg, status, id }
+    payload: { message, status, id }
   };
 };
 

@@ -8,6 +8,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from '../actions/authTypes';
+import { tokenConfig } from '../actions/authActions';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -32,7 +33,6 @@ export default function(state = initialState, action) {
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -43,7 +43,6 @@ export default function(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
-      localStorage.removeItem('token');
       return {
         ...state,
         token: null,

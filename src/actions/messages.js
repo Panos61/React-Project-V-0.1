@@ -1,17 +1,17 @@
 import { CREATE_MESSAGE, GET_ERRORS } from './authTypes';
 
 // CREATE MESSAGE
-export const createMessage = msg => {
+export const createMessage = message => {
   return {
     type: CREATE_MESSAGE,
-    payload: msg
+    payload: message
   };
 };
 
 // RETURN ERRORS
-export const returnErrors = (msg, status) => {
+export const returnErrors = (message, status) => {
   return {
     type: GET_ERRORS,
-    payload: { msg, status }
+    payload: { message, status }
   };
 };

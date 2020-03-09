@@ -16,6 +16,7 @@ import MainHelpPage from '../../SubPages-Test/MainHelpPage';
 import newprofile from '../../Profile/newprofile';
 import PropTypes from 'prop-types';
 
+import axios from 'axios';
 import { register } from '../../actions/authActions';
 
 import { returnErrors, clearErrors } from '../../actions/errorActions';
@@ -26,6 +27,10 @@ import { connect } from 'react-redux';
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
+
+var min = 0;
+var max = 1000;
+var getRandom = () => Math.floor(Math.random() * (+max - +min)) + +min;
 
 class RegistrationForm extends React.Component {
   constructor(props) {
@@ -55,72 +60,33 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFields();
   }
 
-  // handleSubmit = dispatch => {
-  //   //e.preventDefault();
-  //   this.props.form.validateFieldsAndScroll(
-  //     ['email', 'username', 'password', 'gender'],
-  //     (err, values) => {
-  //       axios({
-  //         method: 'post',
-  //         url: 'http://localhost:8000/register',
-  //         data: values,
-
-  //         config: {
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //             'Access-Control-Allow-Origin': '*'
-  //           }
-  //         }
-  //       })
-  //         .then(console.log(values, err))
-  //         .then(res =>
-  //           dispatch({
-  //             type: REGISTER_SUCCESS,
-  //             payload: res.data
-  //           })
-  //         )
-  //         .then(res => {
-  //           if (res.status === 200) {
-  //             this.setState({ isRegistered: true });
-  //           }
-  //         })
-  //         .catch(err => {
-  //           console.log(err);
-  //           if (err.response.status === 400 || err.response.status === 500) {
-  //             document.getElementById('alertRegister').style.display = 'block';
-  //           }
-  //           dispatch(
-  //             returnErrors(
-  //               err.response.data,
-  //               err.response.status,
-  //               'REGISTER_FAIL'
-  //             )
-  //           );
-  //           dispatch({
-  //             type: REGISTER_FAIL
-  //           });
-  //         });
-  //     }
-  //   );
-  // };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll(
+      ['email', 'username', 'password', 'gender'],
+      (err, values) => {
+        this.props.register(values);
+      }
+    );
+  };
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  // handleSubmit = e => {
+  //   e.preventDefault();
 
-    const { email, username, password, gender } = this.state;
+  //   const { email, username, password, gender } = this.state;
 
-    const user = {
-      email,
-      username,
-      password,
-      gender
-    };
+  //   const user = {
+  //     email,
+  //     username,
+  //     password,
+  //     gender
+  //   };
 
-    this.props.register(user);
-  };
+  //   this.props.register(user);
+  // };
 
   handleConfirmBlur = e => {
     const { value } = e.target;
@@ -247,16 +213,17 @@ class RegistrationForm extends React.Component {
               help={emailError || ''}
             >
               {getFieldDecorator('email', {
-                rules: [
-                  {
-                    type: 'email',
-                    message: 'Μη έγκυρο E-mail!'
-                  },
-                  {
-                    required: true,
-                    message: 'Εισάγετε το E-mail σας!'
-                  }
-                ]
+                // rules: [
+                //   {
+                //     type: 'email',
+                //     message: 'Μη έγκυρο E-mail!'
+                //   },
+                //   {
+                //     required: true,
+                //     message: 'Εισάγετε το E-mail σας!'
+                //   }
+                // ],
+                initialValue: `panos-${getRandom()}`
               })(<Input />)}
             </Form.Item>
             <Form.Item
@@ -266,15 +233,16 @@ class RegistrationForm extends React.Component {
               help={usernameError || ''}
             >
               {getFieldDecorator('username', {
-                rules: [
-                  {
-                    min: 3,
-                    max: 13,
-                    required: true,
-                    message: 'Ξεχάσατε το Username!(3-13 χαρακτήρες)',
-                    whitespace: true
-                  }
-                ]
+                // rules: [
+                //   {
+                //     min: 3,
+                //     max: 13,
+                //     required: true,
+                //     message: 'Ξεχάσατε το Username!(3-13 χαρακτήρες)',
+                //     whitespace: true
+                //   }
+                // ],
+                initialValue: `panos-${getRandom()}`
               })(<Input />)}
             </Form.Item>
             <Form.Item
@@ -302,7 +270,8 @@ class RegistrationForm extends React.Component {
                   {
                     validator: this.validateToNextPassword
                   }
-                ]
+                ],
+                initialValue: 'florina12'
               })(<Input.Password />)}
             </Form.Item>
 
@@ -321,7 +290,8 @@ class RegistrationForm extends React.Component {
                   {
                     validator: this.compareToFirstPassword
                   }
-                ]
+                ],
+                initialValue: 'florina12'
               })(<Input.Password onBlur={this.handleConfirmBlur} />)}
             </Form.Item>
             <Form.Item
@@ -332,7 +302,8 @@ class RegistrationForm extends React.Component {
               help={genderSelectionError || ''}
             >
               {getFieldDecorator('gender', {
-                rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }]
+                rules: [{ required: true, message: 'Επιλέξτε το φύλο σας!' }],
+                initialValue: 'male'
               })(
                 <Radio.Group>
                   <Radio value="male">Άντρας</Radio>
