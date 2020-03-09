@@ -29,7 +29,7 @@ class Pro_navbar extends Component {
       <nav className="menu" style={{ zIndex: '10' }}>
         <div className="menu__logo">
           <Link
-            to="/Profile"
+            to="/"
             style={{
               color: '#2E8B57',
               fontSize: '26px',
