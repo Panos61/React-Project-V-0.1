@@ -10,7 +10,7 @@
 
 [x] Mobile Responsive
 
-[x] Login State
+[x] Login State with Redux
 
 ## Things to be done:
 [ ] Two-Factor Authenticator
