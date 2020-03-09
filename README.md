@@ -13,6 +13,7 @@
 [x] Login State
 
 ## Things to be done:
+[ ] Two-Factor Authenticator
 
 [ ] Profile Edit
 
