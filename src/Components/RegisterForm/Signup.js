@@ -16,11 +16,8 @@ import MainHelpPage from '../../SubPages-Test/MainHelpPage';
 import newprofile from '../../Profile/newprofile';
 import PropTypes from 'prop-types';
 
-import axios from 'axios';
 import { register } from '../../actions/authActions';
-
 import { returnErrors, clearErrors } from '../../actions/errorActions';
-import { REGISTER_SUCCESS, REGISTER_FAIL } from '../../actions/authTypes';
 
 import { connect } from 'react-redux';
 

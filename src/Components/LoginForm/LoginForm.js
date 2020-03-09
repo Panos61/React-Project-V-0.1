@@ -1,54 +1,31 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
-import { Link, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Link, Route, BrowserRouter } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import App from '../../App';
 
+import { connect } from 'react-redux';
+import { login } from '../../actions/authActions';
+import { clearErrors } from '../../actions/errorActions';
+
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false //logged in state initialized as false
-    };
-  }
+  static propTypes = {
+    isAutheticated: PropTypes.bool,
+    login: PropTypes.func.isRequired,
+    error: PropTypes.object.isRequired
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields(['email', 'password'], (err, values) => {
-      axios({
-        method: 'post',
-        url: 'http://localhost:8000/login',
-        data: values,
-        config: {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          }
-        }
-      })
-        .then(console.log(values, err))
-        .then(res => {
-          if (res.status === 200) {
-            this.setState({ isLoggedIn: true });
-          }
-        })
-        .catch(function(error) {
-          if (error.response.status === 401) {
-            document.getElementById('alertLogin').style.display = 'block';
-          }
-        });
+      this.props.login(values);
+      console.warn(err);
     });
   };
 
   render() {
-    //User Log in state
-    if (this.state.isLoggedIn) {
-      return <Redirect to={{ pathname: '/' }} />;
-    }
-
-    /*  *** **/
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
@@ -117,6 +94,13 @@ class LoginForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isAutheticated: state.auth.isAutheticated,
+  error: state.error
+});
+
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(LoginForm);
 
-export default WrappedNormalLoginForm;
+export default connect(mapStateToProps, { login, clearErrors })(
+  WrappedNormalLoginForm
+);

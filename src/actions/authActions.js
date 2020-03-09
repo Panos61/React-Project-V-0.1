@@ -37,9 +37,8 @@ export const loadUser = () => dispatch => {
     });
 };
 
+// **REGISTER USER**
 export const register = ({ email, username, password, gender }) => dispatch => {
-  // headers
-
   // Request body
   const body = JSON.stringify({ email, username, password, gender });
 
@@ -61,6 +60,37 @@ export const register = ({ email, username, password, gender }) => dispatch => {
         type: REGISTER_FAIL
       });
     });
+};
+
+// ** LOGIN USER **
+export const login = ({ email, password }) => dispatch => {
+  const body = JSON.stringify({ email, password });
+  console.log(body);
+
+  axios
+    .post('/login', body, getHeaders())
+    .then(console.log(body))
+    .then(res => {
+      localStorage.setItem('token', res.data.token);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch(returnErrors(err.res.data, err.res.status, 'LOGIN_FAIL'));
+      dispatch({
+        type: LOGIN_FAIL
+      });
+    });
+};
+
+// ** LOGOUT USER **
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS
+  };
 };
 
 // Set up config/headers and token
