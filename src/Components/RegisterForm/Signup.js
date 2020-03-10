@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Signup.css';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Form } from '@ant-design/compatible';
@@ -10,7 +10,7 @@ import newprofile from '../../Profile/newprofile';
 import PropTypes from 'prop-types';
 
 import { register } from '../../actions/authActions';
-import { returnErrors, clearErrors } from '../../actions/errorActions';
+import { clearErrors } from '../../actions/errorActions';
 
 import { connect } from 'react-redux';
 
@@ -22,7 +22,7 @@ var min = 0;
 var max = 1000;
 var getRandom = () => Math.floor(Math.random() * (+max - +min)) + +min;
 
-class RegistrationForm extends React.Component {
+class RegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
