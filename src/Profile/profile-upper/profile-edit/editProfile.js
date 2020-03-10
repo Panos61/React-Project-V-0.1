@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Tooltip } from 'antd';
+import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 
 class ProfileEdit extends Component {
   render() {
@@ -10,16 +11,16 @@ class ProfileEdit extends Component {
           wrapperCol={{ span: 14 }}
           layout="horizontal"
         >
-          <Form.Item
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Username!'
+          <Form.Item>
+            <Input
+              placeholder="Enter your username"
+              prefix={<span>@</span>}
+              suffix={
+                <Tooltip title="Extra information">
+                  <InfoCircleOutlined />
+                </Tooltip>
               }
-            ]}
-          >
-            <Input placeholder="Username" />
+            />
           </Form.Item>
         </Form>
       </div>
