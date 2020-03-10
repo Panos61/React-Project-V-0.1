@@ -79,6 +79,7 @@ export const login = ({ email, password }) => dispatch => {
     })
     .catch(err => {
       console.log(err);
+      localStorage.removeItem('token', err.res.data.token);
       dispatch(returnErrors(err.res.data, err.res.status, 'LOGIN_FAIL'));
       dispatch({
         type: LOGIN_FAIL
