@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Input, Tooltip } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Tooltip } from 'antd';
 import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 
 class ProfileEdit extends Component {

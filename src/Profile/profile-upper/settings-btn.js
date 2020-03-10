@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Icon, Modal, Button } from 'antd';
+import { SettingFilled } from '@ant-design/icons';
+import { Modal, Button } from 'antd';
 import ProfileEdit from './profile-edit/editProfile';
 
 class SettingsBtn extends Component {
@@ -31,7 +32,7 @@ class SettingsBtn extends Component {
     return (
       <div>
         <span style={{ position: 'relative', top: '15px', cursor: 'pointer' }}>
-          <Icon type="setting" theme="filled" onClick={this.showModal} />
+          <SettingFilled onClick={this.showModal} />
         </span>
 
         <Modal

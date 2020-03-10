@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import {
   PageHeader,
   Tabs,
@@ -42,7 +43,7 @@ const Content = ({ children, extra }) => {
   return (
     <div className="content">
       <div className="main">
-        <Avatar shape="square" size={64} icon="user" />
+        <Avatar shape="square" size={64} icon={<UserOutlined />} />
         {children}
       </div>
       <div className="extra">{extra}</div>

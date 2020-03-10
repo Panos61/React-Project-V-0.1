@@ -1,5 +1,6 @@
 import './Upper-Profile.css';
 import React, { Component } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Divider } from 'antd';
 import { Col, Row } from 'react-flexbox-grid';
 import ProfileBio from './Pro-bio';
@@ -26,7 +27,7 @@ class UpperProfile extends Component {
           <Col xs={12} lg={6}>
             <Row center="xs">
               <Col xs md={3}>
-                <Avatar size={105} icon="user" />
+                <Avatar size={105} icon={<UserOutlined />} />
                 <div style={{ top: '5vh', position: 'relative' }}>
                   <Message />
                   <SettingsBtn />

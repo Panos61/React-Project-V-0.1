@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
-import { Drawer, Button, Icon, Divider } from 'antd';
+import { AlignRightOutlined } from '@ant-design/icons';
+import { Drawer, Button, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -50,7 +51,7 @@ class Navbar extends Component {
             type="primary"
             onClick={this.showDrawer}
           >
-            <Icon type="align-right" />
+            <AlignRightOutlined />
           </Button>
           <Drawer
             title="Μενού"

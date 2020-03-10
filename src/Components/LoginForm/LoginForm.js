@@ -1,5 +1,8 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Icon, Alert } from 'antd';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Button, Checkbox, Alert } from 'antd';
 import { Link, Route, BrowserRouter } from 'react-router-dom';
 import './LoginForm.css';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
@@ -46,7 +49,7 @@ class LoginForm extends React.Component {
             })(
               <Input
                 prefix={
-                  <Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
                 placeholder="E-mail"
               />
@@ -58,7 +61,7 @@ class LoginForm extends React.Component {
             })(
               <Input
                 prefix={
-                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
                 }
                 type="password"
                 placeholder="Κωδικός"

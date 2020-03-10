@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Left_menu_pro from './Left_menu_pro';
 import Right_menu_pro from './Right_menu_pro';
-import { Drawer, Button, Icon, Divider } from 'antd';
+import { AlignRightOutlined } from '@ant-design/icons';
+import { Drawer, Button, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import App from '../App';
 
@@ -51,7 +52,7 @@ class Pro_navbar extends Component {
             type="primary"
             onClick={this.showDrawer}
           >
-            <Icon type="align-right" />
+            <AlignRightOutlined />
           </Button>
           <Drawer
             title="Μενού"

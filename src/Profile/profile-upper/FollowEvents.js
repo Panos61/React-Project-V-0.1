@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Statistic, Row, Col, Icon } from 'antd';
+import { CompassOutlined } from '@ant-design/icons';
+import { Statistic, Row, Col } from 'antd';
 
 class FollowEvents extends Component {
   render() {
@@ -10,7 +11,7 @@ class FollowEvents extends Component {
             <Statistic
               title="Ακολουθεί Events"
               value={0}
-              prefix={<Icon type="compass" />}
+              prefix={<CompassOutlined />}
             />
           </Col>
         </Row>

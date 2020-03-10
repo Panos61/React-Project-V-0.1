@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Select, Dropdown, Icon } from 'antd';
+import { Menu, Select, Dropdown } from 'antd';
 import HowWorks from './HowWorksDrawer';
 import { Link, Route } from 'react-router-dom';
 import CardLoginStyle from '../LoginForm/LoginFormStyle';

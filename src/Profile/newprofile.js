@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pro_navbar from './Pro_navbar';
-import { Layout, Icon, BackTop } from 'antd';
+import { HeartFilled } from '@ant-design/icons';
+import { Layout, BackTop } from 'antd';
 
 import './profile.css';
 
@@ -32,7 +33,7 @@ class newprofile extends React.Component {
                 backgroundColor: 'unset'
               }}
             >
-              EventPark ©2020 Created with <Icon type="heart" theme="filled" />{' '}
+              EventPark ©2020 Created with <HeartFilled />{' '}
               by us!
             </Footer>
           </footer>

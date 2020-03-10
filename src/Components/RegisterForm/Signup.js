@@ -1,16 +1,9 @@
 import React from 'react';
 import './Signup.css';
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Row,
-  Col,
-  Button,
-  Alert,
-  Radio
-} from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Tooltip, Row, Col, Button, Alert, Radio } from 'antd';
 import { Link, Route, Redirect } from 'react-router-dom';
 import MainHelpPage from '../../SubPages-Test/MainHelpPage';
 import newprofile from '../../Profile/newprofile';
@@ -249,7 +242,7 @@ class RegistrationForm extends React.Component {
                 <span>
                   Κωδικός&nbsp;
                   <Tooltip title={PasswordTooltip}>
-                    <Icon type="question-circle-o" />
+                    <QuestionCircleOutlined />
                   </Tooltip>
                 </span>
               }

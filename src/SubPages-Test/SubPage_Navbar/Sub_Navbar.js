@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import LeftMenu_Sub from './LeftMenu_Sub';
 import RightMenu_Sub from './RightMenu_Sub';
-import { Drawer, Button, Icon, Divider } from 'antd';
+import { AlignRightOutlined } from '@ant-design/icons';
+import { Drawer, Button, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 
 import './Sub_Navbar.css';
@@ -51,7 +52,7 @@ class Sub_Navbar extends Component {
             type="primary"
             onClick={this.showDrawer}
           >
-            <Icon type="align-right" />
+            <AlignRightOutlined />
           </Button>
           <Drawer
             title="Μενού"

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { logout } from '../actions/authActions';
 import PropTypes from 'prop-types';
-import { Menu, Select, Dropdown, Icon } from 'antd';
+import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Menu, Select, Dropdown } from 'antd';
 
 import { connect } from 'react-redux';
 
@@ -17,13 +18,13 @@ class Logout extends Component {
         <Menu.Item key="0">
           <a href="">
             Επεξεργασία
-            <Icon type="edit" style={{ marginLeft: '10px' }} />
+            <EditOutlined style={{ marginLeft: '10px' }} />
           </a>
         </Menu.Item>
         <Menu.Item key="1">
           <span onClick={this.props.logout}>
             Αποσύνδεση
-            <Icon type="logout" style={{ marginLeft: '11px' }} />
+            <LogoutOutlined style={{ marginLeft: '11px' }} />
           </span>
         </Menu.Item>
       </Menu>

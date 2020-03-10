@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
-import { Input, Row, Col, Layout, Icon } from 'antd';
+
+import {
+  CarryOutOutlined,
+  CheckOutlined,
+  ControlOutlined,
+  GithubOutlined,
+  HeartFilled,
+  MessageOutlined,
+  OrderedListOutlined,
+  QuestionCircleOutlined,
+  SmileOutlined,
+  TeamOutlined,
+} from '@ant-design/icons';
+
+import { Input, Row, Col, Layout } from 'antd';
 import Sub_Navbar from './SubPage_Navbar/Sub_Navbar';
 import './MainHelpPage.css';
 
@@ -50,11 +64,7 @@ class MainHelpPage extends Component {
               style={{ paddingTop: '11vh' }}
             >
               <Col lg={8} xs={8}>
-                <Icon
-                  type='message'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                  theme='outlined'
-                />
+                <MessageOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Επικοινωνία <br />
                   <p style={subTextStyle}>
@@ -64,20 +74,14 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon
-                  type='ordered-list'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                />
+                <OrderedListOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   FAQs <br />
                   <p style={subTextStyle}>Συνηθισμένες ερωτήσεις! </p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon
-                  type='question-circle'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                />
+                <QuestionCircleOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Πληροφορίες <br />
                   <p style={subTextStyle}>
@@ -93,7 +97,7 @@ class MainHelpPage extends Component {
               style={{ paddingTop: '8vh' }}
             >
               <Col lg={8} xs={8}>
-                <Icon type='smile' style={{ fontSize: '7vh', color: '#08c' }} />
+                <SmileOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Αξιολογήστε μας <br />
                   <p style={subTextStyle}>
@@ -102,10 +106,7 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon
-                  type='control'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                />
+                <ControlOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Όροι χρήσης <br />
                   <p style={subTextStyle}>
@@ -114,7 +115,7 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon type='check' style={{ fontSize: '7vh', color: '#08c' }} />
+                <CheckOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Features <br />
                   <p style={subTextStyle}>Αποκλειστικές λειτουργίες του App!</p>
@@ -128,17 +129,14 @@ class MainHelpPage extends Component {
               style={{ paddingTop: '8vh' }}
             >
               <Col lg={8} xs={8}>
-                <Icon type='team' style={{ fontSize: '7vh', color: '#08c' }} />
+                <TeamOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Ομάδα <br />
                   <p style={subTextStyle}>Ποιοι είμαστε;Μάθετε για εμάς!</p>
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon
-                  type='carry-out'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                />
+                <CarryOutOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Στόχοι <br />
                   <p style={subTextStyle}>
@@ -147,10 +145,7 @@ class MainHelpPage extends Component {
                 </a>
               </Col>
               <Col lg={8} xs={8}>
-                <Icon
-                  type='github'
-                  style={{ fontSize: '7vh', color: '#08c' }}
-                />
+                <GithubOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <a href='' style={IconTextStyle} id='linksHelp_Page'>
                   Προσφέρετε <br />
                   <p style={subTextStyle}>Συνεισφέρετε με κώδικα!</p>
@@ -167,7 +162,7 @@ class MainHelpPage extends Component {
               backgroundColor: 'unset'
             }}
           >
-            EventPark ©2019 Created with <Icon type='heart' theme='filled' /> by
+            EventPark ©2019 Created with <HeartFilled /> by
             us!
           </Footer>
         </footer>

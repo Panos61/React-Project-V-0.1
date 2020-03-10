@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Tabs, Button, Icon } from 'antd';
+import { FireOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { Tabs, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 const { TabPane } = Tabs;
@@ -18,7 +19,7 @@ class HorizontalTabs extends Component {
           <TabPane
             tab={
               <span>
-                <Icon type="fire" />
+                <FireOutlined />
                 Activity
               </span>
             }
@@ -52,7 +53,7 @@ class HorizontalTabs extends Component {
           <TabPane
             tab={
               <span>
-                <Icon type="share-alt" />
+                <ShareAltOutlined />
                 Share
               </span>
             }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Button, Row, Col } from 'antd';
 import './Contact.css';
 
 class ContactForm extends Component {
@@ -22,7 +25,7 @@ class ContactForm extends Component {
               <Form.Item>
                 {getFieldDecorator('email', {
                   rules: [{ required: true, message: 'Εισάγετε το E-mail σας!' }]
-                })(<Input prefix={<Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='E-mail' />)}
+                })(<Input prefix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='E-mail' />)}
               </Form.Item>
             </Form>
           </Col>

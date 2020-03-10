@@ -1,5 +1,6 @@
 import React from 'react';
-import { Layout, Col, Row, Icon } from 'antd';
+import { FacebookFilled, HeartFilled, InstagramFilled, TwitterOutlined } from '@ant-design/icons';
+import { Layout, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 
 const Footer = Layout;
@@ -68,24 +69,24 @@ class FooterMain extends React.Component {
                   href=""
                   style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
                 >
-                  <Icon type="facebook" theme="filled" id="icons" />
+                  <FacebookFilled id="icons" />
                 </span>
                 <span
                   href=""
                   style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
                 >
-                  <Icon type="instagram" theme="filled" id="icons" />
+                  <InstagramFilled id="icons" />
                 </span>
                 <span
                   href=""
                   style={{ cursor: 'pointer', fontSize: '24px', margin: '2px' }}
                 >
-                  <Icon type="twitter" id="icons" />
+                  <TwitterOutlined id="icons" />
                 </span>
               </Row>
             </Col>
           </Row>
-          EventPark ©2020 Created with <Icon type="heart" theme="filled" /> by
+          EventPark ©2020 Created with <HeartFilled /> by
           us!
         </Footer>
       </div>

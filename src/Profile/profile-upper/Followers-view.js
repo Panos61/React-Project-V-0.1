@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Statistic, Row, Col, Icon } from 'antd';
+import { TeamOutlined } from '@ant-design/icons';
+import { Statistic, Row, Col } from 'antd';
 
 class FollowersView extends Component {
   render() {
@@ -10,7 +11,7 @@ class FollowersView extends Component {
             <Statistic
               title="Ακόλουθοι"
               value={0}
-              prefix={<Icon type="team" />}
+              prefix={<TeamOutlined />}
             />
           </Col>
         </Row>

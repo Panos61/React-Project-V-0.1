@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+
+import {
+  EnvironmentOutlined,
+  HomeOutlined,
+  InfoCircleOutlined,
+  PlusOutlined,
+  RiseOutlined,
+  ScheduleOutlined,
+} from '@ant-design/icons';
+
+import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
 const Sider = Layout;
@@ -25,11 +35,11 @@ class HorizontalSider extends Component {
           <div className="logo" />
           <Menu theme="light" defaultSelectedKeys={['1']} mode="horizontal">
             <Menu.Item key="1" disabled>
-              <Icon type="environment" />
+              <EnvironmentOutlined />
               <span>Τοποθεσία</span>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="rise" />
+              <RiseOutlined />
               <span>Δημοφιλές</span>
             </Menu.Item>
 
@@ -37,24 +47,24 @@ class HorizontalSider extends Component {
               key="sub2"
               title={
                 <span>
-                  <Icon type="home" />
+                  <HomeOutlined />
                   <span>Προφίλ</span>
                 </span>
               }
             >
               <Menu.Item key="6">
-                <Icon type="plus" />
+                <PlusOutlined />
                 Προσθήκη
               </Menu.Item>
               <Menu.Item key="8">
-                <Icon type="schedule" />
+                <ScheduleOutlined />
                 <Link to="/Profile" style={{ display: 'inline' }}>
                   Τοίχος
                 </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="9">
-              <Icon type="info-circle" />
+              <InfoCircleOutlined />
               <Link to="/Help" style={{ display: 'inline' }}>
                 Υποστήριξη
               </Link>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Statistic, Row, Col, Icon } from 'antd';
+import { CalendarOutlined } from '@ant-design/icons';
+import { Statistic, Row, Col } from 'antd';
 
 class EventsUploaded extends Component {
   render() {
@@ -10,7 +11,7 @@ class EventsUploaded extends Component {
             <Statistic
               title="Events"
               value={0}
-              prefix={<Icon type="calendar" />}
+              prefix={<CalendarOutlined />}
             />
           </Col>
         </Row>

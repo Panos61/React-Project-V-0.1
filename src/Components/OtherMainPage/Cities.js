@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography, Icon } from 'antd';
+import { EnvironmentTwoTone } from '@ant-design/icons';
+import { Row, Col, Typography } from 'antd';
 import './Cities.css';
 
 const { Title } = Typography;
@@ -17,7 +18,7 @@ class Cities extends Component {
             <Col lg={{ span: 11, offset: 2 }}>
               <Title level={3} style={{ marginBottom: '60px' }}>
                 EventPark τοποθεσίες..
-                <Icon type='environment' theme='twoTone' />
+                <EnvironmentTwoTone />
               </Title>
             </Col>
           </Row>
