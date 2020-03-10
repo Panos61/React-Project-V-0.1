@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Left_menu_pro from './Left_menu_pro';
 import Right_menu_pro from './Right_menu_pro';
 import { AlignRightOutlined } from '@ant-design/icons';
-import { Drawer, Button, Divider } from 'antd';
+import { Drawer, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import App from '../App';
 
