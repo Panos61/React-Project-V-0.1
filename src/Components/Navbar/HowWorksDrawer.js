@@ -26,7 +26,7 @@ class HowWorks extends React.Component {
   render() {
     return (
       <div>
-        <span
+        <a
           onClick={this.showDrawer}
           style={{
             display: 'inline-block',
@@ -35,7 +35,7 @@ class HowWorks extends React.Component {
           }}
         >
           Πώς λειτουργεί
-        </span>
+        </a>
 
         <Drawer
           title="Πώς λειτουργεί το App"
