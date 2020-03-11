@@ -34,54 +34,54 @@ class Cities extends Component {
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
               <ul id="column1" style={ulStyle}>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Άγιος Παύλος</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Ακρόπολη</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Βοτανικός</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Γκάζι</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
-                </li>
-              </ul>
-            </Col>
-            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id="column1" style={ulStyle}>
-                <li>
-                  <Link to="/">Χαλάνδρι</Link>
-                </li>
-                <li>
-                  <Link to="/">Χαλάνδρι</Link>
-                </li>
-                <li>
-                  <Link to="/">Χαλάνδρι</Link>
-                </li>
-                <li>
-                  <Link to="/">Χαλάνδρι</Link>
-                </li>
-                <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Εξάρχεια</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
               <ul id="column1" style={ulStyle}>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Θησείο</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Ιλίσια</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Κολωνάκι</Link>
                 </li>
                 <li>
-                  <Link to="/">Χαλάνδρι</Link>
+                  <Link to="/">Μοναστηράκι</Link>
+                </li>
+                <li>
+                  <Link to="/">Νεάπολη(Αθήνα)</Link>
+                </li>
+              </ul>
+            </Col>
+            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+              <ul id="column1" style={ulStyle}>
+                <li>
+                  <Link to="/">Ομόνοια</Link>
+                </li>
+                <li>
+                  <Link to="/">Παγκράτι</Link>
+                </li>
+                <li>
+                  <Link to="/">Πατήσια</Link>
+                </li>
+                <li>
+                  <Link to="/">Ριζούπολη</Link>
                 </li>
                 <li>
                   <Link to="/">Χαλάνδρι</Link>
@@ -95,57 +95,57 @@ class Cities extends Component {
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
               <ul id="column-main" style={ulStyle}>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Άγιος Νικόλαος</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Αγρίνιο</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Αλεξάνδρεια</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Αλεξανδρούπολη</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
-                </li>
-              </ul>
-            </Col>
-            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id="column-main" style={ulStyle}>
-                <li>
-                  <Link to="/">Φλώρινα</Link>
-                </li>
-                <li>
-                  <Link to="/">Φλώρινα</Link>
-                </li>
-                <li>
-                  <Link to="/">Φλώρινα</Link>
-                </li>
-                <li>
-                  <Link to="/">Φλώρινα</Link>
-                </li>
-                <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Άργος</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
               <ul id="column-main" style={ulStyle}>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Βέροια</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Βόλος</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Γιαννιτσά</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Γρεβενά</Link>
                 </li>
                 <li>
-                  <Link to="/">Φλώρινα</Link>
+                  <Link to="/">Δράμα</Link>
+                </li>
+              </ul>
+            </Col>
+            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+              <ul id="column-main" style={ulStyle}>
+                <li>
+                  <Link to="/">Έδεσσα</Link>
+                </li>
+                <li>
+                  <Link to="/">Ηράκλειο</Link>
+                </li>
+                <li>
+                  <Link to="/">Θεσσαλονίκη</Link>
+                </li>
+                <li>
+                  <Link to="/">Ιωάννινα</Link>
+                </li>
+                <li>
+                  <Link to="/">Καβάλα</Link>
                 </li>
               </ul>
             </Col>
