@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 
-class UserSettings extends React.Component {
+class UserSettings extends Component {
   render() {
     return (
       <div>

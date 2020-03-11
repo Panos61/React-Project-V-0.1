@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MessageOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
-class Message extends React.Component {
+class Message extends Component {
   render() {
     return (
       <div>

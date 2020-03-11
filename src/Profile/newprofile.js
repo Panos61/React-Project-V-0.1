@@ -13,7 +13,7 @@ import { loadUser } from '../actions/authActions';
 
 const { Footer } = Layout;
 
-class newprofile extends React.Component {
+class newprofile extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
   }
@@ -33,8 +33,7 @@ class newprofile extends React.Component {
                 backgroundColor: 'unset'
               }}
             >
-              EventPark ©2020 Created with <HeartFilled />{' '}
-              by us!
+              EventPark ©2020 Created with <HeartFilled /> by us!
             </Footer>
           </footer>
         </Provider>

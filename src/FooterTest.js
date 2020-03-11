@@ -1,5 +1,10 @@
 import React from 'react';
-import { FacebookFilled, HeartFilled, InstagramFilled, TwitterOutlined } from '@ant-design/icons';
+import {
+  FacebookFilled,
+  HeartFilled,
+  InstagramFilled,
+  TwitterOutlined
+} from '@ant-design/icons';
 import { Layout, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -25,36 +30,36 @@ class FooterMain extends React.Component {
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id="li-style">
                 <li>
-                  <a href="">Πληροφορίες</a>
+                  <Link to="/">Πληροφορίες</Link>
                 </li>
                 <li>
                   <Link to="/Help">Επικοινωνία</Link>
                 </li>
                 <li>
-                  <a href="">Features</a>
+                  <Link to="/">Features</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id="li-style">
                 <li>
-                  <a href="">Όροι χρήσης</a>
+                  <Link to="/">Όροι χρήσης</Link>
                 </li>
                 <li>
-                  <a href="">Αξιολογήστε μας</a>
+                  <Link to="/">Αξιολογήστε μας</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={8} xs={8}>
               <ul style={{ listStyle: 'none' }} id="li-style">
                 <li>
-                  <a href="">FAQs</a>
+                  <Link to="/">FAQs</Link>
                 </li>
                 <li>
-                  <a href="">Ομάδα</a>
+                  <Link to="/">Ομάδα</Link>
                 </li>
                 <li>
-                  <a href="">Στόχοι</a>
+                  <Link to="/">Στόχοι</Link>
                 </li>
               </ul>
             </Col>
@@ -86,8 +91,7 @@ class FooterMain extends React.Component {
               </Row>
             </Col>
           </Row>
-          EventPark ©2020 Created with <HeartFilled /> by
-          us!
+          EventPark ©2020 Created with <HeartFilled /> by us!
         </Footer>
       </div>
     );

@@ -8,7 +8,6 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from '../actions/authTypes';
-import { tokenConfig } from '../actions/authActions';
 
 const initialState = {
   token: localStorage.getItem('token'),

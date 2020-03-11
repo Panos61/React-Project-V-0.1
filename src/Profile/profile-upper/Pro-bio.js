@@ -3,7 +3,7 @@ import { Divider, Typography } from 'antd';
 
 const { Paragraph } = Typography;
 
-class ProfileBio extends React.Component {
+class ProfileBio extends Component {
   render() {
     return (
       <div>
@@ -11,8 +11,8 @@ class ProfileBio extends React.Component {
         <Typography>
           <Paragraph>
             <p>
-              I love travelling around the world 🗺️ and playing music 🎸Welcome
-              to my Profile!
+              I love travelling around the world and playing music. Welcome to
+              my Profile!
               <br />
               @panoss_
             </p>

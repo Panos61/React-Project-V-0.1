@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 
 const { Title } = Typography;
 
-class Username extends React.Component {
+class Username extends Component {
   render() {
     return (
       <div>

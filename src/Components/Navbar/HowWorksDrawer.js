@@ -1,5 +1,6 @@
 import React from 'react';
 import { Drawer, Card, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
 
 class HowWorks extends React.Component {
   state = { visible: false, placement: 'bottom' };
@@ -16,7 +17,7 @@ class HowWorks extends React.Component {
     });
   };
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({
       placement: e.target.value
     });
@@ -25,15 +26,19 @@ class HowWorks extends React.Component {
   render() {
     return (
       <div>
-        <a
+        <span
           onClick={this.showDrawer}
-          style={{ display: 'inline-block', textDecoration: 'underline', color: 'yellowgreen' }}
+          style={{
+            display: 'inline-block',
+            textDecoration: 'underline',
+            color: 'yellowgreen'
+          }}
         >
           Πώς λειτουργεί
-        </a>
+        </span>
 
         <Drawer
-          title='Πώς λειτουργεί το App'
+          title="Πώς λειτουργεί το App"
           placement={this.state.placement}
           closable={true}
           onClose={this.onClose}
@@ -41,26 +46,26 @@ class HowWorks extends React.Component {
         >
           <Row gutter={16}>
             <Col span={8}>
-              <Card title='1' bordered={false}>
+              <Card title="1" bordered={false}>
                 Content1
               </Card>
             </Col>
             <Col span={8}>
-              <Card title='2' bordered={false}>
+              <Card title="2" bordered={false}>
                 Content1
               </Card>
             </Col>
             <Col span={8}>
-              <Card title='3' bordered={false}>
+              <Card title="3" bordered={false}>
                 Content1
               </Card>
             </Col>
           </Row>
-          <Row type='flex' justify='end'>
+          <Row type="flex" justify="end">
             <Col lg={3} xs={12}>
-              <a href='' style={{ textDecoration: 'underline' }}>
+              <Link to="/" style={{ textDecoration: 'underline' }}>
                 Μάθετε περισσότερα
-              </a>
+              </Link>
             </Col>
           </Row>
         </Drawer>

@@ -3,7 +3,7 @@ import { Input } from 'antd';
 
 const { Search } = Input;
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     return (
       <div>

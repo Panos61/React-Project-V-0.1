@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -8,47 +9,47 @@ class LeftMenu extends Component {
   render() {
     return (
       <Menu mode={this.props.mode}>
-        <Menu.Item key='music'>
-          <a href='#' style={{ color: 'maroon' }}>
+        <Menu.Item key="music">
+          <Link to="/" style={{ color: 'maroon' }}>
             Μουσική
-          </a>
+          </Link>
         </Menu.Item>
-        <Menu.Item key='sport'>
-          <a href='#' style={{ color: '#69c0ff' }}>
+        <Menu.Item key="sport">
+          <Link to="/" style={{ color: '#69c0ff' }}>
             Αθλητισμός
-          </a>
+          </Link>
         </Menu.Item>
-        <Menu.Item key='enter'>
-          <a href='#' style={{ color: '#eb2f96' }}>
+        <Menu.Item key="enter">
+          <Link to="/" style={{ color: '#eb2f96' }}>
             Διασκέδαση
-          </a>
+          </Link>
         </Menu.Item>
         <SubMenu title={<span style={{ color: 'grey' }}>Λοιπά</span>}>
-          <MenuItemGroup title='Κατηγορίες'>
-            <Menu.Item key='setting:1'>
-              <a href='#' style={{ color: '#fa541c' }}>
+          <MenuItemGroup title="Κατηγορίες">
+            <Menu.Item key="setting:1">
+              <Link to="/" style={{ color: '#fa541c' }}>
                 Σινεμά
-              </a>
+              </Link>
             </Menu.Item>
-            <Menu.Item key='setting:2'>
-              <a href='#' style={{ color: '#faad14' }}>
+            <Menu.Item key="setting:2">
+              <Link to="/" style={{ color: '#faad14' }}>
                 Τέχνες
-              </a>
+              </Link>
             </Menu.Item>
-            <Menu.Item key='setting:3'>
-              <a href='#' style={{ color: 'brown' }}>
+            <Menu.Item key="setting:3">
+              <Link to="/" style={{ color: 'brown' }}>
                 Χορός
-              </a>
+              </Link>
             </Menu.Item>
-            <Menu.Item key='setting:4'>
-              <a href='#' style={{ color: '#096dd9' }}>
+            <Menu.Item key="setting:4">
+              <Link to="/" style={{ color: '#096dd9' }}>
                 Παιδικά
-              </a>
+              </Link>
             </Menu.Item>
-            <Menu.Item key='setting:5'>
-              <a href='#' style={{ color: 'yellowgreen' }}>
+            <Menu.Item key="setting:5">
+              <Link to="/" style={{ color: 'yellowgreen' }}>
                 Social_Events
-              </a>
+              </Link>
             </Menu.Item>
           </MenuItemGroup>
         </SubMenu>

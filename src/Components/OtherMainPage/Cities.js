@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { EnvironmentTwoTone } from '@ant-design/icons';
 import { Row, Col, Typography } from 'antd';
 import './Cities.css';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -13,8 +14,8 @@ class Cities extends Component {
   render() {
     return (
       <div>
-        <div className='cities-container' style={{ marginTop: '200px' }}>
-          <Row type='flex' justify='center'>
+        <div className="cities-container" style={{ marginTop: '200px' }}>
+          <Row type="flex" justify="center">
             <Col lg={{ span: 11, offset: 2 }}>
               <Title level={3} style={{ marginBottom: '60px' }}>
                 EventPark τοποθεσίες..
@@ -29,122 +30,122 @@ class Cities extends Component {
             </Col>
           </Row>
 
-          <Row type='flex' justify='start' gutter={[8, 16]}>
+          <Row type="flex" justify="start" gutter={[8, 16]}>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column1' style={ulStyle}>
+              <ul id="column1" style={ulStyle}>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column1' style={ulStyle}>
+              <ul id="column1" style={ulStyle}>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column1' style={ulStyle}>
+              <ul id="column1" style={ulStyle}>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
                 <li>
-                  <a href=''>Χαλάνδρι</a>
+                  <Link to="/">Χαλάνδρι</Link>
                 </li>
               </ul>
             </Col>
           </Row>
 
           {/* Other Cities */}
-          <Row type='flex' justify='start' gutter={[8, 16]}>
+          <Row type="flex" justify="start" gutter={[8, 16]}>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column-main' style={ulStyle}>
+              <ul id="column-main" style={ulStyle}>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column-main' style={ulStyle}>
+              <ul id="column-main" style={ulStyle}>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
               </ul>
             </Col>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-              <ul id='column-main' style={ulStyle}>
+              <ul id="column-main" style={ulStyle}>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
                 <li>
-                  <a href=''>Φλώρινα</a>
+                  <Link to="/">Φλώρινα</Link>
                 </li>
               </ul>
             </Col>

@@ -48,9 +48,7 @@ class LoginForm extends React.Component {
               rules: [{ required: true, message: 'Εισάγετε το Email σας!' }]
             })(
               <Input
-                prefix={
-                  <MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
+                prefix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="E-mail"
               />
             )}
@@ -60,9 +58,7 @@ class LoginForm extends React.Component {
               rules: [{ required: true, message: 'Εισάγετε τον κωδικό σας!' }]
             })(
               <Input
-                prefix={
-                  <LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
+                prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="password"
                 placeholder="Κωδικός"
               />
@@ -73,9 +69,9 @@ class LoginForm extends React.Component {
               valuePropName: 'checked',
               initialValue: false
             })(<Checkbox>Αποθήκευση</Checkbox>)}
-            <a className="login-form-forgot" href="">
+            <Link to="/" className="login-form-forgot">
               Ξεχάσατε τον κωδικό;
-            </a>
+            </Link>
             <Button
               type="primary"
               htmlType="submit"
