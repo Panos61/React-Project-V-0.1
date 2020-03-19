@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { returnErrors } from './errorActions';
+import { returnErrors, clearErrors } from './errorActions';
 import {
   USER_LOADED,
   USER_LOADING,
@@ -11,6 +11,8 @@ import {
   REGISTER_FAIL
 } from './authTypes';
 
+import history from '../history';
+
 // load user
 export const loadUser = () => dispatch => {
   // User loading
@@ -21,15 +23,17 @@ export const loadUser = () => dispatch => {
     method: 'get',
     headers: getHeaders()
   })
-    .then(res =>
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data
-      })
+    .then(
+      res =>
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data
+        }),
+      dispatch(clearErrors())
     )
 
     .catch(err => {
-      //dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data, err.response.status));
       console.log(err);
       dispatch({
         type: AUTH_ERROR
@@ -47,15 +51,17 @@ export const register = ({ email, username, password, gender }) => dispatch => {
     .post('/register', body, getHeaders())
     .then(console.log(body))
     .then(res => {
-      localStorage.setItem('token', res.data.token);
+      // localStorage.setItem('token', res.data.token);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
       });
+      history.push('/Profile');
     })
+
     .catch(err => {
       console.log(err);
-      dispatch(returnErrors(err.res.data, err.res.status, 'REGISTER_FAIL'));
+      dispatch(returnErrors(err.message, err.id, 'REGISTER_FAIL'));
       dispatch({
         type: REGISTER_FAIL
       });
@@ -65,22 +71,24 @@ export const register = ({ email, username, password, gender }) => dispatch => {
 // ** LOGIN USER **
 export const login = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
-  console.log(body);
 
   axios
     .post('/login', body, getHeaders())
     .then(console.log(body))
     .then(res => {
-      localStorage.setItem('token', res.data.token);
+      //localStorage.setItem('token', res.data.token);
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
       });
+      history.push('/');
     })
+
     .catch(err => {
       console.log(err);
-      localStorage.removeItem('token', err.res.data.token);
-      dispatch(returnErrors(err.res.data, err.res.status, 'LOGIN_FAIL'));
+      //localStorage.removeItem('token');
+      dispatch(returnErrors(err.message, err.id, 'LOGIN_FAIL'));
       dispatch({
         type: LOGIN_FAIL
       });
@@ -89,6 +97,7 @@ export const login = ({ email, password }) => dispatch => {
 
 // ** LOGOUT USER **
 export const logout = () => {
+  localStorage.removeItem('token');
   return {
     type: LOGOUT_SUCCESS
   };
@@ -105,7 +114,7 @@ export const getHeaders = () => {
 
   // if token, add to headers
   if (token) {
-    config['Authorization'] = `Bearer ${token}`;
+    config['Authorization'] = token; //`Bearer ${token}`
   }
 
   return config;

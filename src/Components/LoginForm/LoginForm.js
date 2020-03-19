@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { Form, Input, Button, Checkbox, Alert } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useHistory, Route } from 'react-router-dom';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
+import newprofile from '../../Profile/newprofile';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
@@ -53,6 +55,12 @@ class WrappedNormalLoginForm extends Component {
     const onFinish = values => {
       this.props.login(values);
       console.log('Success:', values);
+
+      // axios.interceptors.response.use(function(response) {
+      //   if (response.status == 'tr') {
+      //     console.log('hey');
+      //   }
+      // });
     };
 
     const onFinishFailed = errorInfo => {

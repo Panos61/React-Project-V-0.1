@@ -34,13 +34,13 @@ class Logout extends Component {
 
     return (
       <div>
-        <Menu.Item key="#">
-          <Dropdown overlay={menu} trigger={['click']}>
-            <span style={{ display: 'inline-block' }}>
-              <span>{user ? `Κάλως όρισες ${user.username}` : ''}</span>
-            </span>
-          </Dropdown>
-        </Menu.Item>
+        <Menu>
+          <Menu.Item key="#">
+            <Dropdown overlay={menu} trigger={['click']}>
+              <span>{user ? `Κάλως όρισες ${user.username}` : null}</span>
+            </Dropdown>
+          </Menu.Item>
+        </Menu>
       </div>
     );
   }
