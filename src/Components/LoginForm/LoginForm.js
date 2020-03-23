@@ -4,8 +4,6 @@ import { Form, Input, Button, Checkbox, Alert } from 'antd';
 import { Link, withRouter, useHistory, Route } from 'react-router-dom';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
-import newprofile from '../../Profile/newprofile';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';

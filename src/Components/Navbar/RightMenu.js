@@ -6,9 +6,6 @@ import CardLoginStyle from '../LoginForm/LoginFormStyle';
 import CardRegisterStyle from '../RegisterForm/SignUpStyle';
 import Logout from '../../Components/Logout';
 
-import LoginNav from '../Navbar/Login';
-import RegisterNav from '../Navbar/Register';
-
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -27,25 +24,29 @@ class RightMenu extends Component {
     const { isAuthenticated } = this.props.auth;
 
     const authLinks = (
-      <React.Fragment>
-        <Menu.Item key="logout">
-          <Logout />
-        </Menu.Item>
-      </React.Fragment>
+      <Fragment>
+        <Logout />
+      </Fragment>
     );
 
     const guestLinks = (
-      <React.Fragment>
+      <Fragment>
         <Menu>
-          <Menu.Item key="login" style={{ display: 'inline-block' }}>
+          <Menu.Item style={{ display: 'table' }}>
             <Link to="/login">Σύνδεση</Link>
           </Menu.Item>
+        </Menu>
+      </Fragment>
+    );
 
-          <Menu.Item key="register" style={{ display: 'inline-block' }}>
-            <Link to="/register">Εγγραφή</Link>
+    const register = (
+      <Fragment>
+        <Menu>
+          <Menu.Item>
+            <Link to="/register">Eggrafh</Link>
           </Menu.Item>
         </Menu>
-      </React.Fragment>
+      </Fragment>
     );
 
     return (
@@ -64,7 +65,6 @@ class RightMenu extends Component {
             <Option value="English">Αγγλικά(ENG)</Option>
             <Option value="Greek">Ελληνικά(GR)</Option>
           </Select>
-
           <Menu.Item key="howWorks">
             <HowWorks />
           </Menu.Item>
