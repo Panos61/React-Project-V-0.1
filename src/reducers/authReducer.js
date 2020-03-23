@@ -8,16 +8,20 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from '../actions/authTypes';
+import { PROFILE_CREATED, PROFILE_LOADED } from '../actions/profileTypes';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   isLoading: false,
-  user: null
+  user: null,
+  profileInitialized: false,
+  profileData: null
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    // USER AUTHENTICATION
     case USER_LOADING:
       return {
         ...state,
@@ -43,13 +47,28 @@ export default function(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
-      //localStorage.removeItem('token');
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
         user: null,
         isAuthenticated: false,
         isLoading: false
+      };
+    // PROFILE
+    case PROFILE_CREATED:
+      localStorage.getItem('token', action.payload.token);
+      return {
+        ...state,
+        isInitialized: true,
+        profileData: action.payload
+      };
+    case PROFILE_LOADED:
+      localStorage.getItem('token', action.payload.token);
+      return {
+        ...state,
+        isInitialized: true,
+        profileData: action.payload
       };
     default:
       return state;

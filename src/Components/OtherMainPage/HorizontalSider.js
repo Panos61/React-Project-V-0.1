@@ -6,7 +6,7 @@ import {
   InfoCircleOutlined,
   PlusOutlined,
   RiseOutlined,
-  ScheduleOutlined,
+  ScheduleOutlined
 } from '@ant-design/icons';
 
 import { Layout, Menu } from 'antd';
@@ -58,14 +58,14 @@ class HorizontalSider extends Component {
               </Menu.Item>
               <Menu.Item key="8">
                 <ScheduleOutlined />
-                <Link to="/Profile" style={{ display: 'inline' }}>
+                <Link to="/profile" style={{ display: 'inline' }}>
                   Τοίχος
                 </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="9">
               <InfoCircleOutlined />
-              <Link to="/Help" style={{ display: 'inline' }}>
+              <Link to="/help" style={{ display: 'inline' }}>
                 Υποστήριξη
               </Link>
             </Menu.Item>

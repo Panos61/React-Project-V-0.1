@@ -23,9 +23,9 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
-        <Route path="/Help" component={MainHelpPage} />
+        <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
-        <Route path="/Profile" component={newprofile} />
+        <Route path="/profile" component={newprofile} />
       </Switch>
     </Router>
   </Provider>

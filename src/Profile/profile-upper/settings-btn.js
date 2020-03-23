@@ -41,16 +41,13 @@ class SettingsBtn extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
-            <Button key="back" onClick={this.handleCancel}>
-              Επιστροφή
-            </Button>,
             <Button
               key="submit"
               type="primary"
               loading={loading}
-              onClick={this.handleOk}
+              onClick={this.handleCancel}
             >
-              Αποθήκευση
+              Έξοδος
             </Button>
           ]}
         >

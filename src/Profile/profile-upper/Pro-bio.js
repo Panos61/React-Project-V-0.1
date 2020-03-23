@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import { Divider, Typography } from 'antd';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const { Paragraph } = Typography;
 
 class ProfileBio extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+
   render() {
+    const { profileData } = this.props.auth;
+
     return (
       <div>
         <Divider dashed />
         <Typography>
           <Paragraph>
             <p>
-              I love travelling around the world and playing music. Welcome to
-              my Profile!
+              {profileData
+                ? `${profileData.introduction}`
+                : 'Δεν υπάρχει περιγραφή.'}
               <br />
-              @panoss_
+              {profileData ? `@${profileData.name}` : '@ --'}
             </p>
           </Paragraph>
         </Typography>
@@ -23,4 +32,8 @@ class ProfileBio extends Component {
   }
 }
 
-export default ProfileBio;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(ProfileBio);

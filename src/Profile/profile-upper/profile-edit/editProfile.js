@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { UploadOutlined } from '@ant-design/icons';
 import { Form, Input, InputNumber, Button, Tabs, Upload, message } from 'antd';
+import { createProfile } from '../../../actions/profileActions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const layout = {
   labelCol: {
@@ -19,7 +22,7 @@ const validateMessages = {
     pattern: 'ddd'
   },
   number: {
-    range: 'Μεταξύ 4 εως 9 χαρακτήρων'
+    range: '12 εώς 75 χρονών!'
   }
 };
 
@@ -45,8 +48,13 @@ const props = {
 };
 
 class ProfileEdit extends Component {
+  static propTypes = {
+    profileData: PropTypes.object.isRequired
+  };
+
   render() {
     const onFinish = values => {
+      this.props.createProfile(values);
       console.log(values);
     };
     return (
@@ -57,26 +65,26 @@ class ProfileEdit extends Component {
               {...layout}
               name="nest-messages"
               onFinish={onFinish}
-              //validateMessages={validateMessages}
+              validateMessages={validateMessages}
             >
               <Form.Item
-                name={['user', 'name']}
+                name={['name']}
                 label="Nickname"
                 rules={[
                   {
                     min: 4,
-                    max: 9,
-                    pattern: /^[a-z]{3,}?[_.]{1}$/
+                    max: 9
+                    //pattern: /^[a-z]{3,}?[_.]{1}$/
                   }
                 ]}
               >
                 <Input prefix={<span>@</span>} />
               </Form.Item>
-              <Form.Item name={['user', 'introduction']} label="Περιγραφή">
+              <Form.Item name={['introduction']} label="Περιγραφή">
                 <Input.TextArea placeholder="Εισάγετε μια χαρακτηριστική περιγραφή του Προφίλ σας (εώς 150 χαρακτήρες)" />
               </Form.Item>
               <Form.Item
-                name={['user', 'age']}
+                name={['age']}
                 label="Ηλικία"
                 rules={[
                   {
@@ -87,6 +95,11 @@ class ProfileEdit extends Component {
                 ]}
               >
                 <InputNumber />
+              </Form.Item>
+              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                <Button type="danger" htmlType="submit">
+                  Αποθήκευση
+                </Button>
               </Form.Item>
             </Form>
           </TabPane>
@@ -105,7 +118,7 @@ class ProfileEdit extends Component {
                 </Upload>
               </Form.Item>
               <Form.Item
-                name={['user', 'email']}
+                name={['email']}
                 label="Αλλαγή E-mail"
                 rules={[
                   {
@@ -115,6 +128,11 @@ class ProfileEdit extends Component {
               >
                 <Input placeholder="Εισάγετε το νέο σας E-mail" />
               </Form.Item>
+              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                <Button type="danger" htmlType="submit">
+                  Αποθήκευση
+                </Button>
+              </Form.Item>
             </Form>
           </TabPane>
         </Tabs>
@@ -123,4 +141,8 @@ class ProfileEdit extends Component {
   }
 }
 
-export default ProfileEdit;
+const mapStateToProps = state => ({
+  data: state.data
+});
+
+export default connect(mapStateToProps, { createProfile })(ProfileEdit);

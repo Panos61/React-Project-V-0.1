@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Menu, Select } from 'antd';
 import { Link, Route } from 'react-router-dom';
 import CardLoginStyle from '../Components/LoginForm/LoginFormStyle';
 import CardRegisterStyle from '../Components/RegisterForm/SignUpStyle';
 import SearchBar from './Search-Bar';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Logout from '../Components/Logout';
 
 const { Option } = Select;
 
@@ -11,16 +14,48 @@ function handleChange(value) {
   console.log(`Selected ${value}`);
 }
 
-class Right_menu_pro extends React.Component {
+class Right_menu_pro extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+
   render() {
+    const { isAuthenticated } = this.props.auth;
+
+    const authLinks = (
+      <Fragment>
+        <Logout />
+      </Fragment>
+    );
+
+    const guestLinks = (
+      <Fragment>
+        <Menu>
+          <Menu.Item style={{ display: 'table' }}>
+            <Link to="/login">Σύνδεση</Link>
+          </Menu.Item>
+        </Menu>
+      </Fragment>
+    );
+
+    const register = (
+      <Fragment>
+        <Menu>
+          <Menu.Item>
+            <Link to="/register">Eggrafh</Link>
+          </Menu.Item>
+        </Menu>
+      </Fragment>
+    );
+
     return (
       <div>
         <Menu mode={this.props.mode}>
-          <Menu.Item
+          {/* <Menu.Item
             style={{ display: 'inline-block', top: '-5px', right: '30vh' }}
           >
             <SearchBar />
-          </Menu.Item>
+          </Menu.Item> */}
           <Select
             defaultValue="Greek"
             style={{
@@ -35,12 +70,8 @@ class Right_menu_pro extends React.Component {
             <Option value="Greek">Ελληνικά(GR)</Option>
           </Select>
 
-          <Menu.Item key="mail">
-            <Link to="/login">Σύνδεση</Link>
-          </Menu.Item>
-
-          <Menu.Item key="app">
-            <Link to="/register">Εγγραφή</Link>
+          <Menu.Item style={{ display: 'inline-table' }}>
+            {isAuthenticated ? authLinks : guestLinks}
           </Menu.Item>
         </Menu>
 
@@ -51,4 +82,8 @@ class Right_menu_pro extends React.Component {
   }
 }
 
-export default Right_menu_pro;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(Right_menu_pro);

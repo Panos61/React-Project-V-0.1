@@ -29,7 +29,7 @@ export const loadUser = () => dispatch => {
           type: USER_LOADED,
           payload: res.data
         }),
-      dispatch(clearErrors())
+      dispatch(returnErrors())
     )
 
     .catch(err => {
@@ -87,7 +87,6 @@ export const login = ({ email, password }) => dispatch => {
 
     .catch(err => {
       console.log(err);
-      //localStorage.removeItem('token');
       dispatch(returnErrors(err.message, err.id, 'LOGIN_FAIL'));
       dispatch({
         type: LOGIN_FAIL
@@ -98,6 +97,7 @@ export const login = ({ email, password }) => dispatch => {
 // ** LOGOUT USER **
 export const logout = () => {
   localStorage.removeItem('token');
+  history.push('/');
   return {
     type: LOGOUT_SUCCESS
   };

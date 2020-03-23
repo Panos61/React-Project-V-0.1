@@ -6,7 +6,7 @@ class Message extends Component {
   render() {
     return (
       <div>
-        <Button type="primary" icon={<MessageOutlined />}>
+        <Button type="primary" icon={<MessageOutlined />} disabled>
           Μήνυμα
         </Button>
       </div>

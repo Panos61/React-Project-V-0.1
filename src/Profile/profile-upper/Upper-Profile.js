@@ -12,48 +12,57 @@ import HorizontalTabs from './Horizontal-Tabs';
 import FollowEvents from './FollowEvents';
 import Message from './Message';
 import SettingsBtn from './settings-btn';
+import { loadProfile } from '../../actions/profileActions';
+import store from '../../store';
+import { Provider } from 'react-redux';
 
 class UpperProfile extends Component {
+  componentDidMount() {
+    store.dispatch(loadProfile());
+  }
+
   render() {
     return (
       <div>
-        <Row
-          style={{
-            top: '100px',
-            position: 'relative'
-          }}
-          around="xs"
-        >
-          <Col xs={12} lg={6}>
-            <Row center="xs">
-              <Col xs md={3}>
-                <Avatar size={105} icon={<UserOutlined />} />
-                <div style={{ top: '5vh', position: 'relative' }}>
-                  <Message />
-                  <SettingsBtn />
-                </div>
-              </Col>
-              <Col xs md={3}>
-                <Username />
-                <UserSettings />
-              </Col>
+        <Provider store={store}>
+          <Row
+            style={{
+              top: '100px',
+              position: 'relative'
+            }}
+            around="xs"
+          >
+            <Col xs={12} lg={6}>
+              <Row center="xs">
+                <Col xs md={3}>
+                  <Avatar size={105} icon={<UserOutlined />} />
+                  <div style={{ top: '5vh', position: 'relative' }}>
+                    <Message />
+                    <SettingsBtn />
+                  </div>
+                </Col>
+                <Col xs md={3}>
+                  <Username />
+                  <UserSettings />
+                </Col>
 
-              <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
-                <FollowersView />
-              </Col>
-              <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
-                <EventsUploaded />
-                <FollowEvents />
-              </Col>
+                <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
+                  <FollowersView />
+                </Col>
+                <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
+                  <EventsUploaded />
+                  <FollowEvents />
+                </Col>
 
-              <Col xs={12}>
-                <ProfileBio />
-              </Col>
-              <Divider />
-              <HorizontalTabs />
-            </Row>
-          </Col>
-        </Row>
+                <Col xs={12}>
+                  <ProfileBio />
+                </Col>
+                <Divider />
+                <HorizontalTabs />
+              </Row>
+            </Col>
+          </Row>
+        </Provider>
       </div>
     );
   }
