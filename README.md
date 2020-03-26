@@ -16,6 +16,8 @@
 
 [ ] Profile Edit
 
+[ ] Add Event
+
 [ ] Event SubPages Layout
 
 #### more on the way
