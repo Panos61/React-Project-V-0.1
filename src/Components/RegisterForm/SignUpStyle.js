@@ -18,7 +18,7 @@ class CardRegisterStyle extends Component {
     const title = (
       <h2
         style={{
-          fontFamily: 'fantasy,verdana,san-serif',
+          fontFamily: 'Pacifico, cursive',
           fontSize: '27px',
           color: '#DD4124'
         }}
@@ -35,10 +35,10 @@ class CardRegisterStyle extends Component {
             <div id="parent-register">
               <div className="register-card">
                 <Card title={title} style={{ borderRadius: '4px' }}>
-                  <h4 style={{ fontFamily: 'san-serif' }}>
+                  <h5>
                     Συμπληρώστε τα παρακάτω στοιχεία για την ολοκλήρωση της
                     εγγραφής σας.
-                  </h4>
+                  </h5>
                   <WrappedRegistrationForm />
                 </Card>
               </div>

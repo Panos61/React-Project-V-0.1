@@ -18,9 +18,9 @@ class CardLoginStyle extends Component {
     const title = (
       <h2
         style={{
-          fontFamily: 'fantasy,verdana,san-serif',
+          fontFamily: 'Pacifico, cursive',
           fontSize: '27px',
-          color: '#DD4124' //#43a047
+          color: '#DD4124'
         }}
       >
         Σύνδεση στο EventPark
