@@ -14,7 +14,8 @@ import NotFound from './notfound';
 import store from './store';
 import history from './history';
 
-import { ProtectedRoute } from './protected-route';
+// Private-Protected Route function
+import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
 
@@ -28,7 +29,8 @@ const routing = (
         <Route path="/register" component={CardRegisterStyle} />
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
-        <ProtectedRoute exact path="/profile" component={newprofile} />
+        <PrivateRoute exact path="/profile" component={newprofile} />
+        <PrivateRoute exact path="/addEvent" component={App} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
