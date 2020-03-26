@@ -9,9 +9,12 @@ import CardLoginForm from './Components/LoginForm/LoginFormStyle';
 import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './SubPages-Test/MainHelpPage';
 import newprofile from './Profile/newprofile';
+import NotFound from './notfound';
 
 import store from './store';
 import history from './history';
+
+import { ProtectedRoute } from './protected-route';
 
 import { Provider } from 'react-redux';
 
@@ -25,7 +28,10 @@ const routing = (
         <Route path="/register" component={CardRegisterStyle} />
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
-        <Route path="/profile" component={newprofile} />
+        <ProtectedRoute exact path="/profile" component={newprofile} />
+
+        {/* Not Found route 404*/}
+        <Route path="*" component={NotFound} />
       </Switch>
     </Router>
   </Provider>
