@@ -10,6 +10,7 @@ import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './SubPages-Test/MainHelpPage';
 import newprofile from './Profile/newprofile';
 import NotFound from './notfound';
+import CreateEvent from './CreateEvent/create-event';
 
 import store from './store';
 import history from './history';
@@ -18,6 +19,14 @@ import history from './history';
 import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
+import { USER_LOADED } from './actions/authTypes';
+import Security from './Profile/Security/security';
+
+// Stay authenticated after refreshing page
+const token = localStorage.getItem('token');
+if (token) {
+  store.dispatch({ type: USER_LOADED });
+}
 
 //Added basic Routing for Login/Register/..
 const routing = (
@@ -30,8 +39,8 @@ const routing = (
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={newprofile} />
-        <PrivateRoute exact path="/addEvent" component={App} />
-
+        <PrivateRoute exact path="/createEvent" component={CreateEvent} />
+        <PrivateRoute exact path="/security" component={Security} />
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
       </Switch>

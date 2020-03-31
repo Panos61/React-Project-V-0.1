@@ -4,7 +4,6 @@ import Right_menu_pro from './Right_menu_pro';
 import { AlignRightOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
 import { Link } from 'react-router-dom';
-import App from '../App';
 
 import './pro_navbar.css';
 

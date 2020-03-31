@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { UploadOutlined } from '@ant-design/icons';
-import { Form, Input, InputNumber, Button, Tabs, Upload, message } from 'antd';
-import { createProfile } from '../../../actions/profileActions';
+import {
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  Tabs,
+  Upload,
+  message,
+  Divider
+} from 'antd';
+import { createProfile, updateProfile } from '../../../actions/profileActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -27,6 +37,7 @@ const validateMessages = {
 };
 
 const { TabPane } = Tabs;
+const { TextArea } = Input;
 
 // ** AVATAR UPLOAD **
 const props = {
@@ -53,8 +64,11 @@ class ProfileEdit extends Component {
   };
 
   render() {
+    const { profileData } = this.props.auth;
+
     const onFinish = values => {
-      this.props.createProfile(values);
+      this.props.updateProfile(values);
+      //this.props.createProfile(values);
       console.log(values);
     };
     return (
@@ -78,10 +92,17 @@ class ProfileEdit extends Component {
                   }
                 ]}
               >
-                <Input prefix={<span>@</span>} />
+                <Input
+                  prefix={<span>@</span>}
+                  defaultValue={profileData ? `${profileData.name}` : null}
+                />
               </Form.Item>
               <Form.Item name={['introduction']} label="Περιγραφή">
-                <Input.TextArea placeholder="Εισάγετε μια χαρακτηριστική περιγραφή του Προφίλ σας (εώς 150 χαρακτήρες)" />
+                <TextArea
+                  placeholder={
+                    profileData ? `${profileData.introduction}` : null
+                  }
+                />
               </Form.Item>
               <Form.Item
                 name={['age']}
@@ -94,11 +115,13 @@ class ProfileEdit extends Component {
                   }
                 ]}
               >
-                <InputNumber />
+                <InputNumber
+                  placeholder={profileData ? `${profileData.age}` : null}
+                />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="danger" htmlType="submit">
-                  Αποθήκευση
+                  Αποθήκευση Στοιχείων
                 </Button>
               </Form.Item>
             </Form>
@@ -110,27 +133,24 @@ class ProfileEdit extends Component {
               onFinish={onFinish}
               validateMessages={validateMessages}
             >
-              <Form.Item label="Αλλαγή Προφίλ">
+              <Form.Item label="Αλλαγή Προφίλ :">
                 <Upload {...props}>
                   <Button>
-                    <UploadOutlined /> Click to Upload
+                    <UploadOutlined /> Κάνε κλικ!
                   </Button>
                 </Upload>
               </Form.Item>
-              <Form.Item
-                name={['email']}
-                label="Αλλαγή E-mail"
-                rules={[
-                  {
-                    type: 'email'
-                  }
-                ]}
-              >
-                <Input placeholder="Εισάγετε το νέο σας E-mail" />
+              <Divider />
+
+              <Form.Item>
+                <Button type="danger">
+                  <Link to="/security">Αλλαγή E-mail</Link>
+                </Button>
               </Form.Item>
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="danger" htmlType="submit">
-                  Αποθήκευση
+
+              <Form.Item>
+                <Button type="danger">
+                  <Link to="/security">Αλλαγή κωδικού</Link>
                 </Button>
               </Form.Item>
             </Form>
@@ -142,7 +162,10 @@ class ProfileEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, { createProfile })(ProfileEdit);
+export default connect(mapStateToProps, { createProfile, updateProfile })(
+  ProfileEdit
+);

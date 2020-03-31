@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Menu, Select } from 'antd';
 import { Link, Route } from 'react-router-dom';
-import CardLoginStyle from '../Components/LoginForm/LoginFormStyle';
-import CardRegisterStyle from '../Components/RegisterForm/SignUpStyle';
-import SearchBar from './Search-Bar';
+import CardLoginStyle from '../../Components/LoginForm/LoginFormStyle';
+import CardRegisterStyle from '../../Components/RegisterForm/SignUpStyle';
+//import SearchBar from '../Search-Bar';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Logout from '../Components/Logout';
+import Logout from '../../Components/Logout';
 
 const { Option } = Select;
 

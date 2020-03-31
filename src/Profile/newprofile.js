@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pro_navbar from './Pro_navbar';
+import Pro_navbar from '../Profile/Navbar/Pro_navbar';
 import { HeartFilled } from '@ant-design/icons';
 import { Layout, BackTop } from 'antd';
 

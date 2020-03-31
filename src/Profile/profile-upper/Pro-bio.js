@@ -23,7 +23,10 @@ class ProfileBio extends Component {
                 ? `${profileData.introduction}`
                 : 'Δεν υπάρχει περιγραφή.'}
               <br />
-              {profileData ? `@${profileData.name}` : '@ --'}
+              <div>
+                {profileData ? `@${profileData.name}` : '@ --'}{' '}
+                {profileData ? `(${profileData.age})` : null}
+              </div>
             </p>
           </Paragraph>
         </Typography>

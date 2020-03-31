@@ -36,6 +36,7 @@ class SettingsBtn extends Component {
         </span>
 
         <Modal
+          closable={false}
           visible={visible}
           title="Επεξεργασία"
           onOk={this.handleOk}
