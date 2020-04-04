@@ -22,7 +22,7 @@ class Security extends Component {
     const { user } = this.props.auth;
 
     const layoutSecurity = {
-      marginTop: '10vh'
+      marginTop: '5vh'
     };
 
     return (

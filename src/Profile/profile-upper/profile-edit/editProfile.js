@@ -144,13 +144,7 @@ class ProfileEdit extends Component {
 
               <Form.Item>
                 <Button type="danger">
-                  <Link to="/security">Αλλαγή E-mail</Link>
-                </Button>
-              </Form.Item>
-
-              <Form.Item>
-                <Button type="danger">
-                  <Link to="/security">Αλλαγή κωδικού</Link>
+                  <Link to="/security">Ασφάλεια και Σύνδεση</Link>
                 </Button>
               </Form.Item>
             </Form>

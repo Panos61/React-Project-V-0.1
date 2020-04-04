@@ -9,7 +9,7 @@ class FollowEvents extends Component {
         <Row gutter={16}>
           <Col span={10}>
             <Statistic
-              title="Ακολουθεί Events"
+              title="Ακολουθεί"
               value={0}
               prefix={<CompassOutlined />}
             />

@@ -1,7 +1,7 @@
 import './Upper-Profile.css';
 import React, { Component } from 'react';
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Divider } from 'antd';
+import { Avatar, Divider, Descriptions } from 'antd';
 import { Col, Row } from 'react-flexbox-grid';
 import ProfileBio from './Pro-bio';
 import Username from './Username';
@@ -45,16 +45,23 @@ class UpperProfile extends Component {
                   <Username />
                   <UserSettings />
                 </Col>
+                <Descriptions
+                  column={3}
+                  layout="vertical"
+                  style={{ marginTop: '35px', padding: '50px' }}
+                >
+                  <Descriptions.Item>
+                    <EventsUploaded />
+                  </Descriptions.Item>
+                  <Descriptions.Item>
+                    <FollowersView />
+                  </Descriptions.Item>
+                  <Descriptions.Item>
+                    <FollowEvents />
+                  </Descriptions.Item>
+                </Descriptions>
 
-                <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
-                  <FollowersView />
-                </Col>
-                <Col xsOffset={10} style={{ top: '1vh', position: 'relative' }}>
-                  <EventsUploaded />
-                  <FollowEvents />
-                </Col>
-
-                <Col xs={12}>
+                <Col xs={12} style={{ marginTop: '-55px' }}>
                   <ProfileBio />
                 </Col>
                 <Divider />
