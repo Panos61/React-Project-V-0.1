@@ -10,19 +10,19 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Security extends Component {
-  componentDidMount() {
-    store.dispatch(loadUser());
-  }
+  // componentDidMount() {
+  //   store.dispatch(loadUser());
+  // }
 
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   render() {
     const { user } = this.props.auth;
 
     const layoutSecurity = {
-      marginTop: '5vh'
+      marginTop: '5vh',
     };
 
     return (
@@ -102,8 +102,8 @@ class Security extends Component {
   }
 }
 
-const mapToStateProps = state => ({
-  auth: state.auth
+const mapToStateProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapToStateProps, null)(Security);

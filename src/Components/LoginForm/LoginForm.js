@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { Form, Input, Button, Checkbox, Alert } from 'antd';
-import { Link, withRouter, useHistory, Route } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
 import { connect } from 'react-redux';
@@ -11,17 +11,17 @@ import PropTypes from 'prop-types';
 
 const layout = {
   labelCol: {
-    span: 8
+    span: 8,
   },
   wrapperCol: {
-    span: 16
-  }
+    span: 16,
+  },
 };
 const tailLayout = {
   wrapperCol: {
     offset: 8,
-    span: 16
-  }
+    span: 16,
+  },
 };
 
 class WrappedNormalLoginForm extends Component {
@@ -30,11 +30,11 @@ class WrappedNormalLoginForm extends Component {
     login: PropTypes.func.isRequired,
     error: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   state = {
-    message: null
+    message: null,
   };
 
   componentDidUpdate(prevProps) {
@@ -50,7 +50,7 @@ class WrappedNormalLoginForm extends Component {
   }
 
   render() {
-    const onFinish = values => {
+    const onFinish = (values) => {
       this.props.login(values);
       console.log('Success:', values);
 
@@ -61,7 +61,7 @@ class WrappedNormalLoginForm extends Component {
       // });
     };
 
-    const onFinishFailed = errorInfo => {
+    const onFinishFailed = (errorInfo) => {
       console.warn('Failed:', errorInfo);
     };
 
@@ -70,7 +70,7 @@ class WrappedNormalLoginForm extends Component {
         {...layout}
         name="basic"
         initialValues={{
-          remember: false
+          remember: false,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -90,8 +90,8 @@ class WrappedNormalLoginForm extends Component {
           rules={[
             {
               required: true,
-              message: 'Εισάγετε το E-mail σας!'
-            }
+              message: 'Εισάγετε το E-mail σας!',
+            },
           ]}
         >
           <Input
@@ -106,8 +106,8 @@ class WrappedNormalLoginForm extends Component {
           rules={[
             {
               required: true,
-              message: 'Εισάγετε τον κωδικό σας!'
-            }
+              message: 'Εισάγετε τον κωδικό σας!',
+            },
           ]}
         >
           <Input.Password
@@ -132,10 +132,10 @@ class WrappedNormalLoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
-  auth: state.auth
+  auth: state.auth,
 });
 
 export default compose(

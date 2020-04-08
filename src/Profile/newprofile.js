@@ -14,9 +14,9 @@ import { loadUser } from '../actions/authActions';
 const { Footer } = Layout;
 
 class newprofile extends Component {
-  componentDidMount() {
-    store.dispatch(loadUser());
-  }
+  // componentDidMount() {
+  //   store.dispatch(loadUser());
+  // }
   render() {
     return (
       <div>
@@ -30,7 +30,7 @@ class newprofile extends Component {
             <Footer
               style={{
                 textAlign: 'center',
-                backgroundColor: 'unset'
+                backgroundColor: 'unset',
               }}
             >
               EventPark ©2020 Created with <HeartFilled /> by us!

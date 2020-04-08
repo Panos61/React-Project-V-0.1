@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 class Logout extends Component {
   static propTypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   render() {
@@ -46,8 +46,8 @@ class Logout extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { logout })(Logout);

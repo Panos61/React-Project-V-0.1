@@ -6,9 +6,13 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
 } from '../actions/authTypes';
-import { PROFILE_CREATED, PROFILE_LOADED } from '../actions/profileTypes';
+import {
+  PROFILE_CREATED,
+  PROFILE_LOADED,
+  PROFILE_UPDATED,
+} from '../actions/profileTypes';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -16,23 +20,24 @@ const initialState = {
   isLoading: false,
   user: null,
   profileInitialized: false,
-  profileData: null
+  profileData: null,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     // USER AUTHENTICATION
     case USER_LOADING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case USER_LOADED:
       return {
         ...state,
+        // user: action.payload,
+        ...action.payload,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
@@ -41,7 +46,7 @@ export default function(state = initialState, action) {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        isLoading: false
+        isLoading: false,
       };
     case AUTH_ERROR:
     case LOGIN_FAIL:
@@ -53,22 +58,29 @@ export default function(state = initialState, action) {
         token: null,
         user: null,
         isAuthenticated: false,
-        isLoading: false
+        isLoading: false,
       };
     // PROFILE
     case PROFILE_CREATED:
-      localStorage.getItem('token', action.payload.token);
       return {
         ...state,
         isInitialized: true,
-        profileData: action.payload
+        profileData: action.payload,
+        isAuthenticated: true,
       };
     case PROFILE_LOADED:
-      localStorage.getItem('token', action.payload.token);
       return {
         ...state,
         isInitialized: true,
-        profileData: action.payload
+        profileData: action.payload,
+        isAuthenticated: true,
+      };
+    case PROFILE_UPDATED:
+      return {
+        ...state,
+        isInitialized: true,
+        profileData: action.payload,
+        isAuthenticated: true,
       };
     default:
       return state;

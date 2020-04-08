@@ -10,7 +10,7 @@ import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './SubPages-Test/MainHelpPage';
 import newprofile from './Profile/newprofile';
 import NotFound from './notfound';
-import CreateEvent from './CreateEvent/create-event';
+import CreateEvent from './CreateEvent/index';
 
 import store from './store';
 import history from './history';
