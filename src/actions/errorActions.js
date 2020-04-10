@@ -1,16 +1,16 @@
 import { GET_ERRORS, CLEAR_ERRORS } from './authTypes';
 
 // RETURN ERRORS
-export const returnErrors = (message, status, id = null) => {
+export const returnErrors = (message, id = null) => {
   return {
     type: GET_ERRORS,
-    payload: { message, status, id }
+    payload: { message, id },
   };
 };
 
 // CLEAR ERRORS
 export const clearErrors = () => {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_ERRORS,
   };
 };

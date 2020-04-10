@@ -19,13 +19,22 @@ import history from './history';
 import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
-import { USER_LOADED } from './actions/authTypes';
+import { LOGIN_SUCCESS } from './actions/authTypes';
 import Security from './Profile/Security/security';
 
 // Stay authenticated after refreshing page
-const token = localStorage.getItem('token');
-if (token) {
-  store.dispatch({ type: USER_LOADED });
+// const token = localStorage.getItem('token');
+// if (token) {
+//   store.dispatch({ type: USER_LOADED });
+// }
+
+if (localStorage.token) {
+  localStorage.getItem('token');
+  let user =
+    localStorage.getItem('user') == null
+      ? null
+      : JSON.parse(localStorage.getItem('user'));
+  store.dispatch({ type: LOGIN_SUCCESS, payload: user });
 }
 
 //Added basic Routing for Login/Register/..

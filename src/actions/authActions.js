@@ -1,110 +1,68 @@
 import axios from 'axios';
 import { returnErrors, clearErrors } from './errorActions';
 import {
-  USER_LOADED,
-  USER_LOADING,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  BEFORE_STATE,
 } from './authTypes';
 
 import history from '../history';
 
-// load user
-//export const loadUser = () => (dispatch) => {
-// User loading
-//   dispatch({ type: USER_LOADING });
-//   console.log(getHeaders());
-
-//   axios({
-//     url: '/login',
-//     method: 'get',
-//     headers: getHeaders(),
-//   })
-//     .then(
-//       (res) =>
-//         dispatch({
-//           type: USER_LOADED,
-//           payload: res.data,
-//         }),
-//       dispatch(returnErrors())
-//     )
-
-//     .catch((err) => {
-//       dispatch(returnErrors(err.message, err.status));
-//       console.log(err);
-//       dispatch({
-//         type: AUTH_ERROR,
-//       });
-//     });
-// };
-
 // ** LOGIN USER **
-export const login = ({ email, password }) => (dispatch) => {
+export const login = ({ email, password }) => {
   const body = JSON.stringify({ email, password });
 
-  axios
-    .post('/login', body, getHeaders())
-    .then((res) => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
-      });
-      history.push('/');
-
-      return res.data;
-    })
-    .then(() => {
-      dispatch({ type: USER_LOADED });
-    })
-
-    .catch((err) => {
-      console.log(err);
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE });
+    try {
+      const res = await axios.post('/login', body, getHeaders());
+      let user = res.data;
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+      dispatch({ type: LOGIN_SUCCESS, payload: user });
+      dispatch(clearErrors());
+      setTimeout(() => {
+        history.push('/');
+      }, 500);
+    } catch (err) {
       dispatch(returnErrors(err.message, err.id, 'LOGIN_FAIL'));
       dispatch({
         type: LOGIN_FAIL,
       });
-    });
+    }
+  };
 };
 
 // **REGISTER USER**
-export const register = ({ email, username, password, gender }) => (
-  dispatch
-) => {
-  // Request body
+export const register = ({ email, username, password, gender }) => {
   const body = JSON.stringify({ email, username, password, gender });
-
-  console.log(body);
-  axios
-    .post('/register', body, getHeaders())
-    .then(console.log(body))
-    .then((res) => {
-      // localStorage.setItem('token', res.data.token);
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
-      });
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE });
+    try {
+      await axios.post('/register', body, getHeaders());
+      dispatch({ type: REGISTER_SUCCESS });
+      dispatch(clearErrors());
       history.push('/login');
-    })
-
-    .catch((err) => {
-      console.log(err);
+    } catch (err) {
       dispatch(returnErrors(err.message, err.id, 'REGISTER_FAIL'));
       dispatch({
         type: REGISTER_FAIL,
       });
-    });
+    }
+  };
 };
 
 // ** LOGOUT USER **
 export const logout = () => {
-  localStorage.removeItem('token');
-  history.push('/');
-  return {
-    type: LOGOUT_SUCCESS,
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({ type: LOGOUT_SUCCESS });
+    dispatch(clearErrors());
+    window.localStorage.clear();
+    history.push('/');
   };
 };
 
