@@ -9,14 +9,10 @@ import UpperProfile from './profile-upper/Upper-Profile';
 
 import { Provider } from 'react-redux';
 import store from '../store';
-import { loadUser } from '../actions/authActions';
 
 const { Footer } = Layout;
 
 class newprofile extends Component {
-  // componentDidMount() {
-  //   store.dispatch(loadUser());
-  // }
   render() {
     return (
       <div>

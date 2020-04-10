@@ -3,17 +3,12 @@ import { PageHeader, Tag, Descriptions, Card, Button, Divider } from 'antd';
 import { Row, Col } from 'react-flexbox-grid';
 
 import store from '../../store';
-import { loadUser } from '../../actions/authActions';
 import { Provider } from 'react-redux';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Security extends Component {
-  // componentDidMount() {
-  //   store.dispatch(loadUser());
-  // }
-
   static propTypes = {
     auth: PropTypes.object.isRequired,
   };

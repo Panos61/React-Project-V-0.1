@@ -36,12 +36,17 @@ const authReducer = (state = initialState, action) => {
         user: action.payload,
         isAuthenticated: !isEmpty(action.payload),
       };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.payload,
+      };
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
       return {
         ...state,
-        token: null,
         user: {},
         isAuthenticated: false,
         isLoading: false,
