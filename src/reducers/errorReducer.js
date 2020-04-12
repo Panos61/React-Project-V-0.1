@@ -12,11 +12,13 @@ export default function (state = initialState, action) {
       return {
         message: action.payload.message,
         id: action.payload.id,
+        status: action.payload.status,
       };
     case CLEAR_ERRORS:
       return {
         message: {},
         id: null,
+        status: null,
       };
     default:
       return state;

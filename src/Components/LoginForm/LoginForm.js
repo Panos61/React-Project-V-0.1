@@ -38,11 +38,11 @@ class WrappedNormalLoginForm extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { auth } = this.props;
-    if (auth !== prevProps.auth) {
+    const { error } = this.props;
+    if (error !== prevProps.error) {
       // Check for login error
-      if (auth.status === false) {
-        this.setState({ message: auth.message });
+      if (error.status === 'LOGIN_FAIL') {
+        this.setState({ message: error.message });
       } else {
         this.setState({ message: null });
       }
