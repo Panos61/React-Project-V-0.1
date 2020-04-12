@@ -36,6 +36,24 @@ export const login = ({ email, password }) => {
   };
 };
 
+// ** ALTERNATIVE SOLUTION
+
+// export const login = ({ email, password }) => (dispatch) => {
+//   const body = JSON.stringify({ email, password });
+
+//   axios.post('/login', body, getHeaders()).then((res) => {
+//     dispatch({
+//       type: LOGIN_SUCCESS,
+//       payload: res.data,
+//     });
+//     localStorage.setItem('token', res.data.token);
+//     localStorage.setItem('user', JSON.stringify(res.data.user));
+
+//     history.push('/');
+//     return res.data;
+//   });
+// };
+
 // **REGISTER USER**
 export const register = ({ email, username, password, gender }) => {
   const body = JSON.stringify({ email, username, password, gender });

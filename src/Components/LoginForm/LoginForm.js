@@ -53,12 +53,6 @@ class WrappedNormalLoginForm extends Component {
     const onFinish = (values) => {
       this.props.login(values);
       console.log('Success:', values);
-
-      // axios.interceptors.response.use(function(response) {
-      //   if (response.status == 'tr') {
-      //     console.log('hey');
-      //   }
-      // });
     };
 
     const onFinishFailed = (errorInfo) => {
