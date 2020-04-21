@@ -12,13 +12,15 @@
 
 [x] Login State with Redux
 
+[x] Add Event
+
 ## Things to be done:
 
 [ ] Profile Edit
 
-[ ] Add Event
-
 [ ] Event SubPages Layout
+
+[ ] Update Main Page
 
 #### more on the way
 
