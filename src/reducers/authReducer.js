@@ -7,19 +7,14 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
 } from '../actions/authTypes';
-import {
-  PROFILE_CREATED,
-  PROFILE_LOADED,
-  PROFILE_UPDATED,
-} from '../actions/profileTypes';
+import { PROFILE_INITIATED, PROFILE_UPDATED } from '../actions/profileTypes';
 import isEmpty from 'lodash/isEmpty';
 
 export const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: {},
-  profileInitialized: false,
-  profileData: null,
+  profileData: {},
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -52,26 +47,18 @@ const authReducer = (state = initialState, action) => {
         isLoading: false,
       };
     // PROFILE
-    case PROFILE_CREATED:
+    case PROFILE_INITIATED:
       return {
         ...state,
-        isInitialized: true,
         profileData: action.payload,
+        isLoading: false,
         isAuthenticated: true,
       };
-    case PROFILE_LOADED:
-      return {
-        ...state,
-        isInitialized: true,
-        profileData: action.payload,
-        isAuthenticated: true,
-      };
+
     case PROFILE_UPDATED:
       return {
         ...state,
-        isInitialized: true,
         profileData: action.payload,
-        isAuthenticated: true,
       };
     default:
       return state;

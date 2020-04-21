@@ -12,15 +12,11 @@ import HorizontalTabs from './Horizontal-Tabs';
 import FollowEvents from './FollowEvents';
 import Message from './Message';
 import SettingsBtn from './settings-btn';
-import { loadProfile } from '../../actions/profileActions';
+
 import store from '../../store';
 import { Provider } from 'react-redux';
 
 class UpperProfile extends Component {
-  componentDidMount() {
-    store.dispatch(loadProfile());
-  }
-
   render() {
     return (
       <div>
@@ -28,7 +24,7 @@ class UpperProfile extends Component {
           <Row
             style={{
               top: '100px',
-              position: 'relative'
+              position: 'relative',
             }}
             around="xs"
           >

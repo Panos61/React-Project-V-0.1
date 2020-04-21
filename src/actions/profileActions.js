@@ -1,51 +1,51 @@
 import axios from 'axios';
-import {
-  PROFILE_CREATED,
-  PROFILE_LOADED,
-  PROFILE_UPDATED
-} from './profileTypes';
-import { returnErrors } from './errorActions';
+import { PROFILE_INITIATED, PROFILE_UPDATED } from './profileTypes';
+import { returnErrors, clearErrors } from './errorActions';
 
-export const loadProfile = () => dispatch => {
-  // Profile loaded
-  axios({
-    url: '/profile',
-    method: 'get'
-    //headers: getHeaders()
-  })
-    .then(
-      res =>
-        dispatch({
-          type: PROFILE_LOADED,
-          payload: res.data
-        }),
-      dispatch(returnErrors())
-    )
-    .catch(err => {
-      console.warn(err);
-    });
-};
+// export const loadProfile = () => (dispatch) => {
+//   // Profile loaded
+//   axios({
+//     url: '/profile',
+//     method: 'get',
+//   })
+//     .then(
+//       (res) =>
+//         dispatch({
+//           payload: res.data,
+//         }),
+//       dispatch(returnErrors())
+//     )
+//     .catch((err) => {
+//       console.warn(err);
+//     });
+// };
 
-export const createProfile = ({ name, introduction, age }) => dispatch => {
-  // Request body
+export const initProfile = ({ name, introduction, age }) => {
   const body = JSON.stringify({ name, introduction, age });
-  axios
-    .post('/profile', body)
-    .then(res => dispatch({ type: PROFILE_CREATED, payload: res.data }))
-    .then(console.log(body))
-    .catch(err => {
-      console.warn(err);
-    });
+
+  return async (dispatch) => {
+    try {
+      const res = await axios.patch('/profile', body);
+      let profileData = res.data;
+
+      localStorage.setItem('profileData', JSON.stringify(res.data.profileData));
+      dispatch({ type: PROFILE_INITIATED, payload: res.data.profileData });
+      dispatch(clearErrors());
+      console.log(body);
+    } catch (err) {
+      dispatch(returnErrors(err.message));
+    }
+  };
 };
 
-export const updateProfile = ({ name, introduction, age }) => dispatch => {
+export const updateProfile = ({ name, introduction, age }) => (dispatch) => {
   // Request body
   const body = JSON.stringify({ name, introduction, age });
   axios
     .put('/profile', body)
-    .then(res => dispatch({ type: PROFILE_UPDATED, payload: res.data }))
+    .then((res) => dispatch({ type: PROFILE_UPDATED, payload: res.data }))
     .then(console.log(body))
-    .catch(err => {
+    .catch((err) => {
       console.warn(err);
     });
 };

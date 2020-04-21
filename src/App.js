@@ -23,6 +23,7 @@ class App extends Component {
               <Navbar />
               <Search />
               <HorizontalSider />
+
               <BackTop />
               <Cities />
             </section>

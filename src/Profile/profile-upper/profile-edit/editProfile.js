@@ -9,31 +9,31 @@ import {
   Tabs,
   Upload,
   message,
-  Divider
+  Divider,
 } from 'antd';
-import { createProfile, updateProfile } from '../../../actions/profileActions';
+import { initProfile, updateProfile } from '../../../actions/profileActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const layout = {
   labelCol: {
-    span: 8
+    span: 8,
   },
   wrapperCol: {
-    span: 16
-  }
+    span: 16,
+  },
 };
 const validateMessages = {
   required: 'This field is required!',
   types: {
     email: 'Not a validate email!',
     number: 'Not a validate number!',
-    pattern: 'ddd'
+    pattern: 'ddd',
   },
   number: {
-    range: '12 εώς 75 χρονών!'
-  }
+    range: '12 εώς 75 χρονών!',
+  },
 };
 
 const { TabPane } = Tabs;
@@ -44,7 +44,7 @@ const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   headers: {
-    authorization: 'authorization-text'
+    authorization: 'authorization-text',
   },
   onChange(info) {
     if (info.file.status !== 'uploading') {
@@ -55,20 +55,19 @@ const props = {
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} file upload failed.`);
     }
-  }
+  },
 };
 
 class ProfileEdit extends Component {
   static propTypes = {
-    profileData: PropTypes.object.isRequired
+    profileData: PropTypes.object.isRequired,
   };
 
   render() {
     const { profileData } = this.props.auth;
 
-    const onFinish = values => {
-      this.props.updateProfile(values);
-      //this.props.createProfile(values);
+    const onFinish = (values) => {
+      this.props.initProfile(values);
       console.log(values);
     };
     return (
@@ -87,9 +86,9 @@ class ProfileEdit extends Component {
                 rules={[
                   {
                     min: 4,
-                    max: 9
+                    max: 9,
                     //pattern: /^[a-z]{3,}?[_.]{1}$/
-                  }
+                  },
                 ]}
               >
                 <Input
@@ -111,8 +110,8 @@ class ProfileEdit extends Component {
                   {
                     type: 'number',
                     min: 12,
-                    max: 79
-                  }
+                    max: 79,
+                  },
                 ]}
               >
                 <InputNumber
@@ -155,11 +154,11 @@ class ProfileEdit extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { createProfile, updateProfile })(
+export default connect(mapStateToProps, { initProfile, updateProfile })(
   ProfileEdit
 );

@@ -20,7 +20,6 @@ import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Delete from './modal_content/delete';
-import Form from 'antd/lib/form/Form';
 
 const { Footer } = Layout;
 

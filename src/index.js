@@ -21,6 +21,7 @@ import PrivateRoute from './PrivateRoute';
 import { Provider } from 'react-redux';
 import { LOGIN_SUCCESS } from './actions/authTypes';
 import Security from './Profile/Security/security';
+import { PROFILE_INITIATED } from './actions/profileTypes';
 
 // Stay authenticated after refreshing page
 if (localStorage.token) {
@@ -30,6 +31,12 @@ if (localStorage.token) {
       ? null
       : JSON.parse(localStorage.getItem('user'));
   store.dispatch({ type: LOGIN_SUCCESS, payload: user });
+
+  let profileData =
+    localStorage.getItem('profileData') == null
+      ? null
+      : JSON.parse(localStorage.getItem('profileData'));
+  store.dispatch({ type: PROFILE_INITIATED, payload: profileData });
 }
 
 //Added basic Routing for Login/Register/..
@@ -43,7 +50,7 @@ const routing = (
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={newprofile} />
-        <PrivateRoute exact path="/createEvent" component={CreateEvent} />
+        <Route exact path="/createEvent" component={CreateEvent} />
         <PrivateRoute exact path="/security" component={Security} />
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
