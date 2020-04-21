@@ -22,6 +22,7 @@ import { Provider } from 'react-redux';
 import { LOGIN_SUCCESS } from './actions/authTypes';
 import Security from './Profile/Security/security';
 import { PROFILE_INITIATED } from './actions/profileTypes';
+import Success from './CreateEvent/success';
 
 // Stay authenticated after refreshing page
 if (localStorage.token) {
@@ -51,6 +52,7 @@ const routing = (
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={newprofile} />
         <Route exact path="/createEvent" component={CreateEvent} />
+        <PrivateRoute exact path="/event-success" component={Success} />
         <PrivateRoute exact path="/security" component={Security} />
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />

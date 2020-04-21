@@ -10,8 +10,16 @@ import {
   DatePicker,
   Upload,
   TreeSelect,
+  Switch,
 } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import {
+  UploadOutlined,
+  InfoCircleOutlined,
+  CloseOutlined,
+  CheckOutlined,
+} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import Success from './success';
 
 const layout = {
   labelCol: {
@@ -45,7 +53,11 @@ class MasterForm extends Component {
         <Form {...layout} onFinish={onFinish}>
           <Card
             title="Βήμα 1ο - Γενικά"
-            extra={<a href="#">More</a>}
+            extra={
+              <Link to="/help">
+                <InfoCircleOutlined />
+              </Link>
+            }
             style={{ borderColor: '#d9f7be' }}
           >
             <Meta description="Γενικά" />
@@ -104,7 +116,11 @@ class MasterForm extends Component {
           </Card>
           <Card
             title="Βήμα 3ο - Ημερομηνία"
-            extra={<a href="#">More</a>}
+            extra={
+              <Link to="/help">
+                <InfoCircleOutlined />
+              </Link>
+            }
             style={{
               marginTop: '5vh',
               borderColor: '#b5f5ec',
@@ -131,13 +147,42 @@ class MasterForm extends Component {
               </TreeSelect>
             </Form.Item>
           </Card>
+          <Card
+            title="Βήμα 5ο - Επιπρόσθετα"
+            extra={
+              <Link to="/help">
+                <InfoCircleOutlined />
+              </Link>
+            }
+            style={{
+              marginTop: '5vh',
+              borderColor: '#ffccc7',
+            }}
+          >
+            <Meta description="Επιπρόσθετα" />
+            <Form.Item label="Σχόλια οργανωτή" name="comments">
+              <TextArea rows={2} />
+            </Form.Item>
+            <Form.Item label="Άνω των 18" name="age-restricted">
+              <Switch
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+              />
+            </Form.Item>
+            <Form.Item label="Πληρωμή" name="payment">
+              <Switch
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+              />
+            </Form.Item>
+          </Card>
           <Form.Item {...tailLayout}>
             <Button
               htmlType="submit"
-              type="danger"
+              type="primary"
               style={{ marginTop: '15px' }}
             >
-              Επιβεβαίωση
+              <Link to="/event-success">Επιβεβαίωση</Link>
             </Button>
           </Form.Item>
         </Form>
