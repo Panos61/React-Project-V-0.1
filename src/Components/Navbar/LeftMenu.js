@@ -24,13 +24,13 @@ class LeftMenu extends Component {
             Διασκέδαση
           </Link>
         </Menu.Item>
+        <Menu.Item>
+          <Link to="/" style={{ color: '#fa541c' }}>
+            Σινεμά
+          </Link>
+        </Menu.Item>
         <SubMenu title={<span style={{ color: 'grey' }}>Λοιπά</span>}>
           <MenuItemGroup title="Κατηγορίες">
-            <Menu.Item key="setting:1">
-              <Link to="/" style={{ color: '#fa541c' }}>
-                Σινεμά
-              </Link>
-            </Menu.Item>
             <Menu.Item key="setting:2">
               <Link to="/" style={{ color: '#faad14' }}>
                 Τέχνες
