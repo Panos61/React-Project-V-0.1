@@ -12,6 +12,7 @@ import {
   TreeSelect,
   Switch,
 } from 'antd';
+import moment from 'moment';
 import {
   UploadOutlined,
   InfoCircleOutlined,
@@ -19,7 +20,6 @@ import {
   CheckOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import Success from './success';
 
 const layout = {
   labelCol: {
@@ -41,12 +41,42 @@ const { Option } = Select;
 const { TextArea } = Input;
 const { Meta } = Card;
 const { TreeNode } = TreeSelect;
+const dateFormat = 'YYYY/MM/DD';
+const { RangePicker } = DatePicker;
 
 const onFinish = (values) => {
   console.log(values);
 };
 
 class MasterForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: true };
+  }
+
+  state = {
+    value: 'single',
+    render: false,
+  };
+
+  onClickReRender = (render) => {
+    this.setState({ render });
+    if (render === false) {
+      this.setState({ show: true });
+    } else if (render === true) {
+      this.setState({ show: false });
+    }
+  };
+
+  onChange = (value) => {
+    this.setState({ value });
+    if (value === 'single') {
+      this.setState({ show: true });
+    } else if (value === 'festival') {
+      this.setState({ show: false });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -138,13 +168,38 @@ class MasterForm extends Component {
               ]}
             >
               <TreeSelect
+                onChange={this.onChange}
                 placeholder="Είδος Event"
                 allowClear
                 treeDefaultExpandAll
+                defaultValue={this.state.value}
+                //onTreeExpand={this.onClickReRender}
               >
                 <TreeNode value="single" title="Μονό" />
                 <TreeNode value="festival" title="Φεστιβάλ" />
               </TreeSelect>
+            </Form.Item>
+            <Form.Item
+              label="Ημερομηνία"
+              name="date"
+              rules={[
+                {
+                  required: true,
+                  message: 'Επιλέξτε χρονικό είδος Event!',
+                },
+              ]}
+            >
+              {this.state.show ? (
+                <DatePicker
+                  defaultValue={moment('2015/01/01', dateFormat)}
+                  format={dateFormat}
+                />
+              ) : (
+                <RangePicker
+                  showTime={{ format: 'HH:mm' }}
+                  format="YYYY-MM-DD HH:mm"
+                />
+              )}
             </Form.Item>
           </Card>
           <Card
