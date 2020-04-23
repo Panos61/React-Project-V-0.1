@@ -9,18 +9,18 @@ import './pro_navbar.css';
 
 class Pro_navbar extends Component {
   state = {
-    visible: false
+    visible: false,
   };
 
   showDrawer = () => {
     this.setState({
-      visible: true
+      visible: true,
     });
   };
 
   onClose = () => {
     this.setState({
-      visible: false
+      visible: false,
     });
   };
 
@@ -31,12 +31,13 @@ class Pro_navbar extends Component {
           <Link
             to="/"
             style={{
-              color: '#2E8B57',
-              fontSize: '26px',
-              fontFamily: 'Cookie, cursive'
+              color: 'teal',
+              fontSize: '22px',
+              fontFamily: 'Pacifico, cursive',
             }}
           >
-            EventPark
+            Event
+            <span style={{ color: 'brown' }}>Park</span>
           </Link>
         </div>
         <div className="menu__container">
@@ -69,7 +70,7 @@ class Pro_navbar extends Component {
                 marginLeft: '23px',
                 fontSize: '20px',
                 top: '25px',
-                position: 'relative'
+                position: 'relative',
               }}
             >
               EventPark

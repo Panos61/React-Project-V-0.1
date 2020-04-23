@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CompassOutlined } from '@ant-design/icons';
+//import { CompassOutlined } from '@ant-design/icons';
 import { Statistic, Row, Col } from 'antd';
 
 class FollowEvents extends Component {
@@ -8,11 +8,8 @@ class FollowEvents extends Component {
       <div>
         <Row gutter={16}>
           <Col span={10}>
-            <Statistic
-              title="Ακολουθεί"
-              value={0}
-              prefix={<CompassOutlined />}
-            />
+            <Statistic title="Ακολουθεί" value={0} />
+            {/* prefix={<CompassOutlined />} */}
           </Col>
         </Row>
       </div>

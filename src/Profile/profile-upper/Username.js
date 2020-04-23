@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 class Username extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   render() {
@@ -20,7 +20,7 @@ class Username extends Component {
           level={2}
           style={{
             fontFamily: 'Georgia',
-            fontWeight: 'initial'
+            fontWeight: 'initial',
           }}
         >
           <span>{user ? `${user.username}` : null}</span>
@@ -31,8 +31,8 @@ class Username extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, null)(Username);

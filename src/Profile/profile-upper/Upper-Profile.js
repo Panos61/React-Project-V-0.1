@@ -30,38 +30,57 @@ class UpperProfile extends Component {
           >
             <Col xs={12} lg={6}>
               <Row center="xs">
-                <Col xs md={3}>
+                <Col xs md={3} style={{ position: 'relative', right: '6%' }}>
                   <Avatar size={105} icon={<UserOutlined />} />
-                  <div style={{ top: '5vh', position: 'relative' }}>
-                    <Message />
+                  <div style={{ top: '2vh', position: 'relative' }}>
                     <SettingsBtn />
                   </div>
                 </Col>
-                <Col xs md={3}>
+                <Col xs md={3} style={{ position: 'relative', right: '7%' }}>
                   <Username />
-                  <UserSettings />
+                  <div style={{ display: 'block' }}>
+                    <UserSettings />
+                    <div style={{ marginTop: '10px' }}>
+                      <Message />
+                    </div>
+                  </div>
                 </Col>
-                <Descriptions
-                  column={3}
-                  layout="vertical"
-                  style={{ marginTop: '35px', padding: '50px' }}
+                <Row
+                  style={{
+                    marginBottom: '35px',
+                    marginTop: '50px',
+                    fontSize: '2px',
+                    display: 'inline-block',
+                  }}
                 >
-                  <Descriptions.Item>
-                    <EventsUploaded />
-                  </Descriptions.Item>
-                  <Descriptions.Item>
-                    <FollowersView />
-                  </Descriptions.Item>
-                  <Descriptions.Item>
-                    <FollowEvents />
-                  </Descriptions.Item>
-                </Descriptions>
+                  <Col lg={12} lgOffset={1}>
+                    <Descriptions
+                      column={3}
+                      layout="horizontal"
+                      style={{
+                        margin: '2px',
+                      }}
+                    >
+                      <Descriptions.Item>
+                        <EventsUploaded />
+                      </Descriptions.Item>
+                      <Descriptions.Item>
+                        <FollowersView />
+                      </Descriptions.Item>
+                      <Descriptions.Item>
+                        <FollowEvents />
+                      </Descriptions.Item>
+                    </Descriptions>
+                  </Col>
+                </Row>
 
-                <Col xs={12} style={{ marginTop: '-55px' }}>
+                <Col xs={12} style={{ marginTop: '-72px' }}>
                   <ProfileBio />
                 </Col>
                 <Divider />
-                <HorizontalTabs />
+                <div style={{ marginTop: '-30px' }}>
+                  <HorizontalTabs />
+                </div>
               </Row>
             </Col>
           </Row>

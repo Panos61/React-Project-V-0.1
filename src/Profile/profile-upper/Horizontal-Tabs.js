@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { FireOutlined, ShareAltOutlined } from '@ant-design/icons';
-import { Tabs, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Tabs } from 'antd';
+//import { Link } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 
-const operations = (
-  <Button style={{ marginLeft: '5vh', color: '#7cb305' }}>
-    <Link to="/">EventPark</Link>
-  </Button>
-);
+// const operations = (
+//   <Button style={{ marginLeft: '5vh', color: '#7cb305' }}>
+//     <Link to="/">EventPark</Link>
+//   </Button>
+// );
 
 class HorizontalTabs extends Component {
   render() {
     return (
       <div>
-        <Tabs tabBarExtraContent={operations} size="default">
+        {/* tabBarExtraContent={operations}  */}
+        <Tabs size="default">
           <TabPane
             tab={
               <span>
                 <FireOutlined />
-                Activity
+                Δραστηριότητα
               </span>
             }
             key="1"
@@ -54,7 +55,7 @@ class HorizontalTabs extends Component {
             tab={
               <span>
                 <ShareAltOutlined />
-                Share
+                Δημοσιεύσεις
               </span>
             }
             key="2"
