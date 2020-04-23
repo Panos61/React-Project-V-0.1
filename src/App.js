@@ -18,10 +18,10 @@ class App extends Component {
     return (
       <div>
         <Provider store={store}>
-          <Navbar />
-          <Search />
           <div className="main-page_style">
+            <Navbar />
             <section>
+              <Search />
               <HorizontalSider />
 
               <BackTop />

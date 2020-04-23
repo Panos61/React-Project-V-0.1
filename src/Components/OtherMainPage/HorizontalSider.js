@@ -6,7 +6,7 @@ import {
   InfoCircleOutlined,
   PlusOutlined,
   RiseOutlined,
-  ScheduleOutlined
+  ScheduleOutlined,
 } from '@ant-design/icons';
 
 import { Layout, Menu } from 'antd';
@@ -17,10 +17,10 @@ const { SubMenu } = Menu;
 
 class HorizontalSider extends Component {
   state = {
-    collapsed: false
+    collapsed: false,
   };
 
-  onCollapse = collapsed => {
+  onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({ collapsed });
   };
@@ -38,12 +38,23 @@ class HorizontalSider extends Component {
               <EnvironmentOutlined />
               <span>Τοποθεσία</span>
             </Menu.Item>
-            <Menu.Item key="2">
+            {/* <Menu.Item key="2">
               <RiseOutlined />
               <span>Δημοφιλές</span>
+            </Menu.Item> */}
+            <Menu.Item key="6">
+              <PlusOutlined />
+              <Link to="/createEvent" style={{ display: 'inline' }}>
+                Προσθήκη
+              </Link>
             </Menu.Item>
-
-            <SubMenu
+            <Menu.Item key="7">
+              <HomeOutlined />
+              <Link to="/profile" style={{ display: 'inline' }}>
+                Προφίλ
+              </Link>
+            </Menu.Item>
+            {/* <SubMenu
               key="sub2"
               title={
                 <span>
@@ -64,7 +75,7 @@ class HorizontalSider extends Component {
                   Τοίχος
                 </Link>
               </Menu.Item>
-            </SubMenu>
+            </SubMenu> */}
             <Menu.Item key="9">
               <InfoCircleOutlined />
               <Link to="/help" style={{ display: 'inline' }}>
