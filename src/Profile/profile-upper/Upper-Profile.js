@@ -30,7 +30,7 @@ class UpperProfile extends Component {
           >
             <Col xs={12} lg={6}>
               <Row center="xs">
-                <Col xs md={3} style={{ position: 'relative', right: '6%' }}>
+                <Col xs md={3} style={{ position: 'relative', right: '3.5%' }}>
                   <Avatar size={105} icon={<UserOutlined />} />
                   <div style={{ top: '2vh', position: 'relative' }}>
                     <SettingsBtn />
@@ -45,10 +45,15 @@ class UpperProfile extends Component {
                     </div>
                   </div>
                 </Col>
+
+                <Col xs={12} style={{ marginBottom: '-15px' }}>
+                  <ProfileBio />
+                </Col>
+                <Divider />
                 <Row
                   style={{
-                    marginBottom: '35px',
-                    marginTop: '50px',
+                    marginBottom: '-25px',
+                    marginTop: '-5px',
                     fontSize: '2px',
                     display: 'inline-block',
                   }}
@@ -73,12 +78,8 @@ class UpperProfile extends Component {
                     </Descriptions>
                   </Col>
                 </Row>
-
-                <Col xs={12} style={{ marginTop: '-72px' }}>
-                  <ProfileBio />
-                </Col>
                 <Divider />
-                <div style={{ marginTop: '-30px' }}>
+                <div style={{ marginTop: '-10px' }}>
                   <HorizontalTabs />
                 </div>
               </Row>
