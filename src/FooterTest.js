@@ -3,7 +3,7 @@ import {
   FacebookFilled,
   HeartFilled,
   InstagramFilled,
-  TwitterOutlined
+  TwitterOutlined,
 } from '@ant-design/icons';
 import { Layout, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,7 @@ class FooterMain extends React.Component {
           style={{
             textAlign: 'center',
             width: '100%',
-            backgroundColor: '#fff2e8'
+            backgroundColor: '#fff2e8',
           }}
         >
           <Row
@@ -65,7 +65,7 @@ class FooterMain extends React.Component {
             </Col>
           </Row>
           <Row type="flex" justify="start" style={{ marginTop: '-5px' }}>
-            <Col span={6} push={4}>
+            <Col push={4}>
               <p style={{ fontFamily: 'cursive' }}>
                 <br /> Ακολουθήστε μας!
               </p>
