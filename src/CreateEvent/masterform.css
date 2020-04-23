@@ -1,0 +1,12 @@
+.event-payment-box {
+  padding: 30px;
+  border: 0.5px solid rgba(50, 116, 116, 0.233);
+  border-radius: 4px;
+  margin-top: 5px;
+  margin: 20px;
+  width: auto;
+}
+
+.select-after {
+  width: 80px;
+}

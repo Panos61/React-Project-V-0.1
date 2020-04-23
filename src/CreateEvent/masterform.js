@@ -11,13 +11,16 @@ import {
   Upload,
   TreeSelect,
   Switch,
+  InputNumber,
 } from 'antd';
+import './masterform.css';
 import moment from 'moment';
 import {
   UploadOutlined,
   InfoCircleOutlined,
   CloseOutlined,
   CheckOutlined,
+  CreditCardOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -37,12 +40,23 @@ const tailLayout = {
   },
 };
 
+// time format
+const format = 'HH:mm';
+
 const { Option } = Select;
 const { TextArea } = Input;
 const { Meta } = Card;
 const { TreeNode } = TreeSelect;
 const dateFormat = 'YYYY/MM/DD';
 const { RangePicker } = DatePicker;
+
+// Ticket store link input
+// const selectAfter = (
+//   <Select defaultValue=".gr" className="select-after">
+//     <Option value=".gr">.gr</Option>
+//     <Option value=".com">.com</Option>
+//   </Select>
+// );
 
 const onFinish = (values) => {
   console.log(values);
@@ -52,20 +66,12 @@ class MasterForm extends Component {
   constructor(props) {
     super(props);
     this.state = { show: true };
+    this.state = { payment: false };
   }
 
   state = {
     value: 'single',
-    render: false,
-  };
-
-  onClickReRender = (render) => {
-    this.setState({ render });
-    if (render === false) {
-      this.setState({ show: true });
-    } else if (render === true) {
-      this.setState({ show: false });
-    }
+    checked: false,
   };
 
   onChange = (value) => {
@@ -74,6 +80,15 @@ class MasterForm extends Component {
       this.setState({ show: true });
     } else if (value === 'festival') {
       this.setState({ show: false });
+    }
+  };
+
+  paymentChange = (checked) => {
+    this.setState({ checked });
+    if (checked === false) {
+      this.setState({ payment: false });
+    } else if (checked === true) {
+      this.setState({ payment: true });
     }
   };
 
@@ -173,7 +188,6 @@ class MasterForm extends Component {
                 allowClear
                 treeDefaultExpandAll
                 defaultValue={this.state.value}
-                //onTreeExpand={this.onClickReRender}
               >
                 <TreeNode value="single" title="Μονό" />
                 <TreeNode value="festival" title="Φεστιβάλ" />
@@ -201,6 +215,18 @@ class MasterForm extends Component {
                 />
               )}
             </Form.Item>
+            {this.state.show ? (
+              <Form.Item
+                label="Ώρα έναρξης"
+                name="single-time"
+                rules={[{ required: true, message: 'Επιλέξτε ώρα Event!' }]}
+              >
+                <TimePicker
+                  defaultValue={moment('12:00', format)}
+                  format={format}
+                />
+              </Form.Item>
+            ) : null}
           </Card>
           <Card
             title="Βήμα 5ο - Επιπρόσθετα"
@@ -224,12 +250,69 @@ class MasterForm extends Component {
                 unCheckedChildren={<CloseOutlined />}
               />
             </Form.Item>
-            <Form.Item label="Πληρωμή" name="payment">
+            <Form.Item
+              label="Πληρωμή"
+              name="payment"
+              rules={[
+                {
+                  required: true,
+                  message: 'Επιλέξτε τρόπο εισόδου!',
+                },
+              ]}
+            >
               <Switch
+                onChange={this.paymentChange}
                 checkedChildren={<CheckOutlined />}
                 unCheckedChildren={<CloseOutlined />}
               />
             </Form.Item>
+            {this.state.payment ? (
+              <Form.Item
+                label="Στοιχεία πληρωμής"
+                name="payment-info"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Συμπληρώστε τα στοιχεία πληρωμής του Event!',
+                  },
+                ]}
+              >
+                <div className="event-payment-box">
+                  <div style={{ position: 'absolute', top: '9%', left: '9%' }}>
+                    <CreditCardOutlined />
+                  </div>
+                  <Form.Item
+                    label="Ποσό"
+                    name="price"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Εισάγετε ποσό πληρωμής!',
+                      },
+                    ]}
+                  >
+                    <InputNumber />
+                  </Form.Item>
+                  <Form.Item
+                    label="URL αγοράς εισητηρίων"
+                    name="tickets"
+                    rules={[
+                      {
+                        required: false,
+                      },
+                    ]}
+                  >
+                    <div style={{ marginBottom: 16 }}>
+                      <Input
+                        addonBefore="http://"
+                        //addonAfter={selectAfter}
+                        placeholder="Εισάγετε link"
+                      />
+                    </div>
+                  </Form.Item>
+                </div>
+              </Form.Item>
+            ) : null}
           </Card>
           <Form.Item {...tailLayout}>
             <Button
@@ -237,7 +320,8 @@ class MasterForm extends Component {
               type="primary"
               style={{ marginTop: '15px' }}
             >
-              <Link to="/event-success">Επιβεβαίωση</Link>
+              {/* <Link to="/event-success">Επιβεβαίωση</Link> */}
+              Επιβεβαίωση
             </Button>
           </Form.Item>
         </Form>

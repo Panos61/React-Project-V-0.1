@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PageHeader, Button, BackTop, Card } from 'antd';
+import { PageHeader, Button, BackTop, Card, Affix, Progress } from 'antd';
 import './index-event.css';
 import MasterForm from './masterform';
 import FooterMain from '../FooterTest';
@@ -11,7 +11,7 @@ class CreateEvent extends Component {
   render() {
     const description = (
       <p>
-        Υπολογιζόμενος χρόνος ολοκλήρωσης: 6 λεπτά {''}
+        Υπολογιζόμενος χρόνος ολοκλήρωσης: 8 λεπτά {''}
         <span>
           <ClockCircleOutlined />
         </span>
@@ -30,6 +30,15 @@ class CreateEvent extends Component {
             </Button>,
           ]}
         />
+        {/* <Affix>
+          <Progress
+            strokeColor={{
+              '0%': '#108ee9',
+              '100%': '#87d068',
+            }}
+            percent={99.9}
+          />
+        </Affix> */}
         <section id="create-event-page">
           <div id="create-event-parent">
             <div className="create-event-card">
