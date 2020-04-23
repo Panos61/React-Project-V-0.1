@@ -16,11 +16,10 @@
 
 ## Things to be done:
 
-[ ] Profile Edit
+[ ] Profile Content Input
 
 [ ] Event SubPages Layout
 
-[ ] Update Main Page
 
 #### more on the way
 
