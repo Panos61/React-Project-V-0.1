@@ -7,7 +7,7 @@ const { Paragraph } = Typography;
 
 class ProfileBio extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   render() {
@@ -35,8 +35,8 @@ class ProfileBio extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, null)(ProfileBio);
