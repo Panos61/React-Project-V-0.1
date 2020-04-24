@@ -10,3 +10,8 @@
 .select-after {
   width: 80px;
 }
+
+.example-input > span {
+  width: 200px;
+  margin: 0 8px 8px 0;
+}

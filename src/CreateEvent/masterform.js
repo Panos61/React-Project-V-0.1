@@ -21,6 +21,7 @@ import {
   CloseOutlined,
   CheckOutlined,
   CreditCardOutlined,
+  YoutubeFilled,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -49,14 +50,6 @@ const { Meta } = Card;
 const { TreeNode } = TreeSelect;
 const dateFormat = 'YYYY/MM/DD';
 const { RangePicker } = DatePicker;
-
-// Ticket store link input
-// const selectAfter = (
-//   <Select defaultValue=".gr" className="select-after">
-//     <Option value=".gr">.gr</Option>
-//     <Option value=".com">.com</Option>
-//   </Select>
-// );
 
 const onFinish = (values) => {
   console.log(values);
@@ -103,7 +96,7 @@ class MasterForm extends Component {
                 <InfoCircleOutlined />
               </Link>
             }
-            style={{ borderColor: '#d9f7be' }}
+            style={{ borderColor: '#bae637' }}
           >
             <Meta description="Γενικά" />
             <Form.Item
@@ -160,6 +153,20 @@ class MasterForm extends Component {
             </Form.Item>
           </Card>
           <Card
+            title="Βήμα 2ο - Τοποθεσία"
+            extra={
+              <Link to="/help">
+                <InfoCircleOutlined />
+              </Link>
+            }
+            style={{
+              marginTop: '5vh',
+              borderColor: '#ffa940',
+            }}
+          >
+            <Meta description="Τοποθεσία" />
+          </Card>
+          <Card
             title="Βήμα 3ο - Ημερομηνία"
             extra={
               <Link to="/help">
@@ -168,7 +175,7 @@ class MasterForm extends Component {
             }
             style={{
               marginTop: '5vh',
-              borderColor: '#b5f5ec',
+              borderColor: '#36cfc9',
             }}
           >
             <Meta description="Ημερομηνία" />
@@ -229,6 +236,33 @@ class MasterForm extends Component {
             ) : null}
           </Card>
           <Card
+            title="Βήμα 4ο - Πολυμέσα"
+            extra={
+              <Link to="/help">
+                <InfoCircleOutlined />
+              </Link>
+            }
+            style={{
+              marginTop: '5vh',
+              borderColor: '#ff4d4f',
+            }}
+          >
+            <Meta description="Πολυμέσα" />
+
+            <Form.Item label="Βίντεο" className="example-input">
+              <Input
+                size="middle"
+                placeholder="link/url βίντεο"
+                prefix={<YoutubeFilled />}
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+              />
+            </Form.Item>
+          </Card>
+          <Card
             title="Βήμα 5ο - Επιπρόσθετα"
             extra={
               <Link to="/help">
@@ -237,14 +271,22 @@ class MasterForm extends Component {
             }
             style={{
               marginTop: '5vh',
-              borderColor: '#ffccc7',
+              borderColor: '#f759ab',
             }}
           >
             <Meta description="Επιπρόσθετα" />
             <Form.Item label="Σχόλια οργανωτή" name="comments">
               <TextArea rows={2} />
             </Form.Item>
-            <Form.Item label="Άνω των 18" name="age-restricted">
+            <Form.Item
+              label="Άνω των 18"
+              name="age-restricted"
+              rules={[
+                {
+                  required: false,
+                },
+              ]}
+            >
               <Switch
                 checkedChildren={<CheckOutlined />}
                 unCheckedChildren={<CloseOutlined />}
@@ -305,7 +347,6 @@ class MasterForm extends Component {
                     <div style={{ marginBottom: 16 }}>
                       <Input
                         addonBefore="http://"
-                        //addonAfter={selectAfter}
                         placeholder="Εισάγετε link"
                       />
                     </div>

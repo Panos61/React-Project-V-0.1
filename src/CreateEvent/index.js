@@ -15,6 +15,10 @@ class CreateEvent extends Component {
         <span>
           <ClockCircleOutlined />
         </span>
+        <br />
+        <p>
+          <span style={{ color: 'orange' }}>*</span> Υποχρεωτικό πεδίο
+        </p>
       </p>
     );
     return (
