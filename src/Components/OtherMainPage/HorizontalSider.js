@@ -44,7 +44,7 @@ class HorizontalSider extends Component {
             </Menu.Item> */}
             <Menu.Item key="6">
               <PlusOutlined />
-              <Link to="/createEvent" style={{ display: 'inline' }}>
+              <Link to="/create-event" style={{ display: 'inline' }}>
                 Προσθήκη
               </Link>
             </Menu.Item>

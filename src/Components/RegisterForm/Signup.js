@@ -11,32 +11,32 @@ import { register } from '../../actions/authActions';
 const formItemLayout = {
   labelCol: {
     xs: {
-      span: 24
+      span: 24,
     },
     sm: {
-      span: 8
-    }
+      span: 8,
+    },
   },
   wrapperCol: {
     xs: {
-      span: 24
+      span: 24,
     },
     sm: {
-      span: 16
-    }
-  }
+      span: 16,
+    },
+  },
 };
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
       span: 24,
-      offset: 0
+      offset: 0,
     },
     sm: {
       span: 16,
-      offset: 8
-    }
-  }
+      offset: 8,
+    },
+  },
 };
 
 const UsernameTooltip = (
@@ -57,7 +57,7 @@ const PasswordTooltip = (
       <p
         style={{
           marginTop: '10px',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
         }}
       >
         Ιδανικό:
@@ -72,7 +72,7 @@ class WrappedRegistrationForm extends React.Component {
   // Gender State
   state = {
     value: 'male',
-    message: null
+    message: null,
   };
 
   componentDidUpdate(prevProps) {
@@ -91,19 +91,19 @@ class WrappedRegistrationForm extends React.Component {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({
-      value: e.target.value
+      value: e.target.value,
     });
   };
 
   render() {
     //const [form] = Form.useForm();
 
-    const onFinish = values => {
+    const onFinish = (values) => {
       this.props.register(values);
       console.log('Received values of form: ', values);
     };
@@ -132,12 +132,12 @@ class WrappedRegistrationForm extends React.Component {
           rules={[
             {
               type: 'email',
-              message: 'Μη έγκυρο E-mail!'
+              message: 'Μη έγκυρο E-mail!',
             },
             {
               required: true,
-              message: 'Εισάγετε το E-mail σας!'
-            }
+              message: 'Εισάγετε το E-mail σας!',
+            },
           ]}
         >
           <Input />
@@ -159,8 +159,8 @@ class WrappedRegistrationForm extends React.Component {
               max: 13,
               required: true,
               message: 'Εισάγετε το Username!(3-13 χαρακτήρες)!',
-              whitespace: true
-            }
+              whitespace: true,
+            },
           ]}
         >
           <Input />
@@ -180,8 +180,8 @@ class WrappedRegistrationForm extends React.Component {
             {
               required: true,
               message: 'Εισάγετε τον κωδικό σας!',
-              pattern: /^(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/
-            }
+              pattern: /^(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
+            },
           ]}
           hasFeedback
         >
@@ -196,7 +196,7 @@ class WrappedRegistrationForm extends React.Component {
           rules={[
             {
               required: true,
-              message: 'Επιβεβαιώστε τον κωδικό σας!'
+              message: 'Επιβεβαιώστε τον κωδικό σας!',
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
@@ -205,8 +205,8 @@ class WrappedRegistrationForm extends React.Component {
                 }
 
                 return Promise.reject('Οι κωδικοί σας δεν ταιριάζουν!');
-              }
-            })
+              },
+            }),
           ]}
         >
           <Input.Password />
@@ -232,8 +232,8 @@ class WrappedRegistrationForm extends React.Component {
                 rules={[
                   {
                     required: false,
-                    message: 'Εισάγετε το captcha!'
-                  }
+                    message: 'Εισάγετε το captcha!',
+                  },
                 ]}
               >
                 <Input />
@@ -267,9 +267,9 @@ class WrappedRegistrationForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
+  error: state.error,
 });
 
 export default connect(mapStateToProps, { register, clearErrors })(

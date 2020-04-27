@@ -51,7 +51,7 @@ const routing = (
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={newprofile} />
-        <Route exact path="/createEvent" component={CreateEvent} />
+        <Route exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
         <PrivateRoute exact path="/security" component={Security} />
         {/* Not Found route 404*/}
