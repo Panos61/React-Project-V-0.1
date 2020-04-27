@@ -29,7 +29,7 @@ export const initProfile = ({ name, introduction, age }) => {
       let profileData = res.data;
 
       localStorage.setItem('profileData', JSON.stringify(res.data.profileData));
-      dispatch({ type: PROFILE_INITIATED, payload: res.data.profileData });
+      dispatch({ type: PROFILE_INITIATED, payload: profileData });
       dispatch(clearErrors());
       console.log(body);
     } catch (err) {

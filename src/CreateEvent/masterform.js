@@ -24,6 +24,13 @@ import {
   YoutubeFilled,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import PaymentConditions from './payment-con';
+
+// Redux stuff import
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createEvent } from '../actions/EventActions/eventAction';
+import { clearErrors } from '../actions/errorActions';
 
 const layout = {
   labelCol: {
@@ -51,11 +58,13 @@ const { TreeNode } = TreeSelect;
 const dateFormat = 'YYYY/MM/DD';
 const { RangePicker } = DatePicker;
 
-const onFinish = (values) => {
-  console.log(values);
-};
-
 class MasterForm extends Component {
+  static propTypes = {
+    createEvent: PropTypes.func.isRequired,
+    event: PropTypes.object.isRequired,
+    error: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = { show: true };
@@ -86,6 +95,11 @@ class MasterForm extends Component {
   };
 
   render() {
+    const onFinish = (values) => {
+      this.props.createEvent(values);
+      console.log(values);
+    };
+
     return (
       <div>
         <Form {...layout} onFinish={onFinish}>
@@ -181,7 +195,7 @@ class MasterForm extends Component {
             <Meta description="Ημερομηνία" />
             <Form.Item
               label="Είδος"
-              name="type"
+              name="dateType"
               rules={[
                 {
                   required: true,
@@ -225,7 +239,7 @@ class MasterForm extends Component {
             {this.state.show ? (
               <Form.Item
                 label="Ώρα έναρξης"
-                name="single-time"
+                name="singleTime"
                 rules={[{ required: true, message: 'Επιλέξτε ώρα Event!' }]}
               >
                 <TimePicker
@@ -261,6 +275,13 @@ class MasterForm extends Component {
                 ]}
               />
             </Form.Item>
+            <Form.Item label="Φωτογραφίες/Εικόνες">
+              <Upload>
+                <Button>
+                  <UploadOutlined /> Upload
+                </Button>
+              </Upload>
+            </Form.Item>
           </Card>
           <Card
             title="Βήμα 5ο - Επιπρόσθετα"
@@ -280,7 +301,7 @@ class MasterForm extends Component {
             </Form.Item>
             <Form.Item
               label="Άνω των 18"
-              name="age-restricted"
+              name="ageRestricted"
               rules={[
                 {
                   required: false,
@@ -311,7 +332,6 @@ class MasterForm extends Component {
             {this.state.payment ? (
               <Form.Item
                 label="Στοιχεία πληρωμής"
-                name="payment-info"
                 rules={[
                   {
                     required: true,
@@ -320,11 +340,11 @@ class MasterForm extends Component {
                 ]}
               >
                 <div className="event-payment-box">
-                  <div style={{ position: 'absolute', top: '9%', left: '9%' }}>
+                  {/* <div style={{ position: 'absolute', top: '9%', left: '9%' }}>
                     <CreditCardOutlined />
-                  </div>
+                  </div> */}
                   <Form.Item
-                    label="Ποσό"
+                    label="Ποσό - χωρίς προϋποθέσεις"
                     name="price"
                     rules={[
                       {
@@ -351,6 +371,9 @@ class MasterForm extends Component {
                       />
                     </div>
                   </Form.Item>
+                  {/* <Form.Item name="pay">
+                    <PaymentConditions />
+                  </Form.Item> */}
                 </div>
               </Form.Item>
             ) : null}
@@ -371,4 +394,11 @@ class MasterForm extends Component {
   }
 }
 
-export default MasterForm;
+const mapStateToProps = (state) => ({
+  event: state.event,
+  error: state.error,
+});
+
+export default connect(mapStateToProps, { createEvent, clearErrors })(
+  MasterForm
+);

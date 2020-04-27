@@ -155,7 +155,7 @@ class ProfileEdit extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.data,
+  profileData: state.profileData,
   auth: state.auth,
 });
 
