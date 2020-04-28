@@ -24,6 +24,9 @@ import Security from './Profile/Security/security';
 import { PROFILE_INITIATED } from './actions/profileTypes';
 import Success from './CreateEvent/success';
 
+// Event-Tabs
+import MusicTab from './Events/music';
+
 // Stay authenticated after refreshing page
 if (localStorage.token) {
   localStorage.getItem('token');
@@ -54,6 +57,10 @@ const routing = (
         <Route exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
         <PrivateRoute exact path="/security" component={Security} />
+
+        {/* Event-Tabs */}
+        <Route path="/music-events" component={MusicTab} />
+
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
       </Switch>
