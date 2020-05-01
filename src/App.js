@@ -6,9 +6,9 @@ import HorizontalSider from './Components/OtherMainPage/HorizontalSider';
 import { BackTop } from 'antd';
 import Cities from './Components/OtherMainPage/Cities';
 //import ContactForm from './SubPages-Test/SubPages/Contact';
-import MainHelpPage from './SubPages-Test/MainHelpPage';
+import MainHelpPage from './HelpPages/MainHelpPage';
 import { Route } from 'react-router-dom';
-import FooterMain from './FooterTest';
+import FooterMain from './Footer';
 
 import { Provider } from 'react-redux';
 import store from './store';
