@@ -3,15 +3,15 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { Spin } from 'antd';
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
+const PrivateRoute = ({ component: Component, Auth, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         // if (auth.isLoading) {
         //   return <Spin size="large" />;
         // } else
-        if (!auth.isAuthenticated) {
+        if (!Auth.isAuthenticated) {
           return <Redirect to="/login" />;
         } else {
           return <Component {...props} />;
@@ -21,8 +21,8 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  Auth: state.Auth,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

@@ -5,8 +5,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
 import { connect } from 'react-redux';
-import { login } from '../../actions/authActions';
-import { clearErrors } from '../../actions/errorActions';
+import { login } from '../../store/modules/auth/actions/authActions';
+import { clearErrors } from '../../store/modules/auth/actions/errorActions';
 import PropTypes from 'prop-types';
 
 const layout = {

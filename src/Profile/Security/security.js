@@ -48,11 +48,11 @@ class Security extends Component {
   };
 
   static propTypes = {
-    auth: PropTypes.object.isRequired,
+    Auth: PropTypes.object.isRequired,
   };
 
   render() {
-    const { user } = this.props.auth;
+    const { user } = this.props.Auth;
 
     const layoutSecurity = {
       marginTop: '5vh',
@@ -189,7 +189,7 @@ class Security extends Component {
 }
 
 const mapToStateProps = (state) => ({
-  auth: state.auth,
+  Auth: state.Auth,
 });
 
 export default connect(mapToStateProps, null)(Security);

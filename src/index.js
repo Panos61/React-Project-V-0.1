@@ -5,9 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
-//import ContactFormPage from './SubPages-Test//SubPages/Contact';
 import { Route, Router, Switch } from 'react-router-dom';
-import MainHelpPage from './SubPages-Test/MainHelpPage';
+import MainHelpPage from './HelpPages/MainHelpPage';
 import newprofile from './Profile/newprofile';
 import NotFound from './notfound';
 import CreateEvent from './CreateEvent/index';
@@ -19,9 +18,8 @@ import history from './history';
 import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
-import { LOGIN_SUCCESS } from './actions/authTypes';
+import { LOGIN_SUCCESS } from './store/modules/auth/authTypes';
 import Security from './Profile/Security/security';
-import { PROFILE_INITIATED } from './actions/profileTypes';
 import Success from './CreateEvent/success';
 
 // Event-Tabs
@@ -35,12 +33,6 @@ if (localStorage.token) {
       ? null
       : JSON.parse(localStorage.getItem('user'));
   store.dispatch({ type: LOGIN_SUCCESS, payload: user });
-
-  let profileData =
-    localStorage.getItem('profileData') == null
-      ? null
-      : JSON.parse(localStorage.getItem('profileData'));
-  store.dispatch({ type: PROFILE_INITIATED, payload: profileData });
 }
 
 //Added basic Routing for Login/Register/..

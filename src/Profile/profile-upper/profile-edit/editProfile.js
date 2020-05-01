@@ -11,10 +11,10 @@ import {
   message,
   Divider,
 } from 'antd';
-import { initProfile, updateProfile } from '../../../actions/profileActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { clearErrors } from '../../../store/modules/auth/actions/errorActions';
 
 const layout = {
   labelCol: {
@@ -60,14 +60,15 @@ const props = {
 
 class ProfileEdit extends Component {
   static propTypes = {
+    isAuthenticated: PropTypes.bool,
     profileData: PropTypes.object.isRequired,
+    initProfile: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
   };
 
   render() {
-    const { profileData } = this.props.auth;
-
     const onFinish = (values) => {
-      this.props.initProfile(values);
+      //this.props.initProfile(values);
       console.log(values);
     };
     return (
@@ -93,14 +94,14 @@ class ProfileEdit extends Component {
               >
                 <Input
                   prefix={<span>@</span>}
-                  defaultValue={profileData ? `${profileData.name}` : null}
+                  // defaultValue={profileData ? `${profileData.name}` : null}
                 />
               </Form.Item>
               <Form.Item name={['introduction']} label="Περιγραφή">
                 <TextArea
-                  placeholder={
-                    profileData ? `${profileData.introduction}` : null
-                  }
+                // placeholder={
+                //   profileData ? `${profileData.introduction}` : null
+                // }
                 />
               </Form.Item>
               <Form.Item
@@ -115,7 +116,7 @@ class ProfileEdit extends Component {
                 ]}
               >
                 <InputNumber
-                  placeholder={profileData ? `${profileData.age}` : null}
+                // placeholder={profileData ? `${profileData.age}` : null}
                 />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -156,9 +157,9 @@ class ProfileEdit extends Component {
 
 const mapStateToProps = (state) => ({
   profileData: state.profileData,
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error,
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { initProfile, updateProfile })(
-  ProfileEdit
-);
+export default connect(mapStateToProps, { clearErrors })(ProfileEdit);

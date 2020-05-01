@@ -5,8 +5,8 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { clearErrors } from '../../actions/errorActions';
-import { register } from '../../actions/authActions';
+import { clearErrors } from '../../store/modules/auth/actions/errorActions';
+import { register } from '../../store/modules/auth/actions/authActions';
 
 const formItemLayout = {
   labelCol: {

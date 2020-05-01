@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import WrappedRegistrationForm from './Signup';
 import './SignUpStyle.css';
 import BackMainPageSignup from './BackMainPageSignup';
-import FooterMain from '../../FooterTest';
+import FooterMain from '../../Footer';
 
 class CardRegisterStyle extends Component {
   render() {

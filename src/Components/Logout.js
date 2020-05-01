@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { logout } from '../actions/authActions';
+import { logout } from '../store/modules/auth/actions/authActions';
 import PropTypes from 'prop-types';
 import { LogoutOutlined, EditOutlined } from '@ant-design/icons';
 import { Menu, Dropdown } from 'antd';
@@ -10,11 +10,11 @@ import { connect } from 'react-redux';
 class Logout extends Component {
   static propTypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    Auth: PropTypes.object.isRequired,
   };
 
   render() {
-    const { user } = this.props.auth;
+    const { user } = this.props.Auth;
 
     const menu = (
       <Menu>
@@ -48,7 +48,7 @@ class Logout extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  Auth: state.Auth,
 });
 
 export default connect(mapStateToProps, { logout })(Logout);

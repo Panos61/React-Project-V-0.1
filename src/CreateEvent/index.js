@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PageHeader, Button, BackTop, Card, Affix, Progress } from 'antd';
 import './index-event.css';
 import MasterForm from './masterform';
-import FooterMain from '../FooterTest';
+import FooterMain from '../Footer';
 import { ClockCircleOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'antd';
 import WrappedNormalLoginForm from './LoginForm';
 import './LoginFormStyle.css';
-import FooterMain from '../../FooterTest';
+import FooterMain from '../../Footer';
 import BackMainPageLogin from './BackMainPageLogin';
 
 class CardLoginStyle extends Component {

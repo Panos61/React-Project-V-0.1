@@ -17,11 +17,11 @@ function handleChange(value) {
 
 class RightMenu extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    Auth: PropTypes.object.isRequired,
   };
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated } = this.props.Auth;
 
     const authLinks = (
       <Fragment>
@@ -58,7 +58,7 @@ class RightMenu extends Component {
               width: '130px',
               marginBottom: '15px',
               marginRight: '10px',
-              marginLeft: '10px'
+              marginLeft: '10px',
             }}
             onChange={handleChange}
           >
@@ -78,8 +78,8 @@ class RightMenu extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  Auth: state.Auth,
 });
 
 export default connect(mapStateToProps, null)(RightMenu);
