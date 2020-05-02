@@ -1,5 +1,4 @@
 import {
-  EVENT_CREATED_SUCCESS,
   BEFORE_STATE_EVENT,
   FETCH_EVENTS,
   FETCH_EVENTS_ERROR,
@@ -8,7 +7,7 @@ import {
   GET_EVENT_ERROR,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_ERROR,
-} from '../../actions/EventActions/eventTypes';
+} from '../eventTypes/eventTypes';
 
 export const initState = {
   events: [],
