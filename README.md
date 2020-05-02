@@ -16,9 +16,9 @@
 
 ## Things to be done:
 
-[ ] Profile Content Input
+[ ] Profile Content Input -in development
 
-[ ] Event SubPages Layout
+[ ] Event SubPages Layout - in development
 
 
 #### more on the way
