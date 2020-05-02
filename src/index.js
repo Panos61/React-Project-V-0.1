@@ -26,14 +26,16 @@ import Success from './CreateEvent/success';
 import MusicTab from './Events/music';
 import AuthEvents from './CreateEvent/AuthEvents';
 
-// Stay authenticated after refreshing page
+import setAuthorizationToken from './store/modules/auth/actions/authActions';
+
+//when the page reloads, the auth user is still set
 if (localStorage.token) {
-  localStorage.getItem('token');
-  let user =
-    localStorage.getItem('user') == null
+  setAuthorizationToken(localStorage.token);
+  let userData =
+    localStorage.getItem('user_data') == null
       ? null
-      : JSON.parse(localStorage.getItem('user'));
-  store.dispatch({ type: LOGIN_SUCCESS, payload: user });
+      : JSON.parse(localStorage.getItem('user_data'));
+  store.dispatch({ type: LOGIN_SUCCESS, payload: userData }); //provided he has a valid token
 }
 
 //Added basic Routing for Login/Register/..
@@ -52,7 +54,7 @@ const routing = (
         <PrivateRoute exact path="/security" component={Security} />
 
         {/* Event-Tabs */}
-        <Route path="/music-events" component={AuthEvents} />
+        <Route path="/events" component={AuthEvents} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
