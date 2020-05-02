@@ -17,7 +17,7 @@ class Success extends Component {
             <Button type="primary" key="console">
               <Link to="/">Αρχική Σελίδα</Link>
             </Button>,
-            <Button key="buy">Επεξεργασία του Event σας</Button>,
+            <Button key="edit">Επεξεργασία του Event σας</Button>,
           ]}
         >
           <div className="desc">

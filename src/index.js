@@ -47,9 +47,10 @@ const routing = (
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
         <Route path="/help" component={MainHelpPage} />
+
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={profile} />
-        <Route exact path="/create-event" component={CreateEvent} />
+        <PrivateRoute exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
         <PrivateRoute exact path="/security" component={Security} />
 
