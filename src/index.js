@@ -7,7 +7,7 @@ import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
 import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './HelpPages/MainHelpPage';
-import newprofile from './Profile/newprofile';
+import profile from './Profile/profile';
 import NotFound from './notfound';
 import CreateEvent from './CreateEvent/index';
 
@@ -45,7 +45,7 @@ const routing = (
         <Route path="/register" component={CardRegisterStyle} />
         <Route path="/help" component={MainHelpPage} />
         {/* Route path Profile  */}
-        <PrivateRoute exact path="/profile" component={newprofile} />
+        <PrivateRoute exact path="/profile" component={profile} />
         <Route exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
         <PrivateRoute exact path="/security" component={Security} />

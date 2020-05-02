@@ -12,7 +12,7 @@ import store from '../store';
 
 const { Footer } = Layout;
 
-class newprofile extends Component {
+class profile extends Component {
   render() {
     return (
       <div>
@@ -38,4 +38,4 @@ class newprofile extends Component {
   }
 }
 
-export default newprofile;
+export default profile;
