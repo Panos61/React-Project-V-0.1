@@ -89,9 +89,9 @@ class WrappedRegistrationForm extends React.Component {
   // Redux propTypes
   static propTypes = {
     isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
+    Error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    Auth: PropTypes.object.isRequired,
   };
 
   onChange = (e) => {
@@ -268,8 +268,8 @@ class WrappedRegistrationForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error,
+  isAuthenticated: state.Auth.isAuthenticated,
+  Error: state.Error,
 });
 
 export default connect(mapStateToProps, { register, clearErrors })(

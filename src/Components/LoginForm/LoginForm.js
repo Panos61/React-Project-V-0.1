@@ -28,9 +28,9 @@ class WrappedNormalLoginForm extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     login: PropTypes.func.isRequired,
-    error: PropTypes.object.isRequired,
+    Error: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    Auth: PropTypes.object.isRequired,
   };
 
   state = {
@@ -127,9 +127,9 @@ class WrappedNormalLoginForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error,
-  auth: state.auth,
+  isAuthenticated: state.Auth.isAuthenticated,
+  Error: state.Error,
+  Auth: state.Auth,
 });
 
 export default compose(
