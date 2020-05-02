@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
 } from '../authTypes';
 import { clearErrors, returnErrors } from './errorActions';
+import API_ROUTE from '../../../../apiRoute';
 
 // ** LOGIN USER **
 export const login = ({ email, password }) => {
@@ -17,7 +18,7 @@ export const login = ({ email, password }) => {
   return async (dispatch) => {
     dispatch({ type: BEFORE_USER_STATE });
     try {
-      const res = await axios.post('/login', body, getHeaders());
+      const res = await axios.post(`${API_ROUTE}/login`, body, getHeaders());
       let user = res.data;
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -41,7 +42,7 @@ export const register = ({ email, username, password, gender }) => {
   return async (dispatch) => {
     dispatch({ type: BEFORE_USER_STATE });
     try {
-      await axios.post('/register', body, getHeaders());
+      await axios.post(`${API_ROUTE}/register`, body, getHeaders());
       dispatch({ type: REGISTER_SUCCESS });
       dispatch(clearErrors());
       history.push('/login');
