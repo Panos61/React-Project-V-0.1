@@ -11,7 +11,7 @@ import {
   Modal,
   Input,
 } from 'antd';
-import { Row, Col } from 'react-flexbox-grid';
+
 import { HeartFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
