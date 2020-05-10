@@ -18,13 +18,13 @@ class MainSearch extends Component {
                     <div
                       className="search"
                       style={{
-                        marginTop: '200px'
+                        marginTop: '200px',
                       }}
                     >
                       <Search
                         placeholder="Ψάξτε Event :)"
-                        onSearch={value => console.log(value)}
-                        size="large"
+                        onSearch={(value) => console.log(value)}
+                        size="middle"
                         enterButton
                       />
                     </div>
