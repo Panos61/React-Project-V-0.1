@@ -64,6 +64,7 @@ class ProfileEdit extends Component {
     profileData: PropTypes.object.isRequired,
     initProfile: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
+    Auth: PropTypes.object.isRequired,
   };
 
   render() {
@@ -157,9 +158,9 @@ class ProfileEdit extends Component {
 
 const mapStateToProps = (state) => ({
   profileData: state.profileData,
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error,
-  auth: state.auth,
+  isAuthenticated: state.Auth.isAuthenticated,
+  Error: state.Error,
+  Auth: state.Auth,
 });
 
 export default connect(mapStateToProps, { clearErrors })(ProfileEdit);
