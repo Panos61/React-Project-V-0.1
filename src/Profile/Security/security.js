@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './security.css';
 import {
   PageHeader,
   Tag,
@@ -84,9 +85,9 @@ class Security extends Component {
           <Divider dashed />
           {/* CONTENT CARDS  */}
 
-          <div id="security-layout-style" style={layoutSecurity}>
-            <Row center="xs" style={{ marginTop: '25px' }}>
-              <Col xs={12} lg={6}>
+          <section id="security-layout-style" style={layoutSecurity}>
+            <div id="securty-page-parent">
+              <div className="security-page-card">
                 {/* Email/Password update */}
                 <Card title="Σύνδεση" style={{ borderColor: '#d9d9d9' }}>
                   <Card type="inner" title="Αλλαγή κωδικού πρόσβασης">
@@ -115,27 +116,23 @@ class Security extends Component {
                     />
                   </Card>
                 </Card>
-              </Col>
-            </Row>
-            {/* Extra */}
-            <Row center="xs" style={{ marginTop: '25px' }}>
-              <Col xs={12} lg={6}>
+
+                {/* Extra */}
+
                 <Card
                   title="Επιπρόσθετες λειτουργίες"
-                  style={{ borderColor: '#d9d9d9' }}
+                  style={{ borderColor: '#d9d9d9', marginTop: '15px' }}
                 >
                   <Card type="inner" title="Απόρρητο">
                     Απόρρητο
                   </Card>
                 </Card>
-              </Col>
-            </Row>
-            {/* Delete Account */}
-            <Row center="xs" style={{ marginTop: '25px' }}>
-              <Col xs={12} lg={6}>
+
+                {/* Delete Account */}
+
                 <Card
                   title="Κατάσταση Λογαριασμού"
-                  style={{ borderColor: '#a8071a' }}
+                  style={{ borderColor: '#a8071a', marginTop: '15px' }}
                 >
                   <Card type="inner" title="Διαγραφή Λογαριασμού">
                     <p>
@@ -152,9 +149,9 @@ class Security extends Component {
                     </Button>
                   </Card>
                 </Card>
-              </Col>
-            </Row>
-          </div>
+              </div>
+            </div>
+          </section>
           <footer>
             <Footer
               style={{

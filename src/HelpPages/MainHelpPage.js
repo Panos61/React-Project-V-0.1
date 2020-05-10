@@ -13,7 +13,7 @@ import {
   TeamOutlined,
 } from '@ant-design/icons';
 
-import { Input, Row, Col, Layout } from 'antd';
+import { Input, Layout, Row, Col } from 'antd';
 import Help_Navbar from './HelpPage_Navbar/Help_Navbar';
 import './MainHelpPage.css';
 import { Link } from 'react-router-dom';
@@ -40,16 +40,20 @@ class MainHelpPage extends Component {
         <section>
           <div className="upper-part_search">
             <Row align="middle">
-              <Col md={{ span: 12, offset: 6 }}>
-                <div
-                  className="container"
-                  style={{ marginRight: '5%', marginLeft: '5%' }}
-                >
-                  <Search
-                    placeholder="Αναζητήστε Βοήθεια"
-                    size="medium"
-                    style={{ marginTop: '130px', zIndex: 1 }}
-                  ></Search>
+              <Col span={24}>
+                <div className="container">
+                  <Col lg={{ span: 12, offset: 6 }}>
+                    <Search
+                      placeholder="Αναζητήστε Βοήθεια"
+                      enterButton
+                      size="medium"
+                      style={{
+                        marginTop: '130px',
+                        zIndex: 1,
+                      }}
+                      className="help-search"
+                    />
+                  </Col>
                 </div>
               </Col>
             </Row>

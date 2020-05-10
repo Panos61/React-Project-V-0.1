@@ -1,0 +1,15 @@
+#security-layout-style {
+  background-color: snow;
+}
+
+#security-page-parent {
+  display: flex;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.security-page-card {
+  max-width: 100%;
+  margin: auto;
+  width: 900px;
+}
