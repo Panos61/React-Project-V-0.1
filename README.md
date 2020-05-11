@@ -15,10 +15,15 @@
 [x] Add Event
 
 ## Things to be done:
+[ ] Security Page Rework
 
-[ ] Profile Content Input -in development
+[ ] Delete Account
 
 [ ] Event SubPages Layout - in development
+
+[ ] Profile Content Input 
+
+
 
 
 #### more on the way
