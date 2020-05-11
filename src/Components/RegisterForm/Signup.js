@@ -76,10 +76,10 @@ class WrappedRegistrationForm extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
-    if (error !== prevProps.error) {
-      if (error.id === 'REGISTER_FAIL') {
-        this.setState({ message: error.message });
+    const { Error } = this.props;
+    if (Error !== prevProps.Error) {
+      if (Error.status === 'REGISTER_ERROR') {
+        this.setState({ message: Error.message });
       } else {
         this.setState({ message: null });
       }
@@ -121,7 +121,7 @@ class WrappedRegistrationForm extends React.Component {
             style={{ marginBottom: '15px' }}
             type="error"
             message="Σφάλμα Εγγραφής"
-            description="Το E-mail ή το Username που εισάγατε, χρησιμοποιούνται ήδη." //this.state.message
+            description="Το E-mail ή το Username που εισάγατε, χρησιμοποιούνται ήδη!" //this.state.message
             showIcon
           />
         ) : null}

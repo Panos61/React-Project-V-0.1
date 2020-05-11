@@ -6,7 +6,7 @@ import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
 import { connect } from 'react-redux';
 import { login } from '../../store/modules/auth/actions/authActions';
-import { clearErrors } from '../../store/modules/auth/actions/errorActions';
+import { returnErrors } from '../../store/modules/auth/actions/errorActions';
 import PropTypes from 'prop-types';
 
 const layout = {
@@ -29,20 +29,21 @@ class WrappedNormalLoginForm extends Component {
     isAuthenticated: PropTypes.bool,
     login: PropTypes.func.isRequired,
     Error: PropTypes.object.isRequired,
-    clearErrors: PropTypes.func.isRequired,
+    returnErrors: PropTypes.func.isRequired,
     Auth: PropTypes.object.isRequired,
   };
 
   state = {
     message: null,
+    status: null,
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
-    if (error !== prevProps.error) {
+    const { Error } = this.props;
+    if (Error !== prevProps.Error) {
       // Check for login error
-      if (error.status === 'LOGIN_FAIL') {
-        this.setState({ message: error.message });
+      if (Error.status === 'LOGIN_ERROR') {
+        this.setState({ message: Error.message });
       } else {
         this.setState({ message: null });
       }
@@ -55,10 +56,6 @@ class WrappedNormalLoginForm extends Component {
       console.log('Success:', values);
     };
 
-    const onFinishFailed = (errorInfo) => {
-      console.warn('Failed:', errorInfo);
-    };
-
     return (
       <Form
         {...layout}
@@ -67,14 +64,14 @@ class WrappedNormalLoginForm extends Component {
           remember: false,
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         {this.state.message ? (
           <Alert
             style={{ marginBottom: '5px' }}
             type="error"
             message="Σφάλμα Σύνδεσης"
-            description={this.state.message}
+            description="Το E-mail ή το Password που εισάγατε, είναι λάθος!"
+            // {this.state.message}
             showIcon
           />
         ) : null}
@@ -134,5 +131,5 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { login, clearErrors })
+  connect(mapStateToProps, { login, returnErrors })
 )(WrappedNormalLoginForm);
