@@ -44,10 +44,6 @@ class Account extends Component {
   render() {
     const { user } = this.props.Auth;
 
-    const layoutSecurity = {
-      marginTop: '5vh',
-    };
-
     const { visible } = this.state;
 
     return (
@@ -64,10 +60,9 @@ class Account extends Component {
           ]}
         />
 
-        <Divider dashed />
         {/* CONTENT CARDS  */}
 
-        <section id="account-layout-style" style={layoutSecurity}>
+        <section id="account-layout-style">
           <div id="account-page-parent">
             <div className="account-page-card">
               {/*  Account Status */}

@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch, HashRouter } from 'react-router-dom';
 import MainHelpPage from './HelpPages/MainHelpPage';
 import profile from './Profile/profile';
 import NotFound from './notfound';
@@ -19,7 +19,7 @@ import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
 import { LOGIN_SUCCESS } from './store/modules/auth/authTypes';
-import Security from './Profile/Security/security';
+import Security from './Settings/security';
 import Success from './CreateEvent/success';
 
 // Event-Tabs
@@ -27,6 +27,8 @@ import MusicTab from './Events/music';
 import AuthEvents from './CreateEvent/AuthEvents';
 
 import setAuthorizationToken from './store/modules/auth/actions/authActions';
+import SettingsMainPage from './Settings/settings';
+import Account from './Settings/account-page/account';
 
 //when the page reloads, the auth user is still set
 if (localStorage.token) {
@@ -52,10 +54,13 @@ const routing = (
         <PrivateRoute exact path="/profile" component={profile} />
         <PrivateRoute exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
-        <PrivateRoute exact path="/security" component={Security} />
+
+        {/* Settings Routes */}
+        <PrivateRoute exact path="/settings" component={SettingsMainPage} />
+        <PrivateRoute exact path="/account" component={Account} />
 
         {/* Event-Tabs */}
-        <Route path="/events" component={AuthEvents} />
+        <Route path="/events" component={MusicTab} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />

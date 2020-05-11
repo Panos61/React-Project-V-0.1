@@ -19,7 +19,7 @@ class Logout extends Component {
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <Link to="/security">
+          <Link to="/settings">
             Λογαριασμός
             <EditOutlined style={{ marginLeft: '9px' }} />
           </Link>
