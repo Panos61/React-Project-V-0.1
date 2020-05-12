@@ -30,6 +30,10 @@ const SettingsMainPage = () => {
     ? `/account/${currentState.Auth.currentUser.id}`
     : '';
 
+  const security = isAuthenticated
+    ? `/security/${currentState.Auth.currentUser.id}`
+    : '';
+
   return (
     <div>
       <div>
@@ -56,7 +60,7 @@ const SettingsMainPage = () => {
             style={{ marginTop: '5vh' }}
           >
             <Col lg={24} xs={24}>
-              <Card className="security-page-card">
+              <Card className="settings-page-card">
                 <SettingOutlined style={{ fontSize: '7vh', color: '#08c' }} />
                 <Link to={account} style={IconTextStyle} id="linksHelp_Page">
                   Λογαριασμός <br />
@@ -69,20 +73,20 @@ const SettingsMainPage = () => {
             </Col>
 
             <Col lg={24} xs={24}>
-              <Card className="security-page-card">
+              <Card className="settings-page-card">
                 <SafetyCertificateOutlined
                   style={{ fontSize: '7vh', color: '#08c' }}
                 />
-                <Link to="/security" style={IconTextStyle} id="linksHelp_Page">
+                <Link to={security} style={IconTextStyle} id="linksHelp_Page">
                   Ασφάλεια <br />
                   <p style={subTextStyle}>Αλλαγή Κωδικού.</p>
                 </Link>
               </Card>
             </Col>
             <Col lg={24} xs={24}>
-              <Card className="security-page-card">
+              <Card className="settings-page-card">
                 <HistoryOutlined style={{ fontSize: '7vh', color: '#08c' }} />
-                <Link to="/" style={IconTextStyle} id="linksHelp_Page">
+                <Link to="/settings" style={IconTextStyle} id="linksHelp_Page">
                   Ιστορικό <br />{' '}
                   <p style={subTextStyle}>
                     Όλες οι πρόσφατες ρυθμίσεις στον λογαριασμό σας.
