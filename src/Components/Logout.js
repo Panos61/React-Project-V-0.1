@@ -1,54 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { logout } from '../store/modules/auth/actions/authActions';
-import PropTypes from 'prop-types';
 import { LogoutOutlined, EditOutlined } from '@ant-design/icons';
 import { Menu, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { connect } from 'react-redux';
+const Logout = () => {
+  const currentState = useSelector((state) => state);
+  const { isAuthenticated, currentUser } = currentState.Auth;
 
-class Logout extends Component {
-  static propTypes = {
-    logout: PropTypes.func.isRequired,
-    Auth: PropTypes.object.isRequired,
+  const dispatch = useDispatch();
+
+  const logoutUser = () => dispatch(logout());
+
+  const SignOut = () => {
+    logoutUser();
   };
 
-  render() {
-    const { user } = this.props.Auth;
+  const userSettings = isAuthenticated
+    ? `/settings/${currentState.Auth.currentUser.id}`
+    : '';
 
-    const menu = (
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">
+        <Link to={userSettings}>
+          Λογαριασμός
+          <EditOutlined style={{ marginLeft: '9px' }} />
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <span onClick={SignOut}>
+          Αποσύνδεση
+          <LogoutOutlined style={{ marginLeft: '11px' }} />
+        </span>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <div>
       <Menu>
-        <Menu.Item key="0">
-          <Link to="/settings">
-            Λογαριασμός
-            <EditOutlined style={{ marginLeft: '9px' }} />
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="1">
-          <span onClick={this.props.logout}>
-            Αποσύνδεση
-            <LogoutOutlined style={{ marginLeft: '11px' }} />
-          </span>
+        <Menu.Item key="#">
+          <Dropdown overlay={menu} trigger={['click']}>
+            <span>
+              {currentUser ? `Κάλως όρισες ${currentUser.username}` : null}
+            </span>
+          </Dropdown>
         </Menu.Item>
       </Menu>
-    );
+    </div>
+  );
+};
 
-    return (
-      <div>
-        <Menu>
-          <Menu.Item key="#">
-            <Dropdown overlay={menu} trigger={['click']}>
-              <span>{user ? `Κάλως όρισες ${user.username}` : null}</span>
-            </Dropdown>
-          </Menu.Item>
-        </Menu>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  Auth: state.Auth,
-});
-
-export default connect(mapStateToProps, { logout })(Logout);
+export default Logout;

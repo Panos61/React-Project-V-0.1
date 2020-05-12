@@ -5,8 +5,8 @@ import {
   SettingOutlined,
   SafetyCertificateOutlined,
 } from '@ant-design/icons';
-import Footer from '../Footer';
-import { Row, Col, PageHeader, Divider, Card, Button } from 'antd';
+import { useSelector } from 'react-redux';
+import { Row, Col, PageHeader, Card, Button } from 'antd';
 
 import { Link } from 'react-router-dom';
 import FooterMain from '../Footer';
@@ -23,6 +23,13 @@ const subTextStyle = {
 };
 
 const SettingsMainPage = () => {
+  const currentState = useSelector((state) => state);
+  const { isAuthenticated, currentUser } = currentState.Auth;
+
+  const account = isAuthenticated
+    ? `/account/${currentState.Auth.currentUser.id}`
+    : '';
+
   return (
     <div>
       <div>
@@ -51,7 +58,7 @@ const SettingsMainPage = () => {
             <Col lg={24} xs={24}>
               <Card className="security-page-card">
                 <SettingOutlined style={{ fontSize: '7vh', color: '#08c' }} />
-                <Link to="/account" style={IconTextStyle} id="linksHelp_Page">
+                <Link to={account} style={IconTextStyle} id="linksHelp_Page">
                   Λογαριασμός <br />
                   <p style={subTextStyle}>
                     Γενικές πληροφορίες σχετικά με την κατάσταση του λογαριασμού

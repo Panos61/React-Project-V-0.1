@@ -19,7 +19,6 @@ import PrivateRoute from './PrivateRoute';
 
 import { Provider } from 'react-redux';
 import { LOGIN_SUCCESS } from './store/modules/auth/authTypes';
-import Security from './Settings/security';
 import Success from './CreateEvent/success';
 
 // Event-Tabs
@@ -56,8 +55,8 @@ const routing = (
         <PrivateRoute exact path="/event-success" component={Success} />
 
         {/* Settings Routes */}
-        <PrivateRoute exact path="/settings" component={SettingsMainPage} />
-        <PrivateRoute exact path="/account" component={Account} />
+        <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
+        <PrivateRoute exact path="/account/:id" component={Account} />
 
         {/* Event-Tabs */}
         <Route path="/events" component={MusicTab} />
