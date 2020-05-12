@@ -14,17 +14,17 @@
 
 [x] Add Event
 
-## Things to be done:
-[ ] Security Page Rework
+[x] Security Page Rework
 
-[ ] Delete Account
+[x] Delete Account
+
+## Things to be done:
 
 [ ] Event SubPages Layout - in development
 
-[ ] Profile Content Input 
+[ ] Profile Development 
 
-
-
+[ ] Mobile Interactive Menu
 
 #### more on the way
 
