@@ -22,12 +22,13 @@ import { LOGIN_SUCCESS } from './store/modules/auth/authTypes';
 import Success from './CreateEvent/success';
 
 // Event-Tabs
-import MusicTab from './Events/music';
-import AuthEvents from './CreateEvent/AuthEvents';
 
 import setAuthorizationToken from './store/modules/auth/actions/authActions';
 import SettingsMainPage from './Settings/settings';
-import Account from './Settings/account-page/account';
+import Account from './Settings/account/account';
+import Security from './Settings/security/security';
+import Events from './Events/Events';
+import MusicPage from './Events/Event-SubPages/MusicPage';
 
 //when the page reloads, the auth user is still set
 if (localStorage.token) {
@@ -57,9 +58,10 @@ const routing = (
         {/* Settings Routes */}
         <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
         <PrivateRoute exact path="/account/:id" component={Account} />
+        <PrivateRoute exact path="/security/:id" component={Security} />
 
         {/* Event-Tabs */}
-        <Route path="/events" component={MusicTab} />
+        <Route path="/events" component={MusicPage} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
