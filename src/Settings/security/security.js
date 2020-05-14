@@ -93,7 +93,7 @@ const Security = () => {
                     </Form.Item>
                     <Form.Item
                       label="Παλιός κωδικός"
-                      name="old-password"
+                      name="password"
                       rules={[
                         {
                           required: true,
@@ -105,7 +105,7 @@ const Security = () => {
                         prefix={
                           <LockOutlined className="site-form-item-icon" />
                         }
-                        type="password"
+                        type="newPassword"
                         placeholder="Παλιός κωδικός"
                       />
                     </Form.Item>

@@ -6,6 +6,10 @@ import {
   LOGOUT_SUCCESS,
   BEFORE_STATE,
   BEFORE_USER_STATE,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_ERROR,
 } from '../authTypes';
 
 import isEmpty from 'lodash/isEmpty';
@@ -16,6 +20,7 @@ export const initState = {
   authSuccess: null,
   authError: null,
   isLoading: false,
+  isUpdatingUser: false,
 };
 
 const authReducer = (state = initState, action) => {
@@ -38,6 +43,7 @@ const authReducer = (state = initState, action) => {
         isLoading: false,
         user: action.payload,
         isAuthenticated: !isEmpty(action.payload),
+        currentUser: action.payload,
       };
     case REGISTER_SUCCESS:
       return {
@@ -52,6 +58,31 @@ const authReducer = (state = initState, action) => {
         ...state,
         currentUser: {},
         isAuthenticated: false,
+        isLoading: false,
+      };
+    case UPDATE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload,
+        isUpdatingUser: true,
+        authError: null,
+        isLoading: false,
+      };
+    case UPDATE_PASSWORD_ERROR:
+      return {
+        ...state,
+        isUpdatingUser: false,
+      };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        currentUser: {},
+        isAuthenticated: false,
+        isLoading: false,
+      };
+    case DELETE_USER_ERROR:
+      return {
+        ...state,
         isLoading: false,
       };
 
