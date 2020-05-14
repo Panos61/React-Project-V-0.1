@@ -171,7 +171,7 @@ class MainHelpPage extends Component {
               backgroundColor: 'unset',
             }}
           >
-            EventPark ©2019 Created with <HeartFilled /> by us!
+            EventPark ©2020 Created with <HeartFilled /> by us!
           </Footer>
         </footer>
       </div>
