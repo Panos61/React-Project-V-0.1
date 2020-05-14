@@ -7,6 +7,8 @@ import {
   GET_EVENT_ERROR,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_ERROR,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_ERROR,
 } from '../eventTypes/eventTypes';
 
 export const initState = {
@@ -42,7 +44,7 @@ export const eventReducer = (state = initState, action) => {
     case FETCH_AUTH_EVENTS:
       return {
         ...state,
-        eventsError: payload,
+        authEvents: payload,
         isLoading: false,
       };
     case GET_EVENT_SUCCESS:
@@ -66,6 +68,22 @@ export const eventReducer = (state = initState, action) => {
         isLoading: false,
       };
     case CREATE_EVENT_ERROR:
+      return {
+        ...state,
+        eventsError: payload,
+        isLoading: false,
+      };
+    case DELETE_EVENT_SUCCESS:
+      return {
+        ...state,
+        events: state.events.filter((event) => event.id !== payload.deletedID),
+        authEvents: state.authEvents.filter(
+          (event) => event.id !== payload.deletedID
+        ),
+        eventsError: null,
+        isLoading: false,
+      };
+    case DELETE_EVENT_ERROR:
       return {
         ...state,
         eventsError: payload,
