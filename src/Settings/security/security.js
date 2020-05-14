@@ -129,7 +129,74 @@ const Security = () => {
                     </Form.Item>
                     <Form.Item {...tailLayout}>
                       <Button type="primary" htmlType="submit">
-                        Ενημέρωση
+                        Ενημέρωση Κωδικού
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </Card>
+                <Card
+                  type="inner"
+                  title="Αλλαγή Ε-mail"
+                  style={{ marginTop: '15px' }}
+                >
+                  <Form {...layout} onFinish={onPasswordUpdate}>
+                    <Form.Item
+                      label="Παλιό E-mail"
+                      name="old-email"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Εισάγετε παλιό το E-mail σας!',
+                        },
+                      ]}
+                    >
+                      <Input
+                        prefix={
+                          <MailOutlined className="site-form-item-icon" />
+                        }
+                        type="email"
+                        placeholder="Παλιό E-mail"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Καινούργιο E-mail"
+                      name="new-email"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Εισάγετε το καινούργιο E-mail σας!',
+                        },
+                      ]}
+                    >
+                      <Input.Password
+                        prefix={
+                          <LockOutlined className="site-form-item-icon" />
+                        }
+                        type="password"
+                        placeholder="Καινούργιο E-mail"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Κωδικός"
+                      name="password"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Εισάγετε τον κωδικό σας!',
+                        },
+                      ]}
+                    >
+                      <Input.Password
+                        prefix={
+                          <LockOutlined className="site-form-item-icon" />
+                        }
+                        type="password"
+                        placeholder="Κωδικός"
+                      />
+                    </Form.Item>
+                    <Form.Item {...tailLayout}>
+                      <Button type="primary" htmlType="submit">
+                        Ενημέρωση E-mail
                       </Button>
                     </Form.Item>
                   </Form>
