@@ -24,6 +24,13 @@ const tailLayout = {
   },
 };
 
+const linkLayout = {
+  wrapperCol: {
+    span: 16,
+    offset: 6,
+  },
+};
+
 class WrappedNormalLoginForm extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool,
@@ -108,7 +115,7 @@ class WrappedNormalLoginForm extends Component {
           />
         </Form.Item>
         <Form.Item {...tailLayout} valuePropName="checked">
-          <Checkbox>Αποθήκευση</Checkbox>
+          <Checkbox disabled>Αποθήκευση</Checkbox>
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
@@ -116,7 +123,14 @@ class WrappedNormalLoginForm extends Component {
           </Button>
         </Form.Item>
         <Form.Item style={{ marginLeft: '15px' }}>
-          Ή <Link to="/register">εγγραφείτε τώρα!</Link>
+          Ή{' '}
+          <Link to="/register" style={{ color: 'crimson' }}>
+            εγγραφείτε τώρα!
+          </Link>
+        </Form.Item>
+
+        <Form.Item style={{ marginBottom: '-10px' }} {...linkLayout}>
+          <Link to="/reset-password">Ξεχάσατε τον κωδικό σας;</Link>
         </Form.Item>
       </Form>
     );

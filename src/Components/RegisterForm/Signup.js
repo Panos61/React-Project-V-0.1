@@ -101,8 +101,6 @@ class WrappedRegistrationForm extends React.Component {
   };
 
   render() {
-    //const [form] = Form.useForm();
-
     const onFinish = (values) => {
       this.props.register(values);
       console.log('Received values of form: ', values);
@@ -111,7 +109,6 @@ class WrappedRegistrationForm extends React.Component {
     return (
       <Form
         {...formItemLayout}
-        // form={form}
         name="register"
         onFinish={onFinish}
         scrollToFirstError
@@ -199,7 +196,7 @@ class WrappedRegistrationForm extends React.Component {
               message: 'Επιβεβαιώστε τον κωδικό σας!',
             },
             ({ getFieldValue }) => ({
-              validator(rule, value) {
+              validator(value) {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
