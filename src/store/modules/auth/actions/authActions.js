@@ -14,6 +14,8 @@ import {
   UPDATE_PASSWORD_ERROR,
   UPDATE_EMAIL_SUCCESS,
   UPDATE_EMAIL_ERROR,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_ERROR,
 } from '../authTypes';
 import { clearErrors, returnErrors } from './errorActions';
 import API_ROUTE from '../../../../apiRoute';
@@ -120,7 +122,7 @@ export const updatePassword = ({ password, newPassword, confirmPassword }) => {
 };
 
 // ** UPDATE EMAIL **
-export const updateEmail = ({ email, newEmail, password }, clearInput) => {
+export const updateEmail = ({ email, newEmail, password }) => {
   const body = JSON.stringify({ email, newEmail, password });
   return async (dispatch, getState) => {
     dispatch({ type: BEFORE_USER_STATE });
@@ -132,10 +134,28 @@ export const updateEmail = ({ email, newEmail, password }, clearInput) => {
 
       dispatch({ type: UPDATE_EMAIL_SUCCESS, payload: updatedEmail });
       dispatch(clearErrors());
-      clearInput();
+      message.success('Επιτυχής αλλαγή E-mail!', 8);
     } catch (err) {
       dispatch(returnErrors());
       dispatch({ type: UPDATE_EMAIL_ERROR });
+      message.error('Σφάλμα κατά την αλλαγή E-mail.Προσπαθήστε ξανα!', 8);
+    }
+  };
+};
+
+// ** FORGOT PASSWORD **
+export const forgotPassword = ({ email }) => {
+  const body = JSON.stringify({ email });
+
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE });
+
+    try {
+      const res = await axios.post(`${API_ROUTE}/password/forgot`, body);
+      let passwordRequest = res.data.message;
+      dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: passwordRequest });
+    } catch (err) {
+      dispatch({ type: FORGOT_PASSWORD_ERROR, payload: err.message.data });
     }
   };
 };
