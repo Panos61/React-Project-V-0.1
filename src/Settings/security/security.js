@@ -6,6 +6,7 @@ import { Redirect, Link } from 'react-router-dom';
 import store from '../../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import FooterMain from '../../Footer';
+import { updatePassword } from '../../store/modules/auth/actions/authActions';
 import {
   SafetyCertificateOutlined,
   MailOutlined,
@@ -28,8 +29,6 @@ const tailLayout = {
 };
 
 const Security = () => {
-  const [form] = Form.useForm();
-
   const currentUserState = useSelector((state) => state.Auth);
   const AuthID = currentUserState.currentUser
     ? currentUserState.currentUser.id
@@ -37,14 +36,14 @@ const Security = () => {
 
   const dispatch = useDispatch();
 
+  const newPassword = (values) => {
+    dispatch(updatePassword(values));
+  };
+
   // Redirect unauthorized user to login page
   if (!currentUserState.isAuthenticated) {
     return <Redirect to="/login" />;
   }
-
-  const onPasswordUpdate = () => {
-    console.log('..');
-  };
 
   return (
     <div>
@@ -72,25 +71,7 @@ const Security = () => {
                 style={{ marginTop: '15px', borderColor: '#bfbfbf' }}
               >
                 <Card type="inner" title="Αλλαγή Κωδικού">
-                  <Form {...layout} onFinish={onPasswordUpdate}>
-                    <Form.Item
-                      label="E-mail"
-                      name="email"
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Εισάγετε το E-mail σας!',
-                        },
-                      ]}
-                    >
-                      <Input
-                        prefix={
-                          <MailOutlined className="site-form-item-icon" />
-                        }
-                        type="email"
-                        placeholder="E-mail"
-                      />
-                    </Form.Item>
+                  <Form {...layout} onFinish={newPassword}>
                     <Form.Item
                       label="Παλιός κωδικός"
                       name="password"
@@ -105,19 +86,21 @@ const Security = () => {
                         prefix={
                           <LockOutlined className="site-form-item-icon" />
                         }
-                        type="newPassword"
+                        type="password"
                         placeholder="Παλιός κωδικός"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Καινούργιος κωδικός"
-                      name="new-password"
+                      name="newPassword"
                       rules={[
                         {
                           required: true,
+                          pattern: /^(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
                           message: 'Εισάγετε τον καινούργιο κωδικό σας!',
                         },
                       ]}
+                      hasFeedback
                     >
                       <Input.Password
                         prefix={
@@ -125,6 +108,37 @@ const Security = () => {
                         }
                         type="password"
                         placeholder="Καινούργιος κωδικός"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Επιβεβαίωση"
+                      name="confirmPassword"
+                      // dependencies={['newPassword']}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Επιβεβαιώστε τον καινούργιο κωδικό σας!',
+                        },
+                        // ({ getFieldValue }) => ({
+                        //   validator(value) {
+                        //     if (!value || getFieldValue('password') === value) {
+                        //       return Promise.resolve();
+                        //     }
+
+                        //     return Promise.reject(
+                        //       'Οι κωδικοί σας δεν ταιριάζουν!'
+                        //     );
+                        //   },
+                        // }),
+                      ]}
+                      hasFeedback
+                    >
+                      <Input.Password
+                        prefix={
+                          <LockOutlined className="site-form-item-icon" />
+                        }
+                        type="password"
+                        placeholder="Επιβεβαίωση καινούργιου κωδικού"
                       />
                     </Form.Item>
                     <Form.Item {...tailLayout}>
@@ -139,10 +153,10 @@ const Security = () => {
                   title="Αλλαγή Ε-mail"
                   style={{ marginTop: '15px' }}
                 >
-                  <Form {...layout} onFinish={onPasswordUpdate}>
+                  <Form {...layout}>
                     <Form.Item
                       label="Παλιό E-mail"
-                      name="old-email"
+                      name="email"
                       rules={[
                         {
                           required: true,
@@ -160,7 +174,7 @@ const Security = () => {
                     </Form.Item>
                     <Form.Item
                       label="Καινούργιο E-mail"
-                      name="new-email"
+                      name="newEmail"
                       rules={[
                         {
                           required: true,

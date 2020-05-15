@@ -12,9 +12,12 @@ import {
   BEFORE_STATE,
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_ERROR,
+  UPDATE_EMAIL_SUCCESS,
+  UPDATE_EMAIL_ERROR,
 } from '../authTypes';
 import { clearErrors, returnErrors } from './errorActions';
 import API_ROUTE from '../../../../apiRoute';
+import { message } from 'antd';
 
 // ** LOGIN USER **
 export const login = ({ email, password }) => {
@@ -94,26 +97,45 @@ export const deleteUser = (id) => {
 };
 
 // ** UPDATE PASSWORD **
-export const updatePassword = (
-  { password, newPassword, email },
-  clearInput
-) => {
-  const body = JSON.stringify({ password, newPassword, email });
+export const updatePassword = ({ password, newPassword, confirmPassword }) => {
+  const body = JSON.stringify({ password, newPassword, confirmPassword });
   return async (dispatch, getState) => {
     dispatch({ type: BEFORE_USER_STATE });
     const { currentUser } = getState().Auth;
 
     try {
       const res = await axios.put(`${API_ROUTE}/users/${currentUser.id}`, body);
-      let updatedPassword = res.data.message;
+      let updatedUser = res.data.message;
 
-      dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: updatedPassword });
-      window.localStorage.setItem('user_data', JSON.stringify(updatedPassword));
+      dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: updatedUser });
+      window.localStorage.setItem('user_data', JSON.stringify(updatedUser));
+      dispatch(clearErrors());
+      message.success('Επιτυχής ενημέρωση κωδικού!', 8);
+    } catch (err) {
+      dispatch(returnErrors());
+      dispatch({ type: UPDATE_PASSWORD_ERROR, payload: err.message.data });
+      message.error('Σφάλμα κατά την αλλαγή κωδικού.Προσπαθήστε ξανά!', 8);
+    }
+  };
+};
+
+// ** UPDATE EMAIL **
+export const updateEmail = ({ email, newEmail, password }, clearInput) => {
+  const body = JSON.stringify({ email, newEmail, password });
+  return async (dispatch, getState) => {
+    dispatch({ type: BEFORE_USER_STATE });
+    const { currentUser } = getState().Auth;
+
+    try {
+      const res = await axios.put(`${API_ROUTE}/users/${currentUser.id}`, body);
+      let updatedEmail = res.data.message;
+
+      dispatch({ type: UPDATE_EMAIL_SUCCESS, payload: updatedEmail });
       dispatch(clearErrors());
       clearInput();
     } catch (err) {
       dispatch(returnErrors());
-      dispatch({ type: UPDATE_PASSWORD_ERROR, payload: err.message.data });
+      dispatch({ type: UPDATE_EMAIL_ERROR });
     }
   };
 };
