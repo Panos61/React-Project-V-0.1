@@ -37,7 +37,6 @@ const Events = () => {
           <Meta description={event.description} />
           {/* <Event event={event} key={event.id} /> */}
         </Card>
-        )
       </div>
     );
   });

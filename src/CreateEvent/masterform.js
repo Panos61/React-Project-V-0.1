@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
   Form,
   Button,
@@ -20,7 +20,6 @@ import {
   InfoCircleOutlined,
   CloseOutlined,
   CheckOutlined,
-  CreditCardOutlined,
   YoutubeFilled,
 } from '@ant-design/icons';
 import { Link, Redirect } from 'react-router-dom';
@@ -29,6 +28,7 @@ import PaymentConditions from './payment-con';
 // Redux stuff import
 import PropTypes from 'prop-types';
 import { connect, useSelector, useDispatch } from 'react-redux';
+import { createEvent } from '../store/modules/events/actions/eventAction';
 
 const layout = {
   labelCol: {
@@ -56,10 +56,8 @@ const { TreeNode } = TreeSelect;
 const dateFormat = 'YYYY/MM/DD';
 const { RangePicker } = DatePicker;
 
-const MasterForm = () => {
+const MasterForm = (props) => {
   const currentState = useSelector((state) => state);
-
-  const dispatch = useDispatch();
 
   // constructor(props) {
   //   super(props);
@@ -90,11 +88,17 @@ const MasterForm = () => {
   //   }
   // };
 
+  const dispatch = useDispatch();
+
+  // On finish, submit the form values.
   const onFinish = (values) => {
     console.log(values);
+    dispatch(createEvent(values));
   };
 
-  if (!currentState.auth.isAuthenticated) {
+  // Redirect user to login page in case
+  // he is not authenticated and enters the URL manually
+  if (!currentState.Auth.isAuthenticated) {
     return <Redirect to="/login" />;
   }
 
@@ -193,7 +197,7 @@ const MasterForm = () => {
           <Meta description="Ημερομηνία" />
           <Form.Item
             label="Είδος"
-            name="dateType"
+            //name="dateType"
             rules={[
               {
                 required: false,
@@ -214,7 +218,7 @@ const MasterForm = () => {
           </Form.Item>
           <Form.Item
             label="Ημερομηνία"
-            name="date"
+            // name="date"
             rules={[
               {
                 required: false,
@@ -299,7 +303,7 @@ const MasterForm = () => {
           </Form.Item>
           <Form.Item
             label="Άνω των 18"
-            name="ageRestricted"
+            // name="ageRestricted"
             rules={[
               {
                 required: false,
@@ -313,7 +317,7 @@ const MasterForm = () => {
           </Form.Item>
           <Form.Item
             label="Πληρωμή"
-            name="payment"
+            // name="payment"
             rules={[
               {
                 required: false,
@@ -334,7 +338,6 @@ const MasterForm = () => {
             type="primary"
             style={{ marginTop: '15px' }}
           >
-            {/* <Link to="/event-success">Επιβεβαίωση</Link> */}
             Επιβεβαίωση
           </Button>
         </Form.Item>
@@ -344,10 +347,10 @@ const MasterForm = () => {
 };
 
 const mapStateToProps = (state) => ({
-  event: state.event,
-  error: state.error,
-  auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
+  Event: state.Event,
+  Error: state.Error,
+  Auth: state.Auth,
+  isAuthenticated: state.Auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, {})(MasterForm);
+export default connect(mapStateToProps, { createEvent })(MasterForm);
