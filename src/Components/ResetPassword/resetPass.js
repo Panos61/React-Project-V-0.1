@@ -4,6 +4,7 @@ import FooterMain from '../../Footer';
 import { Form, Card, Input, Button } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import BackMainPage from '../RegisterForm/BackMainPageSignup';
+import { Link } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -17,6 +18,13 @@ const tailLayout = {
   wrapperCol: {
     offset: 8,
     span: 16,
+  },
+};
+
+const linkLayout = {
+  wrapperCol: {
+    span: 16,
+    offset: 1,
   },
 };
 
@@ -46,7 +54,12 @@ const resetPasswordPage = () => {
                   />
                 </Form.Item>
                 <Form.Item {...tailLayout}>
-                  <Button type="primary">Επαναφορά</Button>
+                  <Button type="primary" htmlType="submit">
+                    Επαναφορά
+                  </Button>
+                </Form.Item>
+                <Form.Item {...linkLayout} style={{ marginBottom: '-10px' }}>
+                  <Link to="/login">Σύνδεση</Link>
                 </Form.Item>
               </Form>
             </Card>

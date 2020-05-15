@@ -10,9 +10,8 @@
 }
 
 .reset-card {
-  display: flex;
-  width: 400px;
+  width: 410px;
   max-width: 100%;
   margin: auto;
-  margin-top: 11%;
+  margin-top: 10%;
 }

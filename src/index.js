@@ -29,6 +29,7 @@ import Account from './Settings/account/account';
 import Security from './Settings/security/security';
 import Events from './Events/Events';
 import MusicPage from './Events/Event-SubPages/MusicPage';
+import resetPasswordPage from './Components/ResetPassword/resetPass';
 
 //when the page reloads, the auth user is still set
 if (localStorage.token) {
@@ -49,6 +50,7 @@ const routing = (
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
         <Route path="/help" component={MainHelpPage} />
+        <Route path="/reset-password" component={resetPasswordPage} />
 
         {/* Route path Profile  */}
         <PrivateRoute exact path="/profile" component={profile} />
