@@ -196,7 +196,7 @@ class WrappedRegistrationForm extends React.Component {
               message: 'Επιβεβαιώστε τον κωδικό σας!',
             },
             ({ getFieldValue }) => ({
-              validator(value) {
+              validator(rule, value) {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }

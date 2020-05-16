@@ -38,7 +38,7 @@ if (localStorage.token) {
     localStorage.getItem('user_data') == null
       ? null
       : JSON.parse(localStorage.getItem('user_data'));
-  store.dispatch({ type: LOGIN_SUCCESS, payload: userData }); //provided he has a valid token
+  store.dispatch({ type: LOGIN_SUCCESS, payload: userData });
 }
 
 //Added basic Routing for Login/Register/..

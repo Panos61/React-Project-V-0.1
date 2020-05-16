@@ -79,7 +79,7 @@ const SettingsMainPage = () => {
                 />
                 <Link to={security} style={IconTextStyle} id="linksHelp_Page">
                   Ασφάλεια <br />
-                  <p style={subTextStyle}>Αλλαγή Κωδικού.</p>
+                  <p style={subTextStyle}>Αλλαγή Κωδικού ή E-mail.</p>
                 </Link>
               </Card>
             </Col>
