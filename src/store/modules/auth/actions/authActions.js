@@ -122,17 +122,21 @@ export const updatePassword = ({ password, newPassword, confirmPassword }) => {
 };
 
 // ** UPDATE EMAIL **
-export const updateEmail = ({ email, newEmail, password }) => {
-  const body = JSON.stringify({ email, newEmail, password });
+export const updateEmail = ({ newEmail, password }) => {
+  const body = JSON.stringify({ newEmail, password });
   return async (dispatch, getState) => {
     dispatch({ type: BEFORE_USER_STATE });
     const { currentUser } = getState().Auth;
 
     try {
-      const res = await axios.put(`${API_ROUTE}/users/${currentUser.id}`, body);
-      let updatedEmail = res.data.message;
+      const res = await axios.put(
+        `${API_ROUTE}/users-email/${currentUser.id}`,
+        body
+      );
+      let updatedUser = res.data.message;
 
-      dispatch({ type: UPDATE_EMAIL_SUCCESS, payload: updatedEmail });
+      dispatch({ type: UPDATE_EMAIL_SUCCESS, payload: updatedUser });
+      window.localStorage.setItem('user_data', JSON.stringify(updatedUser));
       dispatch(clearErrors());
       message.success('Επιτυχής αλλαγή E-mail!', 8);
     } catch (err) {

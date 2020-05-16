@@ -6,7 +6,10 @@ import { Redirect, Link } from 'react-router-dom';
 import store from '../../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import FooterMain from '../../Footer';
-import { updatePassword } from '../../store/modules/auth/actions/authActions';
+import {
+  updatePassword,
+  updateEmail,
+} from '../../store/modules/auth/actions/authActions';
 import {
   SafetyCertificateOutlined,
   MailOutlined,
@@ -38,6 +41,10 @@ const Security = () => {
 
   const newPassword = (values) => {
     dispatch(updatePassword(values));
+  };
+
+  const newEmail = (values) => {
+    dispatch(updateEmail(values));
   };
 
   // Redirect unauthorized user to login page
@@ -119,17 +126,20 @@ const Security = () => {
                           required: true,
                           message: 'Επιβεβαιώστε τον καινούργιο κωδικό σας!',
                         },
-                        // ({ getFieldValue }) => ({
-                        //   validator(value) {
-                        //     if (!value || getFieldValue('password') === value) {
-                        //       return Promise.resolve();
-                        //     }
+                        ({ getFieldValue }) => ({
+                          validator(rule, value) {
+                            if (
+                              !value ||
+                              getFieldValue('newPassword') === value
+                            ) {
+                              return Promise.resolve();
+                            }
 
-                        //     return Promise.reject(
-                        //       'Οι κωδικοί σας δεν ταιριάζουν!'
-                        //     );
-                        //   },
-                        // }),
+                            return Promise.reject(
+                              'Οι κωδικοί σας δεν ταιριάζουν!'
+                            );
+                          },
+                        }),
                       ]}
                       hasFeedback
                     >
@@ -153,25 +163,7 @@ const Security = () => {
                   title="Αλλαγή Ε-mail"
                   style={{ marginTop: '15px' }}
                 >
-                  <Form {...layout}>
-                    <Form.Item
-                      label="Παλιό E-mail"
-                      name="email"
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Εισάγετε παλιό το E-mail σας!',
-                        },
-                      ]}
-                    >
-                      <Input
-                        prefix={
-                          <MailOutlined className="site-form-item-icon" />
-                        }
-                        type="email"
-                        placeholder="Παλιό E-mail"
-                      />
-                    </Form.Item>
+                  <Form {...layout} onFinish={newEmail}>
                     <Form.Item
                       label="Καινούργιο E-mail"
                       name="newEmail"
@@ -182,11 +174,11 @@ const Security = () => {
                         },
                       ]}
                     >
-                      <Input.Password
+                      <Input
                         prefix={
                           <LockOutlined className="site-form-item-icon" />
                         }
-                        type="password"
+                        type="email"
                         placeholder="Καινούργιο E-mail"
                       />
                     </Form.Item>
