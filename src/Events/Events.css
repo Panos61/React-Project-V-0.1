@@ -1,0 +1,21 @@
+.event-card {
+  width: 230px;
+  transition: all 0.35s ease-in-out;
+  background-color: whitesmoke;
+  flex-direction: row;
+}
+
+.event-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#parent-notification {
+  display: flex;
+  margin-top: 9%;
+}
+
+.event-notification {
+  max-width: 100%;
+  margin: auto;
+}

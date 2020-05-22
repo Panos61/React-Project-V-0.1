@@ -7,7 +7,7 @@ const empty = () => {
     <div style={{ padding: '40px', backgroundColor: 'whitesmoke' }}>
       <Empty
         description={
-          <span>Δεν υπάρχουν Events ή έχουν λήξει τα όσα υπάρχοντα!</span>
+          <span>Δεν υπάρχουν Events ή έχουν λήξει τα όσα υπάρχοντα :(</span>
         }
       >
         <Button type="primary">

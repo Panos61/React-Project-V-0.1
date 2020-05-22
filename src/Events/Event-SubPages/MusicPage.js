@@ -5,8 +5,6 @@ import { PageHeader, Button, Layout, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
 import Events from '../Events';
 import { HeartFilled } from '@ant-design/icons';
-import { Row, Col } from 'react-flexbox-grid';
-import Empty from '../empty';
 
 const { Footer } = Layout;
 
@@ -26,11 +24,8 @@ const MusicPage = () => {
       />
 
       <section id="music-page">
-        <Row around="xs">
-          <Col xs={24}>
-            <Events />
-          </Col>
-        </Row>
+        <Events />
+
         <BackTop />
       </section>
 

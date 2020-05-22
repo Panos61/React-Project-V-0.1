@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card } from 'antd';
+import { Card, Modal, Button } from 'antd';
 import { CarryOutOutlined } from '@ant-design/icons';
 import { fetchEvents } from '../store/modules/events/actions/eventAction';
-import Event from './Event';
-import './Event.css';
+import { Row, Col } from 'react-flexbox-grid';
+import './Events.css';
 import Empty from './empty';
-import { Link, Redirect } from 'react-router-dom';
+import Extended from './Event-Layout/extended';
 
 const { Meta } = Card;
 
 const Events = () => {
+  const [visible, setVisible] = useState(false);
+
   const eventsSelector = useSelector((state) => state.Event);
   const dispatch = useDispatch();
 
@@ -24,6 +26,7 @@ const Events = () => {
     return (
       <div>
         <Card
+          onClick={() => setVisible(true)}
           title={event.title}
           style={{ marginTop: '20px' }}
           size="small"
@@ -35,13 +38,42 @@ const Events = () => {
           actions={[<CarryOutOutlined key="interested" />]}
         >
           <Meta description={event.description} />
-          {/* <Event event={event} key={event.id} /> */}
         </Card>
+
+        <Modal
+          style={{ top: 25 }}
+          closable={true}
+          visible={visible}
+          title={event.title}
+          footer={[
+            <Button
+              key="submit"
+              type="dashed"
+              onClick={() => setVisible(false)}
+            >
+              Πίσω
+            </Button>,
+          ]}
+        >
+          <Extended />
+        </Modal>
       </div>
     );
   });
 
-  return <span style={{ marginTop: '20px' }}>{events}</span>;
+  return (
+    <span>
+      {events.length > 0 ? (
+        { events }
+      ) : (
+        <div id="parent-notification">
+          <div className="event-notification">
+            <Empty />
+          </div>
+        </div>
+      )}
+    </span>
+  );
 };
 
 export default Events;
