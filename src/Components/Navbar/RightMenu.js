@@ -29,24 +29,33 @@ class RightMenu extends Component {
       </Fragment>
     );
 
-    const guestLinks = (
-      <Fragment>
-        <Menu>
-          <Menu.Item style={{ display: 'table' }}>
-            <Link to="/login">Σύνδεση</Link>
-          </Menu.Item>
-        </Menu>
-      </Fragment>
-    );
+    // const guestLinks = (
+    //   <div style={{ display: 'block', marginBottom: '12px' }}>
+    //     <Menu style={{ display: 'flex', flexDirection: 'row' }}>
+    //       <Menu.Item>
+    //         <Link to="/login">Σύνδεση</Link>
+    //       </Menu.Item>
+    //       <Menu.Item>
+    //         <Link to="/register">Εγγραφή</Link>
+    //       </Menu.Item>
+    //     </Menu>
+    //   </div>
+    // );
 
     const register = (
-      <Fragment>
-        <Menu>
-          <Menu.Item>
-            <Link to="/register">Eggrafh</Link>
-          </Menu.Item>
-        </Menu>
-      </Fragment>
+      <Menu>
+        <Menu.Item>
+          <Link to="/login">Σύνδεση</Link>
+        </Menu.Item>
+      </Menu>
+    );
+
+    const login = (
+      <Menu>
+        <Menu.Item>
+          <Link to="/register">Εγγραφή</Link>
+        </Menu.Item>
+      </Menu>
     );
 
     return (
@@ -68,7 +77,16 @@ class RightMenu extends Component {
           <Menu.Item key="howWorks">
             <HowWorks />
           </Menu.Item>
-          <Menu.Item>{isAuthenticated ? authLinks : guestLinks}</Menu.Item>
+          <Menu.Item>
+            <div style={{ display: 'inline-block' }}>
+              {isAuthenticated ? authLinks : register}
+            </div>
+          </Menu.Item>
+          <Menu.Item>
+            <div style={{ display: 'inline-block' }}>
+              {isAuthenticated ? '' : login}
+            </div>
+          </Menu.Item>
         </Menu>
 
         <Route path="/login" Component={CardLoginStyle} />
