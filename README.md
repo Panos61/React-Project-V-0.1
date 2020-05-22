@@ -24,7 +24,7 @@
 
 [ ] Profile Development 
 
-[ ] Mobile Interactive Menu
+[ ] Feed Development
 
 #### more on the way
 
