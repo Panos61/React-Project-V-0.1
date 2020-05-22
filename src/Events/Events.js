@@ -62,9 +62,9 @@ const Events = () => {
   });
 
   return (
-    <span>
+    <div>
       {events.length > 0 ? (
-        { events }
+        <div> {events} </div>
       ) : (
         <div id="parent-notification">
           <div className="event-notification">
@@ -72,8 +72,10 @@ const Events = () => {
           </div>
         </div>
       )}
-    </span>
+    </div>
   );
+
+  //return <span>{events}</span>;
 };
 
 export default Events;
