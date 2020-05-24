@@ -65,6 +65,16 @@ const routing = (
         {/* Event-Tabs */}
         <Route path="/events" component={MusicPage} />
 
+        {/* Event-Types Routes */}
+        {/* <Route path='/music' component={} />
+        <Route path='/sports' component={} />
+        <Route path='/entertainment' component={} />
+        <Route path='/cinema' component={} />
+        <Route path='/dance' component={} />
+        <Route path='/arts' component={} />
+        <Route path='/kids' component={} />
+        <Route path='/social_events' component={} /> */}
+
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
       </Switch>
