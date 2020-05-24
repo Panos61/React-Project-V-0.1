@@ -8,14 +8,14 @@ import { HeartFilled } from '@ant-design/icons';
 
 const { Footer } = Layout;
 
-const MusicPage = () => {
+const SportsPage = () => {
   return (
     <div>
       <PageHeader
         className="security-page-header"
         onBack={() => window.history.back()}
-        title="Μουσική"
-        subTitle="..μουσική σε οποιοδήποτε σημείο!"
+        title="Αθλητισμός"
+        subTitle="..αθλητισμός σε οποιοδήποτε σημείο!"
         extra={[
           <Button key="createvent" size="small" type="primary">
             <Link to="/create-event">Δημιουργήστε Event!</Link>
@@ -23,8 +23,8 @@ const MusicPage = () => {
         ]}
       />
 
-      <section id="music-page">
-        <Events />
+      <section id="sports-page">
+        {/* <Events /> */}
 
         <BackTop />
       </section>
@@ -43,4 +43,4 @@ const MusicPage = () => {
   );
 };
 
-export default MusicPage;
+export default SportsPage;

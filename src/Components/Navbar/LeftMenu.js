@@ -15,12 +15,12 @@ class LeftMenu extends Component {
           </Link>
         </Menu.Item>
         <Menu.Item key="sport">
-          <Link to="/" style={{ color: '#69c0ff' }}>
+          <Link to="/sports" style={{ color: '#69c0ff' }}>
             Αθλητισμός
           </Link>
         </Menu.Item>
         <Menu.Item key="enter">
-          <Link to="/" style={{ color: '#eb2f96' }}>
+          <Link to="/entertainment" style={{ color: '#eb2f96' }}>
             Διασκέδαση
           </Link>
         </Menu.Item>

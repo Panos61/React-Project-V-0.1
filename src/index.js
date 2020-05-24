@@ -30,6 +30,8 @@ import Security from './Settings/security/security';
 import Events from './Events/Events';
 import MusicPage from './Events/Event-SubPages/MusicPage';
 import resetPasswordPage from './Components/ResetPassword/resetPass';
+import SportsPage from './Events/Event-SubPages/SportsPage';
+import EnterPage from './Events/Event-SubPages/EnterPage';
 
 //when the page reloads, the auth user is still set
 if (localStorage.token) {
@@ -66,10 +68,10 @@ const routing = (
         <Route path="/events" component={MusicPage} />
 
         {/* Event-Types Routes */}
-        {/* <Route path='/music' component={} />
-        <Route path='/sports' component={} />
-        <Route path='/entertainment' component={} />
-        <Route path='/cinema' component={} />
+        {/* <Route path='/music' component={} /> */}
+        <Route path="/sports" component={SportsPage} />
+        <Route path="/entertainment" component={EnterPage} />
+        {/* <Route path='/cinema' component={} />
         <Route path='/dance' component={} />
         <Route path='/arts' component={} />
         <Route path='/kids' component={} />
