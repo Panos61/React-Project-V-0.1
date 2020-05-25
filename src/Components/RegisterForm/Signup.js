@@ -103,7 +103,6 @@ class WrappedRegistrationForm extends React.Component {
   render() {
     const onFinish = (values) => {
       this.props.register(values);
-      console.log('Received values of form: ', values);
     };
 
     return (

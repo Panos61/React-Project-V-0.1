@@ -23,7 +23,6 @@ import Success from './CreateEvent/success';
 
 // Event-Tabs
 
-import setAuthorizationToken from './store/modules/auth/actions/authActions';
 import SettingsMainPage from './Settings/settings';
 import Account from './Settings/account/account';
 import Security from './Settings/security/security';
@@ -33,16 +32,6 @@ import MusicPage from './Events/Event-SubPages/MusicPage';
 import resetPasswordPage from './Components/ResetPassword/resetPass';
 import SportsPage from './Events/Event-SubPages/SportsPage';
 import EnterPage from './Events/Event-SubPages/EnterPage';
-
-//when the page reloads, the auth user is still set
-if (localStorage.token) {
-  setAuthorizationToken(localStorage.token);
-  let userData =
-    localStorage.getItem('user_data') == null
-      ? null
-      : JSON.parse(localStorage.getItem('user_data'));
-  store.dispatch({ type: LOGIN_SUCCESS, payload: userData });
-}
 
 //Added basic Routing for Login/Register/..
 const routing = (

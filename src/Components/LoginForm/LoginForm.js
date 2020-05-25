@@ -60,7 +60,6 @@ class WrappedNormalLoginForm extends Component {
   render() {
     const onFinish = (values) => {
       this.props.login(values);
-      console.log('Success:', values);
     };
 
     return (
