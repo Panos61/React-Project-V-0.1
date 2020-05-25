@@ -28,6 +28,7 @@ import SettingsMainPage from './Settings/settings';
 import Account from './Settings/account/account';
 import Security from './Settings/security/security';
 import Events from './Events/Events';
+import DataDisplay from './Events/Layout/DataDisplay';
 import MusicPage from './Events/Event-SubPages/MusicPage';
 import resetPasswordPage from './Components/ResetPassword/resetPass';
 import SportsPage from './Events/Event-SubPages/SportsPage';
@@ -66,16 +67,17 @@ const routing = (
 
         {/* Event-Tabs */}
         <Route path="/events" component={MusicPage} />
+        <Route path="/event/:id" component={DataDisplay} />
 
         {/* Event-Types Routes */}
-        {/* <Route path='/music' component={} /> */}
+        <Route path="/music" component={MusicPage} />
         <Route path="/sports" component={SportsPage} />
         <Route path="/entertainment" component={EnterPage} />
-        {/* <Route path='/cinema' component={} />
-        <Route path='/dance' component={} />
-        <Route path='/arts' component={} />
-        <Route path='/kids' component={} />
-        <Route path='/social_events' component={} /> */}
+        <Route path="/cinema" component={EnterPage} />
+        <Route path="/dance" component={EnterPage} />
+        <Route path="/arts" component={EnterPage} />
+        <Route path="/kids" component={EnterPage} />
+        <Route path="/social_events" component={EnterPage} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
