@@ -67,7 +67,7 @@ const routing = (
 
         {/* Event-Tabs */}
         <Route path="/events" component={MusicPage} />
-        <Route path="/event/:id" component={DataDisplay} />
+        <Route path="/events/:id" component={DataDisplay} />
 
         {/* Event-Types Routes */}
         <Route path="/music" component={MusicPage} />

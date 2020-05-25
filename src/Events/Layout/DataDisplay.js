@@ -1,12 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Affix, Button } from 'antd';
 import './DataLayout.css';
 
-const DataDisplay = () => {
+const DataDisplay = ({ event }) => {
+  const currentState = useSelector((state) => state);
+  const authID = currentState.Auth.currentUser
+    ? currentState.Auth.currentUser.id
+    : '';
+
   return (
     <>
       <section id="event-data-layout">
-        <Affix offsetTop={110}>
+        <Affix offsetTop={100}>
           <Button
             size="large"
             onClick={() => window.history.back()}
@@ -16,7 +22,7 @@ const DataDisplay = () => {
           </Button>
         </Affix>
 
-        <h2>data</h2>
+        <span>{event.title}</span>
       </section>
     </>
   );

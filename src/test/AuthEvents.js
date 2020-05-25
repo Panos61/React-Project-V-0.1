@@ -31,7 +31,7 @@ const AuthEvents = () => {
       {authEvents.length > 0 ? (
         <Card> {authEvents}</Card>
       ) : (
-        <span style={{ marginTop: '30px' }}>Create new Event</span>
+        <span style={{ marginTop: '30px' }}>Δημιουργήστε ένα νέο Event!</span>
       )}
     </div>
   );

@@ -25,7 +25,6 @@ const EnterPage = () => {
 
       <section id="enter-page">
         <Events />
-
         <BackTop />
       </section>
 
