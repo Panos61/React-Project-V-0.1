@@ -11,6 +11,7 @@ import {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_ERROR,
   UPDATE_EMAIL_SUCCESS,
+  SET_CURRENT_USER,
 } from '../authTypes';
 
 import isEmpty from 'lodash/isEmpty';
@@ -50,6 +51,14 @@ const authReducer = (state = initState, action) => {
         ...state,
         isLoading: false,
         user: action.payload,
+      };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.payload,
+        isAuthenticated: !isEmpty(action.payload),
+        currentUser: action.payload,
       };
     case LOGIN_ERROR:
     case LOGOUT_SUCCESS:

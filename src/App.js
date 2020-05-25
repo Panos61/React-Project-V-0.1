@@ -10,33 +10,40 @@ import MainHelpPage from './HelpPages/MainHelpPage';
 import { Route } from 'react-router-dom';
 import FooterMain from './Footer';
 
-import { Provider } from 'react-redux';
-import store from './store';
+import { useDispatch } from 'react-redux';
+import setAuthorizationToken, {
+  getUser,
+} from './store/modules/auth/actions/authActions';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Provider store={store}>
-          <div className="main-page_style">
-            <Navbar />
-            <section>
-              <Search />
-              <HorizontalSider />
+const App = () => {
+  const dispatch = useDispatch();
 
-              <BackTop />
-              <Cities />
-            </section>
-          </div>
-          <footer>
-            <FooterMain />
-          </footer>
-          {/* Routes */}
-          <Route path="/Help" Component={MainHelpPage} />
-        </Provider>
-      </div>
-    );
+  //when the page reloads, the auth user is still set
+  if (localStorage.token) {
+    setAuthorizationToken(localStorage.token);
+
+    dispatch(getUser());
   }
-}
+
+  return (
+    <>
+      <div className="main-page_style">
+        <Navbar />
+        <section>
+          <Search />
+          <HorizontalSider />
+
+          <BackTop />
+          <Cities />
+        </section>
+      </div>
+      <footer>
+        <FooterMain />
+      </footer>
+      {/* Routes */}
+      <Route path="/Help" Component={MainHelpPage} />
+    </>
+  );
+};
 
 export default App;

@@ -14,10 +14,6 @@ const Logout = () => {
 
   const logoutUser = () => dispatch(logout());
 
-  const SignOut = () => {
-    logoutUser();
-  };
-
   const userSettings = isAuthenticated
     ? `/settings/${currentState.Auth.currentUser.id}`
     : '';
@@ -31,7 +27,7 @@ const Logout = () => {
         </Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <span onClick={SignOut}>
+        <span onClick={logoutUser}>
           Αποσύνδεση
           <LogoutOutlined style={{ marginLeft: '11px' }} />
         </span>

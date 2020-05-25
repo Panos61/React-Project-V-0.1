@@ -16,10 +16,24 @@ import {
   UPDATE_EMAIL_ERROR,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_ERROR,
+  SET_CURRENT_USER,
 } from '../authTypes';
 import { clearErrors, returnErrors } from './errorActions';
 import API_ROUTE from '../../../../apiRoute';
 import { message } from 'antd';
+
+export const getUser = () => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.get(`${API_ROUTE}/me`);
+      let user = res.data;
+      dispatch({ type: SET_CURRENT_USER, payload: user });
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch(returnErrors(err.message));
+    }
+  };
+};
 
 // ** LOGIN USER **
 export const login = ({ email, password }) => {
@@ -32,7 +46,6 @@ export const login = ({ email, password }) => {
       let user = res.data;
       localStorage.setItem('token', user.token);
 
-      localStorage.setItem('user_data', JSON.stringify(user));
       setAuthorizationToken(user.token);
 
       dispatch({ type: LOGIN_SUCCESS, payload: user });
@@ -69,15 +82,13 @@ export const register = ({ email, username, password, gender }) => {
 };
 
 // ** LOGOUT USER **
-export const logout = () => {
-  return (dispatch) => {
-    localStorage.removeItem('token');
-    setAuthorizationToken(false);
-    dispatch({ type: LOGOUT_SUCCESS });
-    dispatch(clearErrors());
-    window.localStorage.clear();
-    history.push('/');
-  };
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('token');
+  setAuthorizationToken(false);
+  dispatch({ type: LOGOUT_SUCCESS });
+  dispatch(clearErrors());
+  window.localStorage.clear();
+  history.push('/');
 };
 
 // ** DELETE USER **
@@ -110,7 +121,7 @@ export const updatePassword = ({ password, newPassword, confirmPassword }) => {
       let updatedUser = res.data.message;
 
       dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: updatedUser });
-      window.localStorage.setItem('user_data', JSON.stringify(updatedUser));
+
       dispatch(clearErrors());
       message.success('Επιτυχής ενημέρωση κωδικού!', 8);
     } catch (err) {
@@ -136,7 +147,7 @@ export const updateEmail = ({ newEmail, password }) => {
       let updatedUser = res.data.message;
 
       dispatch({ type: UPDATE_EMAIL_SUCCESS, payload: updatedUser });
-      window.localStorage.setItem('user_data', JSON.stringify(updatedUser));
+
       dispatch(clearErrors());
       message.success('Επιτυχής αλλαγή E-mail!', 8);
     } catch (err) {
