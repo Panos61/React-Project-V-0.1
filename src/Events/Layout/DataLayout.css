@@ -1,3 +1,25 @@
 #event-data-layout {
   background-color: rgb(245, 237, 237);
 }
+
+.event-container-parent {
+  display: flex;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.event-container {
+  width: 1000px;
+  border: 1px solid rgb(235, 227, 228);
+  border-radius: 4px;
+  padding: 50px;
+  max-width: 100%;
+  margin: auto;
+  background: white;
+  height: 100vh;
+}
+
+.event-title {
+  margin-bottom: 10px;
+  font-size: 29px;
+}
