@@ -4,9 +4,10 @@ import 'moment/locale/el';
 import { useSelector, useDispatch } from 'react-redux';
 import { Affix, Button, Divider, BackTop, Layout } from 'antd';
 import './DataLayout.css';
+
 import { fetchEvent } from '../../store/modules/events/actions/eventAction';
 
-import { HeartFilled } from '@ant-design/icons';
+import { HeartFilled, ArrowLeftOutlined } from '@ant-design/icons';
 const { Footer } = Layout;
 
 const DataDisplay = (props) => {
@@ -30,15 +31,16 @@ const DataDisplay = (props) => {
   return (
     <div>
       <section id="event-data-layout">
-        {/* <Affix offsetTop={100}>
+        <Affix offsetTop={12}>
           <Button
             size="large"
             onClick={() => window.history.back()}
-            type="primary"
+            type="dashed"
+            icon={<ArrowLeftOutlined />}
           >
             Πίσω
           </Button>
-        </Affix> */}
+        </Affix>
 
         <div className="event-container-parent">
           <div className="event-container">
@@ -50,7 +52,9 @@ const DataDisplay = (props) => {
                   {event.created_at}
                 </Moment>{' '}
                 <br />
-                <span style={{ fontSize: 'small' }}>{event.category}</span>
+                <span style={{ fontSize: 'small', color: '#237804' }}>
+                  {event.category}
+                </span>
               </span>
             </div>
 
@@ -62,6 +66,7 @@ const DataDisplay = (props) => {
               </div>
               <h4>Περιγραφή:</h4>
               <div className="event-description">{event.description}</div>
+              <Divider />
             </div>
             {/* <div className="half-two">
               <p>content, maps..</p>
