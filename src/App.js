@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Search from './Components/OtherMainPage/Search';
@@ -10,21 +10,7 @@ import MainHelpPage from './HelpPages/MainHelpPage';
 import { Route } from 'react-router-dom';
 import FooterMain from './Footer';
 
-import { useDispatch } from 'react-redux';
-import setAuthorizationToken, {
-  getUser,
-} from './store/modules/auth/actions/authActions';
-
 const App = () => {
-  const dispatch = useDispatch();
-
-  //when the page reloads, the auth user is still set
-  if (localStorage.token) {
-    setAuthorizationToken(localStorage.token);
-
-    dispatch(getUser());
-  }
-
   return (
     <>
       <div className="main-page_style">

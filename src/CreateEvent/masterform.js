@@ -98,7 +98,8 @@ const MasterForm = (props) => {
 
   // Redirect user to login page in case
   // he is not authenticated and enters the URL manually
-  if (!currentState.Auth.isAuthenticated) {
+  localStorage.getItem('token');
+  if (!localStorage.token) {
     return <Redirect to="/login" />;
   }
 

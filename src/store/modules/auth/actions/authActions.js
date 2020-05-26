@@ -21,7 +21,9 @@ import {
 import { clearErrors, returnErrors } from './errorActions';
 import API_ROUTE from '../../../../apiRoute';
 import { message } from 'antd';
+import jwt_decode from 'jwt-decode';
 
+// ** GET USER STATE
 export const getUser = () => {
   return async (dispatch) => {
     try {
@@ -49,6 +51,7 @@ export const login = ({ email, password }) => {
       setAuthorizationToken(user.token);
 
       dispatch({ type: LOGIN_SUCCESS, payload: user });
+      dispatch({ type: SET_CURRENT_USER, payload: user });
       dispatch(clearErrors());
       setTimeout(() => {
         history.push('/');
@@ -183,24 +186,6 @@ export default function setAuthorizationToken(token) {
     delete axios.defaults.headers.common['Authorization'];
   }
 }
-
-// ** ALTERNATIVE TOKEN AUTH
-
-// export const getHeaders = () => {
-//   // Auth token
-//   const token = localStorage.getItem('token');
-
-//   const config = {
-//     'Content-Type': 'application/json',
-//   };
-
-//   // if token, add to headers
-//   if (token) {
-//     config['Authorization'] = `Bearer ${token}`;
-//   }
-
-//   return config;
-// };
 
 // ** ALTERNATIVE SOLUTION TO LOGIN
 

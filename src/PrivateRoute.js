@@ -11,10 +11,17 @@ const PrivateRoute = ({ component: Component, Auth, ...rest }) => {
         // if (auth.isLoading) {
         //   return <Spin size="large" />;
         // } else
-        if (!Auth.isAuthenticated) {
-          return <Redirect to="/login" />;
-        } else {
+        // if (!Auth.isAuthenticated) {
+        //   return <Redirect to="/login" />;
+        // } else {
+        //   return <Component {...props} />;
+        // }
+
+        localStorage.getItem('token');
+        if (localStorage.token) {
           return <Component {...props} />;
+        } else {
+          return <Redirect to="/login" />;
         }
       }}
     />

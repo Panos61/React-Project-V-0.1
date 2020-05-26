@@ -47,11 +47,12 @@ const Security = () => {
     dispatch(updateEmail(values));
   };
 
-  // Redirect unauthorized user to login page
-  if (!currentUserState.isAuthenticated) {
+  // Redirect user to login page in case
+  // he is not authenticated and enters the URL manually
+  localStorage.getItem('token');
+  if (!localStorage.token) {
     return <Redirect to="/login" />;
   }
-
   return (
     <div>
       <Provider store={store}>

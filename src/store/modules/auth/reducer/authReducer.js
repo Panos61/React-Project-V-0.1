@@ -13,7 +13,6 @@ import {
   UPDATE_EMAIL_SUCCESS,
   SET_CURRENT_USER,
 } from '../authTypes';
-
 import isEmpty from 'lodash/isEmpty';
 
 export const initState = {
@@ -60,6 +59,7 @@ const authReducer = (state = initState, action) => {
         isAuthenticated: !isEmpty(action.payload),
         currentUser: action.payload,
       };
+
     case LOGIN_ERROR:
     case LOGOUT_SUCCESS:
     case REGISTER_ERROR:
