@@ -62,7 +62,7 @@ const Routes = () => {
 
         {/* Event-Tabs */}
         <Route path="/events" component={MusicPage} />
-        <Route path="/events/:id" component={DataDisplay} />
+        <Route path="/event/:id" component={DataDisplay} />
 
         {/* Event-Types Routes */}
         <Route path="/music" component={MusicPage} />
