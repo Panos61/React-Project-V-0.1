@@ -16,12 +16,10 @@ import history from './history';
 // Private-Protected Route function
 import PrivateRoute from './PrivateRoute';
 
-import { Provider } from 'react-redux';
 import Success from './CreateEvent/success';
 import SettingsMainPage from './Settings/settings';
 import Account from './Settings/account/account';
 import Security from './Settings/security/security';
-import Events from './Events/Events';
 import DataDisplay from './Events/Layout/DataDisplay';
 import MusicPage from './Events/Event-SubPages/MusicPage';
 import resetPasswordPage from './Components/ResetPassword/resetPass';
