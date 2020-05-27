@@ -25,7 +25,7 @@ const Event = ({ event }) => {
       }
       actions={[<CarryOutOutlined key="interested" />]}
     >
-      <Meta description={event.description} />
+      <Meta description="Date-Placeholder" />
     </Card>
   );
 };

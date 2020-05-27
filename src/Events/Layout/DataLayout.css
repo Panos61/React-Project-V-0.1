@@ -4,22 +4,25 @@
 
 .event-container-parent {
   display: flex;
-  margin-top: 4%;
   margin-bottom: 4%;
 }
 
 .event-container {
-  width: 1000px;
+  width: 1250px;
   border: 1px solid rgb(231, 203, 207);
   border-radius: 4px;
   padding: 50px;
   max-width: 100%;
   margin: auto;
   background: white;
-  height: 100vh;
+  height: auto;
 }
 
 .event-title {
   margin-bottom: 10px;
   font-size: 29px;
+}
+
+.event-date {
+  float: right;
 }

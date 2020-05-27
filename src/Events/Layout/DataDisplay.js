@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import Moment from 'react-moment';
 import 'moment/locale/el';
 import { useSelector, useDispatch } from 'react-redux';
-import { Affix, Button, Divider, BackTop, Layout } from 'antd';
+import { Affix, Button, Divider, BackTop, Layout, Collapse } from 'antd';
 import './DataLayout.css';
-
 import { fetchEvent } from '../../store/modules/events/actions/eventAction';
-
 import { HeartFilled, ArrowLeftOutlined } from '@ant-design/icons';
+
 const { Footer } = Layout;
+const { Panel } = Collapse;
 
 const DataDisplay = (props) => {
   const eventID = props.match.params.id;
@@ -29,11 +29,11 @@ const DataDisplay = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       <section id="event-data-layout">
         <Affix offsetTop={12}>
           <Button
-            size="large"
+            size="medium"
             onClick={() => window.history.back()}
             type="dashed"
             icon={<ArrowLeftOutlined />}
@@ -59,20 +59,29 @@ const DataDisplay = (props) => {
             </div>
 
             <Divider />
-            <div className="half-one">
-              <h4>Δημιουργός:</h4>
-              <div className="event-creator" style={{ marginBottom: '15px' }}>
-                {event.creator ? event.creator.username : ''}
-              </div>
-              <h4>Περιγραφή:</h4>
-              <div className="event-description">{event.description}</div>
-              <Divider />
+
+            <div className="event-date">
+              <h4>Ημερομηνία:</h4>
+              <span>some date</span>
             </div>
-            {/* <div className="half-two">
-              <p>content, maps..</p>
-            </div> */}
+            <h4>Δημιουργός:</h4>
+            <div className="event-creator" style={{ marginBottom: '15px' }}>
+              {event.creator ? event.creator.username : ''}
+            </div>
+
+            <h4>Περιγραφή:</h4>
+            <div className="event-description">{event.description}</div>
+
+            <Divider />
+
+            <Collapse bordered={false}>
+              <Panel header="Λοιπές Πληροφορίες">
+                <h4>Σχόλια Δημιουργού:</h4>
+                {event.comments ? event.comments : 'Κανένα σχόλιο.'} <br />
+                {event.ageRestricted ? event.ageRestricted : ''}
+              </Panel>
+            </Collapse>
           </div>
-          {/* <Divider type="vertical" /> */}
         </div>
         <BackTop />
       </section>
@@ -87,7 +96,7 @@ const DataDisplay = (props) => {
           EventPark ©2020 Created with <HeartFilled /> by us!
         </Footer>
       </footer>
-    </div>
+    </>
   );
 };
 
