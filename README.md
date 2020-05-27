@@ -18,9 +18,9 @@
 
 [x] Delete Account
 
-## Things to be done:
+[x] Event SubPages Layout - in development
 
-[ ] Event SubPages Layout - in development
+## Things to be done:
 
 [ ] Profile Development 
 
