@@ -21,7 +21,6 @@ import {
 import { clearErrors, returnErrors } from './errorActions';
 import API_ROUTE from '../../../../apiRoute';
 import { message } from 'antd';
-import jwt_decode from 'jwt-decode';
 
 // ** GET USER STATE
 export const getUser = () => {
