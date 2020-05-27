@@ -10,7 +10,7 @@ class LeftMenu extends Component {
     return (
       <Menu mode={this.props.mode}>
         <Menu.Item key="music">
-          <Link to="/events" style={{ color: 'maroon' }}>
+          <Link to="/music" style={{ color: 'maroon' }}>
             Μουσική
           </Link>
         </Menu.Item>

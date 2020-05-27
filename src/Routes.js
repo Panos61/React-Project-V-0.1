@@ -25,6 +25,7 @@ import MusicPage from './Events/Event-SubPages/MusicPage';
 import resetPasswordPage from './Components/ResetPassword/resetPass';
 import SportsPage from './Events/Event-SubPages/SportsPage';
 import EnterPage from './Events/Event-SubPages/EnterPage';
+import CinemaPage from './Events/Event-SubPages/CinemaPage';
 
 import { useDispatch } from 'react-redux';
 import setAuthorizationToken, {
@@ -61,14 +62,13 @@ const Routes = () => {
         <PrivateRoute exact path="/security/:id" component={Security} />
 
         {/* Event-Tabs */}
-        <Route path="/events" component={MusicPage} />
         <Route path="/event/:id" component={DataDisplay} />
 
         {/* Event-Types Routes */}
         <Route path="/music" component={MusicPage} />
         <Route path="/sports" component={SportsPage} />
         <Route path="/entertainment" component={EnterPage} />
-        <Route path="/cinema" component={EnterPage} />
+        <Route path="/cinema" component={CinemaPage} />
         <Route path="/dance" component={EnterPage} />
         <Route path="/arts" component={EnterPage} />
         <Route path="/kids" component={EnterPage} />

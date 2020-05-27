@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Event from './Event';
-import {
-  fetchSportEvents,
-  fetchMusicEvents,
-} from '../store/modules/events/actions/eventAction';
-import './Events.css';
-import Empty from './empty';
+import Event from '../Event';
+import { fetchMusicEvents } from '../../store/modules/events/actions/eventAction';
+import '../Events.css';
+import Empty from '../empty';
 import { Link } from 'react-router-dom';
 
-const Events = () => {
+const Music = () => {
   const eventsSelector = useSelector((state) => state.Event);
   const dispatch = useDispatch();
 
@@ -41,4 +38,4 @@ const Events = () => {
   return <div className="events-container">{events}</div>;
 };
 
-export default Events;
+export default Music;

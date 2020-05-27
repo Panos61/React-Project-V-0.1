@@ -56,13 +56,69 @@ export const createEvent = ({
     }
   };
 };
-// ** FETCH ALL EVENTS **
-export const fetchEvents = () => {
+// ** FETCH MUSIC EVENTS **
+export const fetchMusicEvents = () => {
   return async (dispatch) => {
     dispatch({ type: BEFORE_STATE_EVENT });
 
     try {
-      const res = await axios.get(`${API_ROUTE}/events`);
+      const res = await axios.get(`${API_ROUTE}/music`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH SPORTS EVENTS **
+export const fetchSportEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/sports`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH ENTERTAINMENT EVENTS **
+export const fetchEnterEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/entertainment`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH CINEMA EVENTS **
+export const fetchCinemaEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/cinema`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH ART EVENTS **
+export const fetchArtEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/arts`);
       dispatch({ type: FETCH_EVENTS, payload: res.data.message });
     } catch (err) {
       dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });

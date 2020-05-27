@@ -1,10 +1,9 @@
 import React from 'react';
 import './events-style.css';
-
 import { PageHeader, Button, Layout, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
-import Events from '../Events';
 import { HeartFilled } from '@ant-design/icons';
+import Enter from '../Event-Category/Enter';
 
 const { Footer } = Layout;
 
@@ -24,7 +23,7 @@ const EnterPage = () => {
       />
 
       <section id="enter-page">
-        <Events />
+        <Enter />
         <BackTop />
       </section>
 

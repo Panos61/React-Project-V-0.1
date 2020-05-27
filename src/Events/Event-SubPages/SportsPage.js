@@ -3,8 +3,8 @@ import './events-style.css';
 
 import { PageHeader, Button, Layout, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
-import Events from '../Events';
 import { HeartFilled } from '@ant-design/icons';
+import Sports from '../Event-Category/Sports';
 
 const { Footer } = Layout;
 
@@ -24,8 +24,7 @@ const SportsPage = () => {
       />
 
       <section id="sports-page">
-        {/* <Events /> */}
-
+        <Sports />
         <BackTop />
       </section>
 

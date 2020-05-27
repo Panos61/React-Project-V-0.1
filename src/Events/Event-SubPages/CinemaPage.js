@@ -3,19 +3,19 @@ import './events-style.css';
 
 import { PageHeader, Button, Layout, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
-import Music from '../Event-Category/Music';
+import Cinema from '../Event-Category/Cinema';
 import { HeartFilled } from '@ant-design/icons';
 
 const { Footer } = Layout;
 
-const MusicPage = () => {
+const CinemaPage = () => {
   return (
     <div>
       <PageHeader
         className="security-page-header"
         onBack={() => window.history.back()}
-        title="Μουσική"
-        subTitle="..μουσική σε οποιοδήποτε σημείο!"
+        title="Σινεμά"
+        subTitle="..σινεμά παντού!"
         extra={[
           <Button key="createvent" size="small" type="primary">
             <Link to="/create-event">Δημιουργήστε Event!</Link>
@@ -23,8 +23,8 @@ const MusicPage = () => {
         ]}
       />
 
-      <section id="music-page">
-        <Music />
+      <section id="cinema-page">
+        <Cinema />
         <BackTop />
       </section>
 
@@ -42,4 +42,4 @@ const MusicPage = () => {
   );
 };
 
-export default MusicPage;
+export default CinemaPage;
