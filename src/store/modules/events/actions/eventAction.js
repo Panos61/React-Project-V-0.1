@@ -126,6 +126,48 @@ export const fetchArtEvents = () => {
   };
 };
 
+// ** FETCH DANCE EVENTS **
+export const fetchDanceEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/dance`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH KIDS EVENTS **
+export const fetchKidsEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/dance`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+// ** FETCH SOCIAL EVENTS **
+export const fetchSocialEvents = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_STATE_EVENT });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/dance`);
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
 // ** FETCH EVENT BASED ON GIVEN ID **
 export const fetchEvent = (id) => {
   return async (dispatch) => {

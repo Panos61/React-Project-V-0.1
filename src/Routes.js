@@ -1,10 +1,9 @@
 import React from 'react';
-import * as serviceWorker from './serviceWorker';
 import App from './App';
 
 import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
-import { Route, Router, Switch, HashRouter } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './HelpPages/MainHelpPage';
 import profile from './Profile/profile';
 import NotFound from './notfound';
@@ -26,12 +25,16 @@ import resetPasswordPage from './Components/ResetPassword/resetPass';
 import SportsPage from './Events/Event-SubPages/SportsPage';
 import EnterPage from './Events/Event-SubPages/EnterPage';
 import CinemaPage from './Events/Event-SubPages/CinemaPage';
+import DancePage from './Events/Event-SubPages/DancePage';
 
 import { useDispatch } from 'react-redux';
 import setAuthorizationToken, {
   getUser,
 } from './store/modules/auth/actions/authActions';
 import { SET_CURRENT_USER } from './store/modules/auth/authTypes';
+import ArtPage from './Events/Event-SubPages/ArtPage';
+import KidsPage from './Events/Event-SubPages/KidsPage';
+import SocialPage from './Events/Event-SubPages/SocialPage';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -69,10 +72,10 @@ const Routes = () => {
         <Route path="/sports" component={SportsPage} />
         <Route path="/entertainment" component={EnterPage} />
         <Route path="/cinema" component={CinemaPage} />
-        <Route path="/dance" component={EnterPage} />
-        <Route path="/arts" component={EnterPage} />
-        <Route path="/kids" component={EnterPage} />
-        <Route path="/social_events" component={EnterPage} />
+        <Route path="/dance" component={DancePage} />
+        <Route path="/arts" component={ArtPage} />
+        <Route path="/kids" component={KidsPage} />
+        <Route path="/social_events" component={SocialPage} />
 
         {/* Not Found route 404*/}
         <Route path="*" component={NotFound} />
