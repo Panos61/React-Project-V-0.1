@@ -35,6 +35,7 @@ import { SET_CURRENT_USER } from './store/modules/auth/authTypes';
 import ArtPage from './Events/Event-SubPages/ArtPage';
 import KidsPage from './Events/Event-SubPages/KidsPage';
 import SocialPage from './Events/Event-SubPages/SocialPage';
+import UserHistory from './Settings/user-history';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const Routes = () => {
         <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
         <PrivateRoute exact path="/account/:id" component={Account} />
         <PrivateRoute exact path="/security/:id" component={Security} />
+        <PrivateRoute exact path="/history/:id" component={UserHistory} />
 
         {/* Event-Tabs */}
         <Route path="/event/:id" component={DataDisplay} />

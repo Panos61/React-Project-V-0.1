@@ -34,6 +34,10 @@ const SettingsMainPage = () => {
     ? `/security/${currentState.Auth.currentUser.id}`
     : '';
 
+  const userHistory = isAuthenticated
+    ? `/history/${currentState.Auth.currentUser.id}`
+    : '';
+
   return (
     <div>
       <div>
@@ -86,7 +90,11 @@ const SettingsMainPage = () => {
             <Col lg={24} xs={24}>
               <Card className="settings-page-card">
                 <HistoryOutlined style={{ fontSize: '7vh', color: '#08c' }} />
-                <Link to="/settings" style={IconTextStyle} id="linksHelp_Page">
+                <Link
+                  to={userHistory}
+                  style={IconTextStyle}
+                  id="linksHelp_Page"
+                >
                   Ιστορικό <br />{' '}
                   <p style={subTextStyle}>
                     Όλες οι πρόσφατες ρυθμίσεις στον λογαριασμό σας.
