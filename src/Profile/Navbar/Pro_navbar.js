@@ -63,18 +63,7 @@ class Pro_navbar extends Component {
             visible={this.state.visible}
           >
             <Left_menu_pro mode="inline" />
-            <Link
-              to="/"
-              style={{
-                fontFamily: 'Pacifico, cursive',
-                marginLeft: '23px',
-                fontSize: '20px',
-                top: '25px',
-                position: 'relative',
-              }}
-            >
-              EventPark
-            </Link>
+
             <Right_menu_pro mode="inline" />
           </Drawer>
         </div>
