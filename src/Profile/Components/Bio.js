@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const { Paragraph } = Typography;
 
-class ProfileBio extends Component {
+class Bio extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
   };
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => ({
   Auth: state.Auth,
 });
 
-export default connect(mapStateToProps, null)(ProfileBio);
+export default connect(mapStateToProps, null)(Bio);

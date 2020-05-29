@@ -7,7 +7,7 @@ import AuthEvent from './AuthEvent';
 
 const AuthEvents = () => {
   const currentState = useSelector((state) => state.Auth);
-  const authID = currentState.currentUser.id;
+  const authID = currentState.Auth.currentUser.id;
 
   const eventsSelector = useSelector((state) => state.Event);
   const dispatch = useDispatch();

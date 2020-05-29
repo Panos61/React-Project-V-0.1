@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FireOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
+import ProfileActivity from './Activity';
 //import { Link } from 'react-router-dom';
 
 const { TabPane } = Tabs;
@@ -26,30 +27,7 @@ class HorizontalTabs extends Component {
             }
             key="1"
           >
-            Περιεχόμενο 1..
-            <br />
-            .
-            <br />
-            .
-            <br />
-            .
-            <br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />
-            .<br />.
+            <ProfileActivity />
           </TabPane>
           <TabPane
             tab={

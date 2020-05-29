@@ -5,7 +5,6 @@ import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
 import CardLoginForm from './Components/LoginForm/LoginFormStyle';
 import { Route, Router, Switch } from 'react-router-dom';
 import MainHelpPage from './HelpPages/MainHelpPage';
-import profile from './Profile/profile';
 import NotFound from './notfound';
 import CreateEvent from './CreateEvent/index';
 
@@ -37,6 +36,7 @@ import KidsPage from './Events/Event-SubPages/KidsPage';
 import SocialPage from './Events/Event-SubPages/SocialPage';
 import UserHistory from './Settings/user-history';
 import Feed from './Feed/Feed';
+import Profile from './Profile/Profile';
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -68,13 +68,13 @@ const Routes = () => {
         <PrivateRoute exact path="/history/:id" component={UserHistory} />
 
         {/* Activity Feed Routes */}
-        <Route exact path="/profile" component={Feed} />
+        <Route exact path="/profile" component={Profile} />
 
         {/* Create Events Routes */}
         <PrivateRoute exact path="/create-event" component={CreateEvent} />
         <PrivateRoute exact path="/event-success" component={Success} />
 
-        {/* Event-Tabs */}
+        {/* Event-Data */}
         <Route path="/event/:id" component={DataDisplay} />
 
         {/* Event-Types Routes */}
@@ -87,7 +87,7 @@ const Routes = () => {
         <Route path="/kids" component={KidsPage} />
         <Route path="/social_events" component={SocialPage} />
 
-        {/* Not Found route 404*/}
+        {/* Not Found Route 404*/}
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
