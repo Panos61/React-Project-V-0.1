@@ -36,8 +36,10 @@ import ArtPage from './Events/Event-SubPages/ArtPage';
 import KidsPage from './Events/Event-SubPages/KidsPage';
 import SocialPage from './Events/Event-SubPages/SocialPage';
 import UserHistory from './Settings/user-history';
+import Feed from './Feed/Feed';
 
 const Routes = () => {
+  // Keep User Logged In based on token
   const dispatch = useDispatch();
   if (localStorage.token) {
     setAuthorizationToken(localStorage.token);
@@ -49,6 +51,7 @@ const Routes = () => {
   return (
     <Router history={history}>
       <Switch>
+        {/* Basic Routes */}
         <Route exact path="/" component={App} />
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
@@ -56,15 +59,20 @@ const Routes = () => {
         <Route path="/reset-password" component={resetPasswordPage} />
 
         {/* Route path Profile  */}
-        <PrivateRoute exact path="/profile" component={profile} />
-        <PrivateRoute exact path="/create-event" component={CreateEvent} />
-        <PrivateRoute exact path="/event-success" component={Success} />
+        {/* <PrivateRoute exact path="/profile" component={profile} /> */}
 
         {/* Settings Routes */}
         <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
         <PrivateRoute exact path="/account/:id" component={Account} />
         <PrivateRoute exact path="/security/:id" component={Security} />
         <PrivateRoute exact path="/history/:id" component={UserHistory} />
+
+        {/* Activity Feed Routes */}
+        <Route exact path="/profile" component={Feed} />
+
+        {/* Create Events Routes */}
+        <PrivateRoute exact path="/create-event" component={CreateEvent} />
+        <PrivateRoute exact path="/event-success" component={Success} />
 
         {/* Event-Tabs */}
         <Route path="/event/:id" component={DataDisplay} />
