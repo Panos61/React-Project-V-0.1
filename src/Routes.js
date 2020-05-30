@@ -59,7 +59,7 @@ const Routes = () => {
         <Route path="/reset-password" component={resetPasswordPage} />
 
         {/* Route path Profile  */}
-        {/* <PrivateRoute exact path="/profile" component={profile} /> */}
+        <PrivateRoute exact path="/profile" component={Profile} />
 
         {/* Settings Routes */}
         <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
@@ -68,7 +68,7 @@ const Routes = () => {
         <PrivateRoute exact path="/history/:id" component={UserHistory} />
 
         {/* Activity Feed Routes */}
-        <Route exact path="/profile" component={Profile} />
+        {/* <Route exact path="/profile" component={Profile} /> */}
 
         {/* Create Events Routes */}
         <PrivateRoute exact path="/create-event" component={CreateEvent} />
