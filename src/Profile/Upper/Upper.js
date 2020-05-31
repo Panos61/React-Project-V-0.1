@@ -7,6 +7,7 @@ import Bio from '../Components/Bio';
 //import Followers from '../Components/Followers';
 import Username from '../Components/Username';
 import HorizontalTabs from '../HorizontalTabs';
+import EditBtn from './editBtn';
 
 const Upper = () => {
   return (
@@ -23,7 +24,7 @@ const Upper = () => {
             <Col xs md={3} style={{ position: 'relative', right: '3.5%' }}>
               <ProfilePic />
               <div style={{ top: '2vh', position: 'relative' }}>
-                <h3>Settings</h3>
+                <EditBtn />
               </div>
             </Col>
             <Col xs md={4} style={{ position: 'relative', right: '7%' }}>
