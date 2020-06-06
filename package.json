@@ -9,15 +9,17 @@
     "flexbox-react": "^4.4.0",
     "history": "^4.10.1",
     "lodash": "^4.17.15",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-flexbox-grid": "^2.1.2",
+    "react-is": "^16.13.1",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

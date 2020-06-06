@@ -37,6 +37,10 @@ import SocialPage from './Events/Event-SubPages/SocialPage';
 import UserHistory from './Settings/user-history';
 import Feed from './Feed/Feed';
 import Profile from './Profile/Profile';
+import Home from './Feed/pages/home';
+
+import Layout from './Feed/layout';
+import SideNav from './Feed/Components/Sider';
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -55,20 +59,18 @@ const Routes = () => {
         <Route exact path="/" component={App} />
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
-        <Route path="/help" component={MainHelpPage} />
+        <Route path="/help" component={Feed} />
         <Route path="/reset-password" component={resetPasswordPage} />
 
         {/* Route path Profile  */}
-        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/profile/:id" component={Profile} />
+        {/* <PrivateRoute exact path="/profile/" component={Profile} /> */}
 
         {/* Settings Routes */}
         <PrivateRoute exact path="/settings/:id" component={SettingsMainPage} />
         <PrivateRoute exact path="/account/:id" component={Account} />
         <PrivateRoute exact path="/security/:id" component={Security} />
         <PrivateRoute exact path="/history/:id" component={UserHistory} />
-
-        {/* Activity Feed Routes */}
-        {/* <Route exact path="/profile" component={Profile} /> */}
 
         {/* Create Events Routes */}
         <PrivateRoute exact path="/create-event" component={CreateEvent} />
@@ -86,6 +88,12 @@ const Routes = () => {
         <Route path="/arts" component={ArtPage} />
         <Route path="/kids" component={KidsPage} />
         <Route path="/social_events" component={SocialPage} />
+
+        {/* Social Media Part */}
+        <Layout>
+          <SideNav />
+          <Route path="/home" component={Home} />
+        </Layout>
 
         {/* Not Found Route 404*/}
         <Route path="*" component={NotFound} />

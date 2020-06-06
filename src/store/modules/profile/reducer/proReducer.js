@@ -25,6 +25,7 @@ const proReducer = (state = initState, action) => {
         ...state,
         profile: action.payload,
         isLoading: false,
+        isAuthenticated: !isEmpty(action.payload),
       };
     case UPDATE_PROFILE_ERROR:
       return {

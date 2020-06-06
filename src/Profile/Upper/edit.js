@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { UploadOutlined } from '@ant-design/icons';
 import {
@@ -12,6 +12,8 @@ import {
   Divider,
 } from 'antd';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from '../../store/modules/profile/actions/profileActions';
 
 const layout = {
   labelCol: {
@@ -39,7 +41,6 @@ const { TextArea } = Input;
 // ** AVATAR UPLOAD **
 const props = {
   name: 'file',
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   headers: {
     authorization: 'authorization-text',
   },
@@ -56,10 +57,17 @@ const props = {
 };
 
 const ProfileEdit = () => {
-  const onFinish = (values) => {
-    //this.props.initProfile(values);
-    console.log(values);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.Auth);
+  const authID = currentUser.Auth ? currentUser.currentUser.id : '';
+
+  const update = (id) => dispatch(updateProfile(id));
+
+  const onUpdate = (e) => {
+    update(authID);
+    e.preventDefault();
   };
+
   return (
     <div>
       <Tabs defaultActiveKey="1">
@@ -67,7 +75,7 @@ const ProfileEdit = () => {
           <Form
             {...layout}
             name="nest-messages"
-            onFinish={onFinish}
+            onFinish={onUpdate}
             validateMessages={validateMessages}
           >
             <Form.Item
@@ -119,7 +127,7 @@ const ProfileEdit = () => {
           <Form
             {...layout}
             name="nest-messages"
-            onFinish={onFinish}
+            onFinish={onUpdate}
             validateMessages={validateMessages}
           >
             <Form.Item label="Αλλαγή Προφίλ :">

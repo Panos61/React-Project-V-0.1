@@ -4,7 +4,6 @@ import { LogoutOutlined, EditOutlined } from '@ant-design/icons';
 import { Menu, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Fragment } from 'react';
 
 const Logout = () => {
   const currentState = useSelector((state) => state);
