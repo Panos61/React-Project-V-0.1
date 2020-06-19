@@ -1,30 +1,30 @@
-import React from 'react';
-import { Layout, BackTop } from 'antd';
-import Pro_Navbar from './Navbar/Pro_navbar';
-import { HeartFilled } from '@ant-design/icons';
-import Upper from './Upper/Upper';
+import React from "react";
+import styled from "styled-components";
+import Header from "../Feed/Components/Header";
+import ProfileInfo from "./ProfileInfo";
 
-const { Footer } = Layout;
-
+const Wrapper = styled.div`
+  margin-bottom: 7rem;
+  .profile-top {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    span.tweetsCount {
+      margin-top: 0.1rem;
+      font-size: 0.9rem;
+    }
+  }
+`;
 const Profile = () => {
   return (
-    <div>
-      <Pro_Navbar />
-      <section>
-        <Upper />
-        <BackTop />
-      </section>
-      <footer>
-        <Footer
-          style={{
-            textAlign: 'center',
-            backgroundColor: 'unset',
-          }}
-        >
-          EventPark ©2020 Created with <HeartFilled /> by us!
-        </Footer>
-      </footer>
-    </div>
+    <Wrapper>
+      <Header>
+        <div className="profile-top">
+          <p>Fullname / Followers data</p>
+        </div>
+      </Header>
+      <ProfileInfo />
+    </Wrapper>
   );
 };
 

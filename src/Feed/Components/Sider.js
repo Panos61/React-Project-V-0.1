@@ -143,25 +143,25 @@ const SideNav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected" to="/">
+            <NavLink activeClassName="selected" to="/explore">
               <SearchOutlined />
               <span id="span-link">Εξερευνήστε</span>
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected " to="/">
+            <NavLink activeClassName="selected " to="/notifications">
               <NotificationOutlined />
               <span id="span-link">Ειδοποιήσεις</span>
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected" to="/">
+            <NavLink activeClassName="selected" to="/saved">
               <CalendarOutlined />
               <span id="span-link">Αρχειοθήκη</span>
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected" to="/">
+            <NavLink activeClassName="selected" to="/profile">
               <UserOutlined />
               <span id="span-link">Προφίλ</span>
             </NavLink>
