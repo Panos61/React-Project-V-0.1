@@ -41,6 +41,7 @@ import Saved from "./Feed/pages/saved";
 import Profile from "./Profile/Profile";
 import Layout from "./Feed/layout";
 import SideNav from "./Feed/Components/Sider";
+import Notifications from "./Feed/pages/notifications";
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -90,6 +91,7 @@ const Routes = () => {
           <SideNav />
           <Route path="/home" component={Home} />
           <Route path="/saved" component={Saved} />
+          <Route path="/notifications" component={Notifications} />
           <Route path="/profile" component={Profile} />
         </Layout>
 
