@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   CREATE_EVENT_SUCCESS,
   BEFORE_STATE_EVENT,
@@ -9,19 +9,20 @@ import {
   FETCH_AUTH_EVENTS_ERROR,
   GET_EVENT_SUCCESS,
   GET_EVENT_ERROR,
-} from '../eventTypes/eventTypes';
-import history from '../../../../history';
-import { returnErrors, clearErrors } from '../../auth/actions/errorActions';
-import API_ROUTE from '../../../../apiRoute';
+} from "../eventTypes/eventTypes";
+import history from "../../../../history";
+import { returnErrors, clearErrors } from "../../auth/actions/errorActions";
+import API_ROUTE from "../../../../apiRoute";
 
 // ** CREATE EVENT **
 export const createEvent = ({
   category,
   title,
   description,
-  // dateType,
-  // date,
-  // singleTime,
+  dateType,
+  date,
+  singleTime,
+  urlYoutube,
   // ageRestricted,
   // payment,
   // price,
@@ -32,9 +33,10 @@ export const createEvent = ({
     category,
     title,
     description,
-    // dateType,
-    // date,
-    // singleTime,
+    dateType,
+    date,
+    singleTime,
+    urlYoutube,
     //ageRestricted,
     // payment,
     // price,
@@ -49,9 +51,9 @@ export const createEvent = ({
       const res = await axios.post(`${API_ROUTE}/create-event`, body);
       dispatch({ type: CREATE_EVENT_SUCCESS, payload: res.data });
       dispatch(clearErrors());
-      history.push('/event-success');
+      history.push("/event-success");
     } catch (err) {
-      dispatch(returnErrors(err.id, err.message, 'EVENT_CREATED_ERROR'));
+      dispatch(returnErrors(err.id, err.message, "EVENT_CREATED_ERROR"));
       dispatch({ type: CREATE_EVENT_ERROR, payload: err.message });
     }
   };

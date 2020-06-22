@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import Moment from 'react-moment';
-import 'moment/locale/el';
-import { useSelector, useDispatch } from 'react-redux';
-import { Affix, Button, Divider, BackTop, Layout, Collapse } from 'antd';
-import './DataLayout.css';
-import { fetchEvent } from '../../store/modules/events/actions/eventAction';
-import { HeartFilled, ArrowLeftOutlined } from '@ant-design/icons';
+import React, { useEffect } from "react";
+import Moment from "react-moment";
+import "moment/locale/el";
+import ReactPlayer from "react-player";
+import { useSelector, useDispatch } from "react-redux";
+import { Affix, Button, Divider, BackTop, Layout, Collapse } from "antd";
+import "./DataLayout.css";
+import { fetchEvent } from "../../store/modules/events/actions/eventAction";
+import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
 
 const { Footer } = Layout;
 const { Panel } = Collapse;
@@ -22,7 +23,7 @@ const DataDisplay = (props) => {
 
   const authID = currentState.Auth.currentUser
     ? currentState.Auth.currentUser.id
-    : '';
+    : "";
 
   useEffect(() => {
     singleEvent(eventID);
@@ -45,14 +46,14 @@ const DataDisplay = (props) => {
         <div className="event-container-parent">
           <div className="event-container">
             <div className="event-title">
-              {event.title}{' '}
-              <span style={{ fontSize: 'small' }}>{event.id}</span>
-              <span style={{ float: 'right', fontSize: 'initial' }}>
+              {event.title}{" "}
+              <span style={{ fontSize: "small" }}>{event.id}</span>
+              <span style={{ float: "right", fontSize: "initial" }}>
                 <Moment fromNow locale="el">
                   {event.created_at}
-                </Moment>{' '}
+                </Moment>{" "}
                 <br />
-                <span style={{ fontSize: 'small', color: '#237804' }}>
+                <span style={{ fontSize: "small", color: "#237804" }}>
                   {event.category}
                 </span>
               </span>
@@ -62,23 +63,35 @@ const DataDisplay = (props) => {
 
             <div className="event-date">
               <h4>Ημερομηνία:</h4>
-              <span>some date</span>
+              {/* <span>{event.singleTime}</span> */}
+              <Moment format="YYYY/MM/DD HH:mm">{event.singleTime}</Moment>
+              <br />
+              <Moment format="YYYY/MM/DD HH:mm" fromNowDuring>
+                {event.singleTime}
+              </Moment>
             </div>
             <h4>Δημιουργός:</h4>
-            <div className="event-creator" style={{ marginBottom: '15px' }}>
-              {event.creator ? event.creator.username : ''}
+            <div className="event-creator" style={{ marginBottom: "15px" }}>
+              {event.creator ? event.creator.username : ""}
             </div>
 
             <h4>Περιγραφή:</h4>
             <div className="event-description">{event.description}</div>
 
             <Divider />
-
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                url={event.urlYoutube}
+                width="100%"
+                height="100%"
+              />
+            </div>
             <Collapse bordered={false}>
               <Panel header="Λοιπές Πληροφορίες">
                 <h4>Σχόλια Δημιουργού:</h4>
-                {event.comments ? event.comments : 'Κανένα σχόλιο.'} <br />
-                {event.ageRestricted ? event.ageRestricted : ''}
+                {event.comments ? event.comments : "Κανένα σχόλιο."} <br />
+                {event.ageRestricted ? event.ageRestricted : ""}
               </Panel>
             </Collapse>
           </div>
@@ -89,8 +102,8 @@ const DataDisplay = (props) => {
       <footer>
         <Footer
           style={{
-            textAlign: 'center',
-            backgroundColor: 'unset',
+            textAlign: "center",
+            backgroundColor: "unset",
           }}
         >
           EventPark ©2020 Created with <HeartFilled /> by us!

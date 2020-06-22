@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
-import { Divider } from 'antd';
+import React from "react";
+import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
+import { Divider } from "antd";
 import {
   HomeOutlined,
   SearchOutlined,
@@ -9,7 +9,7 @@ import {
   CalendarOutlined,
   UserOutlined,
   EllipsisOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
 const Wrapper = styled.nav`
   width: 14.6%;

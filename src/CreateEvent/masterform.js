@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Form,
   Button,
@@ -12,23 +12,22 @@ import {
   TreeSelect,
   Switch,
   InputNumber,
-} from 'antd';
-import './masterform.css';
-import moment from 'moment';
+} from "antd";
+import "./masterform.css";
+import moment from "moment";
 import {
   UploadOutlined,
   InfoCircleOutlined,
   CloseOutlined,
   CheckOutlined,
   YoutubeFilled,
-} from '@ant-design/icons';
-import { Link, Redirect } from 'react-router-dom';
-import PaymentConditions from './payment-con';
+} from "@ant-design/icons";
+import { Link, Redirect } from "react-router-dom";
+import PaymentConditions from "./payment-con";
 
 // Redux stuff import
-import PropTypes from 'prop-types';
-import { connect, useSelector, useDispatch } from 'react-redux';
-import { createEvent } from '../store/modules/events/actions/eventAction';
+import { connect, useSelector, useDispatch } from "react-redux";
+import { createEvent } from "../store/modules/events/actions/eventAction";
 
 const layout = {
   labelCol: {
@@ -47,46 +46,31 @@ const tailLayout = {
 };
 
 // time format
-const format = 'HH:mm';
+const format = "HH:mm";
 
 const { Option } = Select;
 const { TextArea } = Input;
 const { Meta } = Card;
 const { TreeNode } = TreeSelect;
-const dateFormat = 'YYYY/MM/DD';
+const dateFormat = "YYYY/MM/DD";
 const { RangePicker } = DatePicker;
 
-const MasterForm = (props) => {
+const MasterForm = () => {
   const currentState = useSelector((state) => state);
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { show: true };
-  //   this.state = { payment: false };
-  // }
+  const [showSingle, setShowSingle] = useState(false);
+  const [showFestival, setShowFestival] = useState(false);
 
-  // state = {
-  //   value: 'single',
-  //   checked: false,
-  // };
-
-  // onChange = (value) => {
-  //   this.setState({ value });
-  //   if (value === 'single') {
-  //     this.setState({ show: true });
-  //   } else if (value === 'festival') {
-  //     this.setState({ show: false });
-  //   }
-  // };
-
-  // paymentChange = (checked) => {
-  //   this.setState({ checked });
-  //   if (checked === false) {
-  //     this.setState({ payment: false });
-  //   } else if (checked === true) {
-  //     this.setState({ payment: true });
-  //   }
-  // };
+  // Show/Hide DatePicker-Timepicker based on Event Date Type
+  const onDateClick = (value) => {
+    if (value === "single") {
+      setShowSingle(true);
+      setShowFestival(false);
+    } else if (value === "festival") {
+      setShowFestival(true);
+      setShowSingle(false);
+    }
+  };
 
   const dispatch = useDispatch();
 
@@ -98,9 +82,14 @@ const MasterForm = (props) => {
 
   // Redirect user to login page in case
   // he is not authenticated and enters the URL manually
-  localStorage.getItem('token');
+  localStorage.getItem("token");
   if (!localStorage.token) {
     return <Redirect to="/login" />;
+  }
+
+  function onChange(dates, dateStrings) {
+    console.log("From: ", dates[0], ", to: ", dates[1]);
+    console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
   }
 
   return (
@@ -113,13 +102,13 @@ const MasterForm = (props) => {
               <InfoCircleOutlined />
             </Link>
           }
-          style={{ borderColor: '#bae637' }}
+          style={{ borderColor: "#bae637" }}
         >
           <Meta description="Γενικά" />
           <Form.Item
             label="Κατηγορία"
             name="category"
-            rules={[{ required: true, message: 'Εισάγετε κατηγορία Event!' }]}
+            rules={[{ required: true, message: "Εισάγετε κατηγορία Event!" }]}
           >
             <Select placeholder="Κατηγορία Event">
               <Option value="Μουσική">Μουσική</Option>
@@ -137,8 +126,8 @@ const MasterForm = (props) => {
             name="title"
             rules={[
               {
-                required: true,
-                message: 'Εισάγετε τίτλο Event!',
+                required: false,
+                message: "Εισάγετε τίτλο Event!",
               },
             ]}
           >
@@ -149,8 +138,8 @@ const MasterForm = (props) => {
             name="description"
             rules={[
               {
-                required: true,
-                message: 'Εισάγετε περιγραφή Event!',
+                required: false,
+                message: "Εισάγετε περιγραφή Event!",
               },
             ]}
           >
@@ -177,8 +166,8 @@ const MasterForm = (props) => {
             </Link>
           }
           style={{
-            marginTop: '5vh',
-            borderColor: '#ffa940',
+            marginTop: "5vh",
+            borderColor: "#ffa940",
           }}
         >
           <Meta description="Τοποθεσία" />
@@ -191,66 +180,68 @@ const MasterForm = (props) => {
             </Link>
           }
           style={{
-            marginTop: '5vh',
-            borderColor: '#36cfc9',
+            marginTop: "5vh",
+            borderColor: "#36cfc9",
           }}
         >
           <Meta description="Ημερομηνία" />
           <Form.Item
             label="Είδος"
-            //name="dateType"
+            name="dateType"
             rules={[
               {
                 required: false,
-                message: 'Επιλέξτε χρονικό είδος Event!',
+                message: "Επιλέξτε χρονικό είδος Event!",
               },
             ]}
           >
             <TreeSelect
-              //onChange={this.onChange}
+              onChange={onDateClick}
               placeholder="Είδος Event"
-              allowClear
               treeDefaultExpandAll
-              //defaultValue={this.state.value}
             >
               <TreeNode value="single" title="Μονό" />
               <TreeNode value="festival" title="Φεστιβάλ" />
             </TreeSelect>
           </Form.Item>
-          <Form.Item
-            label="Ημερομηνία"
-            // name="date"
-            rules={[
-              {
-                required: false,
-                message: 'Επιλέξτε χρονικό είδος Event!',
-              },
-            ]}
-          >
-            {/* {this.state.show ? (
-              <DatePicker
-                defaultValue={moment('2015/01/01', dateFormat)}
-                format={dateFormat}
-              />
-            ) : (
-              <RangePicker
-                showTime={{ format: 'HH:mm' }}
-                format="YYYY-MM-DD HH:mm"
-              />
-            )} */}
-          </Form.Item>
-          {/* {this.state.show ? (
+
+          {showFestival ? (
             <Form.Item
-              label="Ώρα έναρξης"
-              name="singleTime"
-              rules={[{ required: true, message: 'Επιλέξτε ώρα Event!' }]}
+              label="Ημερομηνία"
+              name="date"
+              rules={[
+                {
+                  required: false,
+                  message: "Επιλέξτε χρονικό είδος Event!",
+                },
+              ]}
             >
-              <TimePicker
-                defaultValue={moment('12:00', format)}
-                format={format}
-              />
+              {/* <RangePicker
+                ranges={{
+                  Today: [moment(), moment()],
+                  "This Month": [
+                    moment().startOf("month"),
+                    moment().endOf("month"),
+                  ],
+                }}
+                showTime
+                format="DD/MM/YYYY HH:mm"
+                onChange={onChange}
+              /> */}
+              {/* ERROR */}
+              <RangePicker />
             </Form.Item>
-          ) : null} */}
+          ) : null}
+
+          {showSingle ? (
+            <Form.Item
+              label="Ημερομηνία και ώρα"
+              name="singleTime"
+              rules={[{ required: false, message: "Επιλέξτε ώρα Event!" }]}
+            >
+              <DatePicker showTime />
+            </Form.Item>
+          ) : null}
         </Card>
         <Card
           title="Βήμα 4ο - Πολυμέσα"
@@ -260,16 +251,16 @@ const MasterForm = (props) => {
             </Link>
           }
           style={{
-            marginTop: '5vh',
-            borderColor: '#ff4d4f',
+            marginTop: "5vh",
+            borderColor: "#ff4d4f",
           }}
         >
           <Meta description="Πολυμέσα" />
 
-          <Form.Item label="Βίντεο" className="example-input">
+          <Form.Item label="Βίντεο" className="example-input" name="urlYoutube">
             <Input
               size="middle"
-              placeholder="link/url βίντεο"
+              placeholder="Youtube URL"
               prefix={<YoutubeFilled />}
               rules={[
                 {
@@ -294,8 +285,8 @@ const MasterForm = (props) => {
             </Link>
           }
           style={{
-            marginTop: '5vh',
-            borderColor: '#f759ab',
+            marginTop: "5vh",
+            borderColor: "#f759ab",
           }}
         >
           <Meta description="Επιπρόσθετα" />
@@ -322,7 +313,7 @@ const MasterForm = (props) => {
             rules={[
               {
                 required: false,
-                message: 'Επιλέξτε τρόπο εισόδου!',
+                message: "Επιλέξτε τρόπο εισόδου!",
               },
             ]}
           >
@@ -337,7 +328,7 @@ const MasterForm = (props) => {
           <Button
             htmlType="submit"
             type="primary"
-            style={{ marginTop: '15px' }}
+            style={{ marginTop: "15px" }}
           >
             Επιβεβαίωση
           </Button>
@@ -347,11 +338,4 @@ const MasterForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  Event: state.Event,
-  Error: state.Error,
-  Auth: state.Auth,
-  isAuthenticated: state.Auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { createEvent })(MasterForm);
+export default MasterForm;
