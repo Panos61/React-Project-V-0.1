@@ -85,6 +85,7 @@ const DataDisplay = (props) => {
                 url={event.urlYoutube}
                 width="100%"
                 height="100%"
+                controls={true}
               />
             </div>
             <Collapse bordered={false}>
