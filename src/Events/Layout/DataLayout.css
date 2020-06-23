@@ -27,6 +27,11 @@
   float: right;
 }
 
+.event-payment {
+  float: right;
+  margin-bottom: 15px;
+}
+
 .player-wrapper {
   position: relative;
   padding-bottom: 52.25%;

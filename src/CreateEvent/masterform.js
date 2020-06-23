@@ -146,17 +146,17 @@ const MasterForm = () => {
             <TextArea rows={5} />
           </Form.Item>
 
-          {/* <Form.Item
-              name="avatar"
-              label="Προφίλ"
-              //rules={[{ required: true, message: 'Εισάγετε προφίλ Event!' }]}
-            >
-              <Upload>
-                <Button>
-                  <UploadOutlined /> Κάνε κλικ!
-                </Button>
-              </Upload>
-            </Form.Item> */}
+          <Form.Item
+            name="avatar"
+            label="Προφίλ"
+            //rules={[{ required: true, message: 'Εισάγετε προφίλ Event!' }]}
+          >
+            <Upload>
+              <Button>
+                <UploadOutlined /> Κάνε κλικ!
+              </Button>
+            </Upload>
+          </Form.Item>
         </Card>
         <Card
           title="Βήμα 2ο - Τοποθεσία"
@@ -278,7 +278,38 @@ const MasterForm = () => {
           </Form.Item>
         </Card>
         <Card
-          title="Βήμα 5ο - Επιπρόσθετα"
+          title="Βήμα 5ο - Πληρωμή"
+          extra={
+            <Link to="/help">
+              <InfoCircleOutlined />
+            </Link>
+          }
+          style={{
+            marginTop: "5vh",
+            borderColor: "blue",
+          }}
+        >
+          <Meta description="Στοιχεία πληρωμής" />
+
+          <Form.Item
+            label="Πληρωμή"
+            // name="payment"
+            rules={[
+              {
+                required: false,
+                message: "Επιλέξτε τρόπο εισόδου!",
+              },
+            ]}
+          >
+            <Switch
+              // onChange={this.paymentChange}
+              checkedChildren={<CheckOutlined />}
+              unCheckedChildren={<CloseOutlined />}
+            />
+          </Form.Item>
+        </Card>
+        <Card
+          title="Βήμα 6ο - Επιπρόσθετα"
           extra={
             <Link to="/help">
               <InfoCircleOutlined />
@@ -303,22 +334,6 @@ const MasterForm = () => {
             ]}
           >
             <Switch
-              checkedChildren={<CheckOutlined />}
-              unCheckedChildren={<CloseOutlined />}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Πληρωμή"
-            // name="payment"
-            rules={[
-              {
-                required: false,
-                message: "Επιλέξτε τρόπο εισόδου!",
-              },
-            ]}
-          >
-            <Switch
-              // onChange={this.paymentChange}
               checkedChildren={<CheckOutlined />}
               unCheckedChildren={<CloseOutlined />}
             />

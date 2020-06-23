@@ -6,7 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Affix, Button, Divider, BackTop, Layout, Collapse } from "antd";
 import "./DataLayout.css";
 import { fetchEvent } from "../../store/modules/events/actions/eventAction";
-import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
+import {
+  HeartFilled,
+  ArrowLeftOutlined,
+  EnvironmentOutlined,
+} from "@ant-design/icons";
 
 const { Footer } = Layout;
 const { Panel } = Collapse;
@@ -75,10 +79,35 @@ const DataDisplay = (props) => {
               {event.creator ? event.creator.username : ""}
             </div>
 
+            <h4>Τοποθεσία:</h4>
+            <div
+              className="event-location-simple"
+              style={{ marginBottom: "15px" }}
+            >
+              Θεσσαλονίκη, Ύδρας 16
+              <u style={{ marginLeft: "10px", color: "#d4b106" }}>
+                Βρείτε στον χάρτη! {"   "} <EnvironmentOutlined />
+              </u>
+            </div>
+
+            <div className="event-payment">
+              <h4>Είσοδος:</h4>
+              Δωρεάν
+            </div>
+
+            <h4>Χώρος:</h4>
+            <div
+              className="event-place-simple"
+              style={{ marginBottom: "15px" }}
+            >
+              EightBall
+            </div>
+
             <h4>Περιγραφή:</h4>
             <div className="event-description">{event.description}</div>
 
             <Divider />
+            <h4>Πολυμέσα:</h4>
             <div className="player-wrapper">
               <ReactPlayer
                 className="react-player"
@@ -88,7 +117,8 @@ const DataDisplay = (props) => {
                 controls={true}
               />
             </div>
-            <Collapse bordered={false}>
+
+            <Collapse bordered={false} style={{ marginTop: "25px" }}>
               <Panel header="Λοιπές Πληροφορίες">
                 <h4>Σχόλια Δημιουργού:</h4>
                 {event.comments ? event.comments : "Κανένα σχόλιο."} <br />
