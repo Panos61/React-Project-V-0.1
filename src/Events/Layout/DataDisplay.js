@@ -10,7 +10,10 @@ import {
   HeartFilled,
   ArrowLeftOutlined,
   EnvironmentOutlined,
+  RiseOutlined,
+  BellOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Footer } = Layout;
 const { Panel } = Collapse;
@@ -52,6 +55,8 @@ const DataDisplay = (props) => {
             <div className="event-title">
               {event.title}{" "}
               <span style={{ fontSize: "small" }}>{event.id}</span>
+              {"   "}
+              <RiseOutlined style={{ color: "#722ed1" }} />
               <span style={{ float: "right", fontSize: "initial" }}>
                 <Moment fromNow locale="el">
                   {event.created_at}
@@ -74,6 +79,12 @@ const DataDisplay = (props) => {
                 {event.singleTime}
               </Moment>
             </div>
+
+            {/*EVENT INTERACTIVITY */}
+            <div className="event-interactivity">
+              Ακολούθηση {"   "} <BellOutlined />
+            </div>
+
             <h4>Δημιουργός:</h4>
             <div className="event-creator" style={{ marginBottom: "15px" }}>
               {event.creator ? event.creator.username : ""}

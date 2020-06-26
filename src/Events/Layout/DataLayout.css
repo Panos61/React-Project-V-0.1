@@ -18,6 +18,16 @@
   height: auto;
 }
 
+.event-interactivity {
+  color: firebrick;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.event-interactivity:hover {
+  text-decoration: underline;
+}
+
 .event-title {
   margin-bottom: 10px;
   font-size: 29px;
