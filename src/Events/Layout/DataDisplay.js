@@ -79,12 +79,13 @@ const DataDisplay = (props) => {
               {event.creator ? event.creator.username : ""}
             </div>
 
-            <h4>Τοποθεσία:</h4>
+            <h4>Περιοχή:</h4>
             <div
               className="event-location-simple"
               style={{ marginBottom: "15px" }}
             >
-              Θεσσαλονίκη, Ύδρας 16
+              {event.city}, {event.address} <br /> <u>Στη τοποθεσία</u>:{" "}
+              {event.place}
               <u style={{ marginLeft: "10px", color: "#d4b106" }}>
                 Βρείτε στον χάρτη! {"   "} <EnvironmentOutlined />
               </u>
@@ -95,13 +96,13 @@ const DataDisplay = (props) => {
               Δωρεάν
             </div>
 
-            <h4>Χώρος:</h4>
+            {/* <h4>Χώρος:</h4>
             <div
               className="event-place-simple"
               style={{ marginBottom: "15px" }}
             >
               EightBall
-            </div>
+            </div> */}
 
             <h4>Περιγραφή:</h4>
             <div className="event-description">{event.description}</div>
@@ -119,7 +120,7 @@ const DataDisplay = (props) => {
             </div>
 
             <Collapse bordered={false} style={{ marginTop: "25px" }}>
-              <Panel header="Λοιπές Πληροφορίες">
+              <Panel header={<h3>Λοιπές Πληροφορίες</h3>}>
                 <h4>Σχόλια Δημιουργού:</h4>
                 {event.comments ? event.comments : "Κανένα σχόλιο."} <br />
                 {event.ageRestricted ? event.ageRestricted : ""}

@@ -5,6 +5,7 @@ import {
   Select,
   Input,
   Card,
+  message,
   Avatar,
   TimePicker,
   DatePicker,
@@ -14,7 +15,6 @@ import {
   InputNumber,
 } from "antd";
 import "./masterform.css";
-import moment from "moment";
 import {
   UploadOutlined,
   InfoCircleOutlined,
@@ -26,7 +26,7 @@ import { Link, Redirect } from "react-router-dom";
 import PaymentConditions from "./payment-con";
 
 // Redux stuff import
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { createEvent } from "../store/modules/events/actions/eventAction";
 
 const layout = {
@@ -70,6 +70,24 @@ const MasterForm = () => {
       setShowFestival(true);
       setShowSingle(false);
     }
+  };
+
+  const props = {
+    name: "file",
+    action: "https://cors.io/?http://www.mocky.io/v2/5185415ba171ea3a00704eed",
+    headers: {
+      authorization: "authorization-text",
+    },
+    onChange(info) {
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
   };
 
   const dispatch = useDispatch();
@@ -151,7 +169,7 @@ const MasterForm = () => {
             label="Προφίλ"
             //rules={[{ required: true, message: 'Εισάγετε προφίλ Event!' }]}
           >
-            <Upload>
+            <Upload {...props}>
               <Button>
                 <UploadOutlined /> Κάνε κλικ!
               </Button>
@@ -171,6 +189,81 @@ const MasterForm = () => {
           }}
         >
           <Meta description="Τοποθεσία" />
+          <Form.Item
+            label="Πόλη"
+            name="city"
+            rules={[
+              {
+                required: true,
+                message: "Επιλέξτε την πόλη διεξαγωγής του Event!",
+              },
+            ]}
+          >
+            <Select
+              showSearch
+              placeholder="Επιλέξτε πόλη"
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="Άγιος Νικόλαος">Άγιος Νικόλαος</Option>
+              <Option value="Αθήνα-Κέντρο">Αθήνα-Κέντρο</Option>
+              <Option value="Αγρίνιο">Αγρίνιο</Option>
+              <Option value="Αλεξάνδρεια">Αλεξάνδρεια</Option>
+              <Option value="Αλεξανδρούπολη">Αλεξανδρούπολη</Option>
+              <Option value="Άργος">Άργος</Option>
+              <Option value="Άρτα">Άρτα</Option>
+              <Option value="Βέροια">Βέροια</Option>
+              <Option value="Βόλος">Βόλος</Option>
+              <Option value="Γιαννιτσά">Γιαννιτσά</Option>
+              <Option value="Γρεβενά">Γρεβενάm</Option>
+              <Option value="Δράμα">Δράμα</Option>
+              <Option value="Έδεσσα">Έδεσσα</Option>
+              <Option value="Ηράκλειο">Ηράκλειο</Option>
+              <Option value="Θεσσαλονίκη">Θεσσαλονίκη</Option>
+              <Option value="Ιωάννινα">Ιωάννινα</Option>
+              <Option value="Καβάλα">Καβάλα</Option>
+              <Option value="Καστοριά">Καστοριά</Option>
+              <Option value="Καλαμάτα">Καλαμάτα"</Option>
+              <Option value="Κατερίνη">Κατερίνη</Option>
+              <Option value="Καβάλα">Καβάλα</Option>
+              <Option value="Κοζάνη">Κοζάνη</Option>
+              <Option value="Κομοτηνή">Κομοτηνή</Option>
+              <Option value="Λαμία">Λαμία</Option>
+              <Option value="Λάρισα">Λάρισα</Option>
+              <Option value="Πάτρα">Πάτρα</Option>
+              <Option value="Τρίκαλα">Τρίκαλα</Option>
+              <Option value="Τρίπολη">Τρίπολη</Option>
+              <Option value="Φλώρινα">Φλώρινα</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            label="Οδός/Διεύθυνση"
+            name="address"
+            rules={[
+              {
+                required: true,
+                message: "Εισάγετε οδό/διεύθυνση του Event!",
+              },
+            ]}
+          >
+            <Input placeholder="Οδός/Διεύθυνση" />
+          </Form.Item>
+
+          <Form.Item
+            label="Τοποθεσία/Μαγαζί:"
+            name="place"
+            rules={[
+              {
+                required: true,
+                message: "Εισάγετε τοποθεσία/μαγαζί του Event!",
+              },
+            ]}
+          >
+            <Input placeholder="Τοποθεσία π.χ. Silverdollar ή ΔΑΚ Πάτρας" />
+          </Form.Item>
         </Card>
         <Card
           title="Βήμα 3ο - Ημερομηνία"
