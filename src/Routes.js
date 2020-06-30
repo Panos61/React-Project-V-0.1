@@ -1,48 +1,49 @@
-import React from "react";
-import App from "./App";
+import React from 'react';
+import App from './App';
 
-import CardRegisterStyle from "./Components/RegisterForm/SignUpStyle";
-import CardLoginForm from "./Components/LoginForm/LoginFormStyle";
-import { Route, Router, Switch } from "react-router-dom";
-import MainHelpPage from "./HelpPages/MainHelpPage";
-import NotFound from "./notfound";
-import CreateEvent from "./CreateEvent/index";
+import CardRegisterStyle from './Components/RegisterForm/SignUpStyle';
+import CardLoginForm from './Components/LoginForm/LoginFormStyle';
+import { Route, Router, Switch } from 'react-router-dom';
+import MainHelpPage from './HelpPages/MainHelpPage';
+import NotFound from './notfound';
+import CreateEvent from './CreateEvent/index';
 
-import store from "./store";
-import history from "./history";
+import store from './store';
+import history from './history';
 
 // Private-Protected Route function
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from './PrivateRoute';
 
-import Success from "./CreateEvent/success";
-import SettingsMainPage from "./Settings/settings";
-import Account from "./Settings/account/account";
-import Security from "./Settings/security/security";
-import DataDisplay from "./Events/Layout/DataDisplay";
-import MusicPage from "./Events/Event-SubPages/MusicPage";
-import resetPasswordPage from "./Components/ResetPassword/resetPass";
-import SportsPage from "./Events/Event-SubPages/SportsPage";
-import EnterPage from "./Events/Event-SubPages/EnterPage";
-import CinemaPage from "./Events/Event-SubPages/CinemaPage";
-import DancePage from "./Events/Event-SubPages/DancePage";
+import Success from './CreateEvent/success';
+import SettingsMainPage from './Settings/settings';
+import Account from './Settings/account/account';
+import Security from './Settings/security/security';
+import DataDisplay from './Events/Layout/DataDisplay';
+import MusicPage from './Events/Event-SubPages/MusicPage';
+import resetPasswordPage from './Components/ResetPassword/resetPass';
+import SportsPage from './Events/Event-SubPages/SportsPage';
+import EnterPage from './Events/Event-SubPages/EnterPage';
+import CinemaPage from './Events/Event-SubPages/CinemaPage';
+import DancePage from './Events/Event-SubPages/DancePage';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import setAuthorizationToken, {
   getUser,
-} from "./store/modules/auth/actions/authActions";
-import { SET_CURRENT_USER } from "./store/modules/auth/authTypes";
-import ArtPage from "./Events/Event-SubPages/ArtPage";
-import KidsPage from "./Events/Event-SubPages/KidsPage";
-import SocialPage from "./Events/Event-SubPages/SocialPage";
-import UserHistory from "./Settings/user-history";
-import Feed from "./Feed/Feed";
-import Home from "./Feed/pages/home";
-import Saved from "./Feed/pages/saved";
-import Profile from "./Profile/Profile";
-import Layout from "./Feed/layout";
-import SideNav from "./Feed/Components/Sider";
-import Notifications from "./Feed/pages/notifications";
-import CitiesDisplay from "./Cities_Display/CitiesMain";
+} from './store/modules/auth/actions/authActions';
+import { SET_CURRENT_USER } from './store/modules/auth/authTypes';
+import ArtPage from './Events/Event-SubPages/ArtPage';
+import KidsPage from './Events/Event-SubPages/KidsPage';
+import SocialPage from './Events/Event-SubPages/SocialPage';
+import UserHistory from './Settings/user-history';
+import Feed from './Feed/Feed';
+import Home from './Feed/pages/home';
+import Saved from './Feed/pages/saved';
+import Profile from './Profile/Profile';
+import Layout from './Feed/layout';
+import SideNav from './Feed/Components/Sider';
+import Notifications from './Feed/pages/notifications';
+import CitiesDisplay from './Cities_Display/CitiesMain';
+import CityFeed from './Cities_Display/City_Feed';
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -89,6 +90,7 @@ const Routes = () => {
 
         {/* Cities Feed */}
         <Route path="/locations" component={CitiesDisplay} />
+        <Route path="/events/city" component={CityFeed} />
 
         {/* Social Media Part */}
         <Layout>

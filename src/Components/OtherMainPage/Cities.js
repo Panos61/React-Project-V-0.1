@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const { Title } = Typography;
 
 const ulStyle = {
-  listStyle: 'none'
+  listStyle: 'none',
 };
 
 class Cities extends Component {
@@ -18,8 +18,13 @@ class Cities extends Component {
           <Row type="flex" justify="center">
             <Col lg={{ span: 11, offset: 2 }}>
               <Title level={3} style={{ marginBottom: '60px' }}>
-                EventPark τοποθεσίες..
-                <EnvironmentTwoTone />
+                <Link
+                  to="/locations"
+                  style={{ color: '#333', textDecoration: 'underline' }}
+                >
+                  EventPark τοποθεσίες..
+                  <EnvironmentTwoTone />
+                </Link>
               </Title>
             </Col>
           </Row>
@@ -91,6 +96,65 @@ class Cities extends Component {
           </Row>
 
           {/* Other Cities */}
+          <Row type="flex" justify="start" gutter={[8, 16]}>
+            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+              <ul id="column-main" style={ulStyle}>
+                <li>
+                  <Link to="/">Άγιος Νικόλαος</Link>
+                </li>
+                <li>
+                  <Link to="/">Αγρίνιο</Link>
+                </li>
+                <li>
+                  <Link to="/">Αλεξάνδρεια</Link>
+                </li>
+                <li>
+                  <Link to="/">Αλεξανδρούπολη</Link>
+                </li>
+                <li>
+                  <Link to="/">Άργος</Link>
+                </li>
+              </ul>
+            </Col>
+            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+              <ul id="column-main" style={ulStyle}>
+                <li>
+                  <Link to="/">Βέροια</Link>
+                </li>
+                <li>
+                  <Link to="/">Βόλος</Link>
+                </li>
+                <li>
+                  <Link to="/">Γιαννιτσά</Link>
+                </li>
+                <li>
+                  <Link to="/">Γρεβενά</Link>
+                </li>
+                <li>
+                  <Link to="/">Δράμα</Link>
+                </li>
+              </ul>
+            </Col>
+            <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+              <ul id="column-main" style={ulStyle}>
+                <li>
+                  <Link to="/">Έδεσσα</Link>
+                </li>
+                <li>
+                  <Link to="/">Ηράκλειο</Link>
+                </li>
+                <li>
+                  <Link to="/">Θεσσαλονίκη</Link>
+                </li>
+                <li>
+                  <Link to="/">Ιωάννινα</Link>
+                </li>
+                <li>
+                  <Link to="/">Καβάλα</Link>
+                </li>
+              </ul>
+            </Col>
+          </Row>
           <Row type="flex" justify="start" gutter={[8, 16]}>
             <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
               <ul id="column-main" style={ulStyle}>

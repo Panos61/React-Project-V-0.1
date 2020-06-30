@@ -20,12 +20,12 @@ class CitiesDisplay extends Component {
         <section id="locations-display-section">
           <div style={{ marginTop: '15vh' }}>
             <Row type="flex" justify="center">
-              <Col lg={{ span: 11, offset: 2 }}>
+              <Col lg={{ span: 12, offset: 1 }}>
                 <Title
-                  level={3}
+                  level={2}
                   style={{ marginBottom: '60px', color: 'whitesmoke' }}
                 >
-                  EventPark τοποθεσίες..
+                  Events σε πάνω απο 60 περιοχές της Ελλάδας{' '}
                   <EnvironmentOutlined />
                 </Title>
               </Col>
@@ -100,6 +100,65 @@ class CitiesDisplay extends Component {
             </Row>
 
             {/* Other Cities */}
+            <Row type="flex" justify="start" gutter={[8, 16]}>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display">
+                  <li>
+                    <Link to="/events/city">Άγιος Νικόλαος</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Αγρίνιο</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Αλεξάνδρεια</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Αλεξανδρούπολη</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Άργος</Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display">
+                  <li>
+                    <Link to="/">Βέροια</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Βόλος</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Γιαννιτσά</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Γρεβενά</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Δράμα</Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display">
+                  <li>
+                    <Link to="/">Έδεσσα</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Ηράκλειο</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Θεσσαλονίκη</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Ιωάννινα</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Καβάλα</Link>
+                  </li>
+                </ul>
+              </Col>
+            </Row>
             <Row type="flex" justify="start" gutter={[8, 16]}>
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
