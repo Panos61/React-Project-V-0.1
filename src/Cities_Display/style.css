@@ -1,0 +1,22 @@
+#locations-display-section {
+  background-color: rgb(105, 189, 130);
+}
+
+#cities-list-display-sub a {
+  color: white;
+  font-size: smaller;
+}
+
+#cities-list-display a {
+  color: white;
+}
+
+#cities-list-display-sub a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#cities-list-display a:hover {
+  color: white;
+  text-decoration: underline;
+}

@@ -42,6 +42,7 @@ import Profile from "./Profile/Profile";
 import Layout from "./Feed/layout";
 import SideNav from "./Feed/Components/Sider";
 import Notifications from "./Feed/pages/notifications";
+import CitiesDisplay from "./Cities_Display/CitiesMain";
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -85,6 +86,9 @@ const Routes = () => {
         <Route path="/arts" component={ArtPage} />
         <Route path="/kids" component={KidsPage} />
         <Route path="/social_events" component={SocialPage} />
+
+        {/* Cities Feed */}
+        <Route path="/locations" component={CitiesDisplay} />
 
         {/* Social Media Part */}
         <Layout>
