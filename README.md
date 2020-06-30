@@ -18,9 +18,13 @@
 
 [x] Delete Account
 
-[x] Event SubPages Layout - in development
+[x] Event SubPages Layout
 
 ## Things to be done:
+
+[ ] Display all events for every city seperately.
+
+## Future
 
 [ ] Profile Development 
 
