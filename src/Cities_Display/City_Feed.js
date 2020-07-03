@@ -24,15 +24,16 @@ const columns = [
   },
 ];
 
-const data = [];
-for (let i = 0; i < 6; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
+const data = [
+  { key: 1, name: 'Μουσική' },
+  { key: 2, name: 'Αθλητισμός' },
+  { key: 3, name: 'Διασκέδαση' },
+  { key: 4, name: 'Σινεμά' },
+  { key: 5, name: 'Τέχνες' },
+  { key: 6, name: 'Χορός' },
+  { key: 7, name: 'Παιδικά' },
+  { key: 8, name: 'Social_Events' },
+];
 
 class CityFeed extends Component {
   state = {
@@ -75,12 +76,12 @@ class CityFeed extends Component {
           <UpperBack />
           <div style={{ marginLeft: '10%', width: '15%', marginTop: '-10vh' }}>
             <Wrapper>
-              <Affix offsetTop={100}>
+              <Affix offsetTop={90}>
                 <Breadcrumb separator="/">
                   <Breadcrumb.Item>
                     <Link
                       to="/"
-                      style={{ color: '#69c0ff', fontWeight: 'bold' }}
+                      style={{ color: '#a0d911', fontWeight: 'bold' }}
                     >
                       Αρχική
                     </Link>
@@ -88,7 +89,7 @@ class CityFeed extends Component {
                   <Breadcrumb.Item>
                     <Link
                       to="/locations"
-                      style={{ color: '#69c0ff', fontWeight: 'bold' }}
+                      style={{ color: '#a0d911', fontWeight: 'bold' }}
                     >
                       Περιοχές
                     </Link>
@@ -97,7 +98,7 @@ class CityFeed extends Component {
                     <Link
                       to="/events/city"
                       style={{
-                        color: '#1890ff',
+                        color: '#7cb305',
                         fontSize: '17px',
                         fontWeight: 'bold',
                       }}
