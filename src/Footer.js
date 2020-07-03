@@ -18,7 +18,7 @@ class FooterMain extends React.Component {
           style={{
             textAlign: 'center',
             width: '100%',
-            backgroundColor: '#F0FFF0',
+            backgroundColor: '#f6ffed',
           }}
         >
           <Row
