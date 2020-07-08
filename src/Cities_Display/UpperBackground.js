@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchCityFeed from './Search';
+import SearchCityFeed from './Components/Search';
 
 const UpperBack = () => {
   return (
@@ -10,7 +10,6 @@ const UpperBack = () => {
           zIndex: '-5',
           top: 0,
           padding: '45px',
-
           width: '100%',
         }}
       >
@@ -23,8 +22,8 @@ const UpperBack = () => {
             marginTop: '30px',
           }}
         >
-          <h4 style={{ color: 'white' }}> Βρήκαμε 7 events </h4>
-          <h6
+          <h2 style={{ color: 'white' }}> Βρήκαμε 7 events </h2>
+          <h5
             style={{
               color: 'rgba(245, 245, 245, 0.959)',
               margin: '0 auto',
@@ -34,7 +33,7 @@ const UpperBack = () => {
           >
             {' '}
             για Άγιο Νικόλαο.{' '}
-          </h6>
+          </h5>
         </span>
         <div style={{ marginTop: '50px' }}>
           <SearchCityFeed />

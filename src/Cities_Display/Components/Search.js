@@ -16,7 +16,7 @@ const SearchCityFeed = () => {
   return (
     <>
       <Wrapper>
-        <Affix offsetTop={100}>
+        <Affix offsetTop={85}>
           <Search placeholder="Αναζητήστε Events" size={'large'} />
         </Affix>
       </Wrapper>
