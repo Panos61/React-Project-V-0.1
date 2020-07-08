@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import UpperBack from './UpperBackground';
 import TableFilter from './Components/TableFilter';
 import Empty from './empty';
+import MobileFilter from './Components/MobileFilter';
 
 const MainWrap = styled.div`
   @media screen and (min-width: 1800px) {
@@ -48,7 +49,7 @@ class CityFeed extends Component {
         <Navbar />
         <section id="main-city-feed">
           <UpperBack />
-          <div style={{ marginLeft: '7%', width: '15%' }}>
+          <div style={{ marginLeft: '8%', width: '15%' }}>
             <Sider>
               <TableFilter />
             </Sider>
@@ -57,6 +58,9 @@ class CityFeed extends Component {
           <MainWrap>
             <Empty />
           </MainWrap>
+          {/* Mobile Filter Button */}
+          <MobileFilter />
+
           <BackTop />
         </section>
         <footer>
