@@ -20,7 +20,7 @@
 
 [x] Event SubPages Layout
 
-## Things to be done:
+## Current:
 
 [ ] Display all events for every city seperately.
 
