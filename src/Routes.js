@@ -62,7 +62,7 @@ const Routes = () => {
         <Route exact path="/" component={App} />
         <Route path="/login" component={CardLoginForm} />
         <Route path="/register" component={CardRegisterStyle} />
-        <Route path="/help" component={Feed} />
+        <Route path="/help" component={MainHelpPage} />
         <Route path="/reset-password" component={resetPasswordPage} />
 
         {/* Settings Routes */}
@@ -98,7 +98,7 @@ const Routes = () => {
           <Route path="/home" component={Home} />
           <Route path="/saved" component={Saved} />
           <Route path="/notifications" component={Notifications} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile/:id" component={Profile} />
         </Layout>
 
         {/* Not Found Route 404*/}

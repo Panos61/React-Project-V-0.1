@@ -63,10 +63,14 @@ class MobileFilter extends React.Component {
                 <Checkbox value="A">Για ανήλικους</Checkbox>
               </Col>
               <Col lg={8} xs={8}>
-                <Checkbox value="B">Φεστιβάλ</Checkbox>
+                <Checkbox value="B" style={{ color: 'orange' }}>
+                  Φεστιβάλ
+                </Checkbox>
               </Col>
               <Col lg={8} xs={8}>
-                <Checkbox value="C">Μιάς ημέρας</Checkbox>
+                <Checkbox value="C" style={{ color: 'green' }}>
+                  Μιάς ημέρας
+                </Checkbox>
               </Col>
             </Row>
           </Checkbox.Group>

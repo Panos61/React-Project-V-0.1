@@ -1,7 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Header from "../Feed/Components/Header";
-import ProfileInfo from "./ProfileInfo";
+import React from 'react';
+import styled from 'styled-components';
+import Header from '../Feed/Components/Header';
+import ProfileInfo from './ProfileInfo';
+import store from '../store/index';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 
 const Wrapper = styled.div`
   margin-bottom: 7rem;
@@ -16,15 +18,25 @@ const Wrapper = styled.div`
   }
 `;
 const Profile = () => {
+  const currentUserState = useSelector((state) => state.Auth);
   return (
-    <Wrapper>
-      <Header>
-        <div className="profile-top">
-          <p>Fullname / Followers data</p>
-        </div>
-      </Header>
-      <ProfileInfo />
-    </Wrapper>
+    <>
+      <Provider store={store}>
+        <Wrapper>
+          <Header>
+            <div className="profile-top">
+              <p>
+                {' '}
+                {currentUserState.currentUser
+                  ? `${currentUserState.currentUser.username}`
+                  : null}
+              </p>
+            </div>
+          </Header>
+          <ProfileInfo />
+        </Wrapper>
+      </Provider>
+    </>
   );
 };
 

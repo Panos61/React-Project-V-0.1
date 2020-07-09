@@ -1,11 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Avatar, Divider } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import React from 'react';
+import './proInfo.css';
+import styled from 'styled-components';
+import { Avatar, Divider } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import store from '../store/index';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 
 const Wrapper = styled.div`
   .avatar {
-    margin-left: 6.5rem;
+    margin-left: 2rem;
     margin-top: 5rem;
   }
 
@@ -19,7 +22,7 @@ const Wrapper = styled.div`
   .profile-name-handle {
     display: flex;
     flex-direction: column;
-    margin-left: 3.6rem;
+    margin-left: 3.2rem;
     position: relative;
     top: 15px;
   }
@@ -29,15 +32,7 @@ const Wrapper = styled.div`
     font-size: 16px;
   }
 
-  span {
-    margin-right: 1.5rem;
-  }
-
   @media screen and (max-width: 635px) {
-    .avatar {
-      margin-left: 3rem;
-      margin-top: 5rem;
-    }
     span {
       margin-bottom: 0.7rem;
     }
@@ -45,15 +40,28 @@ const Wrapper = styled.div`
 `;
 
 const ProfileInfo = () => {
+  const currentUserState = useSelector((state) => state.Auth);
   return (
-    <Wrapper>
-      <Avatar size={100} icon={<UserOutlined />} className="avatar" />
-      <div className="profile-name-handle">
-        <span className="fullname">fullname</span>
-        <span className="handle">@handle</span>
-      </div>
-      <Divider />
-    </Wrapper>
+    <>
+      <Provider store={store}>
+        <Wrapper>
+          <Avatar size={130} icon={<UserOutlined />} className="avatar" />
+          <div className="profile-name-handle">
+            {/* <span className="fullname">
+              {currentUserState.currentUser
+                ? `${currentUserState.currentUser.username}`
+                : null}
+            </span> */}
+            <span className="handle">
+              {currentUserState.currentUser
+                ? `@${currentUserState.currentUser.username}`
+                : null}
+            </span>
+          </div>
+          <Divider />
+        </Wrapper>
+      </Provider>
+    </>
   );
 };
 

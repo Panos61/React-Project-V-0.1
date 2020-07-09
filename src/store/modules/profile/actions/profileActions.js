@@ -13,7 +13,7 @@ import { message } from 'antd';
 export const getProfile = () => {
   return async (dispatch) => {
     try {
-      const res = await axios.get(`${API_ROUTE}/myProfile`);
+      const res = await axios.get(`${API_ROUTE}/profile`);
       let profile = res.data;
       dispatch({ type: FETCH_PROFILE, payload: profile });
       dispatch(clearErrors());
@@ -27,7 +27,7 @@ export const getProfile = () => {
 export const updateProfile = () => {
   return async (dispatch) => {
     try {
-      const res = await axios.put(`${API_ROUTE}/updateProfile`);
+      const res = await axios.put(`${API_ROUTE}/profile`);
       let updatedProfile = res.data;
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: updatedProfile });
       dispatch(clearErrors());
