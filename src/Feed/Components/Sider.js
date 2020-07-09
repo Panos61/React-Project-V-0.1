@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
-import { Divider } from "antd";
+import React from 'react';
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
+import { Divider } from 'antd';
 import {
   HomeOutlined,
   SearchOutlined,
@@ -9,7 +9,7 @@ import {
   CalendarOutlined,
   UserOutlined,
   EllipsisOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const Wrapper = styled.nav`
   width: 14.6%;
@@ -46,6 +46,8 @@ const Wrapper = styled.nav`
     fill: ${(props) => props.theme.accentColor};
   }
   @media screen and (max-width: 1160px) {
+    z-index: 100;
+    background: white;
     width: 10%;
     #span-link {
       display: none;
@@ -63,8 +65,9 @@ const Wrapper = styled.nav`
       display: none;
     }
   }
-
   @media screen and (max-width: 870px) {
+    z-index: 100;
+    background: white;
     width: 10%;
     #span-link {
       display: none;
@@ -82,7 +85,6 @@ const Wrapper = styled.nav`
       display: none;
     }
   }
-
   @media screen and (max-width: 635px) {
     bottom: 0;
     width: 100vw;
@@ -108,8 +110,7 @@ const Wrapper = styled.nav`
     border-right: none;
     height: 4rem;
     border-top: 1px solid ${(props) => props.theme.tertiaryColor};
-    z-index: 2;
-    background: ${(props) => props.theme.background};
+    z-index: 100;
     ul {
       flex-direction: row;
       justify-content: space-between;

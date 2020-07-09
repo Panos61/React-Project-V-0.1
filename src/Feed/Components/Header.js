@@ -5,7 +5,6 @@ const Wrapper = styled.div`
   padding: 0.6rem 1rem;
   font-size: 1.2rem;
   border-bottom: 1px solid #deeaee;
-
   ${(props) => props.theme.tertiaryColor};
   font-weight: 500;
 `;

@@ -44,6 +44,7 @@ import SideNav from './Feed/Components/Sider';
 import Notifications from './Feed/pages/notifications';
 import CitiesDisplay from './Cities_Display/CitiesMain';
 import CityFeed from './Cities_Display/City_Feed';
+import Suggestion from './Feed/pages/suggestion';
 
 const Routes = () => {
   // Keep User Logged In based on token
@@ -99,6 +100,7 @@ const Routes = () => {
           <Route path="/saved" component={Saved} />
           <Route path="/notifications" component={Notifications} />
           <Route path="/profile/:id" component={Profile} />
+          <Suggestion />
         </Layout>
 
         {/* Not Found Route 404*/}
