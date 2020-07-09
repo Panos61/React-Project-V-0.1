@@ -8,6 +8,7 @@ import UpperBack from './UpperBackground';
 import TableFilter from './Components/TableFilter';
 import Empty from './empty';
 import MobileFilter from './Components/MobileFilter';
+import HotTags from './Components/Tags';
 
 const MainWrap = styled.div`
   @media screen and (min-width: 1800px) {
@@ -25,20 +26,29 @@ const MainWrap = styled.div`
     margin-right: 4%;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1201px) {
     margin-left: 30%;
     margin-right: 4%;
   }
 `;
 
 const Sider = styled.nav`
-  top: 25%;
+  top: 20%;
   position: absolute;
   @media screen and (max-width: 1200px) {
     display: none;
   }
   @media screen and (max-width: 985px) {
     display: none;
+  }
+`;
+
+const TagsWrapper = styled.div`
+  margin-top: 15px;
+  margin-left: 20%;
+  @media screen and (max-width: 1200px) {
+    margin: 20px;
+    text-align: center;
   }
 `;
 
@@ -56,6 +66,9 @@ class CityFeed extends Component {
           </div>
 
           <MainWrap>
+            <TagsWrapper>
+              <HotTags />
+            </TagsWrapper>
             <Empty />
           </MainWrap>
           {/* Mobile Filter Button */}

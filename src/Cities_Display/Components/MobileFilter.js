@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Button } from 'antd';
+import { Drawer, Button, Checkbox, Row, Col, Divider } from 'antd';
 import styled from 'styled-components';
 import { FilterFilled } from '@ant-design/icons';
 
@@ -50,16 +50,55 @@ class MobileFilter extends React.Component {
           </Button>
         </Wrapper>
         <Drawer
-          title="Basic Drawer"
+          title="Περισσότερα Φίλτρα"
           placement="top"
           closable={true}
           onClose={this.onClose}
           visible={visible}
           key={placement}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <Checkbox.Group style={{ width: '100%' }}>
+            <Row>
+              <Col lg={8} xs={8}>
+                <Checkbox value="A">Για ανήλικους</Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="B">Φεστιβάλ</Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="C">Μιάς ημέρας</Checkbox>
+              </Col>
+            </Row>
+          </Checkbox.Group>
+          <Divider plain>Τιμές Εισόδου</Divider>
+          {/* Payment Filter */}
+
+          <Checkbox.Group style={{ width: '100%' }}>
+            <Row>
+              <Col lg={8} xs={8}>
+                <Checkbox value="A" style={{ color: 'red' }}>
+                  Δωρεάν
+                </Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="B">1‎ - 15€</Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="C">16-40‎€</Checkbox>
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={8} xs={8}>
+                <Checkbox value="D">41-75‎€</Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="E">76 - 110‎€</Checkbox>
+              </Col>
+              <Col lg={8} xs={8}>
+                <Checkbox value="F">{'>'}111‎€</Checkbox>
+              </Col>
+            </Row>
+          </Checkbox.Group>
         </Drawer>
       </>
     );
