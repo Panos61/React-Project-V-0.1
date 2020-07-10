@@ -6,7 +6,7 @@ import Header from './Header';
 
 const Wrapper = styled.div`
   margin-left: 3rem;
-  width: 280px;
+  width: 340px;
   border-radius: 10px;
   div:last-child {
     border-bottom: none;
@@ -14,6 +14,14 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 1230px) {
     width: 220px;
+  }
+
+  @media screen and (max-width: 1430px) {
+    width: 310px;
+  }
+
+  @media screen and (max-width: 1320px) {
+    width: 250px;
   }
 `;
 

@@ -10,6 +10,7 @@ import {
   UserOutlined,
   EllipsisOutlined,
 } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.nav`
   width: 14.6%;
@@ -64,6 +65,9 @@ const Wrapper = styled.nav`
     button {
       display: none;
     }
+    .logo {
+      font-size: 8px;
+    }
   }
   @media screen and (max-width: 870px) {
     z-index: 100;
@@ -83,6 +87,9 @@ const Wrapper = styled.nav`
     }
     button {
       display: none;
+    }
+    .logo {
+      font-size: 8px;
     }
   }
   @media screen and (max-width: 635px) {
@@ -126,13 +133,22 @@ const Wrapper = styled.nav`
 `;
 
 const SideNav = () => {
+  const currentState = useSelector((state) => state);
+  const { isAuthenticated } = currentState.Auth;
+
+  const profileRoute = isAuthenticated
+    ? `/profile/${currentState.Auth.currentUser.id}`
+    : '';
+
   return (
     <div>
       <Wrapper>
         <ul>
           <Link to="/">
             <span className="logo">
-              <h3>logo</h3>
+              <h3 style={{ color: '#fa541c', fontFamily: 'fantasy' }}>
+                EventPark
+              </h3>
               <Divider />
             </span>
           </Link>
@@ -162,7 +178,7 @@ const SideNav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected" to="/profile">
+            <NavLink activeClassName="selected" to={profileRoute}>
               <UserOutlined />
               <span id="span-link">Προφίλ</span>
             </NavLink>
