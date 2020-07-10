@@ -97,10 +97,10 @@ const Routes = () => {
         <Layout>
           <SideNav />
           <Suggestion />
-          <Route path="/home" component={Home} />
-          <Route path="/saved" component={Saved} />
-          <Route path="/notifications" component={Notifications} />
-          <Route path="/profile/:id" component={Profile} />
+          <PrivateRoute path="/home" component={Home} />
+          <PrivateRoute path="/saved" component={Saved} />
+          <PrivateRoute path="/notifications" component={Notifications} />
+          <PrivateRoute path="/profile/:id" component={Profile} />
         </Layout>
 
         {/* Not Found Route 404*/}

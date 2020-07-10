@@ -24,10 +24,15 @@ export const getProfile = () => {
 };
 
 // ** UPDATE PROFILE **
-export const updateProfile = () => {
-  return async (dispatch) => {
+export const updateProfile = ({ firstName, lastName, introduction, age }) => {
+  const body = JSON.stringify({ firstName, lastName, introduction, age });
+  return async (dispatch, getState) => {
+    const { currentUser } = getState().Auth;
     try {
-      const res = await axios.put(`${API_ROUTE}/profile`);
+      const res = await axios.put(
+        `${API_ROUTE}/profile/${currentUser.id}`,
+        body
+      );
       let updatedProfile = res.data;
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: updatedProfile });
       dispatch(clearErrors());
