@@ -20,6 +20,7 @@ const Wrapper = styled.nav`
   height: 100vh;
   position: fixed;
   font-weight: 500;
+
   svg {
     width: 28px;
     height: 28px;

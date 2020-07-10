@@ -2,16 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import Follow from '../Components/Follow';
 
-const Wrapper = styled.div`
-  border-left: 1px solid #ddd;
+// const Wrapper = styled.div`
+//   border-left: 1px solid #ddd;
+//   padding: 1rem;
+//   min-height: 100vh;
+//   margin-left: 5rem;
+//   position: fixed;
+//   right: 0;
+//   @media screen and (max-width: 1070px) {
+//     display: none;
+//   }
+// `;
+
+const Wrapper = styled.nav`
+  border-left: 1px solid ${(props) => props.theme.tertiaryColor};
   padding: 1rem;
   min-height: 100vh;
-  z-index: 90;
-  background: white;
-  margin-left: 5rem;
+  width: 22%;
+
   position: fixed;
   right: 0;
-  @media screen and (max-width: 1070px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;
@@ -19,7 +30,12 @@ const Wrapper = styled.div`
 const Suggestion = () => {
   return (
     <Wrapper>
-      <Follow />
+      {/* <Follow /> */}
+      <p>@Anna</p>
+      <p>@Anna</p>
+      <p>@Anna</p>
+      <p>@Anna</p>
+      <p>@Anna</p>
     </Wrapper>
   );
 };

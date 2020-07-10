@@ -9,31 +9,7 @@ const Wrapper = styled.div`
   border-bottom: 7px solid #ddd;
 
   .new-post {
-    width: 65%;
-  }
-
-  @media screen and (max-width: 1070px) {
-    .new-post {
-      width: 100%;
-    }
-  }
-
-  @media screen and (min-width: 1635px) {
-    .new-post {
-      width: 70%;
-    }
-  }
-
-  @media screen and (min-width: 1930px) {
-    .new-post {
-      width: 74.5%;
-    }
-  }
-
-  @media screen and (min-width: 1955px) {
-    .new-post {
-      width: 75%;
-    }
+    width: auto;
   }
 `;
 
