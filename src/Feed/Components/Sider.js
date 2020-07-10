@@ -9,8 +9,10 @@ import {
   CalendarOutlined,
   UserOutlined,
   EllipsisOutlined,
+  SettingTwoTone,
 } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import MoreModal from './more_modal';
 
 const Wrapper = styled.nav`
   width: 14.6%;
@@ -141,6 +143,10 @@ const SideNav = () => {
     ? `/profile/${currentState.Auth.currentUser.id}`
     : '';
 
+  const userSettings = isAuthenticated
+    ? `/settings/${currentState.Auth.currentUser.id}`
+    : '';
+
   return (
     <div>
       <Wrapper>
@@ -185,9 +191,9 @@ const SideNav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="selected" to="/">
-              <EllipsisOutlined />
-              <span id="span-link">Περισσότερα</span>
+            <NavLink to={userSettings} activeClassName="selected">
+              <SettingTwoTone />
+              <span id="span-link">Προτιμήσεις</span>
             </NavLink>
           </li>
         </ul>
