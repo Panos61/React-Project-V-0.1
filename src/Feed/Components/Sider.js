@@ -8,11 +8,9 @@ import {
   NotificationOutlined,
   CalendarOutlined,
   UserOutlined,
-  EllipsisOutlined,
   SettingTwoTone,
 } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import MoreModal from './more_modal';
 
 const Wrapper = styled.nav`
   width: 14.6%;
