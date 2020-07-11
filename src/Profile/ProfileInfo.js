@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './proInfo.css';
 import styled from 'styled-components';
-import { Avatar, Divider, Button, Modal } from 'antd';
+import { Avatar, Divider, Button, Modal, Form, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import store from '../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { updateProfile } from '../store/modules/profile/actions/profileActions';
 
 const Wrapper = styled.div`
   .avatar {
@@ -20,10 +21,19 @@ const Wrapper = styled.div`
     }
   }
 
-  // .profile-edit-btn {
-  //   position: relative;
-  //   left: 30%;
-  // }
+  .profile-edit-btn {
+    left: 50%;
+    position: absolute;
+    top: 21%;
+  }
+
+  @media screen and (min-width: 1050px) {
+    .profile-edit-btn {
+      position: absolute;
+      top: 21%;
+      left: 41%;
+    }
+  }
 
   .profile-name-handle {
     display: flex;
@@ -56,7 +66,31 @@ const ProfileInfo = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
+  const updatePro = (values) => {
+    dispatch(updateProfile(values));
+  };
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
   const currentUserState = useSelector((state) => state.Auth);
+
+  // Form Layout
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
   return (
     <>
       <Provider store={store}>
@@ -74,7 +108,7 @@ const ProfileInfo = () => {
                 : null}
             </span>
           </div>
-          {/* 
+
           <div className="profile-edit-btn">
             <Button
               size="large"
@@ -84,10 +118,11 @@ const ProfileInfo = () => {
             >
               Επεξεργασία
             </Button>
-          </div> */}
+          </div>
           <Divider />
         </Wrapper>
 
+        {/* ADD PROFILE DATA MODAL */}
         <Modal
           closable={false}
           visible={visible}
@@ -100,14 +135,31 @@ const ProfileInfo = () => {
             >
               Ακύρωση
             </Button>,
-            <Button key="submit" type="primary">
-              Ενημέρωση
-            </Button>,
           ]}
         >
-          <p>...</p>
-          <p>...</p>
-          <p>...</p>
+          <Form onFinish={updatePro} {...layout}>
+            <Form.Item name="firstName" label="firstname">
+              <Input />
+            </Form.Item>
+            <Form.Item name="lastName" label="lastname">
+              <Input />
+            </Form.Item>
+            <Form.Item name="introduction" label="introduction">
+              <Input />
+            </Form.Item>
+            <Form.Item name="age" label="age">
+              <Input />
+            </Form.Item>
+            <Form.Item {...tailLayout}>
+              <Button htmlType="submit" onClick={() => setVisible(false)}>
+                Ενημέρωση
+              </Button>
+              <Button htmlType="button">Reset</Button>
+              <Button type="link" htmlType="button">
+                Fill form
+              </Button>
+            </Form.Item>
+          </Form>
         </Modal>
       </Provider>
     </>

@@ -30,7 +30,9 @@ import { useDispatch } from 'react-redux';
 import setAuthorizationToken, {
   getUser,
 } from './store/modules/auth/actions/authActions';
+import { getProfile } from './store/modules/profile/actions/profileActions';
 import { SET_CURRENT_USER } from './store/modules/auth/authTypes';
+import { FETCH_PROFILE } from './store/modules/profile/profileTypes';
 import ArtPage from './Events/Event-SubPages/ArtPage';
 import KidsPage from './Events/Event-SubPages/KidsPage';
 import SocialPage from './Events/Event-SubPages/SocialPage';
@@ -52,8 +54,13 @@ const Routes = () => {
   if (localStorage.token) {
     setAuthorizationToken(localStorage.token);
 
+    // Fetch current user
     dispatch(getUser());
     store.dispatch({ type: SET_CURRENT_USER });
+
+    // Fetch current profile
+    dispatch(getProfile());
+    store.dispatch({ type: FETCH_PROFILE });
   }
 
   return (
