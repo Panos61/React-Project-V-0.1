@@ -22,11 +22,11 @@
 
 ## Current:
 
-[ ] Display all events for every city seperately.
+[ ] Display all events for every city seperately. -in Development
+
+[ ] Profile Development -in Development
 
 ## Future
-
-[ ] Profile Development 
 
 [ ] Feed Development
 
