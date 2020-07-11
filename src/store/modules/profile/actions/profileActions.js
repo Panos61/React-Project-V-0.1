@@ -24,8 +24,22 @@ export const getProfile = () => {
 };
 
 // ** UPDATE PROFILE **
-export const updateProfile = ({ firstName, lastName, introduction, age }) => {
-  const body = JSON.stringify({ firstName, lastName, introduction, age });
+export const updateProfile = ({
+  firstName,
+  lastName,
+  introduction,
+  age,
+  location,
+  sharedLink,
+}) => {
+  const body = JSON.stringify({
+    firstName,
+    lastName,
+    introduction,
+    age,
+    location,
+    sharedLink,
+  });
   return async (dispatch, getState) => {
     const { currentUser } = getState().Auth;
     try {

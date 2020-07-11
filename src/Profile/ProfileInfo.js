@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './proInfo.css';
 import styled from 'styled-components';
 import { Avatar, Divider, Button, Modal, Form, Input } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, FieldTimeOutlined } from '@ant-design/icons';
 import store from '../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -15,8 +15,9 @@ const Wrapper = styled.div`
   }
 
   .profile-info {
-    padding-left: 1.4rem;
-    .bio {
+    margin-top: 3%;
+    padding-left: 3.2rem;
+    .introduction {
       width: 90%;
     }
   }
@@ -25,6 +26,20 @@ const Wrapper = styled.div`
     left: 50%;
     position: absolute;
     top: 21%;
+  }
+
+  div.loc-dob-web {
+    display: flex;
+    color: ${(props) => props.theme.secondaryColor};
+    margin: 1rem 0;
+    span {
+      margin-right: 1.5rem;
+    }
+    svg {
+      margin-right: 0.2rem;
+      position: relative;
+      top: 3px;
+    }
   }
 
   @media screen and (min-width: 1050px) {
@@ -38,14 +53,15 @@ const Wrapper = styled.div`
   .profile-name-handle {
     display: flex;
     flex-direction: column;
-    margin-left: 3.2rem;
+    margin-left: 3rem;
     position: relative;
     top: 15px;
   }
 
   span.fullname {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
+    margin-left: 3px;
   }
 
   @media screen and (max-width: 635px) {
@@ -70,11 +86,9 @@ const ProfileInfo = () => {
     dispatch(updateProfile(values));
   };
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
+  // Redux current state
   const currentUserState = useSelector((state) => state.Auth);
+  const currentProfileState = useSelector((state) => state.Profile);
 
   // Form Layout
   const layout = {
@@ -97,16 +111,42 @@ const ProfileInfo = () => {
         <Wrapper>
           <Avatar size={130} icon={<UserOutlined />} className="avatar" />
           <div className="profile-name-handle">
-            {/* <span className="fullname">
-              {currentUserState.currentUser
-                ? `${currentUserState.currentUser.username}`
+            <span className="fullname">
+              {currentProfileState.profile
+                ? `${currentProfileState.profile.firstName}`
+                : null}{' '}
+              {currentProfileState.profile
+                ? `${currentProfileState.profile.lastName}`
                 : null}
-            </span> */}
+            </span>
             <span className="handle">
               {currentUserState.currentUser
                 ? `@${currentUserState.currentUser.username}`
                 : null}
             </span>
+          </div>
+
+          <div className="profile-info">
+            <p className="introduction">
+              {currentProfileState.profile
+                ? `${currentProfileState.profile.introduction}`
+                : null}
+            </p>
+            <div className="loc-age-link">
+              {currentProfileState.profile ? (
+                <span>
+                  <FieldTimeOutlined /> {currentProfileState.profile.age}{' '}
+                </span>
+              ) : null}
+
+              {currentProfileState.profile
+                ? `${currentProfileState.profile.location}`
+                : null}
+              {'  '}
+              {currentProfileState.profile
+                ? `${currentProfileState.profile.sharedLink}`
+                : null}
+            </div>
           </div>
 
           <div className="profile-edit-btn">
@@ -127,6 +167,7 @@ const ProfileInfo = () => {
           closable={false}
           visible={visible}
           title="Επεξεργασία προφίλ"
+          style={{ top: 20 }}
           footer={[
             <Button
               key="submit"
@@ -138,25 +179,73 @@ const ProfileInfo = () => {
           ]}
         >
           <Form onFinish={updatePro} {...layout}>
-            <Form.Item name="firstName" label="firstname">
-              <Input />
+            <Form.Item name="firstName" label="Αρχικό">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.firstName}`
+                    : null
+                }
+              />
             </Form.Item>
-            <Form.Item name="lastName" label="lastname">
-              <Input />
+            <Form.Item name="lastName" label="Επίθετο">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.lastName}`
+                    : null
+                }
+              />
             </Form.Item>
-            <Form.Item name="introduction" label="introduction">
-              <Input />
+            <Form.Item name="introduction" label="Περιγραφή">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.introduction}`
+                    : null
+                }
+              />
             </Form.Item>
-            <Form.Item name="age" label="age">
-              <Input />
+            <Form.Item name="age" label="Ηλικία">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.age}`
+                    : null
+                }
+              />
+            </Form.Item>
+
+            <Form.Item name="location" label="Τοποθεσία">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.location}`
+                    : null
+                }
+              />
+            </Form.Item>
+
+            <Form.Item name="sharedLink" label="Link">
+              <Input
+                defaultValue={
+                  currentProfileState.profile
+                    ? `${currentProfileState.profile.sharedLink}`
+                    : null
+                }
+              />
             </Form.Item>
             <Form.Item {...tailLayout}>
-              <Button htmlType="submit" onClick={() => setVisible(false)}>
+              <Button
+                htmlType="submit"
+                type="primary"
+                onClick={() => setVisible(false)}
+              >
                 Ενημέρωση
               </Button>
-              <Button htmlType="button">Reset</Button>
+              {'  '}
               <Button type="link" htmlType="button">
-                Fill form
+                <Link to="/help">Βοήθεια</Link>
               </Button>
             </Form.Item>
           </Form>
