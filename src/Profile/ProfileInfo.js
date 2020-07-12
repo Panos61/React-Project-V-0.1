@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import './proInfo.css';
 import styled from 'styled-components';
 import { Avatar, Divider, Button, Modal, Form, Input } from 'antd';
-import { UserOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  FieldTimeOutlined,
+  EnvironmentOutlined,
+  FacebookOutlined,
+} from '@ant-design/icons';
 import store from '../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -75,6 +80,11 @@ const Wrapper = styled.div`
       margin-top: 1rem;
       margin-left: 2rem;
     }
+
+    .profile-shared-links {
+      position: relative;
+      right: 5%;
+    }
   }
 `;
 
@@ -132,20 +142,32 @@ const ProfileInfo = () => {
                 ? `${currentProfileState.profile.introduction}`
                 : null}
             </p>
+            <Divider />
             <div className="loc-age-link">
               {currentProfileState.profile ? (
                 <span>
                   <FieldTimeOutlined /> {currentProfileState.profile.age}{' '}
                 </span>
               ) : null}
-
-              {currentProfileState.profile
-                ? `${currentProfileState.profile.location}`
-                : null}
-              {'  '}
-              {currentProfileState.profile
-                ? `${currentProfileState.profile.sharedLink}`
-                : null}
+              <div style={{ marginLeft: '15px', display: 'inline-block' }}>
+                {currentProfileState.profile ? (
+                  <span>
+                    <EnvironmentOutlined />{' '}
+                    {currentProfileState.profile.location}{' '}
+                  </span>
+                ) : null}
+              </div>
+              <div
+                style={{ marginLeft: '15px', display: 'inline-block' }}
+                className="profile-shared-links"
+              >
+                {currentProfileState.profile ? (
+                  <span>
+                    <FacebookOutlined />{' '}
+                    {currentProfileState.profile.sharedLink}{' '}
+                  </span>
+                ) : null}
+              </div>
             </div>
           </div>
 

@@ -38,6 +38,7 @@ const Wrapper = styled.nav`
     flex-direction: column;
     height: 100%;
     margin-left: -35px;
+    cursor: pointer;
   }
   li {
     margin-bottom: 2rem;
@@ -122,6 +123,7 @@ const Wrapper = styled.nav`
     ul {
       flex-direction: row;
       justify-content: space-between;
+      margin-right: 30px;
     }
     svg {
       width: 22px;

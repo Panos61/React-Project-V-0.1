@@ -15,7 +15,7 @@ import Follow from '../Components/Follow';
 // `;
 
 const Wrapper = styled.nav`
-  border-left: 1px solid ${(props) => props.theme.tertiaryColor};
+  border-left: 1px solid #deeaee;
   padding: 1rem;
   min-height: 100vh;
   width: 22%;
