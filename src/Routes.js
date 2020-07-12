@@ -107,7 +107,7 @@ const Routes = () => {
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute path="/saved" component={Saved} />
           <PrivateRoute path="/notifications" component={Notifications} />
-          <PrivateRoute path="/profile/:id" component={Profile} />
+          <PrivateRoute exact path="/profile/:id" component={Profile} />
         </Layout>
 
         {/* Not Found Route 404*/}

@@ -4,15 +4,40 @@ import Header from '../Feed/Components/Header';
 import ProfileInfo from './ProfileInfo';
 import store from '../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
-import { Tabs, Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Tabs, Button, Menu, Dropdown } from 'antd';
+import { Link, Redirect } from 'react-router-dom';
+import {
+  FlagFilled,
+  EllipsisOutlined,
+  ClearOutlined,
+  MessageOutlined,
+} from '@ant-design/icons';
 
 const { TabPane } = Tabs;
 
-const operations = (
-  <Button style={{ color: 'green' }}>
-    <Link to="create-event">Δημιουργία Event</Link>
-  </Button>
+// User Report-Block Interactivity Menu Button
+const reportMenu = (
+  <Menu>
+    <Menu.Item key="report" icon={<FlagFilled />}>
+      Αναφορά
+    </Menu.Item>
+    <Menu.Item key="block" icon={<ClearOutlined />}>
+      Αποκλεισμός
+    </Menu.Item>
+  </Menu>
+);
+
+const xtoperation = (
+  <Dropdown.Button
+    overlay={reportMenu}
+    icon={<EllipsisOutlined />}
+    id="profile-extra-button"
+  >
+    <span style={{ marginRight: '5px' }}>
+      <MessageOutlined />
+    </span>
+    Μύνημα
+  </Dropdown.Button>
 );
 
 const Wrapper = styled.div`
@@ -26,9 +51,23 @@ const Wrapper = styled.div`
       font-size: 0.9rem;
     }
   }
+
+  @media screen and (max-width: 550px) {
+    #profile-extra-button {
+      display: none;
+    }
+  }
 `;
 const Profile = () => {
   const currentProfileState = useSelector((state) => state.Profile);
+
+  // Redirect user to login page in case
+  // he is not authenticated and enters the URL manually
+  localStorage.getItem('token');
+  if (!localStorage.token) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <>
       <Provider store={store}>

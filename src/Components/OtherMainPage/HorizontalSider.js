@@ -33,7 +33,7 @@ const HorizontalSider = () => {
               Περιοχές
             </Link>
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="2" disabled>
             <RiseOutlined />
             <span>Δημοφιλές</span>
           </Menu.Item>

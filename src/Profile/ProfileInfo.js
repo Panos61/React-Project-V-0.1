@@ -8,12 +8,15 @@ import {
   EnvironmentOutlined,
   FacebookOutlined,
 } from '@ant-design/icons';
+
 import store from '../store/index';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateProfile } from '../store/modules/profile/actions/profileActions';
 
 const Wrapper = styled.div`
+  background: #fafafa;
+
   .avatar {
     margin-left: 2rem;
     margin-top: 5rem;
@@ -120,6 +123,7 @@ const ProfileInfo = () => {
       <Provider store={store}>
         <Wrapper>
           <Avatar size={130} icon={<UserOutlined />} className="avatar" />
+
           <div className="profile-name-handle">
             <span className="fullname">
               {currentProfileState.profile

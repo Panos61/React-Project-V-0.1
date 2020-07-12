@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   display: grid;
-  grid-template-columns: 15% auto 23%;
+  grid-template-columns: 14.6% auto 22%;
   margin-left: auto;
   margin-right: auto;
 
