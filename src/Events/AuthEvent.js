@@ -32,10 +32,6 @@ const Wrapper = styled.div`
   .tweet-info-user span.auth-event-username {
     font-weight: 500;
   }
-  .tweet-info-user span.secondary {
-    padding-left: 0.5rem;
-    color: ${(props) => props.theme.secondaryColor};
-  }
 
   .auth-event-cover img {
     margin-top: 2vh;
@@ -83,12 +79,13 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
-  .auth-event-like {
-    background-color: #fafafa;
-  }
-
   button: hover {
     background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  .auth-event-like {
+    background-color: #fafafa;
   }
 
   .auth-event-comment {
@@ -146,12 +143,30 @@ const AuthEvent = ({ event }) => {
 
       <div className="tweet-info">
         <div className="tweet-info-user">
-          <span className="auth-event-username">Panos Orovas</span>
-          <span className="secondary"> @{event.creator.username}</span>
-          <span className="secondary">
-            <Moment format="DD/MM HH:mm" style={{ fontWeight: 'bold' }}>
-              {event.created_at}
-            </Moment>
+          <span className="auth-event-username">
+            Panos Orovas{' '}
+            <span className="secondary" style={{ display: 'flex' }}>
+              <Moment
+                //format={'dddd στις h:mm a'}
+                fromNow
+                style={{ fontWeight: '350' }}
+              >
+                {event.created_at}
+              </Moment>
+            </span>
+          </span>
+
+          <span className="secondary" style={{ marginLeft: '5px' }}>
+            {' '}
+            @{event.creator.username}
+          </span>
+          <span style={{ marginLeft: '5px', fontWeight: '300' }}>
+            δημοσίευσε ένα event -
+          </span>
+          <span
+            style={{ color: '#237804', marginLeft: '5px', fontWeight: '600' }}
+          >
+            {event.category}
           </span>
         </div>
 
