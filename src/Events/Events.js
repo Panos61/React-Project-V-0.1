@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Event from './Event';
 import {
-  fetchSportEvents,
-  fetchMusicEvents,
+  fetchAllEvents,
+  fetchAuthEvents,
 } from '../store/modules/events/actions/eventAction';
 import './Events.css';
 import Empty from './empty';
@@ -13,7 +13,7 @@ const Events = () => {
   const eventsSelector = useSelector((state) => state.Event);
   const dispatch = useDispatch();
 
-  const getEvents = () => dispatch(fetchMusicEvents());
+  const getEvents = () => dispatch(fetchAuthEvents());
 
   useEffect(() => {
     getEvents();

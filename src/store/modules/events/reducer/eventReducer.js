@@ -9,6 +9,7 @@ import {
   CREATE_EVENT_ERROR,
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_ERROR,
+  FETCH_AUTH_EVENTS_ERROR,
 } from '../eventTypes/eventTypes';
 
 export const initState = {
@@ -45,6 +46,12 @@ export const eventReducer = (state = initState, action) => {
       return {
         ...state,
         authEvents: payload,
+        isLoading: false,
+      };
+    case FETCH_AUTH_EVENTS_ERROR:
+      return {
+        ...state,
+        eventsError: payload,
         isLoading: false,
       };
     case GET_EVENT_SUCCESS:

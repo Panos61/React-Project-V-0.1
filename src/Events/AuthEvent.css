@@ -1,0 +1,15 @@
+.profile-feed-events {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 230px;
+  width: 630px;
+  height: 400px;
+  margin: 0 auto;
+  margin-bottom: 20%;
+}
+
+.auth-event-username {
+  float: left;
+  position: relative;
+  top: 0;
+}

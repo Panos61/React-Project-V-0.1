@@ -7,7 +7,7 @@ export default styled.div`
   margin-right: auto;
 
   @media screen and (max-width: 1221px) {
-    grid-template-columns: 1f;
+    // grid-template-columns: 1f;
     margin-left: auto;
   }
 
@@ -19,6 +19,7 @@ export default styled.div`
 
   @media screen and (max-width: 1101px) {
     display: grid;
+
     grid-template-columns: 10% auto;
     margin-left: auto;
   }

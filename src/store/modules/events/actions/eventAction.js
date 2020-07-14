@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   CREATE_EVENT_SUCCESS,
   BEFORE_STATE_EVENT,
@@ -9,10 +9,11 @@ import {
   FETCH_AUTH_EVENTS_ERROR,
   GET_EVENT_SUCCESS,
   GET_EVENT_ERROR,
-} from "../eventTypes/eventTypes";
-import history from "../../../../history";
-import { returnErrors, clearErrors } from "../../auth/actions/errorActions";
-import API_ROUTE from "../../../../apiRoute";
+} from '../eventTypes/eventTypes';
+import history from '../../../../history';
+import { returnErrors, clearErrors } from '../../auth/actions/errorActions';
+import API_ROUTE from '../../../../apiRoute';
+import { SET_CURRENT_USER } from '../../auth/authTypes';
 
 // ** CREATE EVENT **
 export const createEvent = ({
@@ -59,9 +60,9 @@ export const createEvent = ({
       const res = await axios.post(`${API_ROUTE}/create-event`, body);
       dispatch({ type: CREATE_EVENT_SUCCESS, payload: res.data });
       dispatch(clearErrors());
-      history.push("/event-success");
+      history.push('/event-success');
     } catch (err) {
-      dispatch(returnErrors(err.id, err.message, "EVENT_CREATED_ERROR"));
+      dispatch(returnErrors(err.id, err.message, 'EVENT_CREATED_ERROR'));
       dispatch({ type: CREATE_EVENT_ERROR, payload: err.message });
     }
   };
@@ -193,15 +194,32 @@ export const fetchEvent = (id) => {
 };
 
 // ** FETCH AUTH EVENT ID **
-export const fetchAuthEvents = (id) => {
+export const fetchAuthEvents = () => {
+  return async (dispatch, getState) => {
+    const { currentUser } = getState().Auth;
+
+    const res = await axios.get(`${API_ROUTE}/me`);
+    let user = res.data;
+    dispatch({ type: SET_CURRENT_USER, payload: user });
+    try {
+      const res = await axios.get(`${API_ROUTE}/user_events/${currentUser.id}`);
+      dispatch({ type: FETCH_AUTH_EVENTS, payload: res.data.message });
+    } catch (err) {
+      dispatch({ type: FETCH_AUTH_EVENTS_ERROR, payload: err.message });
+    }
+  };
+};
+
+export const fetchAllEvents = () => {
   return async (dispatch) => {
     dispatch({ type: BEFORE_STATE_EVENT });
 
     try {
-      const res = await axios.get(`${API_ROUTE}/events/${id}`);
-      dispatch({ type: FETCH_AUTH_EVENTS, payload: res.data.message });
+      const res = await axios.get(`${API_ROUTE}/events`);
+
+      dispatch({ type: FETCH_EVENTS, payload: res.data.message });
     } catch (err) {
-      dispatch({ type: FETCH_AUTH_EVENTS_ERROR, payload: err.message });
+      dispatch({ type: FETCH_EVENTS_ERROR, payload: err.message });
     }
   };
 };

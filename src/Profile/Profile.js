@@ -12,6 +12,7 @@ import {
   ClearOutlined,
   MessageOutlined,
 } from '@ant-design/icons';
+import AuthEvents from '../Events/AuthEvents';
 
 const { TabPane } = Tabs;
 
@@ -40,7 +41,9 @@ const xtoperation = (
   </Dropdown.Button>
 );
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+
+const HeaderWrapper = styled.div`
   margin-bottom: 7rem;
   .profile-top {
     display: flex;
@@ -51,13 +54,8 @@ const Wrapper = styled.div`
       font-size: 0.9rem;
     }
   }
-
-  @media screen and (max-width: 550px) {
-    #profile-extra-button {
-      display: none;
-    }
-  }
 `;
+
 const Profile = () => {
   const currentProfileState = useSelector((state) => state.Profile);
 
@@ -71,60 +69,40 @@ const Profile = () => {
   return (
     <>
       <Provider store={store}>
+        {/* <Wrapper>
+          <HeaderWrapper>
+           
+
+            <ProfileInfo />
+          </HeaderWrapper>
+          <AuthEvents />
+        </Wrapper> */}
         <Wrapper>
-          <Header>
-            <div className="profile-top">
-              <p>
-                {' '}
-                {currentProfileState.profile
-                  ? `${currentProfileState.profile.firstName}`
-                  : null}
-              </p>
+          <HeaderWrapper>
+            <Header>
+              <span
+                style={{ color: 'orange', fontFamily: 'fantasy' }}
+                className="profile-top"
+              >
+                <p>
+                  {' '}
+                  {currentProfileState.profile
+                    ? `${currentProfileState.profile.firstName}`
+                    : null}
+                </p>
 
-              <p style={{ marginLeft: '5px' }}>
-                {' '}
-                {currentProfileState.profile
-                  ? `${currentProfileState.profile.lastName}`
-                  : null}
-              </p>
-            </div>
-          </Header>
-          <ProfileInfo />
+                <p style={{ marginLeft: '5px' }}>
+                  {' '}
+                  {currentProfileState.profile
+                    ? `${currentProfileState.profile.lastName}`
+                    : null}
+                </p>
+              </span>
+            </Header>
 
-          <Tabs defaultActiveKey="1" centered style={{ textAlign: 'center' }}>
-            <TabPane tab="Δραστηριότητα" key="1">
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-            </TabPane>
-            <TabPane tab="Φωτογραφίες" key="2">
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-              <p>.....</p>
-            </TabPane>
-          </Tabs>
+            <ProfileInfo />
+          </HeaderWrapper>
+          <AuthEvents />
         </Wrapper>
       </Provider>
     </>
