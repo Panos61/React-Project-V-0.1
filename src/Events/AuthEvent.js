@@ -13,12 +13,13 @@ import {
 } from '@ant-design/icons';
 
 const Wrapper = styled.div`
-  margin-top: 5vh;
+  margin-top: -5vh;
+  margin-bottom : 10vh;
   display: flex;
   border-bottom: 1px solid #fefefe;
   background-color: #fafafa;
   padding: 1rem 3.5rem 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
 
   .tweet-info-user {
     display: flex;
@@ -66,8 +67,18 @@ const Wrapper = styled.div`
     }
   }
 
+  .auth-event-like-stats {
+    float: left;
+  }
+  .auth-event-comment-stats {
+    margin-left: 58%;
+    margin-right: auto;
+  }
+  .auth-event-share-stats {
+    float: right;
+  }
+
   button {
-    background-color: teal;
     border: none;
     color: #6e6770;
     padding: 4px 28px;
@@ -124,6 +135,14 @@ const Wrapper = styled.div`
       padding-right: 0.7rem;
     }
   }
+
+    @media screen and (max-width: 670px) {
+         button svg {
+          display: none;
+        }
+    }
+
+  }
 `;
 const AuthEvent = ({ event }) => {
   const currentUserState = useSelector((state) => state);
@@ -175,6 +194,17 @@ const AuthEvent = ({ event }) => {
             <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
           </Link>
         </div>
+
+        {/* USER ACTION STATS */}
+        <div className="auth-event-user-stats" style={{ marginTop: '3%' }}>
+          <span className="auth-event-like-stats">
+            <HeartOutlined /> 23
+          </span>
+          <span className="auth-event-comment-stats">2 σχόλια</span>
+          <span className="auth-event-share-stats">1 κοινοποίηση </span>
+        </div>
+
+        {/* USER ACTIONS */}
         <div className="auth-event-actions">
           <button className="auth-event-like">
             <span style={{ display: 'inline-block' }}>
