@@ -40,13 +40,18 @@ const Wrapper = styled.div`
   .auth-event-like-stats {
     float: left;
   }
-  .auth-event-comment-stats {
-    margin-left: 78%;
-    margin-right: auto;
-  }
+  
   .auth-event-share-stats {
     float: right;
   }
+
+  .auth-event-comment-stats {
+    float: right;
+    right: 15%;
+    position: relative;
+  }
+
+
   button {
     border: none;
     color: #5f5f5f;
@@ -94,6 +99,14 @@ const Wrapper = styled.div`
       padding-left: 0;
       padding-right: 0.7rem;
     }
+
+  .auth-event-comment-stats {
+    float: right;
+    right: 20%;
+    position: relative;
+    }
+
+    
   }
 
    @media screen and (max-width: 515px) {
@@ -162,7 +175,7 @@ const AuthEvent = ({ event }) => {
         {/* USER ACTION STATS */}
         <div
           className="auth-event-user-stats"
-          style={{ marginTop: '3%', marginBottom: '-3%' }}
+          style={{ margin: '1%', marginBottom: '40px' }}
         >
           <span className="auth-event-like-stats">
             <HeartOutlined /> 23
