@@ -16,7 +16,7 @@ const { TextArea } = Input;
 const postStyle = {
   display: 'table',
   margin: '0 auto',
-  width: '700px',
+  //width: '700px',
   marginTop: '5vh',
   marginBottom: '3vh',
   borderRadius: '10px',
@@ -27,8 +27,10 @@ const NewPost = () => {
 
   return (
     <>
-      <Card style={postStyle}>
-        {/* <Avatar
+      <div id="new-post-parent">
+        <div className="new-post-card">
+          <Card style={postStyle}>
+            {/* <Avatar
           size="large"
           icon={<UserOutlined />}
           style={{
@@ -36,41 +38,43 @@ const NewPost = () => {
             marginRight: '10px',
           }}
         /> */}
-        <div className="new-post" style={{ marginBottom: '-10px' }}>
-          <Input
-            placeholder="Panos61, τι σκέφτεστε;"
-            onClick={() => setVisible(true)}
-            style={{ cursor: 'pointer' }}
-          />
-        </div>
-        <Divider />
+            <div className="new-post" style={{ marginBottom: '-10px' }}>
+              <Input
+                placeholder="Panos61, τι σκέφτεστε;"
+                onClick={() => setVisible(true)}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+            <Divider />
 
-        <div style={{ marginBottom: '-3%', marginTop: '-3%' }}>
-          <Button
-            type="text"
-            icon={<LinkOutlined style={{ color: 'red' }} />}
-            className="new-post-button"
-          >
-            Φωτογραφία/βίντεο
-          </Button>
-          <Button
-            type="text"
-            icon={<CommentOutlined />}
-            className="new-post-button"
-          >
-            Σχόλιο
-          </Button>
-          <Link to="/create-event">
-            <Button
-              type="text"
-              icon={<PlusCircleOutlined style={{ color: 'green' }} />}
-              className="new-post-button"
-            >
-              Δημιουργία Event
-            </Button>
-          </Link>
+            <div style={{ marginBottom: '-3%', marginTop: '-3%' }}>
+              <Button
+                type="text"
+                icon={<LinkOutlined style={{ color: 'red' }} />}
+                className="new-post-button"
+              >
+                Φωτογραφία/βίντεο
+              </Button>
+              {/* <Button
+                type="text"
+                icon={<CommentOutlined style={{ color: 'purple' }} />}
+                className="new-post-button"
+              >
+                Μήνυμα
+              </Button> */}
+              <Link to="/create-event">
+                <Button
+                  type="text"
+                  icon={<PlusCircleOutlined style={{ color: 'green' }} />}
+                  className="new-post-button"
+                >
+                  Δημιουργία Event
+                </Button>
+              </Link>
+            </div>
+          </Card>
         </div>
-      </Card>
+      </div>
       <Modal
         closable={true}
         visible={visible}
