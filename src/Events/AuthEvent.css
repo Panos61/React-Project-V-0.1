@@ -1,15 +1,12 @@
-.profile-feed-events {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 230px;
-  width: 630px;
-  height: 400px;
+.auth-event-parent {
+  display: table;
   margin: 0 auto;
-  margin-bottom: 20%;
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
-.auth-event-username {
-  float: left;
-  position: relative;
-  top: 0;
+.auth-event-container {
+  max-width: 100%;
+  margin: auto;
+  height: 100px;
 }

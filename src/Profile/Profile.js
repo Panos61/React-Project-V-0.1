@@ -45,6 +45,7 @@ const Wrapper = styled.div``;
 
 const HeaderWrapper = styled.div`
   margin-bottom: 7rem;
+  background-color: #fafafa;
   .profile-top {
     display: flex;
     flex-direction: row;
@@ -77,11 +78,14 @@ const Profile = () => {
           </HeaderWrapper>
           <AuthEvents />
         </Wrapper> */}
-        <Wrapper>
+        <Wrapper style={{ backgroundColor: '#f0f2f5' }}>
           <HeaderWrapper>
             <Header>
               <span
-                style={{ color: 'orange', fontFamily: 'fantasy' }}
+                style={{
+                  color: 'orange',
+                  fontFamily: 'fantasy',
+                }}
                 className="profile-top"
               >
                 <p>

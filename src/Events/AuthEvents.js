@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import AuthEvent from './AuthEvent';
+import './AuthEvent.css';
 
 import { fetchAuthEvents } from '../store/modules/events/actions/eventAction';
 
@@ -22,10 +23,11 @@ const AuthEvents = () => {
 
   let authEvents = eventsSelector.authEvents.map((event) => {
     return (
-      <div className="mt-2 style-card" key={event.id}>
+      <div key={event.id}>
         {/* <Link to={'/event/' + event.id} key={event.id}>
           <AuthEvent event={event} key={event.id} />
         </Link> */}
+
         <AuthEvent event={event} key={event.id} />
       </div>
     );
@@ -33,12 +35,12 @@ const AuthEvents = () => {
 
   return (
     <div>
-      <div style={{ display: 'table', margin: '0 auto' }}>
+      <div className="auth-event-parent">
         {authEvents.length > 0 ? (
-          <div className="auth-event-container-test">{authEvents}</div>
+          <div className="auth-event-container">{authEvents}</div>
         ) : (
           <div>
-            <p className="test-aut">No events yet.</p>
+            <p>No events yet.</p>
             <p>Click the button the button below to create one</p>
           </div>
         )}
