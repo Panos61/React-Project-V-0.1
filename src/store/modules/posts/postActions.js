@@ -13,25 +13,28 @@ import {
   DELETE_POST_ERROR,
   FETCH_AUTH_POSTS,
   FETCH_AUTH_POSTS_ERROR,
-} from '../postsTypes';
-import { history } from '../../../history';
+} from './postTypes';
+import history from '../../../history';
 import { BEFORE_POST_STATE } from './postTypes';
 import API_ROUTE from '../../../apiRoute';
+import { returnErrors, clearErrors } from '../auth/actions/errorActions';
 
 // CREATE POST
-export const createPost = (createPost) => {
+export const createPost = ({ content }) => {
+  const body = JSON.stringify({ content });
   return async (dispatch) => {
     dispatch({ type: BEFORE_POST_STATE });
 
     try {
-      const res = await axios.get.apply(`${API_ROUTE}/posts`, createPost);
+      const res = await axios.post(`${API_ROUTE}/posts`, body);
       dispatch({
         type: CREATE_POST_SUCCESS,
         payload: res.data.message,
       });
-      history.push('/');
+      dispatch(clearErrors());
     } catch (err) {
-      dispatch({ type: CREATE_POST_ERROR, payload: err.response.data.err });
+      dispatch({ type: CREATE_POST_ERROR, payload: err.response });
+      dispatch(returnErrors());
     }
   };
 };

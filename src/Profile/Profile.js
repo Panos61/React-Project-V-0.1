@@ -78,7 +78,8 @@ const Profile = () => {
           </HeaderWrapper>
           <AuthEvents />
         </Wrapper> */}
-        <Wrapper style={{ backgroundColor: '#f0f2f5' }}>
+        <Wrapper>
+          {/* <section style={{ backgroundColor: '#f7f7f7' }}> */}
           <HeaderWrapper>
             <Header>
               <span
@@ -103,10 +104,11 @@ const Profile = () => {
                 </p>
               </span>
             </Header>
-
             <ProfileInfo />
           </HeaderWrapper>
+
           <AuthEvents />
+          {/* </section> */}
         </Wrapper>
       </Provider>
     </>

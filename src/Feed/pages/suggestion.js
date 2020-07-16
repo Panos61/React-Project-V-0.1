@@ -31,11 +31,22 @@ const Suggestion = () => {
   return (
     <Wrapper>
       {/* <Follow /> */}
-      <p>@Anna</p>
-      <p>@Anna</p>
-      <p>@Anna</p>
-      <p>@Anna</p>
-      <p>@Anna</p>
+      <h4>Βρείτε Άτομα - ΤEST</h4>
+      <p>[placeholder]</p>
+      <p>[placeholder]</p>
+      <p>[placeholder]</p>
+      <p>[placeholder]</p>
+      <p>[placeholder]</p>
+      <p>[placeholder]</p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <h2>test</h2>
+      <h2>test</h2>
+      <h2>test</h2>
+      <h2>test</h2>
+      <h2>test</h2>
     </Wrapper>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Input, Form, Card, Divider, Avatar, Modal } from 'antd';
 import './NewPostStyle.css';
 import {
@@ -10,6 +10,7 @@ import {
   SmileOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { createPost } from '../../store/modules/posts/postActions';
 
 const { TextArea } = Input;
 
@@ -23,6 +24,14 @@ const postStyle = {
 };
 
 const NewPost = () => {
+  const currentState = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const addPost = (values) => {
+    dispatch(createPost(values));
+    console.log(values);
+  };
+
   const [visible, setVisible] = useState(false);
 
   return (
@@ -90,26 +99,27 @@ const NewPost = () => {
           </Button>,
         ]}
       >
-        <Form.Item style={{ borderColor: 'white' }}>
-          <TextArea
-            placeholder="Panos61, τι σκέφτεστε;"
-            autoSize={{ minRows: 3 }}
-            allowClear
-          />
-        </Form.Item>
-        <Form.Item>
-          <Button
-            htmlType="submit"
-            shape="round"
-            size="large"
-            style={{ color: 'orange' }}
-            icon={<SmileOutlined />}
-          >
-            Πως νιώθετε;
-          </Button>
-        </Form.Item>
+        <Form onFinish={addPost}>
+          <Form.Item style={{ borderColor: 'white' }} name="content">
+            <TextArea
+              placeholder="Panos61, τι σκέφτεστε;"
+              autoSize={{ minRows: 3 }}
+              allowClear
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              htmlType="submit"
+              shape="round"
+              size="large"
+              style={{ color: 'orange' }}
+              icon={<SmileOutlined />}
+            >
+              Πως νιώθετε;
+            </Button>
+          </Form.Item>
+        </Form>
       </Modal>
-      ;
     </>
   );
 };
