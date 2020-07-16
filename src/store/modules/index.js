@@ -12,7 +12,7 @@ const reducer = combineReducers({
   Event: eventReducer,
   Profile: proReducer,
   Post: postsReducer,
-  Upvotes: upvotesReducer,
+  Upvote: upvotesReducer,
 });
 
 export default reducer;

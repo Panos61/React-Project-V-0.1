@@ -12,6 +12,7 @@ import {
   ShareAltOutlined,
   DashOutlined,
 } from '@ant-design/icons';
+import Upvotes from '../Feed/Components/Upvotes/upvotes';
 import Profile from '../Profile/Profile';
 
 const Wrapper = styled.div`
@@ -201,9 +202,10 @@ const Post = ({ post }) => {
 
         {/* USER ACTIONS */}
         <div className="auth-event-actions">
-          <Button type="text" icon={<HeartOutlined />}>
+          {/* <Button type="text" icon={<HeartOutlined />}>
             Τέλειο
-          </Button>
+          </Button> */}
+          <Upvotes postID={post.id} />
           <Button type="text" icon={<CommentOutlined />}>
             Σχόλιο
           </Button>
@@ -211,6 +213,15 @@ const Post = ({ post }) => {
             Προώθηση
           </Button>
         </div>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
+        <p>....</p>
       </Card>
     </Wrapper>
   );

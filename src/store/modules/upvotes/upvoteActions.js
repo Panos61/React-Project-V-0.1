@@ -19,7 +19,7 @@ export const createUpvote = (id) => {
         payload: { postID: id, upvote: res.data.message },
       });
     } catch (err) {
-      dispatch({ type: UPVOTE_ERROR, payload: err.response.data });
+      dispatch({ type: UPVOTE_ERROR, payload: err.message });
       dispatch(returnErrors());
     }
   };
@@ -28,13 +28,13 @@ export const createUpvote = (id) => {
 export const fetchUpvotes = (id) => {
   return async (dispatch) => {
     try {
-      const res = await axios.get(`${API_ROUTE}/${id}`);
+      const res = await axios.get(`${API_ROUTE}/upvotes/${id}`);
       dispatch({
         type: GET_UPVOTES_SUCCESS,
         payload: { postID: id, upvotes: res.data.message },
       });
     } catch (err) {
-      dispatch({ type: GET_UPVOTES_ERROR, payload: err.response.data });
+      dispatch({ type: GET_UPVOTES_ERROR, payload: err.message });
       dispatch(returnErrors());
     }
   };
@@ -52,7 +52,7 @@ export const removeUpvote = (details) => {
         },
       });
     } catch (err) {
-      dispatch({ type: REMOVE_UPVOTE_ERROR, payload: err.response.data.error });
+      dispatch({ type: REMOVE_UPVOTE_ERROR, payload: err.message.data.error });
     }
   };
 };

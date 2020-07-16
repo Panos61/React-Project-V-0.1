@@ -19,10 +19,14 @@ export const upvotesReducer = (state = initState, action) => {
     case UPVOTE_SUCCESS:
       return {
         ...state,
-        upvotedPosts: [
-          ...state.upvotedPosts,
-          { postID: payload.postID, upvotes: payload.upvotes },
-        ],
+        upvotedPosts: state.upvotedPosts.map((upvotePost) =>
+          upvotePost.postID === payload.postID
+            ? {
+                ...upvotePost,
+                upvotes: [...upvotePost.upvotes, payload.upvotes],
+              }
+            : upvotePost
+        ),
         upvotesError: null,
       };
     case UPVOTE_ERROR:
