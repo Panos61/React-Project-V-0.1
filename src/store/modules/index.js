@@ -4,6 +4,7 @@ import errorReducer from './auth/reducer/errorReducer';
 import { eventReducer } from './events/reducer/eventReducer';
 import proReducer from './profile/reducer/proReducer';
 import { postsReducer } from './posts/postReducer';
+import { upvotesReducer } from './upvotes/upvoteReducer';
 
 const reducer = combineReducers({
   Auth: authReducer,
@@ -11,6 +12,7 @@ const reducer = combineReducers({
   Event: eventReducer,
   Profile: proReducer,
   Post: postsReducer,
+  Upvotes: upvotesReducer,
 });
 
 export default reducer;
