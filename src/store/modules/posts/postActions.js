@@ -52,3 +52,72 @@ export const fetchPosts = () => {
     }
   };
 };
+
+// FETCH POST
+export const fetchPost = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_POST_STATE });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/posts/${id}`);
+      dispatch({ type: GET_POST_SUCCESS, payload: res.data.message });
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch({ type: GET_POST_ERROR, payload: err.response });
+      dispatch(returnErrors());
+      history.push('/home');
+    }
+  };
+};
+
+// FETCH AUTH POSTS
+export const fetchAuthPosts = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_POST_STATE });
+
+    try {
+      const res = await axios.get(`${API_ROUTE}/user_posts/${id}`);
+      dispatch({ type: FETCH_AUTH_POSTS, payload: res.data.message });
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch({ type: FETCH_AUTH_POSTS_ERROR, payload: err.response });
+      dispatch(returnErrors());
+    }
+  };
+};
+
+// UPDATE POST
+export const updatePost = () => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_POST_STATE });
+
+    try {
+      const res = await axios.put(`${API_ROUTE}/posts/`);
+      dispatch({ type: UPDATE_POST_SUCCESS, payload: res.data.message });
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch({ type: UPDATE_POST_ERROR, payload: err.response });
+      dispatch(returnErrors());
+    }
+  };
+};
+
+// DELETE POST
+export const deletePost = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: BEFORE_POST_STATE });
+
+    try {
+      const res = await axios.delete(`${API_ROUTE}/posts/${id}`);
+      dispatch({
+        type: DELETE_POST_SUCCESS,
+        payload: { deletedID: id, message: res.data.message },
+      });
+      history.push('/home');
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch({ type: DELETE_POST_ERROR, payload: err.response });
+      dispatch(returnErrors());
+    }
+  };
+};
