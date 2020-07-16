@@ -103,6 +103,14 @@ const ProfileInfo = () => {
   const currentUserState = useSelector((state) => state.Auth);
   const currentProfileState = useSelector((state) => state.Profile);
 
+  const authID = currentUserState.currentUser
+    ? currentUserState.currentUser.id
+    : '';
+
+  const profileID = currentProfileState.currentProfile
+    ? currentProfileState.currentProfile.id
+    : '';
+
   // Form Layout
   const layout = {
     labelCol: {
@@ -125,14 +133,16 @@ const ProfileInfo = () => {
           <Avatar size={130} icon={<UserOutlined />} className="avatar" />
 
           <div className="profile-name-handle">
-            <span className="fullname">
-              {currentProfileState.profile
-                ? `${currentProfileState.profile.firstName}`
-                : null}{' '}
-              {currentProfileState.profile
-                ? `${currentProfileState.profile.lastName}`
-                : null}
-            </span>
+            {authID != profileID ? (
+              <span className="fullname">
+                {currentProfileState.profile
+                  ? `${currentProfileState.profile.firstName}`
+                  : null}{' '}
+                {currentProfileState.profile
+                  ? `${currentProfileState.profile.lastName}`
+                  : null}
+              </span>
+            ) : null}
             <span className="handle">
               {currentUserState.currentUser
                 ? `@${currentUserState.currentUser.username}`
@@ -140,41 +150,42 @@ const ProfileInfo = () => {
             </span>
           </div>
 
-          <div className="profile-info">
-            <p className="introduction">
-              {currentProfileState.profile
-                ? `${currentProfileState.profile.introduction}`
-                : null}
-            </p>
-            <Divider />
-            <div className="loc-age-link">
-              {currentProfileState.profile ? (
-                <span>
-                  <FieldTimeOutlined /> {currentProfileState.profile.age}{' '}
-                </span>
-              ) : null}
-              <div style={{ marginLeft: '15px', display: 'inline-block' }}>
+          {authID != profileID ? (
+            <div className="profile-info">
+              <p className="introduction">
+                {currentProfileState.profile
+                  ? `${currentProfileState.profile.introduction}`
+                  : null}
+              </p>
+              <Divider />
+              <div className="loc-age-link">
                 {currentProfileState.profile ? (
                   <span>
-                    <EnvironmentOutlined />{' '}
-                    {currentProfileState.profile.location}{' '}
+                    <FieldTimeOutlined /> {currentProfileState.profile.age}{' '}
                   </span>
                 ) : null}
-              </div>
-              <div
-                style={{ marginLeft: '15px', display: 'inline-block' }}
-                className="profile-shared-links"
-              >
-                {currentProfileState.profile ? (
-                  <span>
-                    <FacebookOutlined />{' '}
-                    {currentProfileState.profile.sharedLink}{' '}
-                  </span>
-                ) : null}
+                <div style={{ marginLeft: '15px', display: 'inline-block' }}>
+                  {currentProfileState.profile ? (
+                    <span>
+                      <EnvironmentOutlined />{' '}
+                      {currentProfileState.profile.location}{' '}
+                    </span>
+                  ) : null}
+                </div>
+                <div
+                  style={{ marginLeft: '15px', display: 'inline-block' }}
+                  className="profile-shared-links"
+                >
+                  {currentProfileState.profile ? (
+                    <span>
+                      <FacebookOutlined />{' '}
+                      {currentProfileState.profile.sharedLink}{' '}
+                    </span>
+                  ) : null}
+                </div>
               </div>
             </div>
-          </div>
-
+          ) : null}
           <div className="profile-edit-btn">
             <Button
               size="large"

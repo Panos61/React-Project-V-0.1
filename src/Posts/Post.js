@@ -10,6 +10,7 @@ import {
   HeartOutlined,
   CommentOutlined,
   ShareAltOutlined,
+  DashOutlined,
 } from '@ant-design/icons';
 import Profile from '../Profile/Profile';
 
@@ -32,7 +33,7 @@ const Wrapper = styled.div`
 
   .post-content {
       margin-top: 2vh;
-      max-width: 60vh;
+      max-width: 55vh;
   }
 
   span.tag {
@@ -125,7 +126,8 @@ const Wrapper = styled.div`
 `;
 
 const Post = ({ post }) => {
-  const currentUserState = useSelector((state) => state);
+  const currentUserState = useSelector((state) => state.Auth);
+  const PostsState = useSelector((state) => state);
   const authID = currentUserState.currentUser
     ? currentUserState.currentUser.id
     : '';
@@ -163,11 +165,17 @@ const Post = ({ post }) => {
               @{post.author.username}
             </span>
 
-            <span
-              style={{ color: '#237804', marginLeft: '5px', fontWeight: '600' }}
-            >
-              {post.category}
-            </span>
+            {authID === post.author_id ? (
+              <span
+                style={{
+                  position: 'absolute',
+                  right: '2.5vh',
+                  cursor: 'pointer',
+                }}
+              >
+                <DashOutlined />
+              </span>
+            ) : null}
           </div>
           <div className="post-content">
             <p>{post.content}</p>
