@@ -7,7 +7,7 @@ import {
 } from '../../../store/modules/upvotes/upvoteActions';
 import history from '../../../history';
 import { Button } from 'antd';
-import { HeartOutlined } from '@ant-design/icons';
+import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 const Upvotes = ({ postID }) => {
   const currentState = useSelector((state) => state);
@@ -21,7 +21,7 @@ const Upvotes = ({ postID }) => {
 
   let postUpvote = 0;
   let upvoteID = null;
-  let authLinked = false;
+  let authUpvoted = false;
 
   const getPostUpvotes = (id) => dispatch(fetchUpvotes(id));
   const addUpvote = (id) => dispatch(createUpvote(id));
@@ -34,7 +34,7 @@ const Upvotes = ({ postID }) => {
 
         eachItem.upvotes.map((eachUpvote) => {
           if (eachUpvote.user_id === authID) {
-            authLinked = true;
+            authUpvoted = true;
             upvoteID = eachUpvote.id;
           }
         });
@@ -52,14 +52,12 @@ const Upvotes = ({ postID }) => {
     deleteUpvote({ id, postID });
   };
 
-  const saveUpvote = (e) => {
-    e.preventDefault();
+  const saveUpvote = () => {
     addUpvote(postID);
   };
 
-  const upvoteToggle = (e) => {
-    e.preventDefault();
-    authLinked ? rmUpvote(e) : saveUpvote(e);
+  const upvoteToggle = () => {
+    authUpvoted ? rmUpvote() : saveUpvote();
   };
 
   const notAuthorized = (e) => {
@@ -69,15 +67,32 @@ const Upvotes = ({ postID }) => {
 
   return (
     <>
-      {authID ? (
-        <span onClick={upvoteToggle}>
-          <Button type="text" icon={<HeartOutlined />}>
-            Τέλειο <span>{postUpvote}</span>
-          </Button>
-        </span>
-      ) : (
-        ''
-      )}
+      <div className="style-fav">
+        <div className="style-heart-outer">
+          <span className="mr-4">
+            {authID ? (
+              <span onClick={upvoteToggle}>
+                {authUpvoted ? (
+                  <Button icon={<HeartOutlined />}>
+                    Upvoted {postUpvote}{' '}
+                  </Button>
+                ) : (
+                  <Button icon={<HeartFilled />}>
+                    Not Upvoted {postUpvote}
+                  </Button>
+                )}
+                <span className="ml-2">{postUpvote}</span>
+              </span>
+            ) : (
+              <span onClick={notAuthorized}>
+                <Button icon={<HeartFilled />}>
+                  <span className="ml-2">{postUpvote}</span>
+                </Button>
+              </span>
+            )}
+          </span>
+        </div>
+      </div>
     </>
   );
 };

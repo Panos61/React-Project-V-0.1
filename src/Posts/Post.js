@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -14,6 +14,8 @@ import {
 } from '@ant-design/icons';
 import Upvotes from '../Feed/Components/Upvotes/upvotes';
 import Profile from '../Profile/Profile';
+import ExampleComment from '../Feed/Components/Comments/comment';
+import Editor from '../Feed/Components/Comments/createComment';
 
 const Wrapper = styled.div`
 
@@ -127,6 +129,8 @@ const Wrapper = styled.div`
 `;
 
 const Post = ({ post }) => {
+  const [visibleInput, setVisibleInput] = useState(false);
+
   const currentUserState = useSelector((state) => state.Auth);
   const PostsState = useSelector((state) => state);
   const authID = currentUserState.currentUser
@@ -134,96 +138,98 @@ const Post = ({ post }) => {
     : '';
 
   return (
-    <Wrapper>
-      <Card style={{ marginBottom: '5vh', borderRadius: '10px' }}>
-        <div className="tweet-info">
-          <div className="tweet-info-user">
-            <Avatar
-              className="auth-event-avatar"
-              size="large"
-              icon={<UserOutlined />}
-              style={{
-                // display: 'inline-block',
-                marginRight: '10px',
-              }}
-            />
-
-            <span className="auth-event-username">
-              Panos Orovas{' '}
-              <span className="secondary" style={{ display: 'flex' }}>
-                <Moment
-                  //format={'dddd στις h:mm a'}
-                  fromNow
-                  style={{ fontWeight: '350' }}
-                >
-                  {post.created_at}
-                </Moment>
-              </span>
-            </span>
-
-            <span className="secondary" style={{ marginLeft: '5px' }}>
-              {' '}
-              @{post.author.username}
-            </span>
-
-            {authID === post.author_id ? (
-              <span
+    <>
+      <Wrapper>
+        <Card style={{ marginBottom: '5vh', borderRadius: '10px' }}>
+          <div className="tweet-info">
+            <div className="tweet-info-user">
+              <Avatar
+                className="auth-event-avatar"
+                size="large"
+                icon={<UserOutlined />}
                 style={{
-                  position: 'absolute',
-                  right: '2.5vh',
-                  cursor: 'pointer',
+                  // display: 'inline-block',
+                  marginRight: '10px',
                 }}
-              >
-                <DashOutlined />
+              />
+
+              <span className="auth-event-username">
+                Panos Orovas{' '}
+                <span className="secondary" style={{ display: 'flex' }}>
+                  <Moment
+                    //format={'dddd στις h:mm a'}
+                    fromNow
+                    style={{ fontWeight: '350' }}
+                  >
+                    {post.created_at}
+                  </Moment>
+                </span>
               </span>
-            ) : null}
-          </div>
-          <div className="post-content">
-            <p>{post.content}</p>
-          </div>
-        </div>
 
-        {/* USER ACTION STATS */}
-        <div
-          className="auth-event-user-stats"
-          style={{ margin: '1%', marginBottom: '40px' }}
-        >
-          <span className="auth-event-like-stats">
-            <HeartOutlined /> 23
-          </span>
-          <span className="auth-event-comment-stats">
-            2 <CommentOutlined />
-          </span>
-          <span className="auth-event-share-stats">
-            1 <ShareAltOutlined />
-          </span>
-        </div>
-        <Divider />
+              <span className="secondary" style={{ marginLeft: '5px' }}>
+                {' '}
+                @{post.author.username}
+              </span>
 
-        {/* USER ACTIONS */}
-        <div className="auth-event-actions">
-          {/* <Button type="text" icon={<HeartOutlined />}>
-            Τέλειο
-          </Button> */}
-          <Upvotes postID={post.id} />
-          <Button type="text" icon={<CommentOutlined />}>
-            Σχόλιο
-          </Button>
-          <Button type="text" icon={<ShareAltOutlined />}>
-            Προώθηση
-          </Button>
-        </div>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-        <p>....</p>
-      </Card>
-    </Wrapper>
+              {authID === post.author_id ? (
+                <span
+                  style={{
+                    position: 'absolute',
+                    right: '2.5vh',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <DashOutlined />
+                </span>
+              ) : null}
+            </div>
+            <div className="post-content">
+              <p>{post.content}</p>
+            </div>
+          </div>
+
+          {/* USER ACTION STATS */}
+          <div
+            className="auth-event-user-stats"
+            style={{ margin: '1%', marginBottom: '40px' }}
+          >
+            <span className="auth-event-like-stats">
+              <HeartOutlined />
+            </span>
+            <span className="auth-event-comment-stats">
+              2 <CommentOutlined />
+            </span>
+            <span className="auth-event-share-stats">
+              1 <ShareAltOutlined />
+            </span>
+          </div>
+          <Divider />
+
+          {/* USER ACTIONS */}
+          <div className="auth-event-actions">
+            <Button type="text" icon={<HeartOutlined />}>
+              Τέλειο
+            </Button>
+            {/* <Upvotes postID={post.id} /> */}
+            <Button
+              type="text"
+              icon={<CommentOutlined />}
+              onClick={() => setVisibleInput(true)}
+            >
+              Σχόλιο
+            </Button>
+            <Button type="text" icon={<ShareAltOutlined />}>
+              Προώθηση
+            </Button>
+          </div>
+          {/* Test Comments*/}
+          {/* <ExampleComment>
+          <ExampleComment />
+          <ExampleComment />
+        </ExampleComment> */}
+        </Card>
+      </Wrapper>
+    </>
   );
 };
 

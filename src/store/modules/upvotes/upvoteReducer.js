@@ -55,10 +55,16 @@ export const upvotesReducer = (state = initState, action) => {
     case REMOVE_UPVOTE_SUCCESS:
       return {
         ...state,
-        upvotedPosts: [
-          ...state.upvotedPosts,
-          { postID: payload.postID, upvotes: payload.upvotes },
-        ],
+        upvotedPosts: state.upvotedPost.map((upvoteItem) =>
+          Number(upvoteItem.postID) === payload.postID
+            ? {
+                ...upvoteItem,
+                upvotes: upvoteItem.upvotes.filter(
+                  ({ id }) => id !== payload.upvoteID
+                ),
+              }
+            : upvoteItem
+        ),
       };
     case REMOVE_UPVOTE_ERROR:
       return {
