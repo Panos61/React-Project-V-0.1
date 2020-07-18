@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FooterMain from '../Footer';
 import './style.css';
 import { EnvironmentOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, Router, Switch, Route, useParams } from 'react-router-dom';
 import Navbar from '../Components/Navbar/Navbar';
 import { Row, Col, Typography } from 'antd';
 
@@ -15,7 +15,8 @@ const ulStyle = {
 class CitiesDisplay extends Component {
   render() {
     return (
-      <>
+      // <Router>
+      <div>
         <Navbar />
         <section id="locations-display-section">
           <div style={{ marginTop: '15vh' }}>
@@ -43,57 +44,57 @@ class CitiesDisplay extends Component {
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display-sub">
                   <li>
-                    <Link to="/">Άγιος Παύλος</Link>
+                    <Link to="/location/agios-paulos">Άγιος Παύλος</Link>
                   </li>
                   <li>
-                    <Link to="/">Ακρόπολη</Link>
+                    <Link to="/location/akropoli">Ακρόπολη</Link>
                   </li>
                   <li>
-                    <Link to="/">Βοτανικός</Link>
+                    <Link to="/location/votanikos">Βοτανικός</Link>
                   </li>
                   <li>
-                    <Link to="/">Γκάζι</Link>
+                    <Link to="/location/gazi">Γκάζι</Link>
                   </li>
                   <li>
-                    <Link to="/">Εξάρχεια</Link>
-                  </li>
-                </ul>
-              </Col>
-              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-                <ul style={ulStyle} id="cities-list-display-sub">
-                  <li>
-                    <Link to="/">Θησείο</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Ιλίσια</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Κολωνάκι</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Μοναστηράκι</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Νεάπολη(Αθήνα)</Link>
+                    <Link to="/location/exarheia">Εξάρχεια</Link>
                   </li>
                 </ul>
               </Col>
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display-sub">
                   <li>
-                    <Link to="/">Ομόνοια</Link>
+                    <Link to="/location/thiseio">Θησείο</Link>
                   </li>
                   <li>
-                    <Link to="/">Παγκράτι</Link>
+                    <Link to="/location/ilisia">Ιλίσια</Link>
                   </li>
                   <li>
-                    <Link to="/">Πατήσια</Link>
+                    <Link to="/location/kolonaki">Κολωνάκι</Link>
                   </li>
                   <li>
-                    <Link to="/">Ριζούπολη</Link>
+                    <Link to="/location/monastiraki">Μοναστηράκι</Link>
                   </li>
                   <li>
-                    <Link to="/">Χαλάνδρι</Link>
+                    <Link to="/location/neapoli">Νεάπολη(Αθήνα)</Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display-sub">
+                  <li>
+                    <Link to="/location/omonoia">Ομόνοια</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/pagrati">Παγκράτι</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/patisia">Πατήσια</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/rizoupoli">Ριζούπολη</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/chalandri">Χαλάνδρι</Link>
                   </li>
                 </ul>
               </Col>
@@ -104,57 +105,59 @@ class CitiesDisplay extends Component {
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
                   <li>
-                    <Link to="/events/city">Άγιος Νικόλαος</Link>
+                    <Link to="/events/city/agios-nikolos-crete">
+                      Άγιος Νικόλαος
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/">Αγρίνιο</Link>
+                    <Link to="/location/agrinio">Αγρίνιο</Link>
                   </li>
                   <li>
-                    <Link to="/">Αλεξάνδρεια</Link>
+                    <Link to="/location/alexandria">Αλεξάνδρεια</Link>
                   </li>
                   <li>
-                    <Link to="/">Αλεξανδρούπολη</Link>
+                    <Link to="/location/alexandroupoli">Αλεξανδρούπολη</Link>
                   </li>
                   <li>
-                    <Link to="/">Άργος</Link>
-                  </li>
-                </ul>
-              </Col>
-              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-                <ul style={ulStyle} id="cities-list-display">
-                  <li>
-                    <Link to="/">Βέροια</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Βόλος</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Γιαννιτσά</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Γρεβενά</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Δράμα</Link>
+                    <Link to="/location/argos">Άργος</Link>
                   </li>
                 </ul>
               </Col>
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
                   <li>
-                    <Link to="/">Έδεσσα</Link>
+                    <Link to="/location/veria">Βέροια</Link>
                   </li>
                   <li>
-                    <Link to="/">Ηράκλειο</Link>
+                    <Link to="/location/volos">Βόλος</Link>
                   </li>
                   <li>
-                    <Link to="/">Θεσσαλονίκη</Link>
+                    <Link to="/location/giannitsa">Γιαννιτσά</Link>
                   </li>
                   <li>
-                    <Link to="/">Ιωάννινα</Link>
+                    <Link to="/location/grevena">Γρεβενά</Link>
                   </li>
                   <li>
-                    <Link to="/">Καβάλα</Link>
+                    <Link to="/location/drama">Δράμα</Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display">
+                  <li>
+                    <Link to="/location/edessa">Έδεσσα</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/iraklio-crete">Ηράκλειο Κρήτη</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/thessaloniki">Θεσσαλονίκη</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/ioannina">Ιωάννινα</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/kavala">Καβάλα</Link>
                   </li>
                 </ul>
               </Col>
@@ -163,57 +166,59 @@ class CitiesDisplay extends Component {
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
                   <li>
-                    <Link to="/">Άγιος Νικόλαος</Link>
+                    <Link to="/location/agios-nikolaos-crete">
+                      Άγιος Νικόλαος
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/">Αγρίνιο</Link>
+                    <Link to="/location/agrinio">Αγρίνιο</Link>
                   </li>
                   <li>
-                    <Link to="/">Αλεξάνδρεια</Link>
+                    <Link to="/location/alexandria">Αλεξάνδρεια</Link>
                   </li>
                   <li>
-                    <Link to="/">Αλεξανδρούπολη</Link>
+                    <Link to="/location/alexandroupoli">Αλεξανδρούπολη</Link>
                   </li>
                   <li>
-                    <Link to="/">Άργος</Link>
-                  </li>
-                </ul>
-              </Col>
-              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
-                <ul style={ulStyle} id="cities-list-display">
-                  <li>
-                    <Link to="/">Βέροια</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Βόλος</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Γιαννιτσά</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Γρεβενά</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Δράμα</Link>
+                    <Link to="/location/argos">Άργος</Link>
                   </li>
                 </ul>
               </Col>
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
                   <li>
-                    <Link to="/">Έδεσσα</Link>
+                    <Link to="/location/veria">Βέροια</Link>
                   </li>
                   <li>
-                    <Link to="/">Ηράκλειο</Link>
+                    <Link to="/location/volos">Βόλος</Link>
                   </li>
                   <li>
-                    <Link to="/">Θεσσαλονίκη</Link>
+                    <Link to="/location/giannitsa">Γιαννιτσά</Link>
                   </li>
                   <li>
-                    <Link to="/">Ιωάννινα</Link>
+                    <Link to="/location/grevena">Γρεβενά</Link>
                   </li>
                   <li>
-                    <Link to="/">Καβάλα</Link>
+                    <Link to="/location/drama">Δράμα</Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
+                <ul style={ulStyle} id="cities-list-display">
+                  <li>
+                    <Link to="/location/edessa">Έδεσσα</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/iraklio-crete">Ηράκλειο</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/thessaloniki">Θεσσαλονίκη</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/ioannina">Ιωάννινα</Link>
+                  </li>
+                  <li>
+                    <Link to="/location/kavala">Καβάλα</Link>
                   </li>
                 </ul>
               </Col>
@@ -224,9 +229,23 @@ class CitiesDisplay extends Component {
         <footer>
           <FooterMain />
         </footer>
-      </>
+
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+        </Switch>
+      </div>
     );
   }
+}
+
+function Child() {
+  let { id } = useParams();
+
+  return (
+    <div>
+      <h3>ID: {id}</h3>
+    </div>
+  );
 }
 
 export default CitiesDisplay;
