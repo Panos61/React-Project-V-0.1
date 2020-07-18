@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchCityFeed from './Components/Search';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLocalEvents } from '../store/modules/localEvents/actions/locationActions';
+import { withRouter } from 'react-router-dom';
 
-const UpperBack = () => {
+const UpperBack = (props) => {
+  const eventCity = props.match.params.id;
+
+  const currentState = useSelector((state) => state);
+
+  const events = currentState.Event.event;
+
+  const dispatch = useDispatch();
+  const showData = (id) => {
+    dispatch(fetchLocalEvents(id));
+  };
+
+  useEffect(() => {
+    showData(eventCity);
+  }, []);
+
   return (
     <>
       <div
@@ -32,7 +50,7 @@ const UpperBack = () => {
             }}
           >
             {' '}
-            για Άγιο Νικόλαο.{' '}
+            για αυτή την περιοχή.{' '}
           </h5>
         </span>
         <div style={{ marginTop: '50px' }}>
@@ -43,4 +61,6 @@ const UpperBack = () => {
   );
 };
 
-export default UpperBack;
+//export default UpperBack;
+
+export default withRouter(UpperBack);

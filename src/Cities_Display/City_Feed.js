@@ -9,6 +9,7 @@ import TableFilter from './Components/TableFilter';
 import Empty from './empty';
 import MobileFilter from './Components/MobileFilter';
 import HotTags from './Components/Tags';
+import Events from './Events/Events';
 
 const MainWrap = styled.div`
   @media screen and (min-width: 1800px) {
@@ -69,7 +70,8 @@ class CityFeed extends Component {
             <TagsWrapper>
               <HotTags />
             </TagsWrapper>
-            <Empty />
+
+            <Events />
           </MainWrap>
           {/* Mobile Filter Button */}
           <MobileFilter />

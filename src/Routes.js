@@ -48,8 +48,6 @@ import CitiesDisplay from './Cities_Display/CitiesMain';
 import CityFeed from './Cities_Display/City_Feed';
 import Suggestion from './Feed/pages/suggestion';
 
-import Local from '../src/local';
-
 const Routes = () => {
   // Keep User Logged In based on token
   const dispatch = useDispatch();
@@ -102,9 +100,6 @@ const Routes = () => {
         <Route path="/locations" component={CitiesDisplay} />
         <Route path="/location/:id" component={CityFeed} />
 
-        {/* Cities' Routes */}
-        {/* <Route path="/local/:id" component={Local} /> */}
-        {/* Social Media Part */}
         <Layout>
           <SideNav />
           <Suggestion />
