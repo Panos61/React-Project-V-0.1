@@ -37,8 +37,24 @@ export const eventCommentsReducer = (state = initState, action) => {
     case EVENT_COMMENT_POST_SUCCESS:
       return {
         ...state,
+        event_comments: state.event_comments.map((event_comment) =>
+          Number(event_comment.eventID) === payload.eventID
+            ? {
+                ...event_comment,
+                comments: [payload.comment, ...event_comment.comments],
+              }
+            : event_comment
+        ),
+        isLoading: false,
+        commentSuccess: true,
       };
 
+    case EVENT_COMMENT_POST_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        commentSuccess: false,
+      };
     default:
       return state;
   }
