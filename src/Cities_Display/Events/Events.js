@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Event from './Event';
 import { fetchLocalEvents } from '../../store/modules/localEvents/actions/locationActions';
 import Empty from '../empty';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const Events = (props) => {
   const eventCity = props.match.params.id;
@@ -32,13 +32,11 @@ const Events = (props) => {
   const events = eventsSelector.events.map((event) => {
     return (
       <>
-        <Link to={'/event/' + event.id} key={event.id}>
-          <Event event={event} key={event.id} />
-        </Link>
+        <Event event={event} key={event.id} />
       </>
     );
   });
-  return <div className="events-container">{events}</div>;
+  return <div>{events}</div>;
 };
 
 export default withRouter(Events);

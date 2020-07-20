@@ -105,9 +105,7 @@ class CitiesDisplay extends Component {
               <Col lg={{ span: 3, offset: 2 }} sm={{ span: 3, offset: 2 }}>
                 <ul style={ulStyle} id="cities-list-display">
                   <li>
-                    <Link to="/events/city/agios-nikolos-crete">
-                      Άγιος Νικόλαος
-                    </Link>
+                    <Link to="/location/agios-nikolaos">Άγιος Νικόλαος</Link>
                   </li>
                   <li>
                     <Link to="/location/agrinio">Αγρίνιο</Link>

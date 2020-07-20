@@ -6,7 +6,6 @@ import { BackTop } from 'antd';
 import styled from 'styled-components';
 import UpperBack from './UpperBackground';
 import TableFilter from './Components/TableFilter';
-import Empty from './empty';
 import MobileFilter from './Components/MobileFilter';
 import HotTags from './Components/Tags';
 import Events from './Events/Events';
