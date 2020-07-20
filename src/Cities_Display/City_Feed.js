@@ -33,7 +33,7 @@ const MainWrap = styled.div`
 `;
 
 const Sider = styled.nav`
-  top: 20%;
+  top: 16%;
   position: absolute;
   @media screen and (max-width: 1200px) {
     display: none;

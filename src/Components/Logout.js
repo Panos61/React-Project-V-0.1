@@ -39,7 +39,12 @@ const Logout = () => {
       <Menu>
         <Menu.Item key="#">
           <Dropdown overlay={menu} trigger={['click']}>
-            <span>
+            <span
+              style={{
+                position: 'relative',
+                top: '22%',
+              }}
+            >
               {currentUser ? `Κάλως όρισες ${currentUser.username}` : null}
             </span>
           </Dropdown>

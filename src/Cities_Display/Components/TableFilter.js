@@ -77,7 +77,7 @@ class TableFilter extends React.Component {
             <Link
               to="/events/city"
               style={{
-                color: '#7cb305',
+                color: 'greenyellow',
                 fontSize: '17px',
                 fontWeight: 'bold',
               }}

@@ -57,7 +57,7 @@ const Event = ({ event }) => {
         style={{ marginBottom: '5vh', borderRadius: '5px' }}
         key={event.id}
         hoverable={true}
-        style={{ cursor: 'default' }}
+        style={{ cursor: 'default', backgroundColor: '#ffffff' }}
       >
         <span className="local-event-title">
           <Link

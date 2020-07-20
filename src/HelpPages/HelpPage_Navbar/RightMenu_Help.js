@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Menu, Select } from 'antd';
+
 import { Link, Route } from 'react-router-dom';
 import CardLoginStyle from '../../Components/LoginForm/LoginFormStyle';
 import CardRegisterStyle from '../../Components/RegisterForm/SignUpStyle';
+import Logout from '../../Components/Logout';
+
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const { Option } = Select;
 
@@ -10,8 +15,36 @@ function handleChange(value) {
   console.log(`Selected ${value}`);
 }
 
-class RightMenu_Help extends Component {
+class RightMenu extends Component {
+  static propTypes = {
+    Auth: PropTypes.object.isRequired,
+  };
+
   render() {
+    const { isAuthenticated } = this.props.Auth;
+
+    const authLinks = (
+      <Fragment>
+        <Logout />
+      </Fragment>
+    );
+
+    const register = (
+      <Menu>
+        <Menu.Item>
+          <Link to="/login">Σύνδεση</Link>
+        </Menu.Item>
+      </Menu>
+    );
+
+    const login = (
+      <Menu>
+        <Menu.Item>
+          <Link to="/register">Εγγραφή</Link>
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
       <div>
         <Menu mode={this.props.mode}>
@@ -29,12 +62,15 @@ class RightMenu_Help extends Component {
             <Option value="Greek">Ελληνικά(GR)</Option>
           </Select>
 
-          <Menu.Item key="mail">
-            <Link to="/login">Σύνδεση</Link>
+          <Menu.Item>
+            <div style={{ display: 'inline-block' }}>
+              {isAuthenticated ? authLinks : register}
+            </div>
           </Menu.Item>
-
-          <Menu.Item key="app">
-            <Link to="/register">Εγγραφή</Link>
+          <Menu.Item>
+            <div style={{ display: 'inline-block' }}>
+              {isAuthenticated ? '' : login}
+            </div>
           </Menu.Item>
         </Menu>
 
@@ -45,4 +81,8 @@ class RightMenu_Help extends Component {
   }
 }
 
-export default RightMenu_Help;
+const mapStateToProps = (state) => ({
+  Auth: state.Auth,
+});
+
+export default connect(mapStateToProps, null)(RightMenu);
