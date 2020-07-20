@@ -6,6 +6,7 @@ import proReducer from './profile/reducer/proReducer';
 import { postsReducer } from './posts/postReducer';
 import { upvotesReducer } from './upvotes/upvoteReducer';
 import { localEventsReducer } from './localEvents/reducers/locationReducer';
+import { eventCommentsReducer } from './event_comments/ecommentReducer';
 
 const reducer = combineReducers({
   Auth: authReducer,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   Post: postsReducer,
   Upvote: upvotesReducer,
   LocalEvents: localEventsReducer,
+  EventComments: eventCommentsReducer,
 });
 
 export default reducer;

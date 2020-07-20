@@ -14,6 +14,7 @@ import {
   BellOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import EventComment from '../Comments/comment';
 
 const { Footer } = Layout;
 const { Panel } = Collapse;
@@ -133,6 +134,9 @@ const DataDisplay = (props) => {
                 {event.ageRestricted ? event.ageRestricted : ''}
               </Panel>
             </Collapse>
+
+            {/* EVENT COMMENTS */}
+            <EventComment />
           </div>
         </div>
         <BackTop />

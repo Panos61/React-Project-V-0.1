@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Form,
   Button,
@@ -13,21 +13,21 @@ import {
   TreeSelect,
   Switch,
   InputNumber,
-} from "antd";
-import "./masterform.css";
+} from 'antd';
+import './masterform.css';
 import {
   UploadOutlined,
   InfoCircleOutlined,
   CloseOutlined,
   CheckOutlined,
   YoutubeFilled,
-} from "@ant-design/icons";
-import { Link, Redirect } from "react-router-dom";
-import PaymentConditions from "./payment-con";
+} from '@ant-design/icons';
+import { Link, Redirect } from 'react-router-dom';
+import PaymentConditions from './payment-con';
 
 // Redux stuff import
-import { useSelector, useDispatch } from "react-redux";
-import { createEvent } from "../store/modules/events/actions/eventAction";
+import { useSelector, useDispatch } from 'react-redux';
+import { createEvent } from '../store/modules/events/actions/eventAction';
 
 const layout = {
   labelCol: {
@@ -46,13 +46,13 @@ const tailLayout = {
 };
 
 // time format
-const format = "HH:mm";
+const format = 'HH:mm';
 
 const { Option } = Select;
 const { TextArea } = Input;
 const { Meta } = Card;
 const { TreeNode } = TreeSelect;
-const dateFormat = "YYYY/MM/DD";
+const dateFormat = 'YYYY/MM/DD';
 const { RangePicker } = DatePicker;
 
 const MasterForm = () => {
@@ -63,28 +63,28 @@ const MasterForm = () => {
 
   // Show/Hide DatePicker-Timepicker based on Event Date Type
   const onDateClick = (value) => {
-    if (value === "single") {
+    if (value === 'single') {
       setShowSingle(true);
       setShowFestival(false);
-    } else if (value === "festival") {
+    } else if (value === 'festival') {
       setShowFestival(true);
       setShowSingle(false);
     }
   };
 
   const props = {
-    name: "file",
-    action: "https://cors.io/?http://www.mocky.io/v2/5185415ba171ea3a00704eed",
+    name: 'file',
+    action: 'https://cors.io/?http://www.mocky.io/v2/5185415ba171ea3a00704eed',
     headers: {
-      authorization: "authorization-text",
+      authorization: 'authorization-text',
     },
     onChange(info) {
-      if (info.file.status !== "uploading") {
+      if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
-      if (info.file.status === "done") {
+      if (info.file.status === 'done') {
         message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
+      } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
@@ -100,14 +100,14 @@ const MasterForm = () => {
 
   // Redirect user to login page in case
   // he is not authenticated and enters the URL manually
-  localStorage.getItem("token");
+  localStorage.getItem('token');
   if (!localStorage.token) {
     return <Redirect to="/login" />;
   }
 
   function onChange(dates, dateStrings) {
-    console.log("From: ", dates[0], ", to: ", dates[1]);
-    console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
+    console.log('From: ', dates[0], ', to: ', dates[1]);
+    console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
   }
 
   return (
@@ -120,13 +120,13 @@ const MasterForm = () => {
               <InfoCircleOutlined />
             </Link>
           }
-          style={{ borderColor: "#bae637" }}
+          style={{ borderColor: '#bae637' }}
         >
           <Meta description="Γενικά" />
           <Form.Item
             label="Κατηγορία"
             name="category"
-            rules={[{ required: true, message: "Εισάγετε κατηγορία Event!" }]}
+            rules={[{ required: true, message: 'Εισάγετε κατηγορία Event!' }]}
           >
             <Select placeholder="Κατηγορία Event">
               <Option value="Μουσική">Μουσική</Option>
@@ -145,7 +145,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: false,
-                message: "Εισάγετε τίτλο Event!",
+                message: 'Εισάγετε τίτλο Event!',
               },
             ]}
           >
@@ -157,7 +157,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: false,
-                message: "Εισάγετε περιγραφή Event!",
+                message: 'Εισάγετε περιγραφή Event!',
               },
             ]}
           >
@@ -184,8 +184,8 @@ const MasterForm = () => {
             </Link>
           }
           style={{
-            marginTop: "5vh",
-            borderColor: "#ffa940",
+            marginTop: '5vh',
+            borderColor: '#ffa940',
           }}
         >
           <Meta description="Τοποθεσία" />
@@ -195,7 +195,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: true,
-                message: "Επιλέξτε την πόλη διεξαγωγής του Event!",
+                message: 'Επιλέξτε την πόλη διεξαγωγής του Event!',
               },
             ]}
           >
@@ -245,7 +245,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: true,
-                message: "Εισάγετε οδό/διεύθυνση του Event!",
+                message: 'Εισάγετε οδό/διεύθυνση του Event!',
               },
             ]}
           >
@@ -258,7 +258,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: true,
-                message: "Εισάγετε τοποθεσία/μαγαζί του Event!",
+                message: 'Εισάγετε τοποθεσία/μαγαζί του Event!',
               },
             ]}
           >
@@ -273,8 +273,8 @@ const MasterForm = () => {
             </Link>
           }
           style={{
-            marginTop: "5vh",
-            borderColor: "#36cfc9",
+            marginTop: '5vh',
+            borderColor: '#36cfc9',
           }}
         >
           <Meta description="Ημερομηνία" />
@@ -284,7 +284,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: false,
-                message: "Επιλέξτε χρονικό είδος Event!",
+                message: 'Επιλέξτε χρονικό είδος Event!',
               },
             ]}
           >
@@ -305,7 +305,7 @@ const MasterForm = () => {
               rules={[
                 {
                   required: false,
-                  message: "Επιλέξτε χρονικό είδος Event!",
+                  message: 'Επιλέξτε χρονικό είδος Event!',
                 },
               ]}
             >
@@ -330,7 +330,7 @@ const MasterForm = () => {
             <Form.Item
               label="Ημερομηνία και ώρα"
               name="singleTime"
-              rules={[{ required: false, message: "Επιλέξτε ώρα Event!" }]}
+              rules={[{ required: false, message: 'Επιλέξτε ώρα Event!' }]}
             >
               <DatePicker showTime />
             </Form.Item>
@@ -344,8 +344,8 @@ const MasterForm = () => {
             </Link>
           }
           style={{
-            marginTop: "5vh",
-            borderColor: "#ff4d4f",
+            marginTop: '5vh',
+            borderColor: '#ff4d4f',
           }}
         >
           <Meta description="Πολυμέσα" />
@@ -378,8 +378,8 @@ const MasterForm = () => {
             </Link>
           }
           style={{
-            marginTop: "5vh",
-            borderColor: "blue",
+            marginTop: '5vh',
+            borderColor: 'blue',
           }}
         >
           <Meta description="Στοιχεία πληρωμής" />
@@ -390,7 +390,7 @@ const MasterForm = () => {
             rules={[
               {
                 required: false,
-                message: "Επιλέξτε τρόπο εισόδου!",
+                message: 'Επιλέξτε τρόπο εισόδου!',
               },
             ]}
           >
@@ -399,6 +399,9 @@ const MasterForm = () => {
               checkedChildren={<CheckOutlined />}
               unCheckedChildren={<CloseOutlined />}
             />
+          </Form.Item>
+          <Form.Item>
+            <PaymentConditions />
           </Form.Item>
         </Card>
         <Card
@@ -409,8 +412,8 @@ const MasterForm = () => {
             </Link>
           }
           style={{
-            marginTop: "5vh",
-            borderColor: "#f759ab",
+            marginTop: '5vh',
+            borderColor: '#f759ab',
           }}
         >
           <Meta description="Επιπρόσθετα" />
@@ -436,7 +439,7 @@ const MasterForm = () => {
           <Button
             htmlType="submit"
             type="primary"
-            style={{ marginTop: "15px" }}
+            style={{ marginTop: '15px' }}
           >
             Επιβεβαίωση
           </Button>
