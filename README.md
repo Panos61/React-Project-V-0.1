@@ -20,9 +20,10 @@
 
 [x] Event SubPages Layout
 
-## Current:
+[x] Display all events for every city seperately. 
 
-[ ] Display all events for every city seperately. -in Development
+
+## Current:
 
 [ ] Profile Development -in Development
 
