@@ -1,3 +1,8 @@
+Unfinished Project.
+
+-> Main technologies used in this repo:
+  - React, React-Redux, Ant-Design..
+
 ## Things done so far:
 
 [x] Basic App Layout
